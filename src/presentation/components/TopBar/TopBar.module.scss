@@ -1,29 +1,15 @@
 @import '../../../app/styles/base/settings';
 
 .topBar {
-	margin: 0 0.8rem;
+  margin: 0 0.8rem;
+  padding-top: 2rem;
 
-	&__item {
-		cursor: pointer;
-		margin-top: 2rem !important;
-	}
-
-	&__button {
-		background-color: $mid-grey !important;
-		border-radius: 5rem !important;
-		color: white !important;
-		font-size: $font-size-small !important;
-		font-weight: $font-weight-light !important;
-		padding: 0.2 !important;
-		text-transform: none !important;
-		width: 7rem;
-
-		&:hover {
-			background-color: $light-grey !important;
-		}
-	}
+  &__item {
+    cursor: pointer;
+  }
 }
 
 .logo {
-	height: 5rem;
+  height: 4rem;
+  margin: -2rem;
 }

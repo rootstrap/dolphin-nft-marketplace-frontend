@@ -2,7 +2,13 @@
 	"global": {
 		"pageTitle": "Dolphin Marketplace",
 		"login": "Sign in",
-		"Sign up": "Sign up"
+		"signup": "Sign up"
+	},
+	"navBar": {
+		"drops": "Drops",
+		"marketplace": "Marketplace",
+		"promotions": "Promotions",
+		"faq": "FAQ"
 	},
 	"home": {
 		"title": "Athletes collection",

@@ -12,16 +12,12 @@ import './app/styles/styles.scss';
 const messages = locales['en'];
 
 ReactDOM.render(
-	<React.StrictMode>
-		<IntlProvider
-			messages={flatten(messages)}
-			locale={'en'}
-			defaultLocale={DEFAULT_LANGUAGE}
-		>
-			<Provider store={store}>
-				<App />
-			</Provider>
-		</IntlProvider>
-	</React.StrictMode>,
-	document.getElementById('root')
+  <React.StrictMode>
+    <IntlProvider messages={flatten(messages)} locale={'en'} defaultLocale={DEFAULT_LANGUAGE}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </IntlProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
 );

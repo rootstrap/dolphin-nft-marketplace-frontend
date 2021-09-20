@@ -1,10 +1,9 @@
-import { PrimitiveType, FormatXMLElementFn } from 'intl-messageformat';
 import { useIntl } from 'react-intl';
 
 const useTranslation = () => {
-	const intl = useIntl();
+  const intl = useIntl();
 
-	return (message: string) => intl.formatMessage({ id: message });
+  return (message: string) => intl.formatMessage({ id: message });
 };
 
 export default useTranslation;

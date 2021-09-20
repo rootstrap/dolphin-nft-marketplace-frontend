@@ -6,25 +6,21 @@ import { useAppSelector } from './hooks/reduxHooks';
 import useTranslation from './hooks/useTranslation';
 
 export const App = () => {
-	const { isAuthenticated } = useAppSelector((state) => state.user);
-	const t = useTranslation();
+  const { isAuthenticated } = useAppSelector(state => state.user);
+  const t = useTranslation();
 
-	return (
-		<>
-			<Helmet>
-				<title>{t('global.pageTitle')}</title>
-			</Helmet>
-			<Router>
-				<Switch>
-					{routes.map((route) => (
-						<RouteFromPath
-							key={`route-${route.path}`}
-							authenticated={isAuthenticated}
-							{...route}
-						/>
-					))}
-				</Switch>
-			</Router>
-		</>
-	);
+  return (
+    <>
+      <Helmet>
+        <title>{t('global.pageTitle')}</title>
+      </Helmet>
+      <Router>
+        <Switch>
+          {routes.map(route => (
+            <RouteFromPath key={`route-${route.path}`} authenticated={isAuthenticated} {...route} />
+          ))}
+        </Switch>
+      </Router>
+    </>
+  );
 };

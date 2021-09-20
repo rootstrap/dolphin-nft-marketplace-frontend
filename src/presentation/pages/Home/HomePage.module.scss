@@ -1,0 +1,84 @@
+@import '../../../app/styles/base/settings';
+
+.homePage {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+
+	&__item {
+		border: solid 1px $dark-grey;
+		margin-top: 9rem;
+		width: 70%;
+		height: 17rem;
+	}
+
+	&__text {
+		color: $mid-grey;
+		margin-top: 4rem;
+		width: 33rem;
+		height: 10rem;
+	}
+
+	&__latestSection {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		padding: 2rem;
+		background-color: $light-grey;
+
+		&Item {
+			border: solid 1px $dark-grey;
+			height: 13rem;
+		}
+
+		&Text {
+			padding: 4rem !important;
+		}
+	}
+
+	&__searchBar {
+		width: 80%;
+		margin-top: 4rem;
+	}
+
+	&__nftList {
+		width: 90%;
+		margin: 6rem;
+
+		&Item {
+			border: solid 1px $dark-grey;
+			height: 20rem;
+		}
+	}
+
+	&__categorySection {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		padding: 2rem;
+		background-color: $light-grey;
+
+		&Item {
+			background-color: $dark-grey;
+			border: solid 1px $dark-grey;
+			height: 10rem;
+		}
+
+		&Description {
+			padding: 2rem;
+		}
+	}
+
+	&__footer {
+		width: 100%;
+		background-color: $mid-grey;
+
+		&Item {
+			border: solid 1px white;
+			height: 20rem;
+		}
+	}
+}

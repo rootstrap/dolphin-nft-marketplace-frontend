@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 
 export const useResponsive = () => {
-  const [isMobileView, setIsMobileView] = useState<boolean>(window.innerWidth < 950 ? true : false);
+  const [isMobileView, setIsMobileView] = useState<boolean>(window.innerWidth < 950);
+
   useEffect(() => {
-    const setResponsiveness = () => {
-      return window.innerWidth < 950 ? setIsMobileView(true) : setIsMobileView(false);
-    };
+    const setResponsiveness = () => setIsMobileView(window.innerWidth < 950);
 
     setResponsiveness();
 

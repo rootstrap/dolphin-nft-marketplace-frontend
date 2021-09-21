@@ -1,0 +1,15 @@
+@import '../../../app/styles/base/settings';
+
+.topBar {
+  margin: 0 0.8rem;
+  padding-top: 2rem;
+
+  &__item {
+    cursor: pointer;
+  }
+}
+
+.logo {
+  height: 4rem;
+  margin: -2rem;
+}

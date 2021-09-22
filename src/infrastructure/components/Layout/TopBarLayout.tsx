@@ -1,4 +1,6 @@
 import { ReactElement } from 'react';
+import { Login } from '../../../presentation/components/Login/Login';
+import { Signup } from '../../../presentation/components/Signup/Signup';
 import { TopBar } from '../../../presentation/components/TopBar/TopBar';
 
 interface TopBarLayoutProps {
@@ -10,6 +12,8 @@ export const TopBarLayout = ({ pageComponent }: TopBarLayoutProps) => {
     <>
       <TopBar />
       <div>{pageComponent}</div>
+      <Login />
+      <Signup />
     </>
   );
 };

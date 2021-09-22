@@ -1,0 +1,11 @@
+.modal {
+  &__close {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1rem;
+  }
+}

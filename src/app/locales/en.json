@@ -23,5 +23,25 @@
 			"title": "You choose your own adventure",
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 		}
+	},
+	"login": {
+		"title": "Sign in for Dolphin NFTs",
+		"email": "E-mail",
+		"password": "Password",
+		"inputError": "Invalid Email/Password",
+		"button": "Sign in",
+		"signupMsg": "Don’t have an account yet?",
+		"signupLink": "Sign up"
+	},
+	"signup": {
+		"title": "Sign up for Dolphin NFTs",
+		"email": "E-mail",
+		"password": "Password",
+		"passwordConfirmation": "Confirm Password",
+		"inputError": "Invalid Email/Password",
+		"passwordError": "Passwords don't match",
+		"button": "Sign up",
+		"signinMsg": "Already have an account?",
+		"signinLink": "Sign in"
 	}
 }

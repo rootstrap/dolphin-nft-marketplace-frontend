@@ -1,0 +1,29 @@
+@import '../../../app/styles/base/settings';
+
+.loginForm {
+  display: flex;
+  color: $mid-grey;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+
+  &__title {
+    margin-bottom: 4rem;
+  }
+
+  &__error {
+    color: $error;
+    margin-top: -2rem;
+  }
+
+  &__input {
+    margin: 1.5rem;
+    text-align: left;
+  }
+
+  &__button {
+    margin: 1rem 2rem 4rem 2rem;
+  }
+}

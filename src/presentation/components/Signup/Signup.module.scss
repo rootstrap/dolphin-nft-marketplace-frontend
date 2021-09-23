@@ -1,0 +1,39 @@
+@import '../../../app/styles/base/settings';
+
+.signupForm {
+  display: flex;
+  color: $mid-grey;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+
+  &__title {
+    margin-bottom: 1rem;
+  }
+
+  &__error {
+    color: $error;
+    margin-top: -1rem;
+  }
+
+  &__input {
+    margin: 1.5rem;
+    text-align: left;
+  }
+
+  &__button {
+    margin: 1rem 2rem 2rem 2rem;
+  }
+
+  &__close {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1rem;
+  }
+}

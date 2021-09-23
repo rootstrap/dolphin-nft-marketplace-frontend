@@ -20,7 +20,7 @@ export const theme = createTheme({
       root: {
         borderRadius: '5rem',
         textTransform: 'none',
-        width: '7rem',
+        width: '6rem',
       },
     },
   },

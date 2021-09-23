@@ -10,6 +10,7 @@ import locales from './app/locales';
 import './app/styles/styles.scss';
 import { ThemeProvider } from '@material-ui/core';
 import { theme } from './app/themes/Theme';
+import { ModalProvider } from './app/context/ModalContext';
 
 const messages = locales['en'];
 
@@ -18,7 +19,9 @@ ReactDOM.render(
     <IntlProvider messages={flatten(messages)} locale={'en'} defaultLocale={DEFAULT_LANGUAGE}>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <App />
+          <ModalProvider>
+            <App />
+          </ModalProvider>
         </ThemeProvider>
       </Provider>
     </IntlProvider>

@@ -1,37 +1,30 @@
-import ReactModal from 'react-modal';
+import { Box, Modal } from '@material-ui/core';
 import styles from './Modal.module.scss';
 
-ReactModal.setAppElement('#root');
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '30rem',
+  bgcolor: 'background.paper',
+  boxShadow: 24,
+  p: 4,
+};
 
-export const Modal = ({ children, isOpen, handleClose }: ModalProviderProps) => (
-  <ReactModal
-    style={{
-      overlay: {
-        backgroundColor: '#00000090',
-      },
-      content: {
-        width: '30rem',
-        height: '40rem',
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-      },
-    }}
-    isOpen={isOpen}
-    onRequestClose={() => handleClose()}
-  >
-    <button className={styles.modal__close} onClick={handleClose} type="button">
-      X
-    </button>
-    {children}
-  </ReactModal>
+export const BaseModal = ({ open, handleClose, children }: ModalProps) => (
+  <Modal open={open} onClose={handleClose}>
+    <Box sx={style}>
+      <button className={styles.modal__close} onClick={handleClose} type="button">
+        X
+      </button>
+      {children}
+    </Box>
+  </Modal>
 );
 
-export interface ModalProviderProps {
+interface ModalProps {
   children: React.ReactNode;
-  isOpen: boolean;
+  open: boolean;
   handleClose: () => void;
 }

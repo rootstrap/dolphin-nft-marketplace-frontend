@@ -1,11 +1,11 @@
 import { Button, Typography } from '@material-ui/core';
 import { InputText } from '../../../infrastructure/components/InputText/InputText';
-import { Modal } from '../../../infrastructure/components/Modal/Modal';
+import { BaseModal } from '../../../infrastructure/components/Modal/Modal';
 import { useSignup } from './useSignup';
-import useTranslation from '../../../app/hooks/useTranslation';
 import { Link } from 'react-router-dom';
-import styles from './Signup.module.scss';
+import useTranslation from '../../../app/hooks/useTranslation';
 import routesPaths from '../../../app/constants/routesPath';
+import styles from './Signup.module.scss';
 
 export const Signup = () => {
   const t = useTranslation();
@@ -20,7 +20,7 @@ export const Signup = () => {
   } = useSignup();
 
   return (
-    <Modal isOpen={signupModalIsOpen} handleClose={handleClose}>
+    <BaseModal open={signupModalIsOpen} handleClose={handleClose}>
       <form className={styles.signupForm} onSubmit={handleOnSubmit}>
         <div className={styles.signupForm__title}>
           <Typography variant="h5">{t('signup.title')}</Typography>
@@ -77,6 +77,6 @@ export const Signup = () => {
           </Link>
         </div>
       </form>
-    </Modal>
+    </BaseModal>
   );
 };

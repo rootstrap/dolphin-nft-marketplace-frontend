@@ -1,11 +1,11 @@
 import { Button, Typography } from '@material-ui/core';
-import { Modal } from '../../../infrastructure/components/Modal/Modal';
+import { BaseModal } from '../../../infrastructure/components/Modal/Modal';
 import { InputText } from '../../../infrastructure/components/InputText/InputText';
 import { useLogin } from './useLogin';
-import useTranslation from '../../../app/hooks/useTranslation';
 import { Link } from 'react-router-dom';
-import styles from './Login.module.scss';
+import useTranslation from '../../../app/hooks/useTranslation';
 import routesPaths from '../../../app/constants/routesPath';
+import styles from './Login.module.scss';
 
 export const Login = () => {
   const t = useTranslation();
@@ -20,7 +20,7 @@ export const Login = () => {
   } = useLogin();
 
   return (
-    <Modal isOpen={loginModalIsOpen} handleClose={handleClose}>
+    <BaseModal open={loginModalIsOpen} handleClose={handleClose}>
       <form className={styles.loginForm} onSubmit={handleOnSubmit}>
         <div className={styles.loginForm__title}>
           <Typography variant="h5">{t('login.title')}</Typography>
@@ -68,6 +68,6 @@ export const Login = () => {
           </Link>
         </div>
       </form>
-    </Modal>
+    </BaseModal>
   );
 };

@@ -9,7 +9,7 @@ import styles from './Signup.module.scss';
 export const Signup = () => {
   const t = useTranslation();
   const {
-    formValues,
+    formValues: { email, password, passwordConfirmation },
     signupModalIsOpen,
     handleOpenSigninModal,
     handleClose,
@@ -17,7 +17,6 @@ export const Signup = () => {
     error,
     handleOnChange,
   } = useSignup();
-  const { email, password, passwordConfirmation } = formValues;
 
   return (
     <Modal isOpen={signupModalIsOpen} handleClose={handleClose}>

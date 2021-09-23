@@ -9,7 +9,7 @@ import styles from './Login.module.scss';
 export const Login = () => {
   const t = useTranslation();
   const {
-    formValues,
+    formValues: { email, password },
     loginModalIsOpen,
     handleOpenSignupModal,
     handleClose,
@@ -17,8 +17,6 @@ export const Login = () => {
     error,
     handleOnChange,
   } = useLogin();
-
-  const { email, password } = formValues;
 
   return (
     <Modal isOpen={loginModalIsOpen} handleClose={handleClose}>

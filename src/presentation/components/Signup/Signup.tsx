@@ -40,7 +40,7 @@ export const Signup = () => {
           name="email"
           type="email"
           value={email}
-          error={error ? true : false}
+          error={!!error}
           onChange={handleOnChange}
         />
 
@@ -50,7 +50,7 @@ export const Signup = () => {
           name="password"
           type="password"
           value={password}
-          error={error ? true : false}
+          error={!!error}
           onChange={handleOnChange}
         />
 
@@ -60,7 +60,7 @@ export const Signup = () => {
           name="passwordConfirmation"
           type="password"
           value={passwordConfirmation}
-          error={error ? true : false}
+          error={!!error}
           onChange={handleOnChange}
         />
 

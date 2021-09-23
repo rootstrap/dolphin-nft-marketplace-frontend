@@ -41,7 +41,7 @@ export const Login = () => {
           name="email"
           type="email"
           value={email}
-          error={error ? true : false}
+          error={!!error}
           onChange={handleOnChange}
         />
 
@@ -51,7 +51,7 @@ export const Login = () => {
           name="password"
           type="password"
           value={password}
-          error={error ? true : false}
+          error={!!error}
           onChange={handleOnChange}
         />
 

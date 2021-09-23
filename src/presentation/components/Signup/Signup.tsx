@@ -5,6 +5,7 @@ import { useSignup } from './useSignup';
 import useTranslation from '../../../app/hooks/useTranslation';
 import { Link } from 'react-router-dom';
 import styles from './Signup.module.scss';
+import routesPaths from '../../../app/constants/routesPath';
 
 export const Signup = () => {
   const t = useTranslation();
@@ -71,7 +72,7 @@ export const Signup = () => {
 
         <div>
           <Typography>{t('signup.signinMsg')}</Typography>
-          <Link to="/" onClick={handleOpenSigninModal}>
+          <Link to={routesPaths.index} onClick={handleOpenSigninModal}>
             <Typography>{t('signup.signinLink')}</Typography>
           </Link>
         </div>

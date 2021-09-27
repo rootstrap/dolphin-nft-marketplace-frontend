@@ -1,0 +1,34 @@
+@import '../../../../app/styles/base/settings';
+
+.promotionContent {
+  text-align: center;
+  margin: 4rem 1rem;
+  &__item {
+    display: flex;
+    justify-content: center;
+    &Title {
+      margin: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &Content {
+      background-color: $background-promotion;
+      margin: 1rem auto;
+      width: 90%;
+      text-align: left;
+      padding: 1rem;
+    }
+    &Img {
+      position: relative;
+      background-color: $black;
+      text-align: center;
+    }
+    &New {
+      position: absolute;
+      right: 0;
+      background-color: $orange;
+      padding: 0.3rem;
+    }
+  }
+}

@@ -6,6 +6,8 @@ import useTranslation from '../../../app/hooks/useTranslation';
 import styles from './TopBar.module.scss';
 import { useContext } from 'react';
 import { ModalContext } from '../../../app/context/ModalContext';
+import routesPaths from '../../../app/constants/routesPath';
+import { Link } from 'react-router-dom';
 
 export const DesktopTopBar = () => {
   const t = useTranslation();
@@ -15,41 +17,35 @@ export const DesktopTopBar = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item md={2} lg={2}>
+      <Grid item md={3} lg={2} className={styles.topBar__item}>
         <DolphinLogo className={styles.logo} />
       </Grid>
-      <Grid item md={1} lg={1} className={styles.topBar__item}>
-        <Typography>{t('navBar.drops')}</Typography>
+      <Grid item md={3} lg={4} className={styles.topBar__item}>
+        <div className={styles.topBar__itemTextCollection}>
+          <Typography variant="h6">{t('navBar.collections')}</Typography>
+        </div>
       </Grid>
-      <Grid item md={2} lg={1} className={styles.topBar__item}>
-        <Typography>{t('navBar.marketplace')}</Typography>
+      <Grid item md={3} lg={4} className={styles.topBar__item}>
+        <div className={styles.topBar__itemTextFAQ}>
+          <Typography variant="h6">{t('navBar.faq')}</Typography>
+        </div>
       </Grid>
-      <Grid item md={2} lg={1} className={styles.topBar__item}>
-        <Typography>{t('navBar.promotions')}</Typography>
-      </Grid>
-      <Grid item md={1} lg={5} className={styles.topBar__item}>
-        <Typography>{t('navBar.faq')}</Typography>
-      </Grid>
-
-      {isAuthenticated ? (
-        <>
-          <Grid item md={2} lg={1} className={styles.topBar__item}>
-            <PermIdentityOutlined />
-          </Grid>
-          <Grid item md={2} lg={1} className={styles.topBar__item}>
-            <FavoriteBorderOutlined />
-          </Grid>
-        </>
-      ) : (
-        <>
-          <Grid item md={2} lg={1} className={styles.topBar__item}>
-            <Button onClick={() => setLoginModalIsOpen(true)}>{t('global.login')}</Button>
-          </Grid>
-          <Grid item md={2} lg={1} className={styles.topBar__item}>
+      <Grid item md={3} lg={2} className={styles.topBar__item}>
+        {isAuthenticated ? (
+          <div className={styles.topBar__itemProfile}>
+            <PermIdentityOutlined className={styles.topBar__itemProfileItem} />
+            <FavoriteBorderOutlined className={styles.topBar__itemProfileItem} />
+          </div>
+        ) : (
+          <div className={styles.topBar__itemButton}>
             <Button onClick={() => setSignupModalIsOpen(true)}>{t('global.signup')}</Button>
-          </Grid>
-        </>
-      )}
+            <span className={styles.topBar__itemLink}>Or signin </span>
+            <Link to={routesPaths.index} onClick={() => setLoginModalIsOpen(true)}>
+              here
+            </Link>
+          </div>
+        )}
+      </Grid>
     </Grid>
   );
 };

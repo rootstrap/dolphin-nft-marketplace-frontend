@@ -1,15 +1,35 @@
 @import '../../../app/styles/base/settings';
 
 .topBar {
-  margin: 0 0.8rem;
-  padding-top: 2rem;
+  margin: 0 1.5rem;
 
   &__item {
-    cursor: pointer;
-  }
-}
+    &TextCollection {
+      padding-top: 2rem;
+      margin-left: 1rem;
+    }
 
-.logo {
-  height: 4rem;
-  margin: -2rem;
+    &TextFAQ {
+      padding-top: 2rem;
+      margin-left: -10rem;
+    }
+
+    &Button {
+      padding-top: 2rem;
+      margin-left: -6rem;
+    }
+
+    &Link {
+      margin-left: 1rem;
+    }
+
+    &Profile {
+      margin-left: 10rem;
+      padding-top: 2rem;
+
+      &Item {
+        margin: 0.7rem;
+      }
+    }
+  }
 }

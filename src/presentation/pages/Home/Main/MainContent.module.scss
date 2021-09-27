@@ -1,0 +1,51 @@
+@import '../../../../app/styles/base/settings';
+
+.mainContent {
+  margin: 0 1rem;
+  padding: 1rem;
+  &__item {
+    height: 100%;
+    &TextContainer {
+      margin: 8rem 2rem 1rem 2rem;
+    }
+
+    &Text {
+      margin: 0.2rem 1rem;
+      width: 22rem;
+
+      font-size: $font-size-big;
+    }
+
+    &ImgContainer {
+      margin-top: 2rem;
+      margin-left: 0;
+      height: 100%;
+    }
+
+    &Img {
+      object-fit: cover;
+      filter: grayscale(100%);
+      opacity: 0.4;
+      width: 100%;
+      margin: 0;
+      &:hover {
+        opacity: 1;
+        filter: none;
+      }
+    }
+
+    &Icon {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      a {
+        margin-left: 1rem;
+        font-size: 1.6rem;
+      }
+    }
+
+    &Button {
+      margin: 1rem 1rem;
+    }
+  }
+}

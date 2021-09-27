@@ -2,6 +2,7 @@ import { ReactElement } from 'react';
 import { Login } from '../../../presentation/components/Login/Login';
 import { Signup } from '../../../presentation/components/Signup/Signup';
 import { TopBar } from '../../../presentation/components/TopBar/TopBar';
+import { BackgroundLayout } from './BackgroundLayout';
 
 interface TopBarLayoutProps {
   pageComponent: ReactElement;
@@ -10,8 +11,9 @@ interface TopBarLayoutProps {
 export const TopBarLayout = ({ pageComponent }: TopBarLayoutProps) => {
   return (
     <>
+      <BackgroundLayout />
       <TopBar />
-      <div>{pageComponent}</div>
+      {pageComponent}
       <Login />
       <Signup />
     </>

@@ -1,3 +1,5 @@
+@import './settings';
+
 * {
   font-family: 'Roboto';
   margin: 0;
@@ -6,10 +8,12 @@
 }
 
 body {
+  background-color: $background-dark;
+  color: white;
   margin: 0;
 }
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: $primary;
 }

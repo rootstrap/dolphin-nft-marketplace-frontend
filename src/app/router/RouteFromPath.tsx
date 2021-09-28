@@ -11,10 +11,6 @@ interface RouteFromPathProps {
 }
 
 const RouteFromPath = ({ component, ...route }: RouteFromPathProps) =>
-  route.private ? (
-    <PrivateRoute {...route}>{component}</PrivateRoute>
-  ) : (
-    <Route {...route}>{component}</Route>
-  );
+  route.private ? <PrivateRoute {...route}>{component}</PrivateRoute> : <Route {...route}>{component}</Route>;
 
 export default RouteFromPath;

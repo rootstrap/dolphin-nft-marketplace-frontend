@@ -1,9 +1,9 @@
 import { Typography } from '@material-ui/core';
 import { FavoriteBorderOutlined } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import routesPaths from '../../../../app/constants/routesPath';
-import PromotionItem from '../../../../app/assets/Promotion.png';
-import New from '../../../../app/assets/New.png';
+import routesPaths from 'app/constants/routesPath';
+import PromotionItem from 'app/assets/Promotion.png';
+import New from 'app/assets/New.png';
 
 export const Item = ({ styles }: ItemProps) => {
   return (

@@ -1,10 +1,10 @@
 import { Grid } from '@material-ui/core';
 import { MainText } from './MainText';
 import { MainImg } from './MainImg';
-import Athletes from '../../../../app/assets/Athletes.png';
-import Culinary from '../../../../app/assets/Culinary.png';
-import Music from '../../../../app/assets/Music.png';
-import Ball from '../../../../app/assets/Ball.png';
+import Athletes from 'app/assets/Athletes.png';
+import Culinary from 'app/assets/Culinary.png';
+import Music from 'app/assets/Music.png';
+import Ball from 'app/assets/Ball.png';
 import styles from './MainContent.module.scss';
 
 export const MainContent = () => {

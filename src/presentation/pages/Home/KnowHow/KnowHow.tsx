@@ -1,7 +1,7 @@
 import { Grid } from '@material-ui/core';
-import First from '../../../../app/assets/First.png';
-import Second from '../../../../app/assets/Second.png';
-import Third from '../../../../app/assets/Third.png';
+import First from 'app/assets/First.png';
+import Second from 'app/assets/Second.png';
+import Third from 'app/assets/Third.png';
 import styles from './KnowHow.module.scss';
 import { Step } from './Step';
 

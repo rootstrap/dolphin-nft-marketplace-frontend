@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AddBox } from '@material-ui/icons';
-import routesPaths from '../../../../app/constants/routesPath';
+import routesPaths from 'app/constants/routesPath';
 import { Typography } from '@material-ui/core';
 
 export const MainImg = ({ link, src, alt, styles, disabled = false }: MainImgProps) => (

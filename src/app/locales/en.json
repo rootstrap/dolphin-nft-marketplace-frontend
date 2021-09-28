@@ -32,7 +32,8 @@
 		"inputError": "Invalid Email/Password",
 		"button": "Sign in",
 		"signupMsg": "Don’t have an account yet?",
-		"signupLink": "Sign up"
+		"signupLink": "Sign up",
+		"systemError": "Something went wrong!"
 	},
 	"signup": {
 		"title": "Sign up for Dolphin NFTs",

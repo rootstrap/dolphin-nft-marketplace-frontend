@@ -7,10 +7,10 @@ import { Provider } from 'react-redux';
 import { DEFAULT_LANGUAGE } from './app/constants/contants';
 import flatten from 'flat';
 import locales from './app/locales';
-import './app/styles/styles.scss';
 import { ThemeProvider } from '@material-ui/core';
 import { theme } from './app/themes/Theme';
 import { ModalProvider } from './app/context/ModalContext';
+import './app/styles/styles.scss';
 
 const messages = locales['en'];
 

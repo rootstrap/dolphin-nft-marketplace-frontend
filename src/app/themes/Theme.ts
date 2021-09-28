@@ -28,7 +28,7 @@ export const theme = createTheme({
       contained: {
         border: 'none',
         borderRadius: 0,
-        color: 'white !important',
+        color: 'white',
         width: 'min-content',
         margin: 0,
       },

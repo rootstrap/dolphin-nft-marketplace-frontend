@@ -18,6 +18,7 @@ export const Item = ({ styles }: ItemProps) => {
       </div>
 
       <div>
+        {/* TODO: Placeholders to be replaced in the future  */}
         <Typography>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...
         </Typography>

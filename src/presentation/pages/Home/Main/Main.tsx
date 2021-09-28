@@ -11,6 +11,7 @@ export const MainContent = () => {
   return (
     <Grid container className={styles.mainContent}>
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}>
+        {/* TODO: Placeholders to be replaced in the future  */}
         <MainText
           styles={styles}
           textContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -20,19 +21,19 @@ export const MainContent = () => {
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}></Grid>
 
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Athletes} alt="Athletes" styles={styles} link="Athletes" />
+        <MainImg src={Athletes} alt="" styles={styles} link="Athletes" />
       </Grid>
 
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Culinary} alt="Culinary" styles={styles} link="Culinary" />
+        <MainImg src={Culinary} alt="" styles={styles} link="Culinary" />
       </Grid>
 
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Music} alt="Music" styles={styles} link="Music" />
+        <MainImg src={Music} alt="" styles={styles} link="Music" />
       </Grid>
 
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Ball} alt="More" styles={styles} link="More" disabled />
+        <MainImg src={Ball} alt="" styles={styles} link="More" disabled />
       </Grid>
     </Grid>
   );

@@ -16,6 +16,7 @@ export const KnowHowContent = () => {
 
       <Grid className={styles.knowHowContent} container>
         <Grid className={styles.knowHowContent__item} item xs={6} md={4} lg={4}>
+          {/* TODO: Placeholders to be replaced in the future  */}
           <Step
             styles={styles}
             textContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

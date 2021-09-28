@@ -39,7 +39,7 @@ export const DesktopTopBar = () => {
         ) : (
           <div className={styles.topBar__itemButton}>
             <Button onClick={() => setSignupModalIsOpen(true)}>{t('global.signup')}</Button>
-            <span className={styles.topBar__itemLink}>Or signin </span>
+            <span className={styles.topBar__itemLink}>Or sign in </span>
             <Link to={routesPaths.index} onClick={() => setLoginModalIsOpen(true)}>
               here
             </Link>

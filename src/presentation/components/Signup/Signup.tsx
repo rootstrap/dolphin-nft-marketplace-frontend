@@ -1,16 +1,16 @@
 import { Button, Typography } from '@material-ui/core';
-import { InputText } from '../../../infrastructure/components/InputText/InputText';
-import { BaseModal } from '../../../infrastructure/components/Modal/Modal';
+import { InputText } from 'infrastructure/components/InputText/InputText';
+import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { useSignup } from './useSignup';
 import { Link } from 'react-router-dom';
-import useTranslation from '../../../app/hooks/useTranslation';
-import routesPaths from '../../../app/constants/routesPath';
+import useTranslation from 'app/hooks/useTranslation';
+import routesPaths from 'app/constants/routesPath';
 import styles from './Signup.module.scss';
 
 export const Signup = () => {
   const t = useTranslation();
   const {
-    formValues: { email, password, passwordConfirmation },
+    formValues: { email, firstName, lastName, password, passwordConfirmation },
     signupModalIsOpen,
     handleOpenSigninModal,
     handleClose,
@@ -34,6 +34,30 @@ export const Signup = () => {
 
         <hr />
 
+        <div className={styles.signupForm__nameContainer}>
+          <InputText
+            className={styles.signupForm__input}
+            label={t('signup.firstName')}
+            name="firstName"
+            type="text"
+            value={firstName}
+            error={!!error}
+            onChange={handleOnChange}
+            size="small"
+          />
+
+          <InputText
+            className={styles.signupForm__input}
+            label={t('signup.lastName')}
+            name="lastName"
+            type="text"
+            value={lastName}
+            error={!!error}
+            onChange={handleOnChange}
+            size="small"
+          />
+        </div>
+
         <InputText
           className={styles.signupForm__input}
           label={t('signup.email')}
@@ -42,6 +66,7 @@ export const Signup = () => {
           value={email}
           error={!!error}
           onChange={handleOnChange}
+          size="small"
         />
 
         <InputText
@@ -52,6 +77,7 @@ export const Signup = () => {
           value={password}
           error={!!error}
           onChange={handleOnChange}
+          size="small"
         />
 
         <InputText
@@ -62,6 +88,7 @@ export const Signup = () => {
           value={passwordConfirmation}
           error={!!error}
           onChange={handleOnChange}
+          size="small"
         />
 
         <div className={styles.signupForm__button}>

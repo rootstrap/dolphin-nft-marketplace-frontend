@@ -2,7 +2,9 @@
 	"global": {
 		"pageTitle": "Dolphin Marketplace",
 		"login": "Sign in",
-		"signup": "Sign up"
+		"signup": "Sign up",
+		"signinMsg": "Or sign in ",
+		"signinLink": "here"
 	},
 	"navBar": {
 		"collections": "Collections",

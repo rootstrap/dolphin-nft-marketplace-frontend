@@ -2,7 +2,9 @@
 	"global": {
 		"pageTitle": "Dolphin Marketplace",
 		"login": "Sign in",
-		"signup": "Sign up"
+		"signup": "Sign up",
+		"signinMsg": "Or sign in ",
+		"signinLink": "here"
 	},
 	"navBar": {
 		"collections": "Collections",
@@ -32,7 +34,8 @@
 		"inputError": "Invalid Email/Password",
 		"button": "Sign in",
 		"signupMsg": "Don’t have an account yet?",
-		"signupLink": "Sign up"
+		"signupLink": "Sign up",
+		"systemError": "Something went wrong!"
 	},
 	"signup": {
 		"title": "Sign up for Dolphin NFTs",

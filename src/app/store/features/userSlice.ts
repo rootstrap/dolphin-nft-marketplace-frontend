@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { loginFulfiled } from 'infrastructure/services/user/ApiService';
 
 const initialState: UserState = {
-  username: '',
+  user: {},
+  token: '',
   isAuthenticated: false,
 };
 
@@ -11,18 +13,27 @@ const userSlice = createSlice({
   reducers: {
     authenticate(state, action: PayloadAction<authAction>) {
       state.isAuthenticated = true;
-      state.username = action.payload.username;
+      state.user = action.payload.user;
     },
+  },
+  extraReducers: builder => {
+    builder.addMatcher(loginFulfiled, (state, { payload: { token, user } }) => {
+      state.isAuthenticated = true;
+      state.token = token;
+      state.user = user;
+    });
   },
 });
 
 interface UserState {
-  username: string;
+  user: object;
+  token: string;
   isAuthenticated: boolean;
 }
 
 interface authAction {
-  username: string;
+  user: object;
+  info: object;
   password: string;
 }
 

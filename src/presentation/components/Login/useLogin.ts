@@ -1,4 +1,5 @@
-import { useContext, useState } from 'react';
+import { useLoginMutation, api } from 'infrastructure/services/user/ApiService';
+import { useEffect, useContext, useState, useCallback } from 'react';
 import { ModalContext } from '../../../app/context/ModalContext';
 import useTranslation from '../../../app/hooks/useTranslation';
 
@@ -9,6 +10,7 @@ const initialFormValues = {
 
 export const useLogin = () => {
   const t = useTranslation();
+  const [login, { isLoading, isSuccess, isError }] = useLoginMutation();
   const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
   const [error, setError] = useState('');
   const [formValues, setFormValues] = useState(initialFormValues);
@@ -24,11 +26,12 @@ export const useLogin = () => {
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setError('');
 
     if (email.trim().length < 6 || password.trim().length < 8) {
       return setError(t('signup.inputError'));
     }
-    handleClose();
+    login({ email, password });
   };
 
   const handleClose = () => {
@@ -42,12 +45,25 @@ export const useLogin = () => {
     setSignupModalIsOpen(true);
   };
 
+  useEffect(() => {
+    if (isSuccess) {
+      handleClose();
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      setError(t('login.systemError'));
+    }
+  }, [isError]);
+
   return {
     formValues,
     loginModalIsOpen,
     handleOpenSignupModal,
     handleClose,
     handleOnSubmit,
+    isLoading,
     error,
     handleOnChange,
   };

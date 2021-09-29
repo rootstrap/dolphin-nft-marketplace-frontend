@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import useTranslation from '../../../app/hooks/useTranslation';
 import routesPaths from '../../../app/constants/routesPath';
 import styles from './Login.module.scss';
+import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 
 export const Login = () => {
   const t = useTranslation();
@@ -15,6 +16,7 @@ export const Login = () => {
     handleOpenSignupModal,
     handleClose,
     handleOnSubmit,
+    isLoading,
     error,
     handleOnChange,
   } = useLogin();
@@ -53,20 +55,25 @@ export const Login = () => {
           error={!!error}
           onChange={handleOnChange}
         />
+        {isLoading ? (
+          <CustomLoader />
+        ) : (
+          <>
+            <div className={styles.loginForm__button}>
+              <Button fullWidth type="submit">
+                {t('login.button')}
+              </Button>
+            </div>
 
-        <div className={styles.loginForm__button}>
-          <Button fullWidth type="submit">
-            {t('login.button')}
-          </Button>
-        </div>
+            <div>
+              <Typography>{t('login.signupMsg')}</Typography>
 
-        <div>
-          <Typography>{t('login.signupMsg')}</Typography>
-
-          <Link to={routesPaths.index} onClick={handleOpenSignupModal}>
-            <Typography>{t('login.signupLink')}</Typography>
-          </Link>
-        </div>
+              <Link to={routesPaths.index} onClick={handleOpenSignupModal}>
+                <Typography>{t('login.signupLink')}</Typography>
+              </Link>
+            </div>
+          </>
+        )}
       </form>
     </BaseModal>
   );

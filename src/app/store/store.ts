@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './features/userSlice';
+import { api } from 'infrastructure/services/user/ApiService';
+import { rootReducer } from './reducer';
+import logger from 'redux-logger';
+
+const middleware = (getDefaultMiddleware: any) => getDefaultMiddleware().concat(logger, api.middleware);
 
 export const store = configureStore({
-  reducer: {
-    user: userReducer,
-  },
+  reducer: rootReducer,
+  middleware,
 });
 
 export type AppDispatch = typeof store.dispatch;

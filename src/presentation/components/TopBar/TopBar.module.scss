@@ -5,16 +5,15 @@
 
   &__item {
     &TextCollection {
+      display: flex;
+      justify-content: space-evenly;
       padding-top: 2rem;
-      margin-left: 1rem;
-    }
-
-    &TextFAQ {
-      padding-top: 2rem;
-      margin-left: -10rem;
     }
 
     &Button {
+      display: flex;
+      justify-content: end;
+      align-items: center;
       padding-top: 2rem;
       margin-left: -6rem;
     }

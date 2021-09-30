@@ -1,7 +1,12 @@
 @import './settings';
 
+@font-face {
+  font-family: 'transat';
+  src: url('../fonts/transat_medium.ttf');
+}
+
 * {
-  font-family: 'Roboto';
+  font-family: 'transat';
   margin: 0;
   padding: 0;
   box-sizing: border-box;

@@ -30,17 +30,17 @@ const userSlice = createSlice({
   },
 });
 
-interface UserState {
-  user: User;
-  token: string;
-  isAuthenticated: boolean;
-}
-
 interface User {
   firstName: string;
   lastName: string;
   email: string;
   id: number;
+}
+
+interface UserState {
+  user: User;
+  token: string;
+  isAuthenticated: boolean;
 }
 
 export default userSlice.reducer;

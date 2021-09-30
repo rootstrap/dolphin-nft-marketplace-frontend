@@ -39,10 +39,12 @@
 	},
 	"signup": {
 		"title": "Sign up for Dolphin NFTs",
+		"firstName": "First Name",
+		"lastName": "Last Name",
 		"email": "E-mail",
 		"password": "Password",
 		"passwordConfirmation": "Confirm Password",
-		"inputError": "Invalid Email/Password",
+		"inputError": "Invalid Input Values",
 		"passwordError": "Passwords don't match",
 		"button": "Sign up",
 		"signinMsg": "Already have an account?",

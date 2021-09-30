@@ -20,7 +20,7 @@ export const DesktopTopBar = () => {
       <Grid item md={3} lg={2} className={styles.topBar__item}>
         <DolphinLogo className={styles.logo} />
       </Grid>
-      <Grid item md={3} lg={4} className={styles.topBar__item}>
+      <Grid item md={3} lg={2} className={styles.topBar__item}>
         <div className={styles.topBar__itemTextCollection}>
           <Typography variant="h6">{t('navBar.collections')}</Typography>
         </div>
@@ -30,7 +30,7 @@ export const DesktopTopBar = () => {
           <Typography variant="h6">{t('navBar.faq')}</Typography>
         </div>
       </Grid>
-      <Grid item md={3} lg={2} className={styles.topBar__item}>
+      <Grid item md={3} lg={4} className={styles.topBar__item}>
         {isAuthenticated ? (
           <div className={styles.topBar__itemProfile}>
             <PermIdentityOutlined className={styles.topBar__itemProfileItem} />

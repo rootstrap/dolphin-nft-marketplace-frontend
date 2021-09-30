@@ -1,8 +1,8 @@
 import { Switch, BrowserRouter as Router } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { routes } from './router';
-import RouteFromPath from './router/RouteFromPath';
 import { useAppSelector } from './hooks/reduxHooks';
+import RouteFromPath from './router/RouteFromPath';
 import useTranslation from './hooks/useTranslation';
 
 export const App = () => {

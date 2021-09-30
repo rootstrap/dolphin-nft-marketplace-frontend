@@ -8,10 +8,12 @@ export const InputText = ({
   error,
   onChange,
   type = 'text',
+  size = 'medium',
 }: InputTextProps) => (
   <div className={className}>
     <Typography>{label}</Typography>
     <TextField
+      size={size}
       name={name}
       type={type}
       value={value}
@@ -31,4 +33,5 @@ interface InputTextProps {
   error: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type?: 'text' | 'password' | 'email';
+  size?: 'medium' | 'small';
 }

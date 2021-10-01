@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { api } from 'infrastructure/services/user/ApiService';
+import { api } from 'infrastructure/services/Api';
 import userReducer from './features/userSlice';
 
 export const rootReducer = combineReducers({

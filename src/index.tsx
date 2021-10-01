@@ -10,19 +10,24 @@ import locales from './app/locales';
 import { ThemeProvider } from '@material-ui/core';
 import { theme } from './app/themes/Theme';
 import { ModalProvider } from './app/context/ModalContext';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 import './app/styles/styles.scss';
 
 const messages = locales['en'];
+const persistor = persistStore(store);
 
 ReactDOM.render(
   <React.StrictMode>
     <IntlProvider messages={flatten(messages)} locale={'en'} defaultLocale={DEFAULT_LANGUAGE}>
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <ModalProvider>
-            <App />
-          </ModalProvider>
-        </ThemeProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeProvider theme={theme}>
+            <ModalProvider>
+              <App />
+            </ModalProvider>
+          </ThemeProvider>
+        </PersistGate>
       </Provider>
     </IntlProvider>
   </React.StrictMode>,

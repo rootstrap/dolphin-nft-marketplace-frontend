@@ -1,8 +1,11 @@
-import { useContext, useState } from 'react';
-import { ModalContext } from '../../../app/context/ModalContext';
-import useTranslation from '../../../app/hooks/useTranslation';
+import { useSignupMutation } from 'infrastructure/services/user/UserService';
+import { useContext, useEffect, useState } from 'react';
+import { ModalContext } from 'app/context/ModalContext';
+import useTranslation from 'app/hooks/useTranslation';
 
 const initialFormValues = {
+  firstName: '',
+  lastName: '',
   email: '',
   password: '',
   passwordConfirmation: '',
@@ -10,11 +13,12 @@ const initialFormValues = {
 
 export const useSignup = () => {
   const t = useTranslation();
+  const [signup, { isLoading, isSuccess, isError }] = useSignupMutation();
   const { signupModalIsOpen, setSignupModalIsOpen, setLoginModalIsOpen } = useContext(ModalContext);
   const [error, setError] = useState('');
   const [formValues, setFormValues] = useState(initialFormValues);
 
-  const { email, password, passwordConfirmation } = formValues;
+  const { firstName, lastName, email, password, passwordConfirmation } = formValues;
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setFormValues({
@@ -26,14 +30,21 @@ export const useSignup = () => {
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (email.trim().length < 6 || password.trim().length < 8) {
+    if (
+      firstName.trim().length < 4 ||
+      lastName.trim().length < 4 ||
+      email.trim().length < 6 ||
+      password.trim().length < 8
+    ) {
       return setError(t('signup.inputError'));
     }
 
     if (password.trim() !== passwordConfirmation.trim()) {
       return setError(t('signup.passwordError'));
     }
-    handleClose();
+
+    console.log(formValues);
+    signup({ firstName, lastName, email, password });
   };
 
   const handleClose = () => {
@@ -46,6 +57,18 @@ export const useSignup = () => {
     handleClose();
     setLoginModalIsOpen(true);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      handleClose();
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      setError(t('login.systemError'));
+    }
+  }, [isError]);
 
   return {
     formValues,

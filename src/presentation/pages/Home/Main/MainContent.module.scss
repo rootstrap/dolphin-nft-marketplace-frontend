@@ -26,7 +26,8 @@
       object-fit: cover;
       filter: grayscale(100%);
       opacity: 0.4;
-      width: 100%;
+      max-width: 100%;
+      height: auto;
       margin: 0;
       &:hover {
         opacity: 1;

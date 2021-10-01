@@ -1,8 +1,13 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loginFulfiled } from 'infrastructure/services/user/ApiService';
+import { createSlice } from '@reduxjs/toolkit';
+import { loginFulfiled, signupFulfiled } from 'infrastructure/services/user/UserService';
 
 const initialState: UserState = {
-  user: {},
+  user: {
+    firstName: '',
+    lastName: '',
+    email: '',
+    id: 0,
+  },
   token: '',
   isAuthenticated: false,
 };
@@ -10,32 +15,32 @@ const initialState: UserState = {
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-    authenticate(state, action: PayloadAction<authAction>) {
-      state.isAuthenticated = true;
-      state.user = action.payload.user;
-    },
-  },
+  reducers: {},
   extraReducers: builder => {
     builder.addMatcher(loginFulfiled, (state, { payload: { token, user } }) => {
       state.isAuthenticated = true;
       state.token = token;
       state.user = user;
     });
+    builder.addMatcher(signupFulfiled, (state, { payload: { tokenFtx, ...user } }) => {
+      state.isAuthenticated = true;
+      state.token = tokenFtx;
+      state.user = user;
+    });
   },
 });
 
+interface User {
+  firstName: string;
+  lastName: string;
+  email: string;
+  id: number;
+}
+
 interface UserState {
-  user: object;
+  user: User;
   token: string;
   isAuthenticated: boolean;
 }
 
-interface authAction {
-  user: object;
-  info: object;
-  password: string;
-}
-
-export const { authenticate } = userSlice.actions;
 export default userSlice.reducer;

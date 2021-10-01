@@ -9,6 +9,9 @@ export const theme = createTheme({
       main: '#35aed7',
     },
   },
+  typography: {
+    fontFamily: ['transat', 'Roboto'].join(', '),
+  },
   props: {
     MuiButton: {
       color: 'secondary',

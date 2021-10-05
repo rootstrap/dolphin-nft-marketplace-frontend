@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { AddBox } from '@material-ui/icons';
-import routesPaths from 'app/constants/routesPath';
 import { Typography } from '@material-ui/core';
 
 export const MainImg = ({ link, src, alt, styles, disabled = false }: MainImgProps) => (
@@ -15,7 +14,7 @@ export const MainImg = ({ link, src, alt, styles, disabled = false }: MainImgPro
       ) : (
         <>
           <AddBox color="secondary" fontSize="large" />
-          <Link to={routesPaths.index}> {link}</Link>
+          <Link to={`verticals/${link}`}> {link}</Link>
         </>
       )}
     </div>

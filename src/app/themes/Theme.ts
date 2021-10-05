@@ -1,4 +1,5 @@
 import { createTheme } from '@material-ui/core';
+import { colors } from 'app/constants/contants';
 
 export const theme = createTheme({
   palette: {
@@ -7,6 +8,12 @@ export const theme = createTheme({
     },
     secondary: {
       main: '#35aed7',
+    },
+    background: {
+      default: colors.backgroundDark,
+    },
+    text: {
+      primary: colors.white,
     },
   },
   typography: {

@@ -4,6 +4,7 @@ import { routes } from './router';
 import { useAppSelector } from './hooks/reduxHooks';
 import RouteFromPath from './router/RouteFromPath';
 import useTranslation from './hooks/useTranslation';
+import { CssBaseline } from '@material-ui/core';
 
 export const App = () => {
   const { isAuthenticated } = useAppSelector(state => state.user);
@@ -14,12 +15,14 @@ export const App = () => {
       <Helmet>
         <title>{t('global.pageTitle')}</title>
       </Helmet>
+
       <Router>
         <Switch>
           {routes.map(route => (
             <RouteFromPath key={`route-${route.path}`} authenticated={isAuthenticated} {...route} />
           ))}
         </Switch>
+        <CssBaseline />
       </Router>
     </>
   );

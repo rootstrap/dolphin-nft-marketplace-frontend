@@ -1,53 +1,61 @@
 {
-	"global": {
-		"pageTitle": "Dolphin Marketplace",
-		"login": "Sign in",
-		"signup": "Sign up",
-		"signinMsg": "Or sign in ",
-		"signinLink": "here"
-	},
-	"navBar": {
-		"collections": "Collections",
-		"drops": "Drops",
-		"marketplace": "Marketplace",
-		"promotions": "Promotions",
-		"faq": "FAQ"
-	},
-	"home": {
-		"title": "Athletes collection",
-		"description": "Collection description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-		"latestSection": {
-			"description": "Check the lattest NFTs for sale by collectors"
-		},
-		"nftList": {
-			"sortBy": "Sort By"
-		},
-		"categorySection": {
-			"title": "You choose your own adventure",
-			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-		}
-	},
-	"login": {
-		"title": "Sign in for Dolphin NFTs",
-		"email": "E-mail",
-		"password": "Password",
-		"inputError": "Invalid Email/Password",
-		"button": "Sign in",
-		"signupMsg": "Don’t have an account yet?",
-		"signupLink": "Sign up",
-		"systemError": "Something went wrong!"
-	},
-	"signup": {
-		"title": "Sign up for Dolphin NFTs",
-		"firstName": "First Name",
-		"lastName": "Last Name",
-		"email": "E-mail",
-		"password": "Password",
-		"passwordConfirmation": "Confirm Password",
-		"inputError": "Invalid Input Values",
-		"passwordError": "Passwords don't match",
-		"button": "Sign up",
-		"signinMsg": "Already have an account?",
-		"signinLink": "Sign in"
-	}
+  "global": {
+    "pageTitle": "Dolphin Marketplace",
+    "login": "Sign in",
+    "signup": "Sign up",
+    "signinMsg": "Or sign in ",
+    "signinLink": "here"
+  },
+  "navBar": {
+    "collections": "Collections",
+    "drops": "Drops",
+    "marketplace": "Marketplace",
+    "promotions": "Promotions",
+    "faq": "FAQ"
+  },
+  "home": {
+    "title": "Athletes collection",
+    "description": "Collection description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "latestSection": {
+      "description": "Check the lattest NFTs for sale by collectors"
+    },
+    "nftList": {
+      "sortBy": "Sort By"
+    },
+    "categorySection": {
+      "title": "You choose your own adventure",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+  },
+  "verticals": {
+    "listTitle": "Explore and select your NFT",
+    "item": {
+      "price": "Floor price",
+      "button": "Get it now!",
+      "currency": "USD"
+    }
+  },
+  "login": {
+    "title": "Sign in for Dolphin NFTs",
+    "email": "E-mail",
+    "password": "Password",
+    "inputError": "Invalid Email/Password",
+    "button": "Sign in",
+    "signupMsg": "Don’t have an account yet?",
+    "signupLink": "Sign up",
+    "systemError": "Something went wrong!"
+  },
+  "signup": {
+    "title": "Sign up for Dolphin NFTs",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "E-mail",
+    "password": "Password",
+    "passwordConfirmation": "Confirm Password",
+    "inputError": "Invalid Input Values",
+    "passwordError": "Passwords don't match",
+    "button": "Sign up",
+    "signinMsg": "Already have an account?",
+    "signinLink": "Sign in"
+  }
 }

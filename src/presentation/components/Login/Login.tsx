@@ -3,10 +3,10 @@ import { BaseModal } from '../../../infrastructure/components/Modal/Modal';
 import { InputText } from '../../../infrastructure/components/InputText/InputText';
 import { useLogin } from './useLogin';
 import { Link } from 'react-router-dom';
+import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import useTranslation from '../../../app/hooks/useTranslation';
 import routesPaths from '../../../app/constants/routesPath';
 import styles from './Login.module.scss';
-import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 
 export const Login = () => {
   const t = useTranslation();

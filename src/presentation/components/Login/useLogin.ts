@@ -1,5 +1,5 @@
 import { useLoginMutation } from 'infrastructure/services/user/UserService';
-import { useEffect, useContext, useState, useCallback } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import useTranslation from 'app/hooks/useTranslation';
 

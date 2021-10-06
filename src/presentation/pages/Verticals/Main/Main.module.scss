@@ -1,0 +1,73 @@
+@import '../../../../app/styles/base/settings';
+
+.mainContent {
+  margin: 0 1rem;
+  padding: 1rem;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    &Title {
+      height: 2rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    &Description {
+      height: 5rem;
+      overflow-y: hidden;
+    }
+    &Content {
+      background-color: $background-promotion;
+      margin: 1rem auto;
+      width: 90%;
+      text-align: left;
+      padding: 1rem;
+    }
+  }
+
+  &__text {
+    padding: 4.5rem;
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+  }
+
+  &__imgContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    object-fit: cover;
+    width: 100%;
+    margin: 0 0 1rem;
+
+    &Img {
+      background-color: $black;
+      width: 50%;
+      height: auto;
+    }
+
+    &New {
+      position: absolute;
+      right: 0;
+      background-color: $orange;
+      padding: 0.3rem;
+    }
+  }
+
+  &__favContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    color: $orange;
+  }
+
+  &__buyContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+}

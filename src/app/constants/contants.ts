@@ -11,4 +11,5 @@ export const colors = {
   backgroundPromotion: '#161616',
   orange: '#f58550',
   black: '#000',
+  white: '#FFF',
 };

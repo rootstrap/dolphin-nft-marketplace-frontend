@@ -13,6 +13,10 @@ export const useVertical = () => {
 
   useEffect(() => {
     loadData();
+
+    return () => {
+      window.scrollTo(0, 0);
+    };
   }, []);
 
   return {

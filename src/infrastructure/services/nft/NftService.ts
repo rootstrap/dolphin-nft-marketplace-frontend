@@ -10,13 +10,21 @@ const nftApi = api.injectEndpoints({
         return data.result.slice(0, 25);
       },
     }),
+    getNftDetails: builder.mutation<NFT, string>({
+      query: nftId => `${endpoints.NFT}/${nftId}`,
+      transformResponse: (data: { result: NFT }) => {
+        return data.result;
+      },
+    }),
   }),
   overrideExisting: true,
 });
 
 export const {
   useGetNftsMutation,
+  useGetNftDetailsMutation,
   endpoints: {
     getNfts: { matchFulfilled: getNftsFulfiled },
+    getNftDetails: { matchFulfilled: getNftDetailsFulfiled },
   },
 } = nftApi;

@@ -40,7 +40,7 @@ export const theme = createTheme({
         borderRadius: 0,
         color: 'white',
         width: 'min-content',
-        margin: 0,
+        margin: '1rem 0',
       },
       containedSizeSmall: {
         padding: 0,

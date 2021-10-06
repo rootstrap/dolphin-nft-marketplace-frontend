@@ -1,0 +1,52 @@
+@import '../../../../app/styles/base/settings';
+
+.mainContent {
+  display: flex;
+  justify-content: center;
+  margin: 0 1rem;
+  padding: 1rem;
+
+  &__container {
+    margin: 0 10%;
+  }
+
+  &__buttonContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -1rem;
+  }
+
+  &__priceContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__priceContainer {
+    text-align: center;
+    p {
+      color: $orange;
+    }
+  }
+
+  &__item {
+    height: 40rem;
+    padding: 3rem;
+    &Video {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    &Description {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      text-align: left;
+      height: 100%;
+      width: 80%;
+
+      &Title {
+        color: $orange;
+      }
+    }
+  }
+}

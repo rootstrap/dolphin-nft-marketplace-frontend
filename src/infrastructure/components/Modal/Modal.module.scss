@@ -1,5 +1,6 @@
 .modal {
-  background-color: white;
+  background-color: black;
+  border: 1px solid white;
   box-shadow: 24;
   position: absolute;
   left: 50%;
@@ -9,7 +10,8 @@
   width: 30rem;
 
   &__close {
-    background-color: white;
+    background-color: black;
+    color: white;
     border: none;
     cursor: pointer;
     position: absolute;

@@ -46,5 +46,11 @@ export const theme = createTheme({
         padding: 0,
       },
     },
+    MuiInputBase: {
+      input: {
+        border: '1px solid white',
+        borderRadius: 0,
+      },
+    },
   },
 });

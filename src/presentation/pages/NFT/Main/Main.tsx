@@ -1,26 +1,13 @@
-import { Grid, Typography } from '@material-ui/core';
-import { NFT } from 'app/interfaces/NFT/NFT';
+import { Grid } from '@material-ui/core';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
-import { useGetNftDetailsMutation } from 'infrastructure/services/nft/NftService';
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Item } from './Item';
+import { useNFT } from './useNFT';
 import styles from './Main.module.scss';
 
 export const Main = () => {
   const { nftId } = useParams<{ nftId: string }>();
-  const [nft, setNft] = useState<NFT>();
-  const [getNftDetails, { isLoading, isError, isSuccess }] = useGetNftDetailsMutation();
-
-  const loadData = async () => {
-    const data: any = await getNftDetails(nftId);
-    console.log(data.data);
-    setNft(data.data);
-  };
-
-  useEffect(() => {
-    loadData();
-  }, []);
+  const { nft, isLoading } = useNFT(nftId);
 
   return (
     <div className={styles.mainContent}>

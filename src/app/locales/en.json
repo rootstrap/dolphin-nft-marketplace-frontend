@@ -35,6 +35,13 @@
       "currency": "USD"
     }
   },
+  "nft": {
+    "floorPrice": "Floor Price",
+    "totalReleased": "Total Released",
+    "forSale": "For Sale",
+    "buyButton": "Buy Now",
+    "peersButton": "Select from peers"
+  },
   "login": {
     "title": "Sign in for Dolphin NFTs",
     "email": "E-mail",

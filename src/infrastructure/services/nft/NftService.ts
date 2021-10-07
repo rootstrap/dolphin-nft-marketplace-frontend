@@ -4,11 +4,10 @@ import { NFT } from 'app/interfaces/NFT/NFT';
 
 const nftApi = api.injectEndpoints({
   endpoints: builder => ({
-    getNfts: builder.mutation<NFT[], string>({
+    getNftsWithFilter: builder.mutation<NFT[], string>({
       query: issuer => `${endpoints.NFT}?issuer=${issuer}`,
       transformResponse: (data: { result: NFT[] }) => {
-        const filterArray = data.result.filter(nft => nft.offerPrice === 25.0);
-        return filterArray;
+        return data.result.filter(nft => nft.offerPrice === 25.0);
       },
     }),
     getNftDetails: builder.mutation<NFT, string>({
@@ -22,10 +21,10 @@ const nftApi = api.injectEndpoints({
 });
 
 export const {
-  useGetNftsMutation,
+  useGetNftsWithFilterMutation,
   useGetNftDetailsMutation,
   endpoints: {
-    getNfts: { matchFulfilled: getNftsFulfiled },
+    getNftsWithFilter: { matchFulfilled: getNftsFulfiled },
     getNftDetails: { matchFulfilled: getNftDetailsFulfiled },
   },
 } = nftApi;

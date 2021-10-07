@@ -22,24 +22,11 @@
       height: 100%;
     }
 
-    &Img {
-      object-fit: cover;
-      filter: grayscale(100%);
-      opacity: 0.4;
-      max-width: 100%;
-      height: auto;
-      margin: 0;
-      &:hover {
-        opacity: 1;
-        filter: none;
-      }
-    }
-
     &Icon {
       display: flex;
       align-items: center;
       margin: 0;
-      a {
+      span {
         margin-left: 1rem;
         font-size: $font-size-med;
       }
@@ -49,4 +36,26 @@
       margin: 1rem 1rem;
     }
   }
+
+  &__imgContainer {
+    width: 100%;
+    height: min-content;
+    &Img {
+      object-fit: cover;
+      filter: grayscale(100%);
+      opacity: 0.4;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      &:hover {
+        opacity: 1;
+        filter: none;
+      }
+    }
+  }
+}
+
+.disabledLink {
+  pointer-events: none;
+  color: $dark-grey;
 }

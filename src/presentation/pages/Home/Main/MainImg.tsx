@@ -3,22 +3,18 @@ import { AddBox } from '@material-ui/icons';
 import { Typography } from '@material-ui/core';
 
 export const MainImg = ({ link, src, alt, styles, disabled = false }: MainImgProps) => (
-  <div className={styles.mainContent__itemImgContainer}>
-    <div>
-      <img src={src} alt={alt} className={styles.mainContent__itemImg} />
-    </div>
+  <Link to={`verticals/${link}`} className={disabled ? styles.disabledLink : ''}>
+    <div className={styles.mainContent__itemImgContainer}>
+      <div className={styles.mainContent__imgContainer}>
+        <img src={src} alt={alt} className={styles.mainContent__imgContainerImg} />
+      </div>
 
-    <div className={styles.mainContent__itemIcon}>
-      {disabled ? (
-        <Typography variant="h5">More Soon</Typography>
-      ) : (
-        <>
-          <AddBox color="secondary" fontSize="large" />
-          <Link to={`verticals/${link}`}> {link}</Link>
-        </>
-      )}
+      <div className={styles.mainContent__itemIcon}>
+        {!disabled && <AddBox color="secondary" fontSize="large" />}
+        <span className={disabled ? styles.disabledLink : ''}>{link}</span>
+      </div>
     </div>
-  </div>
+  </Link>
 );
 interface MainImgProps {
   src: string;

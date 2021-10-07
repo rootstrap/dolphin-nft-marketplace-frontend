@@ -18,7 +18,9 @@ export const Item = ({ id, name, totalQuantity, image, price, verticalId, styles
       </Typography>
 
       <div className={styles.mainContent__favContainer}>
-        {totalQuantity && <Typography>{`${t('verticals.item.totalEdition')} ${totalQuantity}`}</Typography>}
+        <Typography>
+          {t('verticals.item.totalEdition')} {totalQuantity ? totalQuantity : 'Single Item'}
+        </Typography>
       </div>
 
       <div className={styles.mainContent__buyContainer}>

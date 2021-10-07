@@ -7,7 +7,8 @@ const nftApi = api.injectEndpoints({
     getNfts: builder.mutation<NFT[], string>({
       query: issuer => `${endpoints.NFT}?issuer=${issuer}`,
       transformResponse: (data: { result: NFT[] }) => {
-        return data.result.slice(0, 25);
+        const filterArray = data.result.filter(nft => nft.offerPrice === 25.0);
+        return filterArray;
       },
     }),
     getNftDetails: builder.mutation<NFT, string>({

@@ -2,12 +2,12 @@ import { Button, Grid, Typography } from '@material-ui/core';
 import { ReactComponent as DolphinLogo } from '../../../app/assets/Dolphin_Ball.svg';
 import { FavoriteBorderOutlined, PermIdentityOutlined } from '@material-ui/icons';
 import { useAppSelector } from '../../../app/hooks/reduxHooks';
-import useTranslation from '../../../app/hooks/useTranslation';
-import styles from './TopBar.module.scss';
 import { useContext } from 'react';
 import { ModalContext } from '../../../app/context/ModalContext';
-import routesPaths from '../../../app/constants/routesPath';
 import { Link } from 'react-router-dom';
+import routesPaths from '../../../app/constants/routesPath';
+import useTranslation from '../../../app/hooks/useTranslation';
+import styles from './TopBar.module.scss';
 
 export const DesktopTopBar = () => {
   const t = useTranslation();
@@ -18,7 +18,9 @@ export const DesktopTopBar = () => {
   return (
     <Grid container spacing={2}>
       <Grid item md={2} lg={1} className={styles.topBar__item}>
-        <DolphinLogo className={styles.logo} />
+        <Link to={routesPaths.index}>
+          <DolphinLogo className={styles.logo} />
+        </Link>
       </Grid>
       <Grid item md={8} lg={6} className={styles.topBar__item}>
         <div className={styles.topBar__itemTextCollection}>

@@ -32,7 +32,8 @@
     "item": {
       "price": "Floor price",
       "button": "Get it now!",
-      "currency": "USD"
+      "currency": "USD",
+      "totalEdition": "Total Editions: "
     }
   },
   "nft": {

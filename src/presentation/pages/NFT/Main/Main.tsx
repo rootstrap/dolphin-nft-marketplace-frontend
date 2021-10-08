@@ -3,11 +3,39 @@ import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoade
 import { useParams } from 'react-router';
 import { Item } from './Item';
 import { useNFT } from './useNFT';
+import { useState } from 'react';
+import { BuyNFT } from '../BuyNFT/BuyNFT';
 import styles from './Main.module.scss';
+import { Peers } from 'presentation/components/Peers/Peers';
 
 export const Main = () => {
   const { nftId } = useParams<{ nftId: string }>();
+  const [showItemDescription, setShowItemDescription] = useState<boolean>(true);
   const { nft, isLoading } = useNFT(nftId);
+  const [isPeersModalOpen, setIsPeersModalOpen] = useState<boolean>(false);
+
+  const handleShowDescription = () => setShowItemDescription(!showItemDescription);
+
+  const handleClosePeersModal = () => setIsPeersModalOpen(false);
+  const handleOpenPeersModal = () => setIsPeersModalOpen(true);
+
+  const componentToRender = showItemDescription ? (
+    <>
+      <Grid item className={styles.mainContent__item} xs={12} lg={6}>
+        <iframe className={styles.mainContent__itemVideo} src={nft?.videoUrl} title={nft?.name} />
+      </Grid>
+      <Grid item className={styles.mainContent__item} xs={12} lg={6}>
+        <Item
+          nft={nft}
+          styles={styles}
+          handleOpenPeersModal={handleOpenPeersModal}
+          handleShowDescription={handleShowDescription}
+        />
+      </Grid>
+    </>
+  ) : (
+    <BuyNFT nft={nft} handleShowDescription={handleShowDescription} styles={styles} />
+  );
 
   return (
     <div className={styles.mainContent}>
@@ -15,14 +43,10 @@ export const Main = () => {
         <CustomLoader />
       ) : (
         <Grid container className={styles.mainContent__container}>
-          <Grid item className={styles.mainContent__item} xs={12} lg={6}>
-            <iframe className={styles.mainContent__itemVideo} src={nft?.videoUrl} title={nft?.name} />
-          </Grid>
-          <Grid item className={styles.mainContent__item} xs={12} lg={6}>
-            <Item nft={nft} styles={styles} />
-          </Grid>
+          {componentToRender}
         </Grid>
       )}
+      <Peers open={isPeersModalOpen} handleClose={handleClosePeersModal} />
     </div>
   );
 };

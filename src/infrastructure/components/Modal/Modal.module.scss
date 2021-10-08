@@ -1,3 +1,5 @@
+@import '../../../app/styles/base/settings';
+
 .modal {
   background-color: black;
   border: 1px solid white;
@@ -8,10 +10,13 @@
   padding: 2rem;
   transform: translate(-50%, -50%);
   width: 30rem;
+  max-height: 40rem;
+  overflow-y: scroll;
 
   &__close {
     background-color: black;
-    color: white;
+    color: $primary;
+    font-size: $font-size-modal;
     border: none;
     cursor: pointer;
     position: absolute;

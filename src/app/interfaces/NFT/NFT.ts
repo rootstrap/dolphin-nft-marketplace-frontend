@@ -10,7 +10,7 @@ export interface NFT {
   imageUrl: string;
   videoUrl: string;
   number: number;
-  totalQuantity: null;
+  totalQuantity: number;
   redeemable: boolean;
   redeemed: boolean;
   offerPrice: number;

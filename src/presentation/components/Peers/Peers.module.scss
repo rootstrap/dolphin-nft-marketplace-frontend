@@ -1,0 +1,14 @@
+@import '../../../app/styles/base/settings';
+
+.peers {
+  margin: 2rem;
+  font-size: $font-size-modal;
+  align-items: center;
+}
+
+.sorting {
+  padding: 2rem;
+  font-size: $font-size-modal;
+  display: flex;
+  justify-content: flex-end;
+}

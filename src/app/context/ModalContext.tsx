@@ -5,6 +5,8 @@ const initialState: ModalContextState = {
   setLoginModalIsOpen: () => {},
   signupModalIsOpen: false,
   setSignupModalIsOpen: () => {},
+  kycModalIsOpen: false,
+  setKycModalIsOpen: () => {},
 };
 
 export const ModalContext = createContext(initialState);
@@ -16,10 +18,18 @@ export interface ModalProviderProps {
 export const ModalProvider = ({ children }: ModalProviderProps) => {
   const [loginModalIsOpen, setLoginModalIsOpen] = useState<boolean>(false);
   const [signupModalIsOpen, setSignupModalIsOpen] = useState<boolean>(false);
+  const [kycModalIsOpen, setKycModalIsOpen] = useState<boolean>(false);
 
   return (
     <ModalContext.Provider
-      value={{ loginModalIsOpen, setLoginModalIsOpen, signupModalIsOpen, setSignupModalIsOpen }}
+      value={{
+        loginModalIsOpen,
+        setLoginModalIsOpen,
+        signupModalIsOpen,
+        setSignupModalIsOpen,
+        kycModalIsOpen,
+        setKycModalIsOpen,
+      }}
     >
       {children}
     </ModalContext.Provider>
@@ -31,4 +41,6 @@ interface ModalContextState {
   setLoginModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   signupModalIsOpen: boolean;
   setSignupModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  kycModalIsOpen: boolean;
+  setKycModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

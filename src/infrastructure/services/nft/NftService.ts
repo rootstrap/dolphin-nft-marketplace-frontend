@@ -10,6 +10,10 @@ const nftApi = api.injectEndpoints({
         return data.result.filter(nft => nft.offerPrice === 25.0);
       },
     }),
+    getNfts: builder.mutation<NFT[], string>({
+      query: issuer => `${endpoints.NFT}?issuer=${issuer}`,
+      transformResponse: (data: { result: NFT[] }) => data.result.slice(0, 100),
+    }),
     getNftDetails: builder.mutation<NFT, string>({
       query: nftId => `${endpoints.NFT}/${nftId}`,
       transformResponse: (data: { result: NFT }) => {
@@ -23,8 +27,10 @@ const nftApi = api.injectEndpoints({
 export const {
   useGetNftsWithFilterMutation,
   useGetNftDetailsMutation,
+  useGetNftsMutation,
   endpoints: {
-    getNftsWithFilter: { matchFulfilled: getNftsFulfiled },
+    getNftsWithFilter: { matchFulfilled: getNftsWithFilterFulfiled },
+    getNfts: { matchFulfilled: getNftsFulfiled },
     getNftDetails: { matchFulfilled: getNftDetailsFulfiled },
   },
 } = nftApi;

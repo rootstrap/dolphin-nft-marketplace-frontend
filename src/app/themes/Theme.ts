@@ -33,6 +33,7 @@ export const theme = createTheme({
         width: '10rem',
         padding: '2rem',
         border: 'solid 2px',
+        borderRadius: 0,
         fontSize: '1.2rem',
       },
       contained: {
@@ -42,6 +43,9 @@ export const theme = createTheme({
         width: 'min-content',
         margin: '1rem 0',
       },
+      text: {
+        margin: '0 0.5rem',
+      },
       containedSizeSmall: {
         padding: 0,
       },
@@ -50,6 +54,13 @@ export const theme = createTheme({
       input: {
         border: '1px solid white',
         borderRadius: 0,
+      },
+    },
+    MuiCheckbox: {
+      root: {
+        '& .MuiSvgIcon-root': {
+          color: '#35aed7',
+        },
       },
     },
   },

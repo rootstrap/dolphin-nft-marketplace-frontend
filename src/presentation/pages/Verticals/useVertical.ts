@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useGetNftsMutation } from 'infrastructure/services/nft/NftService';
+import { useGetNftsWithFilterMutation } from 'infrastructure/services/nft/NftService';
 import { NFT } from 'app/interfaces/NFT/NFT';
 
 export const useVertical = () => {
-  const [getNfts, { isError, isLoading, isSuccess }] = useGetNftsMutation();
+  const [getNfts, { isError, isLoading, isSuccess }] = useGetNftsWithFilterMutation();
   const [nfts, setNfts] = useState<NFT[]>([]);
 
   const loadData = async () => {

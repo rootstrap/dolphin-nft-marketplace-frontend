@@ -31,7 +31,7 @@ export const DesktopTopBar = () => {
 
       <Grid item md={2} lg={5} className={styles.topBar__item}>
         {isAuthenticated ? (
-          <div className={styles.topBar__itemProfile}>
+          <div className={styles.topBar__itemButton}>
             <PermIdentityOutlined className={styles.topBar__itemProfileItem} />
             <FavoriteBorderOutlined className={styles.topBar__itemProfileItem} />
           </div>

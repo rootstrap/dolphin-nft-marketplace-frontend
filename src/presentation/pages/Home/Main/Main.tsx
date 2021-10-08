@@ -21,19 +21,19 @@ export const MainContent = () => {
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}></Grid>
 
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Athletes} alt="" styles={styles} link="Athletes" />
+        <MainImg src={Athletes} alt="" styles={styles} link="Sports" />
       </Grid>
 
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Culinary} alt="" styles={styles} link="Culinary" />
+        <MainImg src={Culinary} alt="" styles={styles} link="Culinary" disabled />
       </Grid>
 
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Music} alt="" styles={styles} link="Music" />
+        <MainImg src={Music} alt="" styles={styles} link="Music" disabled />
       </Grid>
 
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Ball} alt="" styles={styles} link="More" disabled />
+        <MainImg src={Ball} alt="" styles={styles} link="More Soon" disabled />
       </Grid>
     </Grid>
   );

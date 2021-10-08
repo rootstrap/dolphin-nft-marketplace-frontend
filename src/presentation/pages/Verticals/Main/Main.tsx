@@ -45,7 +45,7 @@ export const Main = () => {
                 styles={styles}
                 id={nft.id}
                 name={nft.name}
-                number={nft.number}
+                totalQuantity={nft.totalQuantity}
                 image={nft.imageUrl}
                 price={nft.offerPrice}
                 verticalId={verticalId}

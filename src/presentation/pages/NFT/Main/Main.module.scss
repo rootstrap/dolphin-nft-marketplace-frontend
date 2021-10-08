@@ -13,23 +13,28 @@
   &__buttonContainer {
     display: flex;
     flex-direction: column;
-    margin-bottom: -1rem;
   }
 
   &__priceContainer {
     display: flex;
-    justify-content: space-between;
-  }
-
-  &__priceContainer {
+    justify-content: space-around;
     text-align: center;
     p {
       color: $orange;
     }
   }
 
+  &__walletContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+    padding: 2rem;
+  }
+
   &__item {
-    height: 40rem;
+    height: 35rem;
     padding: 3rem;
     &Video {
       width: 100%;
@@ -46,6 +51,21 @@
 
       &Title {
         color: $orange;
+      }
+    }
+
+    &Fund {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    &Img {
+      width: 50%;
+      img {
+        width: 100%;
+        height: auto;
       }
     }
   }

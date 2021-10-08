@@ -1,10 +1,9 @@
 import { Button, Typography } from '@material-ui/core';
-import { FavoriteBorderOutlined } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import New from 'app/assets/New.png';
 import useTranslation from 'app/hooks/useTranslation';
 
-export const Item = ({ id, name, number, image, price, verticalId, styles }: ItemProps) => {
+export const Item = ({ id, name, totalQuantity, image, price, verticalId, styles }: ItemProps) => {
   const t = useTranslation();
 
   return (
@@ -19,8 +18,9 @@ export const Item = ({ id, name, number, image, price, verticalId, styles }: Ite
       </Typography>
 
       <div className={styles.mainContent__favContainer}>
-        <Typography>#{number}</Typography>
-        <FavoriteBorderOutlined color="secondary" />
+        <Typography>
+          {totalQuantity ? `${t('verticals.item.totalEdition')} ${totalQuantity}` : 'Single Item'}
+        </Typography>
       </div>
 
       <div className={styles.mainContent__buyContainer}>
@@ -43,7 +43,7 @@ export const Item = ({ id, name, number, image, price, verticalId, styles }: Ite
 interface ItemProps {
   id: string;
   name: string;
-  number: number;
+  totalQuantity: number;
   price: number;
   image: string;
   verticalId?: string;

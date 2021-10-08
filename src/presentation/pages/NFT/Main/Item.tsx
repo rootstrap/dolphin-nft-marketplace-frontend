@@ -1,8 +1,8 @@
 import { Button, Typography } from '@material-ui/core';
-import useTranslation from 'app/hooks/useTranslation';
 import { NFT } from 'app/interfaces/NFT/NFT';
+import useTranslation from 'app/hooks/useTranslation';
 
-export const Item = ({ styles, nft }: ItemProps) => {
+export const Item = ({ styles, nft, handleShowDescription }: ItemProps) => {
   const t = useTranslation();
 
   return (
@@ -27,18 +27,12 @@ export const Item = ({ styles, nft }: ItemProps) => {
           <Typography component="div" variant="h6">
             {t('nft.totalReleased')}
           </Typography>
-          <Typography component="p">{nft?.number}</Typography>
-        </div>
-        <div className={styles.mainContent__priceItem}>
-          <Typography component="div" variant="h6">
-            {t('nft.forSale')}
-          </Typography>
           <Typography component="p">{nft?.totalQuantity}</Typography>
         </div>
       </div>
 
       <div className={styles.mainContent__buttonContainer}>
-        <Button variant="contained" fullWidth size="large">
+        <Button variant="contained" fullWidth size="large" onClick={handleShowDescription}>
           {t('nft.buyButton')}
         </Button>
         <Button fullWidth size="large">
@@ -52,4 +46,5 @@ export const Item = ({ styles, nft }: ItemProps) => {
 interface ItemProps {
   styles: any;
   nft?: NFT;
+  handleShowDescription: () => void;
 }

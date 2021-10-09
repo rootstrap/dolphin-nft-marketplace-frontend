@@ -1,6 +1,4 @@
 import { Button, Grid, Typography } from '@material-ui/core';
-import { ReactComponent as DolphinLogo } from '../../../app/assets/Dolphin_Ball.svg';
-import { FavoriteBorderOutlined, PermIdentityOutlined } from '@material-ui/icons';
 import { useAppSelector } from '../../../app/hooks/reduxHooks';
 import { useContext } from 'react';
 import { ModalContext } from '../../../app/context/ModalContext';
@@ -44,7 +42,9 @@ export const DesktopTopBar = () => {
       <Grid item md={4} lg={3} className={styles.topBar__item}>
         {isAuthenticated ? (
           <div className={styles.topBar__itemButton}>
-            <PermIdentityOutlined className={styles.topBar__itemProfileItem} onClick={handleLogout} />
+            <Link to={routesPaths.index} onClick={handleLogout}>
+              Logout
+            </Link>
           </div>
         ) : (
           <div className={styles.topBar__itemButton}>

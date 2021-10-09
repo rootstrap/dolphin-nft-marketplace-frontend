@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginFulfiled, signupFulfiled } from 'infrastructure/services/user/UserService';
+import { loginFulfiled, logoutFulfiled, signupFulfiled } from 'infrastructure/services/user/UserService';
 
 const initialState: UserState = {
   user: {
@@ -17,10 +17,15 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addMatcher(loginFulfiled, (state, { payload: { token, user } }) => {
+    builder.addMatcher(loginFulfiled, (state, { payload: { token, descriptionUser } }) => {
       state.isAuthenticated = true;
       state.token = token;
-      state.user = user;
+      state.user = descriptionUser[0];
+    });
+    builder.addMatcher(logoutFulfiled, state => {
+      state.isAuthenticated = false;
+      state.token = '';
+      state.user = initialState.user;
     });
     builder.addMatcher(signupFulfiled, (state, { payload: { tokenFtx, ...user } }) => {
       state.isAuthenticated = true;

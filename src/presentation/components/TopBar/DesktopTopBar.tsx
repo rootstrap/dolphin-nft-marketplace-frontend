@@ -9,12 +9,16 @@ import logoImg from 'app/assets/dolphin_logo.png';
 import routesPaths from '../../../app/constants/routesPath';
 import useTranslation from '../../../app/hooks/useTranslation';
 import styles from './TopBar.module.scss';
+import { useLogoutMutation } from 'infrastructure/services/user/UserService';
 
 export const DesktopTopBar = () => {
   const t = useTranslation();
+  const [logout] = useLogoutMutation();
 
   const { setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
-  const { isAuthenticated } = useAppSelector(state => state.user);
+  const { isAuthenticated, user } = useAppSelector(state => state.user);
+
+  const handleLogout = () => logout(user.email);
 
   return (
     <Grid container spacing={0} alignItems="center" justifyContent="center">
@@ -40,7 +44,7 @@ export const DesktopTopBar = () => {
       <Grid item md={4} lg={3} className={styles.topBar__item}>
         {isAuthenticated ? (
           <div className={styles.topBar__itemButton}>
-            <PermIdentityOutlined className={styles.topBar__itemProfileItem} />
+            <PermIdentityOutlined className={styles.topBar__itemProfileItem} onClick={handleLogout} />
           </div>
         ) : (
           <div className={styles.topBar__itemButton}>

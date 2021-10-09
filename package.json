@@ -18,7 +18,7 @@
     "@types/react-router-dom": "^5.1.9",
     "@types/redux-logger": "^3.0.9",
     "flat": "^5.0.2",
-    "node-sass": "4.14.1",
+    "sass": "1.42.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",

@@ -10,6 +10,13 @@ const authApi = api.injectEndpoints({
         body: { email: user.email, password: user.password },
       }),
     }),
+    logout: builder.mutation({
+      query: email => ({
+        url: endpoints.SIGN_OUT,
+        method: 'POST',
+        body: { email },
+      }),
+    }),
     signup: builder.mutation({
       query: (user: SignupBody) => ({
         url: endpoints.SIGN_UP,
@@ -40,9 +47,11 @@ interface SignupBody {
 
 export const {
   useLoginMutation,
+  useLogoutMutation,
   useSignupMutation,
   endpoints: {
     login: { matchFulfilled: loginFulfiled },
+    logout: { matchFulfilled: logoutFulfiled },
     signup: { matchFulfilled: signupFulfiled },
   },
 } = authApi;

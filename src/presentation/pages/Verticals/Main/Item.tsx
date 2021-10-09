@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import New from 'app/assets/New.png';
 import useTranslation from 'app/hooks/useTranslation';
 
-export const Item = ({ id, name, totalQuantity, image, price, verticalId, styles }: ItemProps) => {
+export const Item = ({ id, ftxId, name, totalQuantity, image, price, verticalId, styles }: ItemProps) => {
   const t = useTranslation();
 
   return (
@@ -32,7 +32,7 @@ export const Item = ({ id, name, totalQuantity, image, price, verticalId, styles
         </div>
         <div>
           <Button>
-            <Link to={`${verticalId}/${id}`}>{t('verticals.item.button')}</Link>
+            <Link to={`${verticalId}/${ftxId}`}>{t('verticals.item.button')}</Link>
           </Button>
         </div>
       </div>
@@ -42,6 +42,7 @@ export const Item = ({ id, name, totalQuantity, image, price, verticalId, styles
 
 interface ItemProps {
   id: string;
+  ftxId: string;
   name: string;
   totalQuantity: number;
   price: number;

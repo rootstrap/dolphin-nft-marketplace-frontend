@@ -57,6 +57,7 @@ export const Main = () => {
                 image={nft.imageUrl}
                 price={nft.offerPrice}
                 verticalId={verticalId}
+                ftxId={nft.ftx_id}
               />
             </Grid>
           ))}

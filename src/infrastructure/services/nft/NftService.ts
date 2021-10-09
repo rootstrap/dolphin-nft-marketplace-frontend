@@ -4,15 +4,15 @@ import { NFT } from 'app/interfaces/NFT/NFT';
 
 const nftApi = api.injectEndpoints({
   endpoints: builder => ({
-    getNftsWithFilter: builder.mutation<NFT[], string>({
-      query: issuer => `${endpoints.NFT}?issuer=${issuer}`,
-      transformResponse: (data: { result: NFT[] }) => {
-        return data.result.filter(nft => nft.offerPrice === 25.0);
+    getNftsSecondary: builder.mutation<NFT[], void>({
+      query: () => `${endpoints.NFT}?secondary=true`,
+      transformResponse: (data: NFT[]) => {
+        return data;
       },
     }),
-    getNfts: builder.mutation<NFT[], string>({
-      query: issuer => `${endpoints.NFT}?issuer=${issuer}`,
-      transformResponse: (data: { result: NFT[] }) => data.result.slice(0, 100),
+    getNftsPrimary: builder.mutation<NFT[], void>({
+      query: () => `${endpoints.NFT}`,
+      transformResponse: (data: NFT[]) => data,
     }),
     getNftDetails: builder.mutation<NFT, string>({
       query: nftId => `${endpoints.NFT}/${nftId}`,
@@ -25,12 +25,12 @@ const nftApi = api.injectEndpoints({
 });
 
 export const {
-  useGetNftsWithFilterMutation,
+  useGetNftsSecondaryMutation,
   useGetNftDetailsMutation,
-  useGetNftsMutation,
+  useGetNftsPrimaryMutation,
   endpoints: {
-    getNftsWithFilter: { matchFulfilled: getNftsWithFilterFulfiled },
-    getNfts: { matchFulfilled: getNftsFulfiled },
+    getNftsSecondary: { matchFulfilled: getNftsSecondaryFulfiled },
+    getNftsPrimary: { matchFulfilled: getNftsPrimaryFulfiled },
     getNftDetails: { matchFulfilled: getNftDetailsFulfiled },
   },
 } = nftApi;

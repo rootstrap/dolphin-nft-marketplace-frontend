@@ -2,12 +2,12 @@
 
 .promotionContent {
   text-align: center;
-  margin: 4rem 1rem;
+  margin: 0 2rem 0 2rem;
   &__item {
     display: flex;
     justify-content: center;
     &Title {
-      margin: 2rem;
+      margin: 2rem 0;
       display: flex;
       justify-content: space-between;
       align-items: center;

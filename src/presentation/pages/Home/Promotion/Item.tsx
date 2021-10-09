@@ -14,7 +14,6 @@ export const Item = ({ styles }: ItemProps) => {
       </div>
       <div className={styles.promotionContent__itemTitle}>
         <Typography variant="h5">NFT Name here</Typography>
-        <FavoriteBorderOutlined color="secondary" />
       </div>
 
       <div>

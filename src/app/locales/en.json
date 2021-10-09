@@ -15,7 +15,8 @@
   },
   "home": {
     "title": "Athletes collection",
-    "description": "Collection description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "collection": "collection",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "latestSection": {
       "description": "Check the lattest NFTs for sale by collectors"
     },
@@ -30,7 +31,7 @@
   "verticals": {
     "listTitle": "Explore and select your NFT",
     "item": {
-      "price": "Floor price",
+      "price": "Price",
       "button": "Get it now!",
       "currency": "USD",
       "totalEdition": "Total Editions: "
@@ -44,7 +45,7 @@
     "peersButton": "Select from peers"
   },
   "login": {
-    "title": "Sign in for Dolphin NFTs",
+    "title": "Sign in",
     "email": "E-mail",
     "password": "Password",
     "inputError": "Invalid Email/Password",
@@ -54,7 +55,7 @@
     "systemError": "Something went wrong!"
   },
   "signup": {
-    "title": "Sign up for Dolphin NFTs",
+    "title": "Sign Up",
     "firstName": "First Name",
     "lastName": "Last Name",
     "email": "E-mail",

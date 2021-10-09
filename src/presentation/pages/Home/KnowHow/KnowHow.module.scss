@@ -1,13 +1,14 @@
 @import '../../../../app/styles/base/settings';
 
 .knowHowContent {
-  margin: 4rem 1rem;
+  margin: 4rem 0 4rem 0;
   padding: 1rem;
   &__video {
-    background-color: $dark-grey;
-    padding: 2rem;
-    width: 75%;
+    background-image: url(../../../../app/assets/video_placeholder.png);
     height: 30rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 70%;
   }
 
   &__item {
@@ -16,7 +17,7 @@
     &Text {
       text-align: center;
       position: relative;
-      width: 15rem;
+      width: 80%;
 
       img {
         position: absolute;

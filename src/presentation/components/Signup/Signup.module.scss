@@ -1,4 +1,4 @@
-@import '../../../app/styles/base/settings';
+@import 'app/styles/base/settings';
 
 .signupForm {
   display: flex;
@@ -8,12 +8,14 @@
   height: 100%;
   padding: 2rem 1rem;
 
-  &__nameContainer {
-    display: flex;
+  &__img {
+    display:block;
+    margin:auto;
   }
 
   &__title {
     margin-bottom: 1rem;
+    h5 { font-weight: bold; }
   }
 
   &__error {
@@ -22,12 +24,7 @@
   }
 
   &__input {
-    margin: 0.8rem 1.5rem;
     text-align: left;
-  }
-
-  &__button {
-    margin: 1rem 2rem 2rem 2rem;
   }
 
   &__close {

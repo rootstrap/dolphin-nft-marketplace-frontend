@@ -9,9 +9,9 @@ const HomePage = () => (
     <TopBarLayout
       pageComponent={
         <>
-          <MainContent />
-          <KnowHowContent />
           <PromotionContent />
+          <KnowHowContent />
+          <MainContent />
           <Footer />
         </>
       }

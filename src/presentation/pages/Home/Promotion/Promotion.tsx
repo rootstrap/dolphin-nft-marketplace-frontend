@@ -5,7 +5,7 @@ import styles from './Promotion.module.scss';
 export const PromotionContent = () => {
   return (
     <div className={styles.promotionContent}>
-      <Typography variant="h4">Promotion Section</Typography>
+      <Typography variant="h4">Welcome to Dolphin, check what's new...</Typography>
       <Grid container className={styles.promotionContent}>
         <Grid className={styles.promotionContent__item} item xs={12} md={6} lg={4}>
           <Item styles={styles} />

@@ -21,16 +21,21 @@ export const Main = () => {
 
   const componentToRender = showItemDescription ? (
     <>
-      <Grid item className={styles.mainContent__item} xs={12} lg={6}>
-        <iframe className={styles.mainContent__itemVideo} src={nft?.videoUrl} title={nft?.name} />
-      </Grid>
-      <Grid item className={styles.mainContent__item} xs={12} lg={6}>
-        <Item
-          nft={nft}
-          styles={styles}
-          handleOpenPeersModal={handleOpenPeersModal}
-          handleShowDescription={handleShowDescription}
-        />
+      <Grid container spacing={0}>
+        <Grid item className={styles.mainContent__item} xs={1}></Grid>
+        <Grid item className={styles.mainContent__item} xs={9} lg={4}>
+          <iframe className={styles.mainContent__itemVideo} src={nft?.videoUrl} title={nft?.name} />
+        </Grid>
+        <Grid item className={styles.mainContent__item} xs={1}></Grid>
+        <Grid item className={styles.mainContent__item} xs={9} lg={5}>
+          <Item
+            nft={nft}
+            styles={styles}
+            handleOpenPeersModal={handleOpenPeersModal}
+            handleShowDescription={handleShowDescription}
+          />
+        </Grid>
+        <Grid item className={styles.mainContent__item} xs={1}></Grid>
       </Grid>
     </>
   ) : (

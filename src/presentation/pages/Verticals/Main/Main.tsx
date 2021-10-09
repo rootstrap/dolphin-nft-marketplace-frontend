@@ -1,5 +1,7 @@
 import { Grid, Typography } from '@material-ui/core';
 import AthletesBackground from 'app/assets/AthletesBackground.png';
+import athletesBgLeft from 'app/assets/athletes_left.png';
+import athletesBgRight from 'app/assets/athletes_right.png';
 import AthletesTitle from 'app/assets/AthletesTitle.png';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { useParams } from 'react-router';
@@ -17,23 +19,29 @@ export const Main = () => {
   return (
     <>
       <Grid container className={styles.mainContent}>
-        <Grid item md={8} lg={6}>
+        <Grid item md={6} lg={6}>
           <div className={styles.mainContent__text}>
             <img alt="" src={AthletesTitle} className={styles.mainContent__textImg} />
-            <Typography variant="h3">
-              {t('navBar.collections')} - {verticalId}
-            </Typography>
+            <Typography variant="h3">{t('home.collection')}</Typography>
             <Typography variant="h5">{t('home.description')}</Typography>
           </div>
         </Grid>
         <Grid item md={2} lg={2}>
+          <img alt="" src={athletesBgLeft} className={styles.mainContent__img} />
+        </Grid>
+        <Grid item md={2} lg={2}>
           <img alt="" src={AthletesBackground} className={styles.mainContent__img} />
         </Grid>
-      </Grid>
+        <Grid item md={2} lg={2}>
+          <img alt="" src={athletesBgRight} className={styles.mainContent__img} />
+        </Grid>
 
-      <Typography variant="h4" className={styles.mainContent__text}>
-        {t('verticals.listTitle')}
-      </Typography>
+        <Grid item xs={12}>
+          <Typography variant="h4" className={styles.mainContent__text}>
+            {t('verticals.listTitle')}
+          </Typography>
+        </Grid>
+      </Grid>
 
       {isLoading ? (
         <CustomLoader />

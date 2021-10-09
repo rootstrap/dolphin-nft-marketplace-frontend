@@ -20,8 +20,9 @@ export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription 
       <Typography variant="h5" component="div">
         {nft?.name}
       </Typography>
-      <Typography component="div">{nft?.description}</Typography>
-
+      <Typography className={styles.mainContent__itemDescriptionText} component="div">
+        {nft?.description}
+      </Typography>
       <div className={styles.mainContent__priceContainer}>
         <div className={styles.mainContent__priceItem}>
           <Typography component="div" variant="h6">

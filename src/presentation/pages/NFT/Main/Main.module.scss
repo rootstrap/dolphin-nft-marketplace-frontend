@@ -4,11 +4,8 @@
   display: flex;
   justify-content: center;
   margin: 0 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 4rem 1rem;
 
-  &__container {
-    margin: 0 10%;
-  }
 
   &__buttonContainer {
     display: flex;
@@ -35,7 +32,6 @@
 
   &__item {
     height: 35rem;
-    padding: 3rem;
     &Video {
       width: 100%;
       min-height: 100%;
@@ -48,6 +44,11 @@
       text-align: left;
       height: 100%;
       width: 80%;
+
+      &Text {
+        padding-bottom: 2rem;
+        padding-top: 1rem;
+      }
 
       &Title {
         color: $orange;

@@ -16,10 +16,11 @@ body {
   background-color: $background-dark;
   color: white;
   margin: 0;
+  position: relative;
 }
 
 a {
   text-decoration: none;
   color: $primary;
-  margin: 0.2rem;
+  margin: 0;
 }

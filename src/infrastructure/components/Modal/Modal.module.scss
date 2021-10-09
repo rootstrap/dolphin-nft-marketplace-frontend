@@ -1,22 +1,19 @@
 @import '../../../app/styles/base/settings';
 
 .modal {
-  background-color: black;
-  border: 1px solid white;
+  background-color: $background-modals;
   box-shadow: 24;
   position: absolute;
   left: 50%;
   top: 50%;
-  padding: 2rem;
+  padding: 2rem 0rem 2rem 0rem;
   transform: translate(-50%, -50%);
   width: 30rem;
   max-height: 40rem;
   overflow-y: scroll;
 
   &__close {
-    background-color: black;
-    color: $primary;
-    font-size: $font-size-modal;
+    background: transparent;
     border: none;
     cursor: pointer;
     position: absolute;

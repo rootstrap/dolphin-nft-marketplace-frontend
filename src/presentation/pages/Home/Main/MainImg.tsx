@@ -3,7 +3,7 @@ import { AddBox } from '@material-ui/icons';
 import { Typography } from '@material-ui/core';
 
 export const MainImg = ({ link, src, alt, styles, disabled = false }: MainImgProps) => (
-  <Link to={`verticals/${link}`} className={disabled ? styles.disabledLink : ''}>
+  <Link to={`verticals/${link.toLowerCase()}`} className={disabled ? styles.disabledLink : ''}>
     <div className={styles.mainContent__itemImgContainer}>
       <div className={styles.mainContent__imgContainer}>
         <img src={src} alt={alt} className={styles.mainContent__imgContainerImg} />

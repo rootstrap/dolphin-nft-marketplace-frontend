@@ -1,15 +1,13 @@
 @import '../../../../app/styles/base/settings';
 
 .mainContent {
-  margin: 0 1rem;
-  padding: 1rem;
 
   &__item {
     display: flex;
     justify-content: center;
     height: 100%;
     &Title {
-      height: 4rem;
+      height: 6rem;
       overflow: hidden;
     }
     &Description {
@@ -26,7 +24,7 @@
   }
 
   &__text {
-    padding: 4.5rem;
+    padding: 0 4.5rem 2rem 4.5rem;
   }
 
   &__img {

@@ -39,7 +39,9 @@ export const Main = () => {
       </Grid>
     </>
   ) : (
-    <BuyNFT nft={nft} handleShowDescription={handleShowDescription} styles={styles} />
+    <Grid item className={styles.mainContent__item} xs={12}>
+      <BuyNFT nft={nft} handleShowDescription={handleShowDescription} />
+    </Grid>
   );
 
   return (

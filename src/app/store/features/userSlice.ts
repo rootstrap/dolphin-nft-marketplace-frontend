@@ -1,8 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginFulfiled, logoutFulfiled, signupFulfiled } from 'infrastructure/services/user/UserService';
+import {
+  kycFulfiled,
+  loginFulfiled,
+  logoutFulfiled,
+  signupFulfiled,
+} from 'infrastructure/services/user/UserService';
 
 const initialState: UserState = {
   user: {
+    fullName: '',
+    country: '',
+    province: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -32,10 +40,18 @@ const userSlice = createSlice({
       state.token = tokenFtx;
       state.user = user;
     });
+    builder.addMatcher(kycFulfiled, (state, { payload: { full_name, country, province } }) => {
+      state.user.fullName = full_name;
+      state.user.country = country;
+      state.user.province = province;
+    });
   },
 });
 
 interface User {
+  fullName: string;
+  country: string;
+  province: string;
   firstName: string;
   lastName: string;
   email: string;

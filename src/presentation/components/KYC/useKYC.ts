@@ -1,3 +1,4 @@
+import { useKycMutation } from 'infrastructure/services/user/UserService';
 import { useContext, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import useTranslation from 'app/hooks/useTranslation';
@@ -5,34 +6,39 @@ import useTranslation from 'app/hooks/useTranslation';
 const initialFormValues = {
   fullName: '',
   country: '',
-  state: '',
+  province: '',
   notCriminalRecord: true,
   notExposedPerson: true,
 };
 
 export const useKYC = () => {
   const t = useTranslation();
+  const [kyc, { isLoading, isSuccess, isError }] = useKycMutation();
   const [formValues, setFormValues] = useState(initialFormValues);
   const [error, setError] = useState('');
   const { kycModalIsOpen, setKycModalIsOpen } = useContext(ModalContext);
-  const { fullName, country, state, notCriminalRecord, notExposedPerson } = formValues;
+  const { fullName, country, province, notCriminalRecord, notExposedPerson } = formValues;
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
+
     setFormValues({
       ...formValues,
-      [name]: value,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleOnChangeCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setFormValues({
+      ...formValues,
+      [event.target.name]: event.target.checked,
     });
   };
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError('');
-
-    if (fullName.trim().length < 6 || country.trim().length < 8 || state.trim().length < 8) {
-      return setError(t('signup.inputError'));
-    }
-    console.log(formValues);
+    kyc({ fullName, country, province });
   };
 
   const handleClose = () => {
@@ -45,8 +51,9 @@ export const useKYC = () => {
     formValues,
     kycModalIsOpen,
     handleClose,
+    handleOnSubmit,
     error,
     handleOnChange,
-    handleOnSubmit,
+    handleOnChangeCheck,
   };
 };

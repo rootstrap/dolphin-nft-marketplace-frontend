@@ -10,6 +10,13 @@ const authApi = api.injectEndpoints({
         body: { email: user.email, password: user.password },
       }),
     }),
+    kyc: builder.mutation({
+      query: (kyc: KycBody) => ({
+        url: endpoints.KYC,
+        method: 'POST',
+        body: { fullLegalName: kyc.fullName, country: kyc.country, stateProvinceRegion: kyc.province },
+      }),
+    }),
     logout: builder.mutation({
       query: email => ({
         url: endpoints.SIGN_OUT,
@@ -38,6 +45,12 @@ interface LoginBody {
   password: string;
 }
 
+interface KycBody {
+  fullName: string;
+  country: string;
+  province: string;
+}
+
 interface SignupBody {
   firstName: string;
   lastName: string;
@@ -49,7 +62,9 @@ export const {
   useLoginMutation,
   useLogoutMutation,
   useSignupMutation,
+  useKycMutation,
   endpoints: {
+    kyc: { matchFulfilled: kycFulfiled },
     login: { matchFulfilled: loginFulfiled },
     logout: { matchFulfilled: logoutFulfiled },
     signup: { matchFulfilled: signupFulfiled },

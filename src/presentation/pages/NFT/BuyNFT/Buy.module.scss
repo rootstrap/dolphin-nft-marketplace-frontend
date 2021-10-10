@@ -1,0 +1,68 @@
+@import '../../../../app/styles/base/settings';
+
+.buyContent {
+  display: flex;
+  justify-content: center;
+
+  &__btn {
+    background: transparent;
+    color: #c4c4c4!important;
+    border-color: #c4c4c4!important;
+    margin-bottom: 0.5rem!important;
+  } 
+
+  &__buttonContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__priceContainer {
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    &__price {
+      float: right;
+    }
+
+    &__label {
+      float: left;
+    }
+  }
+
+  &__walletContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #161616;
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+
+  &__item {
+
+    &Description {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      text-align: left;
+
+      padding-top: 3rem;
+
+      h4 {
+        padding-bottom: 1.5rem;
+      }
+    }
+
+    &Fund {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &Img {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

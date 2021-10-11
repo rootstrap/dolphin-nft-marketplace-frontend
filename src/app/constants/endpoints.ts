@@ -4,6 +4,6 @@ export const endpoints = {
   SIGN_UP: '/auth/signup',
   KYC: '/kyc',
   CC: '/cc',
-
+  DEPOSIT: '/deposit',
   NFT: '/nft',
 };

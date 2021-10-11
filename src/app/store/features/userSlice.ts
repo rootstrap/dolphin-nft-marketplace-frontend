@@ -5,6 +5,7 @@ import {
   loginFulfiled,
   logoutFulfiled,
   signupFulfiled,
+  depositFulfiled,
 } from 'infrastructure/services/user/UserService';
 
 const initialState: UserState = {
@@ -31,9 +32,7 @@ const userSlice = createSlice({
       state.isAuthenticated = true;
       state.token = token;
       state.user = descriptionUser[0];
-      const { user } = descriptionUser[0];
-      const { email } = user;
-      state.email = email;
+      state.email = state.user.email;
     });
     builder.addMatcher(logoutFulfiled, state => {
       state.isAuthenticated = false;
@@ -54,6 +53,7 @@ const userSlice = createSlice({
       state.user.province = province;
     });
     builder.addMatcher(ccFulfiled, (state, { payload: resp }) => {});
+    builder.addMatcher(depositFulfiled, (state, { payload: resp }) => {});
   },
 });
 

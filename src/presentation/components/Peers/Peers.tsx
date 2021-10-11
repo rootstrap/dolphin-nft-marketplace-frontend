@@ -6,7 +6,6 @@ import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoade
 
 export const Peers = ({ open, handleClose }: PeersProps) => {
   const { nfts, isLoading } = usePeers();
-  console.log(nfts);
 
   return (
     <BaseModal open={open} handleClose={handleClose} bigModal>

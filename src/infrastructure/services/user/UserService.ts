@@ -25,10 +25,17 @@ const authApi = api.injectEndpoints({
       }),
     }),
     cc: builder.mutation({
-      query: (kyc: CcBody) => ({
+      query: (cc: CcBody) => ({
         url: endpoints.CC,
         method: 'POST',
-        body: kyc,
+        body: cc,
+      }),
+    }),
+    deposit: builder.mutation({
+      query: (deposit: DepositBody) => ({
+        url: endpoints.DEPOSIT,
+        method: 'POST',
+        body: deposit,
       }),
     }),
     logout: builder.mutation({
@@ -61,6 +68,11 @@ interface LoginBody {
 
 interface LogoutBody {
   email: string;
+}
+
+interface DepositBody {
+  coin: string;
+  size: number;
 }
 
 interface KycBody {
@@ -105,5 +117,6 @@ export const {
     login: { matchFulfilled: loginFulfiled },
     logout: { matchFulfilled: logoutFulfiled },
     signup: { matchFulfilled: signupFulfiled },
+    deposit: { matchFulfilled: depositFulfiled },
   },
 } = authApi;

@@ -39,7 +39,6 @@ export const useCC = () => {
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
-
     setFormValues({
       ...formValues,
       [event.target.name]: event.target.value,

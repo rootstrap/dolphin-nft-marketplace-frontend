@@ -5,6 +5,7 @@ const routesPaths = {
   verticals: '/verticals/:verticalId',
   nftDetails: '/verticals/:verticalId/:nftId',
   my_collection: '/collection',
+  faq: '/faq',
 };
 
 export default routesPaths;

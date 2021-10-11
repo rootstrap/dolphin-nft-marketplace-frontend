@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import useTranslation from 'app/hooks/useTranslation';
 import routesPaths from 'app/constants/routesPath';
 import styles from './Signup.module.scss';
-import dolphinBall from 'app/assets/blue_ball.svg';
+import dolphinBall from 'app/assets/blue_ball.png';
 
 export const Signup = () => {
   const t = useTranslation();

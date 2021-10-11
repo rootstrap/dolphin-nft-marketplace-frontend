@@ -1,32 +1,53 @@
-import { Typography } from '@material-ui/core';
-import { FavoriteBorderOutlined } from '@material-ui/icons';
+import { Button, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import routesPaths from 'app/constants/routesPath';
-import PromotionItem from 'app/assets/Promotion.png';
+import useTranslation from 'app/hooks/useTranslation';
 import New from 'app/assets/New.png';
 
-export const Item = ({ styles }: ItemProps) => {
+export const Item = ({ id, ftxId, name, totalQuantity, image, price, verticalId, styles }: ItemProps) => {
+  const t = useTranslation();
+
   return (
     <div className={styles.promotionContent__itemContent}>
-      <div className={styles.promotionContent__itemImg}>
-        <img src={New} alt="New" className={styles.promotionContent__itemNew} />
-        <img src={PromotionItem} alt="Promotion" />
-      </div>
-      <div className={styles.promotionContent__itemTitle}>
-        <Typography variant="h5">NFT Name here</Typography>
+      <div className={styles.promotionContent__imgContainer}>
+        <img src={New} alt="New" className={styles.promotionContent__imgContainerNew} />
+        <img src={image} alt="Promotion" className={styles.promotionContent__imgContainerImg} />
       </div>
 
-      <div>
-        {/* TODO: Placeholders to be replaced in the future  */}
+      <Typography className={styles.promotionContent__itemTitle} variant="h5" component="div">
+        {name}
+      </Typography>
+
+      <div className={styles.promotionContent__favContainer}>
         <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...
+          {totalQuantity ? `${t('verticals.item.totalEdition')} ${totalQuantity}` : 'Single Item'}
         </Typography>
       </div>
-      <Link to={routesPaths.index}>{'See more >>'}</Link>
+
+      <div className={styles.promotionContent__buyContainer}>
+        <div>
+          <Typography component="p">{t('verticals.item.price')}</Typography>
+          <Typography variant="h5" component="p">
+            {t('verticals.item.currency')} ${price}
+          </Typography>
+        </div>
+        <div>
+          <Button>
+            <Link to={`${verticalId}/${ftxId}`}>{t('verticals.item.button')}</Link>
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
 
 interface ItemProps {
+  id: string;
+  ftxId: string;
+  name: string;
+  totalQuantity: number;
+  price: number;
+  image: string;
+  verticalId?: string;
   styles: any;
 }

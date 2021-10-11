@@ -1,18 +1,19 @@
+import { useContext } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { Item } from './Item';
-import styles from './Promotion.module.scss';
-import { usePromotion } from './usePromotion';
+import styles from './MyCollection.module.scss';
+import { useMyCollection } from './useMyCollection';
 import { NFT } from 'app/interfaces/NFT/NFT';
 import useTranslation from 'app/hooks/useTranslation';
 
-export const PromotionContent = () => {
-  const { nfts, isLoading } = usePromotion();
+export const MyCollectionNfts = () => {
+  const { nfts, isLoading } = useMyCollection();
   const t = useTranslation();
 
   return (
-    <Grid container className={styles.promotionContent}>
+    <Grid container className={styles.myCollectionContent}>
       <Grid item xs={12}>
-        <Typography variant="h4">Welcome to Dolphin, check what's new...</Typography>
+        <Typography variant="h4">My NFT Collection</Typography>
       </Grid>
       <Grid item xs={1}></Grid>
       <Grid item xs={10}>
@@ -25,7 +26,6 @@ export const PromotionContent = () => {
                 name={nft.name}
                 totalQuantity={nft.totalQuantity}
                 image={nft.imageUrl}
-                price={nft.offerPrice}
                 ftxId={nft.ftx_id}
                 verticalId={'verticals/sports'}
               />

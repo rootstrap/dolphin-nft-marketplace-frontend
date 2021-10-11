@@ -1,20 +1,32 @@
 import { Typography, Checkbox, Button } from '@material-ui/core';
 import { InputText } from 'infrastructure/components/InputText/InputText';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
+import { ModalContext } from 'app/context/ModalContext';
 import { useKYC } from './useKYC';
 import { Grid } from '@material-ui/core';
 import styles from './KYC.module.scss';
 
 export const KYC = () => {
   const {
-    formValues: { fullName, country, province, notCriminalRecord, notExposedPerson },
+    formValues: {
+      fullName,
+      country,
+      dateOfBirth,
+      postalCode,
+      streetAddress,
+      province,
+      notCriminalRecord,
+      notExposedPerson,
+    },
     kycModalIsOpen,
+    ccModalIsOpen,
     handleClose,
     error,
     handleOnChange,
     handleOnChangeCheck,
     handleOnSubmit,
   } = useKYC();
+
   return (
     <BaseModal open={kycModalIsOpen} handleClose={handleClose}>
       <form className={styles.kycForm} onSubmit={handleOnSubmit}>
@@ -48,10 +60,43 @@ export const KYC = () => {
           <Grid item xs={12}>
             <InputText
               className={styles.kycForm__input}
+              label="Date of Birth"
+              name="dateOfBirth"
+              type="text"
+              value={dateOfBirth}
+              error={!!error}
+              onChange={handleOnChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <InputText
+              className={styles.kycForm__input}
+              label="Postal Code"
+              name="postalCode"
+              type="text"
+              value={postalCode}
+              error={!!error}
+              onChange={handleOnChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <InputText
+              className={styles.kycForm__input}
               label="State/Province"
               name="province"
               type="text"
               value={province}
+              error={!!error}
+              onChange={handleOnChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <InputText
+              className={styles.kycForm__input}
+              label="Street Address"
+              name="streetAddress"
+              type="text"
+              value={streetAddress}
               error={!!error}
               onChange={handleOnChange}
             />

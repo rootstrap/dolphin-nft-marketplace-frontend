@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  ccFulfiled,
   kycFulfiled,
   loginFulfiled,
   logoutFulfiled,
@@ -17,6 +18,7 @@ const initialState: UserState = {
     id: 0,
   },
   token: '',
+  email: '',
   isAuthenticated: false,
 };
 
@@ -29,22 +31,29 @@ const userSlice = createSlice({
       state.isAuthenticated = true;
       state.token = token;
       state.user = descriptionUser[0];
+      const { user } = descriptionUser[0];
+      const { email } = user;
+      state.email = email;
     });
     builder.addMatcher(logoutFulfiled, state => {
       state.isAuthenticated = false;
       state.token = '';
       state.user = initialState.user;
     });
-    builder.addMatcher(signupFulfiled, (state, { payload: { tokenFtx, ...user } }) => {
+    builder.addMatcher(signupFulfiled, (state, { payload: { token, ...userState } }) => {
       state.isAuthenticated = true;
-      state.token = tokenFtx;
-      state.user = user;
+      state.token = token;
+      state.user = userState;
+      const { user } = userState;
+      const { email } = user;
+      state.email = email;
     });
     builder.addMatcher(kycFulfiled, (state, { payload: { full_name, country, province } }) => {
       state.user.fullName = full_name;
       state.user.country = country;
       state.user.province = province;
     });
+    builder.addMatcher(ccFulfiled, (state, { payload: resp }) => {});
   },
 });
 
@@ -61,6 +70,7 @@ interface User {
 interface UserState {
   user: User;
   token: string;
+  email: string;
   isAuthenticated: boolean;
 }
 

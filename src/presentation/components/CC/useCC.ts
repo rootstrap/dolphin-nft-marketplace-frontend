@@ -1,34 +1,40 @@
-import { useKycMutation } from 'infrastructure/services/user/UserService';
+import { useCcMutation } from 'infrastructure/services/user/UserService';
 import { useContext, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import useTranslation from 'app/hooks/useTranslation';
 
 const initialFormValues = {
-  fullName: '',
+  name: '',
+  ccNumber: '',
+  cvv: '',
+  expiryMonth: '',
+  expiryYear: '',
   country: '',
-  province: '',
-  dateOfBirth: '',
+  district: '',
+  address1: '',
+  address2: '',
+  city: '',
   postalCode: '',
-  streetAddress: '',
-  notCriminalRecord: true,
-  notExposedPerson: true,
 };
 
-export const useKYC = () => {
+export const useCC = () => {
   const t = useTranslation();
-  const [kyc, { isLoading, isSuccess, isError }] = useKycMutation();
+  const [cc, { isLoading, isSuccess, isError }] = useCcMutation();
   const [formValues, setFormValues] = useState(initialFormValues);
   const [error, setError] = useState('');
-  const { kycModalIsOpen, setKycModalIsOpen, setCcModalIsOpen, ccModalIsOpen } = useContext(ModalContext);
+  const { ccModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
   const {
-    fullName,
+    name,
+    ccNumber,
+    cvv,
+    expiryMonth,
+    expiryYear,
     country,
-    province,
-    dateOfBirth,
+    district,
+    address1,
+    address2,
+    city,
     postalCode,
-    streetAddress,
-    notCriminalRecord,
-    notExposedPerson,
   } = formValues;
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -50,21 +56,18 @@ export const useKYC = () => {
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError('');
-    kyc({ fullName, country, province, dateOfBirth, postalCode, streetAddress });
-    setKycModalIsOpen(false);
-    setCcModalIsOpen(true);
+    cc(formValues);
+    // setCcModalIsOpen(false);
   };
 
   const handleClose = () => {
     setFormValues(initialFormValues);
     setError('');
-    setKycModalIsOpen(false);
-    setCcModalIsOpen(true);
+    setCcModalIsOpen(false);
   };
 
   return {
     formValues,
-    kycModalIsOpen,
     ccModalIsOpen,
     handleClose,
     handleOnSubmit,

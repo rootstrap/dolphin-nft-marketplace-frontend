@@ -43,7 +43,6 @@ export const useSignup = () => {
       return setError(t('signup.passwordError'));
     }
 
-    console.log(formValues);
     signup({ firstName, lastName, email, password });
   };
 

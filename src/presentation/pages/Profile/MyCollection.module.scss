@@ -1,7 +1,7 @@
-@import '../../../../app/styles/base/settings';
+@import 'app/styles/base/settings';
 
 
-.promotionContent {
+.myCollectionContent {
   h4 { text-align: center }
   &__item {
     display: flex;
@@ -47,13 +47,6 @@
       width: 50%;
       height: auto;
     }
-
-    &New {
-      position: absolute;
-      right: 0;
-      background-color: $orange;
-      padding: 0.3rem;
-    }
   }
 
   &__favContainer {
@@ -62,10 +55,5 @@
     margin: 1rem 0;
     height: 1rem;
     color: $orange;
-  }
-
-  &__buyContainer {
-    display: flex;
-    justify-content: space-between;
   }
 }

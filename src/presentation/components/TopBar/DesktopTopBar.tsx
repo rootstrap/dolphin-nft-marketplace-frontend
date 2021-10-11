@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { ModalContext } from '../../../app/context/ModalContext';
 import { Link } from 'react-router-dom';
 import logoImg from 'app/assets/dolphin_logo.png';
+import { RootState } from '../../../app/store/store';
 import routesPaths from '../../../app/constants/routesPath';
 import useTranslation from '../../../app/hooks/useTranslation';
 import styles from './TopBar.module.scss';
@@ -14,9 +15,11 @@ export const DesktopTopBar = () => {
   const [logout] = useLogoutMutation();
 
   const { setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
-  const { isAuthenticated, user } = useAppSelector(state => state.user);
+  const { email, isAuthenticated, user } = useAppSelector(state => state.user);
 
-  const handleLogout = () => logout(user.email);
+  const handleLogout = () => {
+    logout({ email: email });
+  };
 
   return (
     <Grid container spacing={0} alignItems="center" justifyContent="center">
@@ -26,20 +29,22 @@ export const DesktopTopBar = () => {
         </Link>
       </Grid>
 
-      <Grid item md={2} lg={1} className={styles.topBar__item}>
-        <div className={styles.topBar__itemTextCollection}>
-          <Typography variant="h6">{t('navBar.collections')}</Typography>
-        </div>
+      <Grid item md={2} lg={2} className={styles.topBar__item}>
+        <Link to={routesPaths.my_collection}>
+          <div className={styles.topBar__itemTextCollection}>
+            <Typography variant="h6">{t('navBar.my_collection')}</Typography>
+          </div>
+        </Link>
       </Grid>
-      <Grid item md={2} lg={1} className={styles.topBar__item}>
+      <Grid item md={2} lg={2} className={styles.topBar__item}>
         <div className={styles.topBar__itemTextCollection}>
           <Typography variant="h6">{t('navBar.faq')}</Typography>
         </div>
       </Grid>
 
-      <Grid item md={2} lg={5} />
+      <Grid item md={2} lg={3} />
 
-      <Grid item md={4} lg={3} className={styles.topBar__item}>
+      <Grid item md={4} lg={2} className={styles.topBar__item}>
         {isAuthenticated ? (
           <div className={styles.topBar__itemButton}>
             <Link to={routesPaths.index} onClick={handleLogout}>

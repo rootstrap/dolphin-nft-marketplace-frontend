@@ -14,6 +14,10 @@ const nftApi = api.injectEndpoints({
       query: () => `${endpoints.NFT}`,
       transformResponse: (data: NFT[]) => data,
     }),
+    getNftsFeatured: builder.mutation<NFT[], void>({
+      query: () => `${endpoints.NFT}?featured=true`,
+      transformResponse: (data: NFT[]) => data,
+    }),
     getNftDetails: builder.mutation<NFT, string>({
       query: nftId => `${endpoints.NFT}/${nftId}`,
       transformResponse: (data: { result: NFT }) => {
@@ -28,9 +32,11 @@ export const {
   useGetNftsSecondaryMutation,
   useGetNftDetailsMutation,
   useGetNftsPrimaryMutation,
+  useGetNftsFeaturedMutation,
   endpoints: {
     getNftsSecondary: { matchFulfilled: getNftsSecondaryFulfiled },
     getNftsPrimary: { matchFulfilled: getNftsPrimaryFulfiled },
+    getNftsFeatured: { matchFulfilled: getNftsFeaturedFulfiled },
     getNftDetails: { matchFulfilled: getNftDetailsFulfiled },
   },
 } = nftApi;

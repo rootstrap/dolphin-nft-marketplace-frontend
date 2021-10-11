@@ -14,14 +14,28 @@ const authApi = api.injectEndpoints({
       query: (kyc: KycBody) => ({
         url: endpoints.KYC,
         method: 'POST',
-        body: { fullLegalName: kyc.fullName, country: kyc.country, stateProvinceRegion: kyc.province },
+        body: {
+          fullLegalName: kyc.fullName,
+          country: kyc.country,
+          stateProvinceRegion: kyc.province,
+          dateOfBirth: kyc.dateOfBirth,
+          postalCode: kyc.postalCode,
+          streetAddress: kyc.streetAddress,
+        },
+      }),
+    }),
+    cc: builder.mutation({
+      query: (kyc: CcBody) => ({
+        url: endpoints.CC,
+        method: 'POST',
+        body: kyc,
       }),
     }),
     logout: builder.mutation({
-      query: email => ({
+      query: (user: LogoutBody) => ({
         url: endpoints.SIGN_OUT,
         method: 'POST',
-        body: { email },
+        body: { email: user.email },
       }),
     }),
     signup: builder.mutation({
@@ -45,10 +59,31 @@ interface LoginBody {
   password: string;
 }
 
+interface LogoutBody {
+  email: string;
+}
+
 interface KycBody {
   fullName: string;
   country: string;
   province: string;
+  dateOfBirth: string;
+  postalCode: string;
+  streetAddress: string;
+}
+
+interface CcBody {
+  name: string;
+  ccNumber: string;
+  cvv: string;
+  expiryMonth: string;
+  expiryYear: string;
+  country: string;
+  district: string;
+  address1: string;
+  address2: string;
+  city: string;
+  postalCode: string;
 }
 
 interface SignupBody {
@@ -63,7 +98,9 @@ export const {
   useLogoutMutation,
   useSignupMutation,
   useKycMutation,
+  useCcMutation,
   endpoints: {
+    cc: { matchFulfilled: ccFulfiled },
     kyc: { matchFulfilled: kycFulfiled },
     login: { matchFulfilled: loginFulfiled },
     logout: { matchFulfilled: logoutFulfiled },

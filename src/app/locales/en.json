@@ -8,6 +8,7 @@
   },
   "navBar": {
     "collections": "Collections",
+    "my_collection": "My Collection",
     "drops": "Drops",
     "marketplace": "Marketplace",
     "promotions": "Promotions",
@@ -34,7 +35,8 @@
       "price": "Price",
       "button": "Get it now!",
       "currency": "USD",
-      "totalEdition": "Total Editions: "
+      "totalEdition": "Total Editions: ",
+      "view": "View"
     }
   },
   "nft": {

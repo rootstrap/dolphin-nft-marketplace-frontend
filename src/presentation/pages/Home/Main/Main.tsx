@@ -10,7 +10,6 @@ export const MainContent = () => {
   return (
     <Grid container className={styles.mainContent}>
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}></Grid>
-      <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}></Grid>
 
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}>
         <MainImg src={Athletes} alt="" styles={styles} link="Sports" />
@@ -27,6 +26,7 @@ export const MainContent = () => {
       <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}>
         <MainImg src={Ball} alt="" styles={styles} link="More Soon" disabled />
       </Grid>
+      <Grid item xs={6} md={4} lg={2} className={styles.mainContent__item}></Grid>
     </Grid>
   );
 };

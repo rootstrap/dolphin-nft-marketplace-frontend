@@ -28,17 +28,15 @@ export const DesktopTopBar = () => {
           <img src={logoImg} alt="logo" className={styles.topBar__logo} />
         </Link>
       </Grid>
-      {isAuthenticated ? (
-        <Grid item md={2} lg={2} className={styles.topBar__item}>
-          <Link to={routesPaths.my_collection}>
-            <div className={styles.topBar__itemTextCollection}>
-              <Typography variant="h6">{t('navBar.my_collection')}</Typography>
-            </div>
-          </Link>
-        </Grid>
-      ) : (
-        <Grid item md={2} lg={2} className={styles.topBar__item}></Grid>
-      )}
+
+      <Grid item md={2} lg={2} className={styles.topBar__item}>
+        <Link to={routesPaths.index}>
+          <div className={styles.topBar__itemTextCollection}>
+            <Typography variant="h6">{t('navBar.categories')}</Typography>
+          </div>
+        </Link>
+      </Grid>
+
       <Grid item md={2} lg={2} className={styles.topBar__item}>
         <Link to={routesPaths.faq}>
           <div className={styles.topBar__itemTextCollection}>

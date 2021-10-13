@@ -1,48 +1,38 @@
-import { Grid } from '@material-ui/core';
+import { useContext } from 'react';
+import { Button, Grid } from '@material-ui/core';
+import { ModalContext } from 'app/context/ModalContext';
+import { Step } from './Step';
 import First from 'app/assets/First.png';
 import Second from 'app/assets/Second.png';
 import Third from 'app/assets/Third.png';
+import useTranslation from 'app/hooks/useTranslation';
 import styles from './KnowHow.module.scss';
-import { Step } from './Step';
 
 export const KnowHowContent = () => {
+  const { setSignupModalIsOpen } = useContext(ModalContext);
+  const t = useTranslation();
   return (
     <>
       <Grid className={styles.knowHowContent} container>
-        <Grid className={styles.knowHowContent__item} item lg={12}>
-          <div className={styles.knowHowContent__video}></div>
+        <Grid className={styles.knowHowContent__item} item xs={6} md={4} lg={4}>
+          <Step styles={styles} textContent={t('home.knowHow.first')} src={First} alt="First" />
+        </Grid>
+        <Grid className={styles.knowHowContent__item} item xs={6} md={4} lg={4}>
+          <Step styles={styles} textContent={t('home.knowHow.second')} src={Second} alt="Second" />
+        </Grid>
+        <Grid className={styles.knowHowContent__item} item xs={12} md={4} lg={4}>
+          <Step styles={styles} textContent={t('home.knowHow.third')} src={Third} alt="Third" />
         </Grid>
       </Grid>
 
-      <Grid className={styles.knowHowContent} container>
-        <Grid className={styles.knowHowContent__item} item xs={6} md={4} lg={4}>
-          {/* TODO: Placeholders to be replaced in the future  */}
-          <Step
-            styles={styles}
-            textContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua."
-            src={First}
-            alt="First"
-          />
+      <Grid container justifyContent="center">
+        <Grid item lg={5}></Grid>
+        <Grid item lg={2}>
+          <Button fullWidth onClick={() => setSignupModalIsOpen(true)}>
+            {t('home.knowHow.button')}
+          </Button>
         </Grid>
-        <Grid className={styles.knowHowContent__item} item xs={6} md={4} lg={4}>
-          <Step
-            styles={styles}
-            textContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua."
-            src={Second}
-            alt="Second"
-          />
-        </Grid>
-        <Grid className={styles.knowHowContent__item} item xs={6} md={4} lg={4}>
-          <Step
-            styles={styles}
-            textContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua."
-            src={Third}
-            alt="Third"
-          />
-        </Grid>
+        <Grid item lg={5}></Grid>
       </Grid>
     </>
   );

@@ -1,15 +1,7 @@
 @import '../../../../app/styles/base/settings';
 
 .knowHowContent {
-  margin: 4rem 0 4rem 0;
-  padding: 1rem;
-  &__video {
-    background-image: url(../../../../app/assets/video_placeholder.png);
-    height: 30rem;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 70%;
-  }
+  margin: 8rem 0 6rem 0;
 
   &__item {
     display: flex;
@@ -17,7 +9,9 @@
     &Text {
       text-align: center;
       position: relative;
-      width: 80%;
+      font-size: $font-size-modal;
+      font-weight: $font-weight-normal;
+      width: 50%;
 
       img {
         position: absolute;

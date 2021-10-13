@@ -5,16 +5,6 @@
   padding: 1rem;
   &__item {
     height: 100%;
-    &TextContainer {
-      margin: 8rem 2rem 1rem;
-    }
-
-    &Text {
-      margin: 0.2rem 1rem;
-      width: 22rem;
-
-      font-size: $font-size-big;
-    }
 
     &ImgContainer {
       margin-top: 2rem;
@@ -30,10 +20,6 @@
         margin-left: 1rem;
         font-size: $font-size-med;
       }
-    }
-
-    &Button {
-      margin: 1rem 1rem;
     }
   }
 

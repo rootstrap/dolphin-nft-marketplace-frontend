@@ -1,15 +1,20 @@
 @import '../../../../app/styles/base/settings';
 
-
 .promotionContent {
-  h4 { text-align: center }
+  padding: 0;
+
+  h4 {
+    text-align: center;
+  }
   &__item {
     display: flex;
     justify-content: center;
     height: 100%;
     &Title {
-      height: 6rem;
-      overflow: hidden;
+      height: 2rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow-x: hidden;
     }
     &Description {
       height: 5rem;
@@ -21,6 +26,37 @@
       width: 99%;
       text-align: left;
       padding: 1rem;
+    }
+    &TextContainer {
+      padding: 2rem;
+      margin: 0 0 0 8rem;
+    }
+
+    &Text {
+      margin: 0 auto;
+      width: 22rem;
+
+      font-size: $font-size-big;
+    }
+
+    &ImgContainer {
+      margin-top: 2rem;
+      margin-left: 0;
+      height: 100%;
+    }
+
+    &Icon {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      span {
+        margin-left: 1rem;
+        font-size: $font-size-med;
+      }
+    }
+
+    &Button {
+      margin: 2rem auto;
     }
   }
 
@@ -40,12 +76,14 @@
     align-items: center;
     object-fit: cover;
     width: 100%;
+    height: 15rem;
     margin: 0 0 1rem;
 
     &Img {
       background-color: $black;
-      width: 50%;
+      width: 65%;
       height: auto;
+      max-height: 100%;
     }
 
     &New {
@@ -67,5 +105,12 @@
   &__buyContainer {
     display: flex;
     justify-content: space-between;
+  }
+
+  &__carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
   }
 }

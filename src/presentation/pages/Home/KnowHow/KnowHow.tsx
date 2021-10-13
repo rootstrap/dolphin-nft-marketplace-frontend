@@ -1,12 +1,12 @@
+import { useContext } from 'react';
 import { Button, Grid } from '@material-ui/core';
+import { ModalContext } from 'app/context/ModalContext';
 import { Step } from './Step';
 import First from 'app/assets/First.png';
 import Second from 'app/assets/Second.png';
 import Third from 'app/assets/Third.png';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './KnowHow.module.scss';
-import { useContext } from 'react';
-import { ModalContext } from 'app/context/ModalContext';
 
 export const KnowHowContent = () => {
   const { setSignupModalIsOpen } = useContext(ModalContext);

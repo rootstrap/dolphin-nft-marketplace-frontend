@@ -20,12 +20,12 @@ export const KnowHowContent = () => {
         <Grid className={styles.knowHowContent__item} item xs={6} md={4} lg={4}>
           <Step styles={styles} textContent={t('home.knowHow.second')} src={Second} alt="Second" />
         </Grid>
-        <Grid className={styles.knowHowContent__item} item xs={6} md={4} lg={4}>
+        <Grid className={styles.knowHowContent__item} item xs={12} md={4} lg={4}>
           <Step styles={styles} textContent={t('home.knowHow.third')} src={Third} alt="Third" />
         </Grid>
       </Grid>
 
-      <Grid container>
+      <Grid container justifyContent="center">
         <Grid item lg={5}></Grid>
         <Grid item lg={2}>
           <Button fullWidth onClick={() => setSignupModalIsOpen(true)}>

@@ -14,7 +14,7 @@ export const PromotionContent = () => {
   return (
     <Grid container className={styles.promotionContent} alignItems="center">
       <Grid item lg={1}></Grid>
-      <Grid item lg={2} className={styles.promotionContent__item}>
+      <Grid item xs={12} md={12} lg={2} className={styles.promotionContent__item}>
         <PromotionText
           textContent={t('home.promotion.mainText')}
           textButton={t('home.promotion.button')}
@@ -22,14 +22,14 @@ export const PromotionContent = () => {
         />
       </Grid>
 
-      <Grid item lg={9}>
+      <Grid item xs={12} md={12} lg={9}>
         <Grid container spacing={1} className={styles.promotionContent__carousel}>
-          <Grid item lg={3}></Grid>
+          <Grid item md={12} lg={3}></Grid>
           {carouselContent && (
             <>
               <Arrow handleOnClick={() => handleOnClick('left')} direction="left" />
               {carouselContent.map((item: NFT) => (
-                <Grid item xs={12} md={6} lg={4} key={item.id}>
+                <Grid item xs={12} md={4} lg={4} key={item.id}>
                   <Item
                     styles={styles}
                     id={item.id}

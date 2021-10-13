@@ -22,6 +22,12 @@
     "latestSection": {
       "description": "Check the lattest NFTs for sale by collectors"
     },
+    "knowHow": {
+      "first": "Tell us about yourself and set up your wallet.",
+      "second": "Add in your payment information.",
+      "third": "Find something you like and start collecting!",
+      "button": "Sign up Now! →"
+    },
     "nftList": {
       "sortBy": "Sort By"
     },

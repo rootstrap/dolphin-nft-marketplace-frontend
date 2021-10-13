@@ -8,6 +8,7 @@
   },
   "navBar": {
     "collections": "Collections",
+    "categories": "Categories",
     "my_collection": "My Collection",
     "drops": "Drops",
     "marketplace": "Marketplace",

@@ -3,7 +3,6 @@ import { Item } from './Item';
 import { usePromotion } from './usePromotion';
 import { NFT } from 'app/interfaces/NFT/NFT';
 import { Arrow } from 'infrastructure/components/Arrow/Arrow';
-import { useState } from 'react';
 import { PromotionText } from './PromotionText';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Promotion.module.scss';
@@ -17,8 +16,8 @@ export const PromotionContent = () => {
       <Grid item lg={1}></Grid>
       <Grid item lg={2} className={styles.promotionContent__item}>
         <PromotionText
-          textContent="Welcome to Dolphin Marketplace, check what’s new"
-          textButton="Know How ↓"
+          textContent={t('home.promotion.mainText')}
+          textButton={t('home.promotion.button')}
           styles={styles}
         />
       </Grid>

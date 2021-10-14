@@ -19,17 +19,13 @@ export const Peers = ({ open, handleClose, nfts }: PeersProps) => {
         <hr className={styles.peers__separator} />
         {nfts.map(nft => (
           <Grid container justifyContent="center" key={nft.id} className={styles.peers__itemContainer}>
-            <Grid item md={4} lg={4}>
-              {/* TODO: Implement once back return owner name */}
-              Owner Name Here
+            <Grid item md={1} lg={4}>
+              {nft.number && `#${nft.number}`}
             </Grid>
             <Grid item md={1} lg={2}>
-              {nft.totalQuantity && `#${nft.totalQuantity}`}
-            </Grid>
-            <Grid item md={1} lg={1}>
               {nft.offerPrice && `$${nft.offerPrice}`}
             </Grid>
-            <Grid item lg={2}></Grid>
+            <Grid item lg={3}></Grid>
             <Grid item md={6} lg={3}>
               <Button variant="text" fullWidth>
                 {t('peers.buyButton')}

@@ -32,7 +32,7 @@ export const Item = ({ id, ftxId, name, totalQuantity, image, price, verticalId,
         </div>
         <div>
           <Button>
-            <Link to={`${verticalId}/${ftxId}`}>{t('verticals.item.button')}</Link>
+            <Link to={`${verticalId}/${id}`}>{t('verticals.item.button')}</Link>
           </Button>
         </div>
       </div>

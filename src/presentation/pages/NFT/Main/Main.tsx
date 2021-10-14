@@ -5,13 +5,13 @@ import { Item } from './Item';
 import { useNFT } from './useNFT';
 import { useState } from 'react';
 import { BuyNFT } from '../BuyNFT/BuyNFT';
-import styles from './Main.module.scss';
 import { Peers } from 'presentation/components/Peers/Peers';
+import styles from './Main.module.scss';
 
 export const Main = () => {
   const { nftId } = useParams<{ nftId: string }>();
   const [showItemDescription, setShowItemDescription] = useState<boolean>(true);
-  const { nft, isLoading } = useNFT(nftId);
+  const { nft, nfts, isLoading } = useNFT(nftId);
   const [isPeersModalOpen, setIsPeersModalOpen] = useState<boolean>(false);
 
   const handleShowDescription = () => setShowItemDescription(!showItemDescription);
@@ -53,7 +53,7 @@ export const Main = () => {
           {componentToRender}
         </Grid>
       )}
-      <Peers open={isPeersModalOpen} handleClose={handleClosePeersModal} />
+      <Peers nfts={nfts} open={isPeersModalOpen} handleClose={handleClosePeersModal} />
     </div>
   );
 };

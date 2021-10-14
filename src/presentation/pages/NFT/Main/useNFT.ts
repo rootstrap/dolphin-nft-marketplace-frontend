@@ -8,8 +8,7 @@ export const useNFT = (nftId: string) => {
 
   const loadData = async () => {
     const data: any = await getNftDetails(nftId);
-
-    setNft(data.data);
+    setNft(data.data[0]);
   };
 
   useEffect(() => {

@@ -1,14 +1,20 @@
 @import '../../../app/styles/base/settings';
 
 .peers {
-  margin: 2rem;
+  padding: 4rem 8rem;
   font-size: $font-size-modal;
   align-items: center;
-}
 
-.sorting {
-  padding: 2rem;
-  font-size: $font-size-modal;
-  display: flex;
-  justify-content: flex-end;
+  &__title {
+    margin-bottom: 2rem;
+  }
+
+  &__separator {
+    border-top: 1px solid $dark-grey;
+    margin-bottom: 4rem;
+  }
+
+  &__itemContainer {
+    margin-bottom: 2rem;
+  }
 }

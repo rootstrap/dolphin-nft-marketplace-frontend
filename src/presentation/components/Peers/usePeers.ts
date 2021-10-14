@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useGetNftsSecondaryMutation } from 'infrastructure/services/nft/NftService';
+import { useGetNftDetailsMutation } from 'infrastructure/services/nft/NftService';
 import { NFT } from 'app/interfaces/NFT/NFT';
 
-export const usePeers = () => {
-  const [getNftsSecondary, { isError, isLoading, isSuccess }] = useGetNftsSecondaryMutation();
+export const usePeers = (id: string) => {
+  const [getNftDetails, { isError, isLoading, isSuccess }] = useGetNftDetailsMutation();
   const [nfts, setNfts] = useState<NFT[]>([]);
   const loadData = async () => {
-    const data: any = await getNftsSecondary();
+    const data: any = await getNftDetails(id);
     setNfts(data.data);
   };
 

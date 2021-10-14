@@ -18,7 +18,7 @@ export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription 
       </Typography>
 
       <Typography variant="h5" component="div">
-        {nft?.name}
+        {nft?.series}
       </Typography>
       <Typography className={styles.mainContent__itemDescriptionText} component="div">
         {nft?.description}

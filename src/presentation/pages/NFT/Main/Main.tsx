@@ -5,8 +5,8 @@ import { Item } from './Item';
 import { useNFT } from './useNFT';
 import { useState } from 'react';
 import { BuyNFT } from '../BuyNFT/BuyNFT';
-import styles from './Main.module.scss';
 import { Peers } from 'presentation/components/Peers/Peers';
+import styles from './Main.module.scss';
 
 export const Main = () => {
   const { nftId } = useParams<{ nftId: string }>();
@@ -53,7 +53,7 @@ export const Main = () => {
           {componentToRender}
         </Grid>
       )}
-      <Peers open={isPeersModalOpen} handleClose={handleClosePeersModal} />
+      <Peers id={nftId} open={isPeersModalOpen} handleClose={handleClosePeersModal} />
     </div>
   );
 };

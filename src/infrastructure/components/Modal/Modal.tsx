@@ -4,7 +4,7 @@ import closeBtn from 'app/assets/close.svg';
 
 export const BaseModal = ({ open, handleClose, children, bigModal = false }: ModalProps) => (
   <Modal open={open} onClose={handleClose} style={{}}>
-    <div className={styles.modal} style={bigModal ? { width: '75%' } : {}}>
+    <div className={styles.modal} style={bigModal ? { width: '70%' } : {}}>
       <button className={styles.modal__close} onClick={handleClose} type="button">
         <img src={closeBtn} alt="close" />
       </button>

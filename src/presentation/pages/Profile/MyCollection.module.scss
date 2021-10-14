@@ -1,9 +1,9 @@
 @import 'app/styles/base/settings';
 
 .myCollectionContent {
+  margin-top: 2rem;
   h4 {
     text-align: left;
-    margin: 2rem;
   }
   &__item {
     display: flex;

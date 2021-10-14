@@ -11,9 +11,11 @@ export const MyCollectionNfts = () => {
 
   return (
     <Grid container className={styles.myCollectionContent}>
-      <Grid item xs={12}>
+      <Grid item xs={1}></Grid>
+      <Grid item xs={10}>
         <Typography variant="h4">{t('profile.collectionTitle')}</Typography>
       </Grid>
+      <Grid item xs={1}></Grid>
       <Grid item xs={1}></Grid>
       <Grid item xs={10}>
         <Grid container spacing={4}>

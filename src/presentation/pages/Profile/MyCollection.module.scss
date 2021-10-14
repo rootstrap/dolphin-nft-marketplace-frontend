@@ -1,8 +1,10 @@
 @import 'app/styles/base/settings';
 
-
 .myCollectionContent {
-  h4 { text-align: center }
+  margin-top: 2rem;
+  h4 {
+    text-align: left;
+  }
   &__item {
     display: flex;
     justify-content: center;

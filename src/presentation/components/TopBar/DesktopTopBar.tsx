@@ -7,8 +7,9 @@ import logoImg from 'app/assets/dolphin_logo.png';
 import { RootState } from '../../../app/store/store';
 import routesPaths from '../../../app/constants/routesPath';
 import useTranslation from '../../../app/hooks/useTranslation';
-import styles from './TopBar.module.scss';
 import { useLogoutMutation } from 'infrastructure/services/user/UserService';
+import { PersonOutlined } from '@material-ui/icons';
+import styles from './TopBar.module.scss';
 
 export const DesktopTopBar = () => {
   const t = useTranslation();
@@ -49,8 +50,14 @@ export const DesktopTopBar = () => {
       <Grid item md={4} lg={3} className={styles.topBar__item}>
         {isAuthenticated ? (
           <div className={styles.topBar__itemButton}>
+            <div className={styles.topBar__itemButtonProfile}>
+              <Link to={routesPaths.profile}>
+                <PersonOutlined />
+              </Link>
+            </div>
+
             <Link to={routesPaths.index} onClick={handleLogout}>
-              Logout
+              &nbsp;{t('global.logout')}
             </Link>
           </div>
         ) : (

@@ -10,11 +10,14 @@
 
   &__title {
     margin-bottom: 1rem;
-    h5 { font-weight: bold; }
+    h5 {
+      font-weight: bold;
+    }
   }
 
   &__error {
     color: $error;
+    font-size: $font-size-modal;
     margin-top: -2rem;
   }
 
@@ -25,5 +28,4 @@
   &__button {
     margin: 1rem 2rem 4rem 2rem;
   }
-
 }

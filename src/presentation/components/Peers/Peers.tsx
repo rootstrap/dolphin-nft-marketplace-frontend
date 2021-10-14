@@ -1,6 +1,5 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
-import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { NFT } from 'app/interfaces/NFT/NFT';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Peers.module.scss';
@@ -21,7 +20,8 @@ export const Peers = ({ open, handleClose, nfts }: PeersProps) => {
         {nfts.map(nft => (
           <Grid container justifyContent="center" key={nft.id} className={styles.peers__itemContainer}>
             <Grid item md={4} lg={4}>
-              {nft.name.slice(0, 10)}
+              {/* TODO: Implement once back return owner name */}
+              Owner Name Here
             </Grid>
             <Grid item md={1} lg={2}>
               {nft.totalQuantity && `#${nft.totalQuantity}`}

@@ -20,20 +20,9 @@ export const useKYC = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [error, setError] = useState('');
   const { kycModalIsOpen, setKycModalIsOpen, setCcModalIsOpen, ccModalIsOpen } = useContext(ModalContext);
-  const {
-    fullName,
-    country,
-    province,
-    dateOfBirth,
-    postalCode,
-    streetAddress,
-    notCriminalRecord,
-    notExposedPerson,
-  } = formValues;
+  const { fullName, country, province, dateOfBirth, postalCode, streetAddress } = formValues;
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const { name, value } = event.target;
-
     setFormValues({
       ...formValues,
       [event.target.name]: event.target.value,
@@ -59,7 +48,6 @@ export const useKYC = () => {
     setFormValues(initialFormValues);
     setError('');
     setKycModalIsOpen(false);
-    setCcModalIsOpen(true);
   };
 
   return {

@@ -1,5 +1,5 @@
 import { useCcMutation } from 'infrastructure/services/user/UserService';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import useTranslation from 'app/hooks/useTranslation';
 
@@ -23,19 +23,6 @@ export const useCC = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [error, setError] = useState('');
   const { ccModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
-  const {
-    name,
-    ccNumber,
-    cvv,
-    expiryMonth,
-    expiryYear,
-    country,
-    district,
-    address1,
-    address2,
-    city,
-    postalCode,
-  } = formValues;
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
@@ -52,11 +39,11 @@ export const useCC = () => {
     });
   };
 
-  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError('');
-    cc(formValues);
-    // setCcModalIsOpen(false);
+
+    await cc(formValues);
   };
 
   const handleClose = () => {
@@ -64,6 +51,12 @@ export const useCC = () => {
     setError('');
     setCcModalIsOpen(false);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      setError(t('creditCard.invalidError'));
+    }
+  }, [isSuccess]);
 
   return {
     formValues,

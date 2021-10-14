@@ -1,10 +1,9 @@
-import { useContext } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { Item } from './Item';
-import styles from './MyCollection.module.scss';
 import { useMyCollection } from './useMyCollection';
 import { NFT } from 'app/interfaces/NFT/NFT';
 import useTranslation from 'app/hooks/useTranslation';
+import styles from './MyCollection.module.scss';
 
 export const MyCollectionNfts = () => {
   const { nfts, isLoading } = useMyCollection();
@@ -13,7 +12,7 @@ export const MyCollectionNfts = () => {
   return (
     <Grid container className={styles.myCollectionContent}>
       <Grid item xs={12}>
-        <Typography variant="h4">My NFT Collection</Typography>
+        <Typography variant="h4">{t('profile.collectionTitle')}</Typography>
       </Grid>
       <Grid item xs={1}></Grid>
       <Grid item xs={10}>

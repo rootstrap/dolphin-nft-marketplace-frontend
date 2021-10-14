@@ -1,6 +1,5 @@
 import { Button, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import routesPaths from 'app/constants/routesPath';
 import useTranslation from 'app/hooks/useTranslation';
 
 export const Item = ({ id, ftxId, name, totalQuantity, image, verticalId, styles }: ItemProps) => {

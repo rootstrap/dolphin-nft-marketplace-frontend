@@ -1,0 +1,23 @@
+@import '../../../../app/styles/base/settings';
+
+.main {
+  width: 100%;
+  background-color: $background-promotion;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  &__container {
+    padding: 4rem;
+    &Text {
+      margin-top: 1rem;
+    }
+
+    &Social {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 1rem;
+      color: $primary;
+    }
+  }
+}

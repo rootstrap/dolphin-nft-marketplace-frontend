@@ -19,6 +19,13 @@
       justify-content: flex-end;
       align-items: center;
       cursor: pointer;
+
+      &Profile {
+        margin-right: 3rem;
+        a {
+          color: white;
+        }
+      }
     }
 
     &Link {

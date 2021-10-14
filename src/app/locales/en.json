@@ -57,6 +57,9 @@
     "buyButton": "Buy Now",
     "peersButton": "Select from peers"
   },
+  "peers": {
+    "buyButton": "Select and Buy"
+  },
   "login": {
     "title": "Sign in",
     "email": "E-mail",

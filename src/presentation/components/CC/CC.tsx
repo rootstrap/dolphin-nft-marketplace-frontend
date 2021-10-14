@@ -149,6 +149,7 @@ export const CC = () => {
             <div className={styles.ccForm__button}>
               <Button type="submit">Continue →</Button>
             </div>
+            {error && <Typography className={styles.ccForm__error}>{error}</Typography>}
           </Grid>
         </Grid>
       </form>

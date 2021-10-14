@@ -64,6 +64,9 @@
   "peers": {
     "buyButton": "Select and Buy"
   },
+  "creditCard": {
+    "invalidError": "Invalid Credit Card"
+  },
   "login": {
     "title": "Sign in",
     "email": "E-mail",

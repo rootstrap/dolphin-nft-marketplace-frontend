@@ -18,11 +18,9 @@ const nftApi = api.injectEndpoints({
       query: () => `${endpoints.NFT}?featured=true`,
       transformResponse: (data: NFT[]) => data,
     }),
-    getNftDetails: builder.mutation<NFT, string>({
+    getNftDetails: builder.mutation<NFT[], string>({
       query: nftId => `${endpoints.NFT}/${nftId}`,
-      transformResponse: (data: { result: NFT }) => {
-        return data.result;
-      },
+      transformResponse: (data: NFT[]) => data,
     }),
   }),
   overrideExisting: true,

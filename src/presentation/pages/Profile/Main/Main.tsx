@@ -11,6 +11,7 @@ export const Main = () => {
     <div className={styles.main}>
       <div className={styles.main__container}>
         <div className={styles.main__containerImg}>
+          {/* TODO: Placeholder until avatar gets support */}
           <PersonOutlined />
         </div>
         <div className={styles.main__containerText}>

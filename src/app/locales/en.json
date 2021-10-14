@@ -2,6 +2,7 @@
   "global": {
     "pageTitle": "Dolphin Marketplace",
     "login": "Sign in",
+    "logout": "Logout",
     "signup": "Sign up",
     "signinMsg": "Or sign in ",
     "signinLink": "here"
@@ -39,6 +40,9 @@
       "mainText": "Welcome to Dolphin Marketplace, check what’s new",
       "button": "Know How ↓"
     }
+  },
+  "profile": {
+    "collectionTitle": "My Collection"
   },
   "verticals": {
     "listTitle": "Explore and select your NFT",

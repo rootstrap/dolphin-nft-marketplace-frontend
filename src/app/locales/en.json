@@ -66,7 +66,9 @@
     "peersButton": "Select from peers"
   },
   "peers": {
-    "buyButton": "Select and Buy"
+    "buyButton": "Select and Buy",
+    "editionNumberColumn": "Edition #",
+    "priceColumn": "Sale Price"
   },
   "creditCard": {
     "invalidError": "Invalid Credit Card"

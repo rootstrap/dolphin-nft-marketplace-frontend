@@ -16,7 +16,19 @@ export const Peers = ({ open, handleClose, nfts }: PeersProps) => {
           </Grid>
         </Grid>
 
+        <Grid container justifyContent="center" className={styles.peers__itemContainer}>
+          <Grid item md={1} lg={4}>
+            <Typography variant="h5">{t('peers.editionNumberColumn')}</Typography>
+          </Grid>
+          <Grid item md={1} lg={2}>
+            <Typography variant="h5">{t('peers.priceColumn')}</Typography>
+          </Grid>
+          <Grid item lg={3}></Grid>
+          <Grid item md={6} lg={3}></Grid>
+        </Grid>
+
         <hr className={styles.peers__separator} />
+
         {nfts.map(nft => (
           <Grid container justifyContent="center" key={nft.id} className={styles.peers__itemContainer}>
             <Grid item md={1} lg={4}>

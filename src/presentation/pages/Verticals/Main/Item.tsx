@@ -8,10 +8,12 @@ export const Item = ({ id, ftxId, name, totalQuantity, image, price, verticalId,
 
   return (
     <div className={styles.mainContent__itemContent}>
-      <div className={styles.mainContent__imgContainer}>
-        <img src={New} alt="New" className={styles.mainContent__imgContainerNew} />
-        <img src={image} alt="Promotion" className={styles.mainContent__imgContainerImg} />
-      </div>
+      <Link to={`${verticalId}/${id}`}>
+        <div className={styles.mainContent__imgContainer}>
+          <img src={New} alt="New" className={styles.mainContent__imgContainerNew} />
+          <img src={image} alt="Promotion" className={styles.mainContent__imgContainerImg} />
+        </div>
+      </Link>
 
       <Typography className={styles.mainContent__itemTitle} variant="h5" component="div">
         {name}

@@ -13,7 +13,7 @@ export const KnowHowContent = () => {
   const t = useTranslation();
   return (
     <>
-      <Grid className={styles.knowHowContent} container>
+      <Grid className={styles.knowHowContent} container id="knowHow">
         <Grid className={styles.knowHowContent__item} item xs={6} md={4} lg={4}>
           <Step styles={styles} textContent={t('home.knowHow.first')} src={First} alt="First" />
         </Grid>

@@ -16,10 +16,10 @@ export const DesktopTopBar = () => {
   const [logout] = useLogoutMutation();
 
   const { setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
-  const { email, isAuthenticated, user } = useAppSelector(state => state.user);
+  const { isAuthenticated, user } = useAppSelector(state => state.user);
 
   const handleLogout = () => {
-    logout({ email: email });
+    logout({ email: user.email });
   };
 
   return (
@@ -57,7 +57,7 @@ export const DesktopTopBar = () => {
             </div>
 
             <Link to={routesPaths.index} onClick={handleLogout}>
-              &nbsp;{t('global.logout')}
+              {t('global.logout')}
             </Link>
           </div>
         ) : (

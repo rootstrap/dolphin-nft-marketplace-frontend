@@ -22,8 +22,12 @@ export const Main = () => {
         <Grid item md={6} lg={6}>
           <div className={styles.mainContent__text}>
             <img alt="" src={SportsTitle} className={styles.mainContent__textImg} />
-            <Typography variant="h3">{t('home.collection')}</Typography>
-            <Typography variant="h5">{t('sports.title')}</Typography>
+            <Typography variant="h3" gutterBottom>
+              {t('home.collection')}
+            </Typography>
+            <Typography variant="h5" gutterBottom>
+              {t('sports.title')}
+            </Typography>
             <Typography variant="h6">{t('sports.description')}</Typography>
           </div>
         </Grid>

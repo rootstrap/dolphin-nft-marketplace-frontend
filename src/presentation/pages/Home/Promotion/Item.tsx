@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import New from 'app/assets/New.png';
 import useTranslation from 'app/hooks/useTranslation';
 
-export const Item = ({ ftxId, name, totalQuantity, image, verticalId, styles }: ItemProps) => {
+export const Item = ({ id, name, totalQuantity, image, verticalId, styles }: ItemProps) => {
   const t = useTranslation();
 
   return (
     <div className={styles.promotionContent__itemContent}>
-      <Link to={`${verticalId}/${ftxId}`}>
+      <Link to={`${verticalId}/${id}`}>
         <div className={styles.promotionContent__imgContainer}>
           <img src={New} alt="New" className={styles.promotionContent__imgContainerNew} />
           <img src={image} alt="Promotion" className={styles.promotionContent__imgContainerImg} />

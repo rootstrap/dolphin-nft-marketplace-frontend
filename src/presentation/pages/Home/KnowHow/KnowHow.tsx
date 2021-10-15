@@ -7,9 +7,11 @@ import Second from 'app/assets/Second.png';
 import Third from 'app/assets/Third.png';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './KnowHow.module.scss';
+import { useAppSelector } from 'app/hooks/reduxHooks';
 
 export const KnowHowContent = () => {
   const { setSignupModalIsOpen } = useContext(ModalContext);
+  const { isAuthenticated } = useAppSelector(state => state.user);
   const t = useTranslation();
   return (
     <>
@@ -28,9 +30,11 @@ export const KnowHowContent = () => {
       <Grid container justifyContent="center">
         <Grid item lg={5}></Grid>
         <Grid item lg={2}>
-          <Button fullWidth onClick={() => setSignupModalIsOpen(true)}>
-            {t('home.knowHow.button')}
-          </Button>
+          {!isAuthenticated && (
+            <Button fullWidth onClick={() => setSignupModalIsOpen(true)}>
+              {t('home.knowHow.button')}
+            </Button>
+          )}
         </Grid>
         <Grid item lg={5}></Grid>
       </Grid>

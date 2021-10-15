@@ -57,7 +57,7 @@ export const DesktopTopBar = () => {
             </div>
 
             <Link to={routesPaths.index} onClick={handleLogout}>
-              &nbsp;{t('global.logout')}
+              {t('global.logout')}
             </Link>
           </div>
         ) : (

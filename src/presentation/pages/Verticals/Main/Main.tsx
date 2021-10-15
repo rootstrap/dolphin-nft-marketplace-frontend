@@ -2,7 +2,7 @@ import { Grid, Typography } from '@material-ui/core';
 import AthletesBackground from 'app/assets/AthletesBackground.png';
 import athletesBgLeft from 'app/assets/athletes_left.png';
 import athletesBgRight from 'app/assets/athletes_right.png';
-import AthletesTitle from 'app/assets/AthletesTitle.png';
+import SportsTitle from 'app/assets/SportsTitle.png';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { useParams } from 'react-router';
 import { useVertical } from '../useVertical';
@@ -21,9 +21,10 @@ export const Main = () => {
       <Grid container className={styles.mainContent}>
         <Grid item md={6} lg={6}>
           <div className={styles.mainContent__text}>
-            <img alt="" src={AthletesTitle} className={styles.mainContent__textImg} />
+            <img alt="" src={SportsTitle} className={styles.mainContent__textImg} />
             <Typography variant="h3">{t('home.collection')}</Typography>
-            <Typography variant="h5">{t('home.description')}</Typography>
+            <Typography variant="h5">{t('sports.title')}</Typography>
+            <Typography variant="h6">{t('sports.description')}</Typography>
           </div>
         </Grid>
         <Grid item md={2} lg={2}>

@@ -4,16 +4,14 @@ import { MyCollectionNfts } from './MyCollectionNfts';
 
 const ProfilePage = () => {
   return (
-    <>
-      <TopBarLayout
-        pageComponent={
-          <>
-            <Main />
-            <MyCollectionNfts />
-          </>
-        }
-      />
-    </>
+    <TopBarLayout
+      pageComponent={
+        <>
+          <Main />
+          <MyCollectionNfts />
+        </>
+      }
+    />
   );
 };
 

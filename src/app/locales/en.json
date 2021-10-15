@@ -41,6 +41,10 @@
       "button": "Know How ↓"
     }
   },
+  "sports": {
+    "title": "Real fans never leave early",
+    "description": "Collectibles for the tailgaters, face painters, court stormers, and jersey burners. For the fanatics that live for The Hail Marys, buzzer beaters, walk-offs and winning shots"
+  },
   "profile": {
     "collectionTitle": "My Collection"
   },
@@ -59,10 +63,12 @@
     "totalReleased": "Total Released",
     "forSale": "For Sale",
     "buyButton": "Buy Now",
-    "peersButton": "Select from peers"
+    "peersButton": "Browse By Edition"
   },
   "peers": {
-    "buyButton": "Select and Buy"
+    "buyButton": "Select and Buy",
+    "editionNumberColumn": "Edition #",
+    "priceColumn": "Sale Price"
   },
   "creditCard": {
     "invalidError": "Invalid Credit Card"

@@ -13,3 +13,18 @@ export const colors = {
   black: '#000',
   white: '#FFF',
 };
+
+export const dropDownListCategories = [
+  {
+    key: 1,
+    value: 'Sports',
+    disabled: false,
+    route: '/verticals/sports',
+  },
+  {
+    key: 2,
+    value: 'Arts (coming soon)',
+    disabled: true,
+    route: '/verticals/arts',
+  },
+];

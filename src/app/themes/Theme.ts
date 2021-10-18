@@ -63,5 +63,10 @@ export const theme = createTheme({
         },
       },
     },
+    MuiPaper: {
+      root: {
+        backgroundColor: colors.darkGrey,
+      },
+    },
   },
 });

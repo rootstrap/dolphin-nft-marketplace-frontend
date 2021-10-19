@@ -16,6 +16,7 @@ const initialState: UserState = {
     firstName: '',
     lastName: '',
     email: '',
+    kyc1ed: false,
     id: 0,
   },
   token: '',
@@ -27,10 +28,10 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addMatcher(loginFulfiled, (state, { payload: { token, descriptionUser } }) => {
+    builder.addMatcher(loginFulfiled, (state, { payload: { token, user } }) => {
       state.isAuthenticated = true;
       state.token = token;
-      state.user = descriptionUser[0];
+      state.user = { ...user };
     });
     builder.addMatcher(logoutFulfiled, state => {
       state.isAuthenticated = false;
@@ -40,7 +41,7 @@ const userSlice = createSlice({
     builder.addMatcher(signupFulfiled, (state, { payload: { token, user } }) => {
       state.isAuthenticated = true;
       state.token = token;
-      state.user = user;
+      state.user = { ...user };
     });
     builder.addMatcher(kycFulfiled, (state, { payload: { full_name, country, province } }) => {
       state.user.fullName = full_name;
@@ -59,6 +60,7 @@ interface User {
   firstName: string;
   lastName: string;
   email: string;
+  kyc1ed: boolean;
   id: number;
 }
 

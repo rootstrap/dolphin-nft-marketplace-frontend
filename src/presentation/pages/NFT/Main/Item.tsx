@@ -2,13 +2,16 @@ import { Button, Typography } from '@material-ui/core';
 import { NFT } from 'app/interfaces/NFT/NFT';
 import useTranslation from 'app/hooks/useTranslation';
 import { useAppSelector } from 'app/hooks/reduxHooks';
+import { useContext } from 'react';
+import { ModalContext } from 'app/context/ModalContext';
 
 export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription }: ItemProps) => {
   const t = useTranslation();
+  const { setLoginModalIsOpen } = useContext(ModalContext);
   const { isAuthenticated } = useAppSelector(state => state.user);
 
   const handleOnClick = () => {
-    isAuthenticated ? handleShowDescription() : console.log('openLogin');
+    isAuthenticated ? handleShowDescription() : setLoginModalIsOpen(true);
   };
 
   return (

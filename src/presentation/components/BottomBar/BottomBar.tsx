@@ -1,9 +1,11 @@
 import { Grid } from '@material-ui/core';
 import { Facebook, Instagram, Twitter } from '@material-ui/icons';
 import { ReactComponent as Discord } from 'app/assets/Discord.svg';
+import useTranslation from 'app/hooks/useTranslation';
 import styles from './BottomBar.module.scss';
 
 export const BottomBar = () => {
+  const t = useTranslation();
   return (
     <Grid container className={styles.bottomBar}>
       <Grid item lg={3} className={styles.bottomBar__social}>
@@ -13,14 +15,14 @@ export const BottomBar = () => {
         <Discord />
       </Grid>
       <Grid item lg={2}>
-        Terms of Use
+        {t('bottomBar.terms')}
       </Grid>
       <Grid item lg={2}>
-        Privacy Policy
+        {t('bottomBar.policy')}
       </Grid>
       <Grid item lg={3}></Grid>
       <Grid item lg={2} className={styles.bottomBar__brand}>
-        © Dolphin Entertainment 2021
+        {t('bottomBar.brand')}
       </Grid>
     </Grid>
   );

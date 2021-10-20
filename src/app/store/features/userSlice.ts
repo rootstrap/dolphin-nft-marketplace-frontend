@@ -43,10 +43,8 @@ const userSlice = createSlice({
       state.token = token;
       state.user = { ...user };
     });
-    builder.addMatcher(kycFulfiled, (state, { payload: { full_name, country, province } }) => {
-      state.user.fullName = full_name;
-      state.user.country = country;
-      state.user.province = province;
+    builder.addMatcher(kycFulfiled, state => {
+      state.user.kyc1ed = true;
     });
     builder.addMatcher(ccFulfiled, (state, { payload: resp }) => {});
     builder.addMatcher(depositFulfiled, (state, { payload: resp }) => {});

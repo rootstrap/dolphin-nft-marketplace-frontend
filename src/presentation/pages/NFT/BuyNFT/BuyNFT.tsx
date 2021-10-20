@@ -1,11 +1,13 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import { ModalContext } from 'app/context/ModalContext';
+import { useAppSelector } from 'app/hooks/reduxHooks';
 import { NFT } from 'app/interfaces/NFT/NFT';
 import { useContext } from 'react';
 import buyStyles from './Buy.module.scss';
 
 export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
-  const { kycModalIsOpen, setKycModalIsOpen } = useContext(ModalContext);
+  const { setKycModalIsOpen } = useContext(ModalContext);
+  const { user } = useAppSelector(state => state.user);
 
   return (
     <Grid container>
@@ -25,9 +27,11 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
         <div className={buyStyles.buyContent__itemFund}>
           <div className={buyStyles.buyContent__walletContainer}>
             <Typography component="div">Please activate your wallet to perform your fist purchase</Typography>
-            <Button variant="text" onClick={() => setKycModalIsOpen(true)}>
-              Activate wallet{' '}
-            </Button>
+            {!user.kyc1ed && (
+              <Button variant="text" onClick={() => setKycModalIsOpen(true)}>
+                Activate wallet{' '}
+              </Button>
+            )}
           </div>
           <div className={buyStyles.buyContent__buttonContainer}>
             <div className={buyStyles.buyContent__priceContainer}>
@@ -39,7 +43,7 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
               </Typography>
             </div>
 
-            <Button fullWidth className={buyStyles.buyContent__btn} disabled>
+            <Button fullWidth className={buyStyles.buyContent__btn}>
               Activate your wallet to continue
             </Button>
             <Button fullWidth size="large" onClick={handleShowDescription}>

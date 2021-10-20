@@ -19,7 +19,7 @@ export const MyCollectionNfts = () => {
         <Grid item xs={2}></Grid>
         <Grid item xs={8}>
           <Typography variant="h4" gutterBottom className={styles.myCollectionContent__itemsMsg}>
-            You don’t have any collectibles in your gallery yet
+            {t('profile.emptyList')}
           </Typography>
         </Grid>
         <Grid item xs={2}></Grid>

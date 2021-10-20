@@ -1,11 +1,13 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { NFT } from 'app/interfaces/NFT/NFT';
+import { usePeers } from './usePeers';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Peers.module.scss';
 
 export const Peers = ({ open, handleClose, nfts }: PeersProps) => {
   const t = useTranslation();
+  const { items, handleSortByNumber, handleSortByPrice } = usePeers(nfts);
 
   return (
     <BaseModal open={open} handleClose={handleClose} bigModal>
@@ -18,10 +20,14 @@ export const Peers = ({ open, handleClose, nfts }: PeersProps) => {
 
         <Grid container justifyContent="center" className={styles.peers__itemContainer}>
           <Grid item md={1} lg={4}>
-            <Typography variant="h5">{t('peers.editionNumberColumn')}</Typography>
+            <Typography variant="h5" onClick={handleSortByNumber} className={styles.peers__column}>
+              {t('peers.editionNumberColumn')}
+            </Typography>
           </Grid>
           <Grid item md={1} lg={2}>
-            <Typography variant="h5">{t('peers.priceColumn')}</Typography>
+            <Typography variant="h5" onClick={handleSortByPrice} className={styles.peers__column}>
+              {t('peers.priceColumn')}
+            </Typography>
           </Grid>
           <Grid item lg={3}></Grid>
           <Grid item md={6} lg={3}></Grid>
@@ -29,7 +35,7 @@ export const Peers = ({ open, handleClose, nfts }: PeersProps) => {
 
         <hr className={styles.peers__separator} />
 
-        {nfts.map(nft => (
+        {items.map(nft => (
           <Grid container justifyContent="center" key={nft.id} className={styles.peers__itemContainer}>
             <Grid item md={1} lg={4}>
               {nft.number && `#${nft.number}`}

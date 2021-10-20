@@ -14,6 +14,21 @@ export const colors = {
   white: '#FFF',
 };
 
+export const dropDownListCategories = [
+  {
+    key: 1,
+    value: 'Sports',
+    disabled: false,
+    route: '/verticals/sports',
+  },
+  {
+    key: 2,
+    value: 'Arts (coming soon)',
+    disabled: true,
+    route: '/verticals/arts',
+  },
+];
+
 export const socialMediaLinks = {
   facebook: 'https://www.facebook.com/Dolphin-Marketplace-243870417566415',
   instagram: 'https://www.instagram.com/dolphin_marketplace/?hl=es',

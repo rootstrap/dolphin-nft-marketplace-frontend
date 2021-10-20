@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { AddBox } from '@material-ui/icons';
-import { Typography } from '@material-ui/core';
 
 export const MainImg = ({ link, src, alt, styles, disabled = false }: MainImgProps) => (
   <Link to={`verticals/${link.toLowerCase()}`} className={disabled ? styles.disabledLink : ''}>

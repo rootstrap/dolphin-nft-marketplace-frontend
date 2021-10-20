@@ -8,8 +8,12 @@ import buyStyles from './Buy.module.scss';
 
 export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
   const t = useTranslation();
-  const { setKycModalIsOpen } = useContext(ModalContext);
+  const { setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
   const { user } = useAppSelector(state => state.user);
+
+  const handleOnClick = () => {
+    user.kyc1ed ? setCcModalIsOpen(true) : setKycModalIsOpen(true);
+  };
 
   return (
     <Grid container>
@@ -29,11 +33,10 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
         <div className={buyStyles.buyContent__itemFund}>
           <div className={buyStyles.buyContent__walletContainer}>
             <Typography component="div">{t('nft.buyNft.activateWallet')}</Typography>
-            {!user.kyc1ed && (
-              <Button variant="text" onClick={() => setKycModalIsOpen(true)}>
-                {t('nft.buyNft.activateButton')}
-              </Button>
-            )}
+
+            <Button variant="text" onClick={handleOnClick}>
+              {t('nft.buyNft.activateButton')}
+            </Button>
           </div>
           <div className={buyStyles.buyContent__buttonContainer}>
             <div className={buyStyles.buyContent__priceContainer}>
@@ -45,7 +48,7 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
               </Typography>
             </div>
 
-            <Button fullWidth className={buyStyles.buyContent__btn}>
+            <Button fullWidth className={buyStyles.buyContent__btn} disabled>
               {t('nft.buyNft.continueButton')}
             </Button>
             <Button fullWidth size="large" onClick={handleShowDescription}>

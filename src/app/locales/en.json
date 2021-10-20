@@ -95,5 +95,10 @@
     "button": "Sign up",
     "signinMsg": "Already have an account?",
     "signinLink": "Sign in"
+  },
+  "bottomBar": {
+    "terms": "Terms of use",
+    "policy": "Privacy policy",
+    "brand": "© Dolphin Entertainment 2021"
   }
 }

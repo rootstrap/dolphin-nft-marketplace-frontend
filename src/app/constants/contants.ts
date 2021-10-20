@@ -28,3 +28,10 @@ export const dropDownListCategories = [
     route: '/verticals/arts',
   },
 ];
+
+export const socialMediaLinks = {
+  facebook: 'https://www.facebook.com/Dolphin-Marketplace-243870417566415',
+  instagram: 'https://www.instagram.com/dolphin_marketplace/?hl=es',
+  twitter: 'https://twitter.com/Dolphin_mktpl',
+  discord: 'https://discord.com/dolphin_marketplace',
+};

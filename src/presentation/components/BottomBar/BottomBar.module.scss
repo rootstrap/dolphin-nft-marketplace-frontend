@@ -1,0 +1,18 @@
+@import '../../../app/styles/base/settings';
+
+.bottomBar {
+  background-color: black;
+  padding: 3rem;
+  color: $primary;
+  font-size: $font-size-modal;
+
+  &__social {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  &__brand {
+    color: white;
+  }
+}

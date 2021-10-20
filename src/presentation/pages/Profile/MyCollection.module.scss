@@ -8,6 +8,7 @@
   &__item {
     display: flex;
     justify-content: center;
+
     height: 100%;
     &Title {
       height: 6rem;
@@ -57,5 +58,14 @@
     margin: 1rem 0;
     height: 1rem;
     color: $orange;
+  }
+
+  &__items {
+    padding: 4rem;
+
+    &Msg {
+      display: flex;
+      justify-content: center;
+    }
   }
 }

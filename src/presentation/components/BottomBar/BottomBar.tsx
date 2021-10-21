@@ -9,7 +9,7 @@ export const BottomBar = () => {
   const t = useTranslation();
   return (
     <Grid container className={styles.bottomBar}>
-      <Grid item lg={3} className={styles.bottomBar__social}>
+      <Grid item xs={4} md={3} lg={3} className={styles.bottomBar__social}>
         <a href={socialMediaLinks.instagram} target="_blank">
           <Instagram />
         </a>
@@ -23,14 +23,14 @@ export const BottomBar = () => {
           <Discord />
         </a>
       </Grid>
-      <Grid item lg={2}>
+      <Grid item xs={4} md={2} lg={2}>
         {t('bottomBar.terms')}
       </Grid>
-      <Grid item lg={2}>
+      <Grid item xs={4} md={3} lg={2}>
         {t('bottomBar.policy')}
       </Grid>
-      <Grid item lg={3}></Grid>
-      <Grid item lg={2} className={styles.bottomBar__brand}>
+      <Grid item lg={2}></Grid>
+      <Grid item xs={12} md={4} lg={3} className={styles.bottomBar__brand}>
         {t('bottomBar.brand')}
       </Grid>
     </Grid>

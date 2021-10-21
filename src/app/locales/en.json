@@ -63,7 +63,14 @@
     "totalReleased": "Total Released",
     "forSale": "For Sale",
     "buyButton": "Buy Now",
-    "peersButton": "Browse By Edition"
+    "peersButton": "Browse By Edition",
+    "buyNft": {
+      "activateWallet": "Please activate your wallet to perform your fist purchase",
+      "activateButton": "Activate Wallet ",
+      "price": "Price: ",
+      "continueButton": "Activate your wallet to continue",
+      "cancelButton": "Cancel"
+    }
   },
   "peers": {
     "buyButton": "Select and Buy",

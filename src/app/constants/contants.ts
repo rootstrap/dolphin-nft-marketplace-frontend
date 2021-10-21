@@ -35,3 +35,5 @@ export const socialMediaLinks = {
   twitter: 'https://twitter.com/Dolphin_mktpl',
   discord: 'https://discord.com/dolphin_marketplace',
 };
+
+export const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;

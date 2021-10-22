@@ -132,7 +132,14 @@
     "fullName": "Full name",
     "cardNumber": "Card number",
     "code": "Security Code",
-    "expireDate": "Expire date",
+    "expireMonth": "Expire Month",
+    "expireYear": "Expire Year",
+    "country": "Country of residency",
+    "district": "Discrict",
+    "addressL1": "Address 1",
+    "addressL2": "Address 2",
+    "city": "City",
+    "postalCode": "Zip Code",
     "button": "Finish →",
     "error": {
       "invalidError": "Invalid Credit Card"

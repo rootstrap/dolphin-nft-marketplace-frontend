@@ -5,6 +5,7 @@ import { useCC } from './useCC';
 import { Grid } from '@material-ui/core';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './CC.module.scss';
+import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 
 export const CC = () => {
   const t = useTranslation();
@@ -21,9 +22,9 @@ export const CC = () => {
               className={styles.ccForm__input}
               label={t('creditCard.fullName')}
               register={register}
-              name="fullName"
+              name="name"
               type="text"
-              error={errors.fullName}
+              error={errors.name}
             />
           </Grid>
           <Grid item xs={12}>
@@ -36,7 +37,7 @@ export const CC = () => {
               error={errors.ccNumber}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <InputText
               className={styles.ccForm__input}
               label={t('creditCard.code')}
@@ -46,18 +47,90 @@ export const CC = () => {
               error={errors.cvv}
             />
           </Grid>
+          <Grid item xs={4}>
+            <InputText
+              className={styles.ccForm__input}
+              label={t('creditCard.expireMonth')}
+              register={register}
+              name="expiryMonth"
+              type="number"
+              error={errors.expiryMonth}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <InputText
+              className={styles.ccForm__input}
+              label={t('creditCard.expireYear')}
+              register={register}
+              name="expiryYear"
+              type="number"
+              error={errors.expiryYear}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <InputText
+              className={styles.ccForm__input}
+              label={t('creditCard.country')}
+              register={register}
+              name="country"
+              type="text"
+              error={errors.country}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <InputText
+              className={styles.ccForm__input}
+              label={t('creditCard.district')}
+              register={register}
+              name="district"
+              type="text"
+              error={errors.district}
+            />
+          </Grid>
           <Grid item xs={6}>
             <InputText
               className={styles.ccForm__input}
-              label={t('creditCard.expireDate')}
+              label={t('creditCard.addressL1')}
               register={register}
-              name="expiryDate"
-              type="number"
-              error={errors.expiryDate}
+              name="address1"
+              type="text"
+              error={errors.address1}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <InputText
+              className={styles.ccForm__input}
+              label={t('creditCard.addressL2')}
+              register={register}
+              name="address2"
+              type="text"
+              error={errors.address2}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <InputText
+              className={styles.ccForm__input}
+              label={t('creditCard.city')}
+              register={register}
+              name="city"
+              type="text"
+              error={errors.city}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <InputText
+              className={styles.ccForm__input}
+              label={t('creditCard.postalCode')}
+              register={register}
+              name="postalCode"
+              type="text"
+              error={errors.postalCode}
             />
           </Grid>
 
-          {!isLoading && (
+          {isLoading ? (
+            <CustomLoader />
+          ) : (
             <Grid item xs={12}>
               <div className={styles.ccForm__button}>
                 <Button type="submit">{t('creditCard.button')}</Button>

@@ -21,7 +21,7 @@ export const useKYC = () => {
   const t = useTranslation();
   const [kyc, { isLoading, isSuccess, isError }] = useKycMutation();
   const [error, setError] = useState('');
-  const { kycModalIsOpen, setKycModalIsOpen } = useContext(ModalContext);
+  const { kycModalIsOpen, setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
 
   const schema = z.object({
     fullName: z.string().min(2, { message: 'Field Required' }),
@@ -50,6 +50,7 @@ export const useKYC = () => {
 
   useEffect(() => {
     if (isSuccess) {
+      setCcModalIsOpen(true);
       handleClose();
     }
   }, [isSuccess]);

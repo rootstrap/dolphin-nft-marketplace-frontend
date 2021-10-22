@@ -1,37 +1,39 @@
 import { TextField, Typography } from '@material-ui/core';
+import { UseFormRegister, FieldValues } from 'react-hook-form';
+import styles from './InputText.module.scss';
 
 export const InputText = ({
   className,
   label = '',
-  value,
   name,
   error,
-  onChange,
   type = 'text',
   size = 'medium',
+  register,
 }: InputTextProps) => (
   <div className={className}>
     <Typography>{label}</Typography>
     <TextField
+      {...register(name)}
       size={size}
-      name={name}
       type={type}
-      value={value}
-      error={error}
       variant="outlined"
       fullWidth
-      onChange={onChange}
+      error={!!error}
+      color="secondary"
     />
+    <small className={styles.inputText__error}>{error?.message}</small>
   </div>
 );
 
 interface InputTextProps {
   className: string;
   label?: string;
-  value: string;
-  name: string;
-  error: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  type?: 'text' | 'password' | 'email';
+
+  name?: string;
+  error?: { message: string };
+
+  type?: 'text' | 'password' | 'email' | 'date' | 'number';
   size?: 'medium' | 'small';
+  register: UseFormRegister<FieldValues>;
 }

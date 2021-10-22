@@ -24,28 +24,37 @@ export const PromotionContent = () => {
 
       <Grid item xs={12} md={12} lg={9}>
         <Grid container spacing={1} className={styles.promotionContent__carousel}>
-          <Grid item md={12} lg={3}></Grid>
-          {carouselContent && (
-            <>
-              <Arrow handleOnClick={() => handleOnClick('left')} direction="left" />
-              {carouselContent.map((item: NFT) => (
-                <Grid item xs={12} md={4} lg={4} key={item.id}>
-                  <Item
-                    styles={styles}
-                    id={item.id}
-                    name={item.name}
-                    totalQuantity={item.totalQuantity}
-                    image={item.imageUrl}
-                    price={item.offerPrice}
-                    ftxId={item.ftx_id}
-                    verticalId={'verticals/sports'}
-                  />
-                </Grid>
-              ))}
+          <Grid item lg={1}></Grid>
+          <Grid item xs={12} md={11}>
+            <Grid container>
+              <Grid item xs={1}></Grid>
+              <Grid item xs={11}>
+                <Grid container className={styles.promotionContent__carouselItems}>
+                  {carouselContent && (
+                    <>
+                      <Arrow handleOnClick={() => handleOnClick('left')} direction="left" />
+                      {carouselContent.map((item: NFT) => (
+                        <Grid item xs={10} md={5} lg={5} key={item.id}>
+                          <Item
+                            styles={styles}
+                            id={item.id}
+                            name={item.name}
+                            totalQuantity={item.totalQuantity}
+                            image={item.imageUrl}
+                            price={item.offerPrice}
+                            ftxId={item.ftx_id}
+                            verticalId={'verticals/sports'}
+                          />
+                        </Grid>
+                      ))}
 
-              <Arrow handleOnClick={() => handleOnClick('right')} direction="right" />
-            </>
-          )}
+                      <Arrow handleOnClick={() => handleOnClick('right')} direction="right" />
+                    </>
+                  )}
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

@@ -32,7 +32,7 @@ export const DesktopTopBar = () => {
   };
 
   return (
-    <Grid container spacing={0} alignItems="center" justifyContent="center">
+    <Grid container spacing={0} alignItems="center">
       <Grid item md={2} lg={2} className={styles.topBar__item}>
         <Link to={routesPaths.index}>
           <img src={logoImg} alt="logo" className={styles.topBar__logo} />
@@ -56,9 +56,9 @@ export const DesktopTopBar = () => {
           </div>
         </Link>
       </Grid>
-      <Grid item md={2} lg={2} />
+      <Grid item md={2} lg={3} />
 
-      <Grid item md={4} lg={3} className={styles.topBar__item}>
+      <Grid item md={4} lg={3} className={styles.topBar__item} alignItems="flex-start">
         {isAuthenticated ? (
           <div className={styles.topBar__itemButton}>
             <div className={styles.topBar__itemButtonProfile}>

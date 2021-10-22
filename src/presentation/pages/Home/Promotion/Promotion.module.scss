@@ -11,6 +11,10 @@
     color: white;
   }
 
+  .Arrow {
+    height: 3rem;
+  }
+
   &__item {
     display: flex;
     justify-content: center;
@@ -53,8 +57,8 @@
 
       &Img {
         background-color: $black;
-        width: 75%;
-        height: auto;
+        height: 100%;
+        width: auto;
         max-height: 100%;
       }
 
@@ -64,11 +68,6 @@
         background-color: $orange;
         padding: 0.3rem;
       }
-    }
-
-    &TextContainer {
-      padding: 2rem;
-      margin: 0 0 0 8rem;
     }
 
     &Text {
@@ -115,5 +114,10 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
+  }
+
+  &__carouselItems {
+    display: flex;
+    align-items: center;
   }
 }

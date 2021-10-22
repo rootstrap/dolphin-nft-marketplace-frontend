@@ -1,10 +1,11 @@
 @import 'app/styles/base/settings';
 
 .topBar {
-  margin: 0 2rem 2rem 2rem;
+
+  margin-bottom: 4.5rem;
 
   &__logo {
-    width: 150px;
+    width: 160px;
   }
 
   &__item {
@@ -13,10 +14,10 @@
       color: white;
       justify-content: space-evenly;
     }
+    text-align: center;
 
     &Button {
       display: flex;
-      justify-content: flex-end;
       align-items: center;
       cursor: pointer;
 

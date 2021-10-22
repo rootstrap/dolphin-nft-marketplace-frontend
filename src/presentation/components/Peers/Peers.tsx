@@ -1,5 +1,6 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
+import { Link } from 'react-router-dom';
 import { NFT } from 'app/interfaces/NFT/NFT';
 import { usePeers } from './usePeers';
 import useTranslation from 'app/hooks/useTranslation';
@@ -45,8 +46,8 @@ export const Peers = ({ open, handleClose, nfts }: PeersProps) => {
             </Grid>
             <Grid item lg={3}></Grid>
             <Grid item md={6} lg={3}>
-              <Button variant="text" fullWidth>
-                {t('peers.buyButton')}
+              <Button variant="text" fullWidth onClick={handleClose}>
+                <Link to={`/nft/${nft.id}`}>{t('peers.buyButton')}</Link>
               </Button>
             </Grid>
           </Grid>

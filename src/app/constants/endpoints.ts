@@ -5,5 +5,6 @@ export const endpoints = {
   KYC: '/kyc',
   CC: '/cc',
   DEPOSIT: '/deposit',
+
   NFT: '/nft',
 };

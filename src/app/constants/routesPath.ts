@@ -4,6 +4,7 @@ const routesPaths = {
 
   verticals: '/verticals/:verticalId',
   nftDetails: '/verticals/:verticalId/:nftId',
+  nftById: '/nft/:ftxId',
   my_collection: '/collection',
   faq: '/faq',
 

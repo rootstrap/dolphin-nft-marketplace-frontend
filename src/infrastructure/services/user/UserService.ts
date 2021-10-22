@@ -87,10 +87,11 @@ interface KycBody {
 }
 
 interface CcBody {
-  fullName: string;
+  name: string;
   ccNumber: number;
   cvv: number;
-  expiryDate: Date;
+  expiryMonth: number;
+  expiryYear: number;
   country: string;
   district: string;
   address1: string;

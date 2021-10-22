@@ -7,10 +7,11 @@ import * as z from 'zod';
 import useTranslation from 'app/hooks/useTranslation';
 
 interface FormValues {
-  fullName: string;
+  name: string;
   ccNumber: number;
   cvv: number;
-  expiryDate: Date;
+  expiryMonth: number;
+  expiryYear: number;
   country: string;
   district: string;
   address1: string;
@@ -26,15 +27,16 @@ export const useCC = () => {
   const { ccModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
 
   const schema = z.object({
-    fullName: z.string().min(5, { message: 'Field Required' }),
+    name: z.string().min(3, { message: 'Field Required' }),
     ccNumber: z.string().min(16, { message: 'Invalid Credit Card Number' }),
     cvv: z.string().min(3, { message: 'Invalid CVV Number' }),
-    expiryDate: z.date(),
-    country: z.string().min(3, { message: 'Field Required' }),
-    district: z.string().min(2, { message: 'Field Required' }),
+    expiryMonth: z.string().length(2, { message: 'Month should be formatted as MM' }),
+    expiryYear: z.string().length(4, { message: 'Year should be formatted as YYYY' }),
+    country: z.string().length(3, { message: 'Country should be formatted as XXX' }),
+    district: z.string().length(2, { message: 'Country should be formatted as XX' }),
     address1: z.string().min(3, { message: 'Field Required' }),
-    address2: z.string().min(3, { message: 'Field Required' }),
-    city: z.string().min(3, { message: 'Field Required' }),
+    address2: z.string(),
+    city: z.string().min(2, { message: 'Field Required' }),
     postalCode: z.string().min(3, { message: 'Field Required' }),
   });
 

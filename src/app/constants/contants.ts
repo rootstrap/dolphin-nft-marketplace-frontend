@@ -36,4 +36,4 @@ export const socialMediaLinks = {
   discord: 'https://discord.com/dolphin_marketplace',
 };
 
-export const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+export const PASSWORD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;

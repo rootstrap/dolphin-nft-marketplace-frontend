@@ -1,0 +1,74 @@
+@import '../../../../app/styles/base/settings';
+
+.mainContent {
+  display: flex;
+  justify-content: center;
+  margin: 0 1rem;
+  padding: 1rem 1rem 4rem 1rem;
+
+
+  &__buttonContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__priceContainer {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    p {
+      color: $orange;
+      font-size: 1.6rem;
+    }
+  }
+
+  &__walletContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+    padding: 2rem;
+  }
+
+  &__item {
+    height: 35rem;
+    &Video {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    &Description {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      text-align: left;
+      height: 100%;
+      width: 80%;
+
+      &Text {
+        padding-bottom: 2rem;
+        padding-top: 1rem;
+      }
+
+      &Title {
+        color: $orange;
+      }
+    }
+
+    &Fund {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    &Img {
+      width: 50%;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

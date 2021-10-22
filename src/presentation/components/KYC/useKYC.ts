@@ -36,12 +36,14 @@ export const useKYC = () => {
     register,
     handleSubmit,
     clearErrors,
+    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
   const onSubmit: SubmitHandler<FormValues> = data => kyc(data);
 
   const handleClose = () => {
+    reset();
     clearErrors();
     setKycModalIsOpen(false);
   };

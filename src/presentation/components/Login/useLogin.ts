@@ -26,12 +26,14 @@ export const useLogin = () => {
     register,
     handleSubmit,
     clearErrors,
+    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
   const onSubmit: SubmitHandler<FormValues> = data => login(data);
 
   const handleClose = () => {
+    reset();
     clearErrors();
     setLoginModalIsOpen(false);
   };

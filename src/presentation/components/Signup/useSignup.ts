@@ -38,6 +38,7 @@ export const useSignup = () => {
     register,
     handleSubmit,
     clearErrors,
+    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
@@ -45,6 +46,7 @@ export const useSignup = () => {
 
   const handleClose = () => {
     clearErrors();
+    reset();
     setSignupModalIsOpen(false);
   };
 

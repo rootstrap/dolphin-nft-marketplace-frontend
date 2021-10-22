@@ -62,7 +62,7 @@
   "nft": {
     "floorPrice": "Floor Price",
     "price": "Price",
-    "editionNumber": "Number",
+    "editionNumber": "Edition",
     "totalReleased": "Total Released",
     "forSale": "For Sale",
     "buyButton": "Buy Now",

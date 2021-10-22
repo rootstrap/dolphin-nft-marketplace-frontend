@@ -1,63 +1,71 @@
 import { useKycMutation } from 'infrastructure/services/user/UserService';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 import useTranslation from 'app/hooks/useTranslation';
 
-const initialFormValues = {
-  fullName: '',
-  country: '',
-  province: '',
-  dateOfBirth: '',
-  postalCode: '',
-  streetAddress: '',
-  notCriminalRecord: true,
-  notExposedPerson: true,
-};
+interface FormValues {
+  fullName: string;
+  country: string;
+  state: string;
+  dateOfBirth: Date;
+  postalCode: string;
+  streetAddress: string;
+  notCriminalRecord: boolean;
+  notExposedPerson: boolean;
+}
 
 export const useKYC = () => {
   const t = useTranslation();
   const [kyc, { isLoading, isSuccess, isError }] = useKycMutation();
-  const [formValues, setFormValues] = useState(initialFormValues);
   const [error, setError] = useState('');
-  const { kycModalIsOpen, setKycModalIsOpen, setCcModalIsOpen, ccModalIsOpen } = useContext(ModalContext);
-  const { fullName, country, province, dateOfBirth, postalCode, streetAddress } = formValues;
+  const { kycModalIsOpen, setKycModalIsOpen } = useContext(ModalContext);
 
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setFormValues({
-      ...formValues,
-      [event.target.name]: event.target.value,
-    });
-  };
+  const schema = z.object({
+    fullName: z.string().min(2, { message: 'Field Required' }),
+    country: z.string().min(2, { message: 'Field Required' }),
+    state: z.string().min(2, { message: 'Field Required' }),
+    dateOfBirth: z.string().min(7, { message: 'Field Required' }),
+    postalCode: z.string().min(2, { message: 'Field Required' }),
+    streetAddress: z.string().min(2, { message: 'Field Required' }),
+  });
 
-  const handleOnChangeCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setFormValues({
-      ...formValues,
-      [event.target.name]: event.target.checked,
-    });
-  };
+  const {
+    register,
+    handleSubmit,
+    clearErrors,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(schema) });
 
-  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setError('');
-    kyc({ fullName, country, province, dateOfBirth, postalCode, streetAddress });
-    setKycModalIsOpen(false);
-    setCcModalIsOpen(true);
-  };
+  const onSubmit: SubmitHandler<FormValues> = data => kyc(data);
 
   const handleClose = () => {
-    setFormValues(initialFormValues);
-    setError('');
+    clearErrors();
     setKycModalIsOpen(false);
   };
 
+  useEffect(() => {
+    if (isSuccess) {
+      handleClose();
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      setError(t('login.error.systemError'));
+    }
+  }, [isError]);
+
   return {
-    formValues,
     kycModalIsOpen,
-    ccModalIsOpen,
     handleClose,
-    handleOnSubmit,
+    isLoading,
+    register,
+    handleSubmit,
+    onSubmit,
+    errors,
     error,
-    handleOnChange,
-    handleOnChangeCheck,
   };
 };

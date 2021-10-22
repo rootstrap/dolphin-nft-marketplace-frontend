@@ -1,30 +1,32 @@
 import { Button, Typography } from '@material-ui/core';
-import { InputText } from 'infrastructure/components/InputText/InputText';
+import { InputText } from '../../../infrastructure/components/InputText/InputText';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { useSignup } from './useSignup';
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import useTranslation from 'app/hooks/useTranslation';
 import routesPaths from 'app/constants/routesPath';
-import styles from './Signup.module.scss';
 import dolphinBall from 'app/assets/blue_ball.png';
+import styles from './Signup.module.scss';
 
 export const Signup = () => {
   const t = useTranslation();
   const {
-    formValues: { email, firstName, lastName, password, passwordConfirmation },
     signupModalIsOpen,
     handleOpenSigninModal,
     handleClose,
-    handleOnSubmit,
+    isLoading,
+    register,
+    handleSubmit,
+    onSubmit,
+    errors,
     error,
-    handleOnChange,
   } = useSignup();
 
   return (
     <BaseModal open={signupModalIsOpen} handleClose={handleClose}>
       <img src={dolphinBall} alt="dolphin ball" className={styles.signupForm__img} />
-      <form className={styles.signupForm} onSubmit={handleOnSubmit}>
+      <form className={styles.signupForm} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.signupForm__title}>
           <Typography variant="h5">{t('signup.title')}</Typography>
         </div>
@@ -41,10 +43,9 @@ export const Signup = () => {
               className={styles.signupForm__input}
               label={t('signup.firstName')}
               name="firstName"
+              register={register}
               type="text"
-              value={firstName}
-              error={!!error}
-              onChange={handleOnChange}
+              error={errors.firstName}
               size="small"
             />
           </Grid>
@@ -53,10 +54,9 @@ export const Signup = () => {
               className={styles.signupForm__input}
               label={t('signup.lastName')}
               name="lastName"
+              register={register}
               type="text"
-              value={lastName}
-              error={!!error}
-              onChange={handleOnChange}
+              error={errors.lastName}
               size="small"
             />
           </Grid>
@@ -65,10 +65,9 @@ export const Signup = () => {
               className={styles.signupForm__input}
               label={t('signup.email')}
               name="email"
+              register={register}
               type="email"
-              value={email}
-              error={!!error}
-              onChange={handleOnChange}
+              error={errors.email}
               size="small"
             />
           </Grid>
@@ -77,10 +76,9 @@ export const Signup = () => {
               className={styles.signupForm__input}
               label={t('signup.password')}
               name="password"
+              register={register}
               type="password"
-              value={password}
-              error={!!error}
-              onChange={handleOnChange}
+              error={errors.password}
               size="small"
             />
           </Grid>
@@ -89,10 +87,9 @@ export const Signup = () => {
               className={styles.signupForm__input}
               label={t('signup.passwordConfirmation')}
               name="passwordConfirmation"
+              register={register}
               type="password"
-              value={passwordConfirmation}
-              error={!!error}
-              onChange={handleOnChange}
+              error={errors.passwordConfirmation}
               size="small"
             />
           </Grid>

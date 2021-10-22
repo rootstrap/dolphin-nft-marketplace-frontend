@@ -1,54 +1,50 @@
 import { useSignupMutation } from 'infrastructure/services/user/UserService';
 import { useContext, useEffect, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { PASSWORD_REGEX } from 'app/constants/contants';
+import * as z from 'zod';
 import useTranslation from 'app/hooks/useTranslation';
 
-const initialFormValues = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  passwordConfirmation: '',
-};
+interface FormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  passwordConfirmation: string;
+}
 
 export const useSignup = () => {
   const t = useTranslation();
   const [signup, { isLoading, isSuccess, isError }] = useSignupMutation();
   const { signupModalIsOpen, setSignupModalIsOpen, setLoginModalIsOpen } = useContext(ModalContext);
   const [error, setError] = useState('');
-  const [formValues, setFormValues] = useState(initialFormValues);
 
-  const { firstName, lastName, email, password, passwordConfirmation } = formValues;
-
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setFormValues({
-      ...formValues,
-      [event.target.name]: event.target.value,
+  const schema = z
+    .object({
+      firstName: z.string().min(3, { message: t('signup.error.firstNameError') }),
+      lastName: z.string().min(3, { message: t('signup.error.lastNameError') }),
+      email: z.string().email({ message: t('signup.error.emailError') }),
+      password: z.string().regex(PASSWORD_REGEX, { message: t('signup.error.passwordError') }),
+      passwordConfirmation: z.string().regex(PASSWORD_REGEX, { message: t('signup.error.passwordError') }),
+    })
+    .refine(data => data.password === data.passwordConfirmation, {
+      message: t('signup.error.passwordConfirmationError'),
+      path: ['passwordConfirmation'],
     });
-  };
 
-  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    clearErrors,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(schema) });
 
-    if (
-      firstName.trim().length < 4 ||
-      lastName.trim().length < 4 ||
-      email.trim().length < 6 ||
-      password.trim().length < 8
-    ) {
-      return setError(t('signup.inputError'));
-    }
-
-    if (password.trim() !== passwordConfirmation.trim()) {
-      return setError(t('signup.passwordError'));
-    }
-
-    signup({ firstName, lastName, email, password });
-  };
+  const onSubmit: SubmitHandler<FormValues> = data => signup(data);
 
   const handleClose = () => {
-    setFormValues(initialFormValues);
-    setError('');
+    clearErrors();
     setSignupModalIsOpen(false);
   };
 
@@ -65,17 +61,19 @@ export const useSignup = () => {
 
   useEffect(() => {
     if (isError) {
-      setError(t('login.systemError'));
+      setError(t('signup.error.systemError'));
     }
   }, [isError]);
 
   return {
-    formValues,
-    handleOpenSigninModal,
     signupModalIsOpen,
+    handleOpenSigninModal,
     handleClose,
-    handleOnSubmit,
+    isLoading,
+    register,
+    handleSubmit,
+    onSubmit,
+    errors,
     error,
-    handleOnChange,
   };
 };

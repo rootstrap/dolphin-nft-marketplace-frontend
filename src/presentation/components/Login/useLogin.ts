@@ -1,42 +1,38 @@
 import { useLoginMutation } from 'infrastructure/services/user/UserService';
 import { useEffect, useContext, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 import useTranslation from 'app/hooks/useTranslation';
 
-const initialFormValues = {
-  email: '',
-  password: '',
-};
+interface FormValues {
+  email: string;
+  password: string;
+}
 
 export const useLogin = () => {
   const t = useTranslation();
   const [login, { isLoading, isSuccess, isError }] = useLoginMutation();
   const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
   const [error, setError] = useState('');
-  const [formValues, setFormValues] = useState(initialFormValues);
 
-  const { email, password } = formValues;
+  const schema = z.object({
+    email: z.string().email({ message: t('login.error.invalidEmail') }),
+    password: z.string().min(1, { message: t('login.error.requiredPassword') }),
+  });
 
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setFormValues({
-      ...formValues,
-      [event.target.name]: event.target.value,
-    });
-  };
+  const {
+    register,
+    handleSubmit,
+    clearErrors,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(schema) });
 
-  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setError('');
-
-    if (email.trim().length < 6 || password.trim().length < 8) {
-      return setError(t('signup.inputError'));
-    }
-    login({ email, password });
-  };
+  const onSubmit: SubmitHandler<FormValues> = data => login(data);
 
   const handleClose = () => {
-    setFormValues(initialFormValues);
-    setError('');
+    clearErrors();
     setLoginModalIsOpen(false);
   };
 
@@ -53,18 +49,19 @@ export const useLogin = () => {
 
   useEffect(() => {
     if (isError) {
-      setError(t('login.systemError'));
+      setError(t('login.error.systemError'));
     }
   }, [isError]);
 
   return {
-    formValues,
     loginModalIsOpen,
     handleOpenSignupModal,
     handleClose,
-    handleOnSubmit,
     isLoading,
+    register,
+    handleSubmit,
+    onSubmit,
+    errors,
     error,
-    handleOnChange,
   };
 };

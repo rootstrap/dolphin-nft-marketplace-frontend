@@ -9,13 +9,15 @@
   padding: 2rem 1rem;
 
   &__img {
-    display:block;
-    margin:auto;
+    display: block;
+    margin: auto;
   }
 
   &__title {
     margin-bottom: 1rem;
-    h5 { font-weight: bold; }
+    h5 {
+      font-weight: bold;
+    }
   }
 
   &__error {

@@ -95,9 +95,7 @@ export const Signup = () => {
           </Grid>
           <Grid item xs={12}>
             <div className={styles.signupForm__button}>
-              <Button fullWidth type="submit">
-                {t('signup.button')}
-              </Button>
+              <Button type="submit">{t('signup.button')}</Button>
             </div>
           </Grid>
           <Grid item xs={12}>

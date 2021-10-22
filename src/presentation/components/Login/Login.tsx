@@ -7,26 +7,27 @@ import { Grid } from '@material-ui/core';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import useTranslation from '../../../app/hooks/useTranslation';
 import routesPaths from '../../../app/constants/routesPath';
-import styles from './Login.module.scss';
 import dolphinBall from 'app/assets/blue_ball.png';
+import styles from './Login.module.scss';
 
 export const Login = () => {
   const t = useTranslation();
   const {
-    formValues: { email, password },
     loginModalIsOpen,
     handleOpenSignupModal,
     handleClose,
-    handleOnSubmit,
     isLoading,
+    register,
+    handleSubmit,
+    onSubmit,
+    errors,
     error,
-    handleOnChange,
   } = useLogin();
 
   return (
     <BaseModal open={loginModalIsOpen} handleClose={handleClose}>
       <img src={dolphinBall} alt="dolphin ball" className={styles.loginForm__img} />
-      <form className={styles.loginForm} onSubmit={handleOnSubmit}>
+      <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.loginForm__title}>
           <Typography variant="h5">{t('login.title')}</Typography>
         </div>
@@ -42,22 +43,20 @@ export const Login = () => {
             <InputText
               className={styles.loginForm__input}
               label={t('login.email')}
+              register={register}
               name="email"
               type="email"
-              value={email}
-              error={!!error}
-              onChange={handleOnChange}
+              error={errors.email}
             />
           </Grid>
           <Grid item xs={12}>
             <InputText
               className={styles.loginForm__input}
               label={t('login.password')}
+              register={register}
               name="password"
               type="password"
-              value={password}
-              error={!!error}
-              onChange={handleOnChange}
+              error={errors.password}
             />
           </Grid>
           <Grid item xs={12}>

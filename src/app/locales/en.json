@@ -78,9 +78,6 @@
     "editionNumberColumn": "Edition #",
     "priceColumn": "Sale Price"
   },
-  "creditCard": {
-    "invalidError": "Invalid Credit Card"
-  },
   "login": {
     "title": "Sign in",
     "email": "E-mail",
@@ -89,7 +86,11 @@
     "button": "Sign in",
     "signupMsg": "Don’t have an account yet?",
     "signupLink": "Sign up",
-    "systemError": "Something went wrong!"
+    "error": {
+      "systemError": "Something went wrong!",
+      "invalidEmail": "Invalid email format",
+      "requiredPassword": "Password is required"
+    }
   },
   "signup": {
     "title": "Sign Up",
@@ -102,7 +103,38 @@
     "passwordError": "Passwords don't match",
     "button": "Sign up",
     "signinMsg": "Already have an account?",
-    "signinLink": "Sign in"
+    "signinLink": "Sign in",
+    "error": {
+      "systemError": "Something went wrong!",
+      "firstNameError": "FirstName shoud be at least 3 chars long",
+      "lastNameError": "Lastname shoud be at least 3 chars long",
+      "emailError": "Invalid email format",
+      "passwordError": "Password must have at least 8 characters and include uppercase, lowercase, symbols and digits",
+      "passwordConfirmationError": "Passwords don't match"
+    }
+  },
+  "kyc": {
+    "title": "Set your wallet to continue",
+    "fullName": "Full name",
+    "birth": "Date of Birth",
+    "country": "Country of residency",
+    "state": "State / Province",
+    "postalCode": "Zip Code",
+    "address": "Street Adress",
+    "criminalRecord": "I certify that I do not have a criminal record",
+    "notExposedPerson": "I certify that I am not a politically exposed person or government official",
+    "button": "Continue →"
+  },
+  "creditCard": {
+    "title": "Add a credit card",
+    "fullName": "Full name",
+    "cardNumber": "Card number",
+    "code": "Security Code",
+    "expireDate": "Expire date",
+    "button": "Finish →",
+    "error": {
+      "invalidError": "Invalid Credit Card"
+    }
   },
   "bottomBar": {
     "terms": "Terms of use",

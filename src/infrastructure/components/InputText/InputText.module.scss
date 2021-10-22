@@ -1,0 +1,8 @@
+@import '../../../app/styles/base/settings';
+
+.inputText {
+  &__error {
+    color: $error;
+    font-size: $font-size-small;
+  }
+}

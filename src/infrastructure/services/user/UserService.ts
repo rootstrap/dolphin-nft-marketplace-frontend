@@ -17,7 +17,7 @@ const authApi = api.injectEndpoints({
         body: {
           fullLegalName: kyc.fullName,
           country: kyc.country,
-          stateProvinceRegion: kyc.province,
+          stateProvinceRegion: kyc.state,
           dateOfBirth: kyc.dateOfBirth,
           postalCode: kyc.postalCode,
           streetAddress: kyc.streetAddress,
@@ -78,18 +78,19 @@ interface DepositBody {
 interface KycBody {
   fullName: string;
   country: string;
-  province: string;
-  dateOfBirth: string;
+  state: string;
+  dateOfBirth: Date;
   postalCode: string;
   streetAddress: string;
+  notCriminalRecord: boolean;
+  notExposedPerson: boolean;
 }
 
 interface CcBody {
-  name: string;
-  ccNumber: string;
-  cvv: string;
-  expiryMonth: string;
-  expiryYear: string;
+  fullName: string;
+  ccNumber: number;
+  cvv: number;
+  expiryDate: Date;
   country: string;
   district: string;
   address1: string;

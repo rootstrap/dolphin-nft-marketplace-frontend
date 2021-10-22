@@ -10,7 +10,9 @@
 
   &__title {
     margin-bottom: 1rem;
-    h5 { font-weight: bold; }
+    h5 {
+      font-weight: bold;
+    }
   }
 
   &__error {
@@ -22,14 +24,14 @@
     text-align: left;
   }
 
-  &__button {
-    margin: 1rem 2rem 4rem 2rem;
-  }
-
-  &__checkContainer {
+  &__checkbox {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     text-align: left;
+  }
+
+  &__button {
+    margin: 1rem 2rem 4rem 2rem;
   }
 }

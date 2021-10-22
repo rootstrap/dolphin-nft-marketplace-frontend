@@ -1,70 +1,79 @@
 import { useCcMutation } from 'infrastructure/services/user/UserService';
 import { useContext, useEffect, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 import useTranslation from 'app/hooks/useTranslation';
 
-const initialFormValues = {
-  name: '',
-  ccNumber: '',
-  cvv: '',
-  expiryMonth: '',
-  expiryYear: '',
-  country: '',
-  district: '',
-  address1: '',
-  address2: '',
-  city: '',
-  postalCode: '',
-};
+interface FormValues {
+  fullName: string;
+  ccNumber: number;
+  cvv: number;
+  expiryDate: Date;
+  country: string;
+  district: string;
+  address1: string;
+  address2: string;
+  city: string;
+  postalCode: string;
+}
 
 export const useCC = () => {
   const t = useTranslation();
   const [cc, { isLoading, isSuccess, isError }] = useCcMutation();
-  const [formValues, setFormValues] = useState(initialFormValues);
   const [error, setError] = useState('');
   const { ccModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
 
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const { name, value } = event.target;
-    setFormValues({
-      ...formValues,
-      [event.target.name]: event.target.value,
-    });
-  };
+  const schema = z.object({
+    fullName: z.string().min(5, { message: 'Field Required' }),
+    ccNumber: z.string().min(16, { message: 'Invalid Credit Card Number' }),
+    cvv: z.string().min(3, { message: 'Invalid CVV Number' }),
+    expiryDate: z.date(),
+    country: z.string().min(3, { message: 'Field Required' }),
+    district: z.string().min(2, { message: 'Field Required' }),
+    address1: z.string().min(3, { message: 'Field Required' }),
+    address2: z.string().min(3, { message: 'Field Required' }),
+    city: z.string().min(3, { message: 'Field Required' }),
+    postalCode: z.string().min(3, { message: 'Field Required' }),
+  });
 
-  const handleOnChangeCheck = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setFormValues({
-      ...formValues,
-      [event.target.name]: event.target.checked,
-    });
-  };
+  const {
+    register,
+    handleSubmit,
+    clearErrors,
+    reset,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(schema) });
 
-  const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setError('');
-
-    await cc(formValues);
-  };
+  const onSubmit: SubmitHandler<FormValues> = data => cc(data);
 
   const handleClose = () => {
-    setFormValues(initialFormValues);
-    setError('');
+    reset();
+    clearErrors();
     setCcModalIsOpen(false);
   };
 
   useEffect(() => {
     if (isSuccess) {
-      setError(t('creditCard.invalidError'));
+      handleClose();
     }
   }, [isSuccess]);
 
+  useEffect(() => {
+    if (isError) {
+      setError(t('login.error.systemError'));
+    }
+  }, [isError]);
+
   return {
-    formValues,
     ccModalIsOpen,
     handleClose,
-    handleOnSubmit,
+    isLoading,
+    register,
+    handleSubmit,
+    onSubmit,
+    errors,
     error,
-    handleOnChange,
-    handleOnChangeCheck,
   };
 };

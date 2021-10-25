@@ -114,11 +114,11 @@ export const {
   useKycMutation,
   useCcMutation,
   endpoints: {
-    cc: { matchFulfilled: ccFulfiled },
-    kyc: { matchFulfilled: kycFulfiled },
-    login: { matchFulfilled: loginFulfiled },
-    logout: { matchFulfilled: logoutFulfiled },
     signup: { matchFulfilled: signupFulfiled },
+    login: { matchFulfilled: loginFulfiled },
+    cc: { matchFulfilled: ccFulfiled, matchRejected: ccRejected },
+    kyc: { matchFulfilled: kycFulfiled, matchRejected: kycRejected },
+    logout: { matchFulfilled: logoutFulfiled, matchRejected: logoutRejected },
     deposit: { matchFulfilled: depositFulfiled },
   },
 } = authApi;

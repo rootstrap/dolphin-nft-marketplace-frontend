@@ -1,11 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { ErrorReqHandler } from 'app/helpers/ErrorReqHandler';
 import {
   ccFulfiled,
+  ccRejected,
   kycFulfiled,
+  kycRejected,
   loginFulfiled,
   logoutFulfiled,
+  logoutRejected,
   signupFulfiled,
-  depositFulfiled,
 } from 'infrastructure/services/user/UserService';
 
 const initialState: UserState = {
@@ -17,6 +20,7 @@ const initialState: UserState = {
     lastName: '',
     email: '',
     kyc1ed: false,
+    kyc2ed: false,
     id: 0,
   },
   token: '',
@@ -28,26 +32,32 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addMatcher(loginFulfiled, (state, { payload: { token, user } }) => {
-      state.isAuthenticated = true;
-      state.token = token;
-      state.user = { ...user };
-    });
-    builder.addMatcher(logoutFulfiled, state => {
-      state.isAuthenticated = false;
-      state.token = '';
-      state.user = initialState.user;
-    });
     builder.addMatcher(signupFulfiled, (state, { payload: { token, user } }) => {
       state.isAuthenticated = true;
       state.token = token;
       state.user = { ...user };
     });
+    builder.addMatcher(loginFulfiled, (state, { payload: { token, user } }) => {
+      state.isAuthenticated = true;
+      state.token = token;
+      state.user = { ...user };
+    });
+    builder.addMatcher(logoutFulfiled, state => (state = initialState));
+    builder.addMatcher(logoutRejected, (state, { payload: { status } }) => {
+      ErrorReqHandler({ status });
+    });
     builder.addMatcher(kycFulfiled, state => {
       state.user.kyc1ed = true;
     });
-    builder.addMatcher(ccFulfiled, (state, { payload: resp }) => {});
-    builder.addMatcher(depositFulfiled, (state, { payload: resp }) => {});
+    builder.addMatcher(kycRejected, (state, { payload: { status } }) => {
+      ErrorReqHandler({ status });
+    });
+    builder.addMatcher(ccFulfiled, state => {
+      state.user.kyc2ed = true;
+    });
+    builder.addMatcher(ccRejected, (state, { payload: { status } }) => {
+      ErrorReqHandler({ status });
+    });
   },
 });
 
@@ -59,6 +69,7 @@ interface User {
   lastName: string;
   email: string;
   kyc1ed: boolean;
+  kyc2ed: boolean;
   id: number;
 }
 

@@ -30,7 +30,7 @@ export const useCC = () => {
     name: z.string().min(3, { message: t('creditCard.error.requiredField') }),
     ccNumber: z.string().min(16, { message: t('creditCard.error.creditCardNumber') }),
     cvv: z.string().min(3, { message: t('creditCard.error.cvvNumber') }),
-    expiryMonth: z.string().length(1, { message: t('creditCard.error.expiryMonth') }),
+    expiryMonth: z.string().min(1, { message: t('creditCard.error.expiryMonth') }),
     expiryYear: z.string().length(4, { message: t('creditCard.error.expiryYear') }),
     country: z.string().length(3, { message: t('creditCard.error.country') }),
     district: z.string().length(2, { message: t('creditCard.error.district') }),

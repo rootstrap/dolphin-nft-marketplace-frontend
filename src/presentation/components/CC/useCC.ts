@@ -30,7 +30,7 @@ export const useCC = () => {
     name: z.string().min(3, { message: 'Field Required' }),
     ccNumber: z.string().min(16, { message: 'Invalid Credit Card Number' }),
     cvv: z.string().min(3, { message: 'Invalid CVV Number' }),
-    expiryMonth: z.string().length(2, { message: 'Month should be formatted as MM' }),
+    expiryMonth: z.string(),
     expiryYear: z.string().length(4, { message: 'Year should be formatted as YYYY' }),
     country: z.string().length(3, { message: 'Country should be formatted as XXX' }),
     district: z.string().length(2, { message: 'Country should be formatted as XX' }),

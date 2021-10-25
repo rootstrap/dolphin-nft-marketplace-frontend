@@ -27,17 +27,17 @@ export const useCC = () => {
   const { ccModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
 
   const schema = z.object({
-    name: z.string().min(3, { message: 'Field Required' }),
-    ccNumber: z.string().min(16, { message: 'Invalid Credit Card Number' }),
-    cvv: z.string().min(3, { message: 'Invalid CVV Number' }),
-    expiryMonth: z.string().length(2, { message: 'Month should be formatted as MM' }),
-    expiryYear: z.string().length(4, { message: 'Year should be formatted as YYYY' }),
-    country: z.string().length(3, { message: 'Country should be formatted as XXX' }),
-    district: z.string().length(2, { message: 'Country should be formatted as XX' }),
-    address1: z.string().min(3, { message: 'Field Required' }),
+    name: z.string().min(3, { message: t('creditCard.error.requiredField') }),
+    ccNumber: z.string().min(16, { message: t('creditCard.error.creditCardNumber') }),
+    cvv: z.string().min(3, { message: t('creditCard.error.cvvNumber') }),
+    expiryMonth: z.string().min(1, { message: t('creditCard.error.expiryMonth') }),
+    expiryYear: z.string().length(4, { message: t('creditCard.error.expiryYear') }),
+    country: z.string().length(3, { message: t('creditCard.error.country') }),
+    district: z.string().length(2, { message: t('creditCard.error.district') }),
+    address1: z.string().min(3, { message: t('creditCard.error.requiredField') }),
     address2: z.string(),
-    city: z.string().min(2, { message: 'Field Required' }),
-    postalCode: z.string().min(3, { message: 'Field Required' }),
+    city: z.string().min(2, { message: t('creditCard.error.requiredField') }),
+    postalCode: z.string().min(3, { message: t('creditCard.error.requiredField') }),
   });
 
   const {

@@ -142,7 +142,14 @@
     "postalCode": "Zip Code",
     "button": "Finish →",
     "error": {
-      "invalidError": "Invalid Credit Card"
+      "invalidError": "Invalid Credit Card",
+      "requiredField": "Field Required",
+      "creditCardNumber": "Invalid Credit Card Number",
+      "cvvNumber": "Invalid CVV Number",
+      "expiryMonth": "Month should be formatted as M or MM",
+      "expiryYear": "Year should be formatted as YYYY",
+      "country": "Country should be formatted as XXX",
+      "district": "State should be formatted as XX"
     }
   },
   "bottomBar": {

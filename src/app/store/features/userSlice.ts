@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ErrorReqHandler } from 'app/helpers/ErrorReqHandler';
 import {
-  ccFulfiled,
-  ccRejected,
+  createCreditCardFulfiled,
+  createCreditCardRejected,
+} from 'infrastructure/services/creditCard/CreditCardService';
+import {
   kycFulfiled,
   kycRejected,
   loginFulfiled,
@@ -52,10 +54,10 @@ const userSlice = createSlice({
     builder.addMatcher(kycRejected, (state, { payload: { status } }) => {
       ErrorReqHandler({ status });
     });
-    builder.addMatcher(ccFulfiled, state => {
+    builder.addMatcher(createCreditCardFulfiled, state => {
       state.user.kyc2ed = true;
     });
-    builder.addMatcher(ccRejected, (state, { payload: { status } }) => {
+    builder.addMatcher(createCreditCardRejected, (state, { payload: { status } }) => {
       ErrorReqHandler({ status });
     });
   },

@@ -24,13 +24,6 @@ const authApi = api.injectEndpoints({
         },
       }),
     }),
-    cc: builder.mutation({
-      query: (cc: CcBody) => ({
-        url: endpoints.CC,
-        method: 'POST',
-        body: cc,
-      }),
-    }),
     deposit: builder.mutation({
       query: (deposit: DepositBody) => ({
         url: endpoints.DEPOSIT,
@@ -86,20 +79,6 @@ interface KycBody {
   notExposedPerson: boolean;
 }
 
-interface CcBody {
-  name: string;
-  ccNumber: number;
-  cvv: number;
-  expiryMonth: number;
-  expiryYear: number;
-  country: string;
-  district: string;
-  address1: string;
-  address2: string;
-  city: string;
-  postalCode: string;
-}
-
 interface SignupBody {
   firstName: string;
   lastName: string;
@@ -112,13 +91,11 @@ export const {
   useLogoutMutation,
   useSignupMutation,
   useKycMutation,
-  useCcMutation,
   endpoints: {
     signup: { matchFulfilled: signupFulfiled },
     login: { matchFulfilled: loginFulfiled },
-    cc: { matchFulfilled: ccFulfiled, matchRejected: ccRejected },
-    kyc: { matchFulfilled: kycFulfiled, matchRejected: kycRejected },
     logout: { matchFulfilled: logoutFulfiled, matchRejected: logoutRejected },
+    kyc: { matchFulfilled: kycFulfiled, matchRejected: kycRejected },
     deposit: { matchFulfilled: depositFulfiled },
   },
 } = authApi;

@@ -40,6 +40,7 @@ export const PASSWORD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{
 
 export const CIRCLE_FAILURE_CODES = {
   // Payment error codes
+  no_error: '',
   payment_failed: 'Payment failed with external processor',
   payment_fraud_detected: 'Card suspected to be used for fraud',
   payment_denied: "Payment denied by our external processor's risk service",

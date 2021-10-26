@@ -1,4 +1,4 @@
-import { Typography, Checkbox, Button } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 import { InputText } from 'infrastructure/components/InputText/InputText';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { useCC } from './useCC';

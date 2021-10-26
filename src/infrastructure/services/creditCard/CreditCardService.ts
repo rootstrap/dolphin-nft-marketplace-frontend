@@ -31,10 +31,6 @@ interface CreditCardBody {
   postalCode: string;
 }
 
-interface CreditCardResponse {
-  data: CreditCardData;
-}
-
 interface CreditCardData {
   billingInfo: BillingInfo;
   data: {
@@ -63,5 +59,6 @@ export const {
   useGetCreditCardMutation,
   endpoints: {
     createCreditCard: { matchFulfilled: createCreditCardFulfiled, matchRejected: createCreditCardRejected },
+    getCreditCard: { matchFulfilled: getCreditCardFulfiled, matchRejected: getCreditCardRejected },
   },
 } = creditCardApi;

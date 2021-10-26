@@ -1,4 +1,4 @@
-import { useCcMutation } from 'infrastructure/services/user/UserService';
+import { useCreateCreditCardMutation } from 'infrastructure/services/creditCard/CreditCardService';
 import { useContext, useEffect, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -22,9 +22,11 @@ interface FormValues {
 
 export const useCC = () => {
   const t = useTranslation();
-  const [cc, { isLoading, isSuccess, isError }] = useCcMutation();
+  const [createCreditCard, { isLoading, isSuccess, isError }] = useCreateCreditCardMutation();
+
   const [error, setError] = useState('');
-  const { ccModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
+  const { ccModalIsOpen, setCcModalIsOpen, ccStatusModalIsOpen, setCcStatusModalIsOpen } =
+    useContext(ModalContext);
 
   const schema = z.object({
     name: z.string().min(3, { message: t('creditCard.error.requiredField') }),
@@ -48,7 +50,7 @@ export const useCC = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
-  const onSubmit: SubmitHandler<FormValues> = data => cc(data);
+  const onSubmit: SubmitHandler<FormValues> = data => createCreditCard(data);
 
   const handleClose = () => {
     reset();
@@ -59,6 +61,7 @@ export const useCC = () => {
   useEffect(() => {
     if (isSuccess) {
       handleClose();
+      setCcStatusModalIsOpen(true);
     }
   }, [isSuccess]);
 
@@ -70,6 +73,8 @@ export const useCC = () => {
 
   return {
     ccModalIsOpen,
+    ccStatusModalIsOpen,
+    setCcStatusModalIsOpen,
     handleClose,
     isLoading,
     register,

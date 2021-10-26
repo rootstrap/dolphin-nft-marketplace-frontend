@@ -4,10 +4,11 @@ import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { useSignup } from './useSignup';
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import useTranslation from 'app/hooks/useTranslation';
+import styles from './Signup.module.scss';
 import routesPaths from 'app/constants/routesPath';
 import dolphinBall from 'app/assets/blue_ball.png';
-import styles from './Signup.module.scss';
+import useTranslation from 'app/hooks/useTranslation';
+import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 
 export const Signup = () => {
   const t = useTranslation();
@@ -94,9 +95,13 @@ export const Signup = () => {
             />
           </Grid>
           <Grid item xs={12}>
-            <div className={styles.signupForm__button}>
-              <Button type="submit">{t('signup.button')}</Button>
-            </div>
+            {isLoading ? (
+              <CustomLoader />
+            ) : (
+              <div className={styles.signupForm__button}>
+                <Button type="submit">{t('signup.button')}</Button>
+              </div>
+            )}
           </Grid>
           <Grid item xs={12}>
             <div>

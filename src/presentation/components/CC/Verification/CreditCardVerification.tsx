@@ -7,7 +7,7 @@ import styles from './CreditCardVerification.module.scss';
 
 export const CreditCardVerification = () => {
   const { isLoading, creditCardStatus, errorMsg, handleCheckStatus } = useCCVerification();
-  const [creditCardAmount, setCreditCardAmount] = useState<string>('');
+  const [creditCardAmount, setCreditCardAmount] = useState<number>();
 
   return (
     <div>
@@ -27,7 +27,7 @@ export const CreditCardVerification = () => {
           <TextField
             type="number"
             value={creditCardAmount}
-            onChange={e => setCreditCardAmount(e.target.value)}
+            onChange={e => setCreditCardAmount(Number(e.target.value))}
             variant="outlined"
             fullWidth
           />

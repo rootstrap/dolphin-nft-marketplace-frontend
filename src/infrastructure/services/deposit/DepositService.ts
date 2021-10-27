@@ -17,7 +17,7 @@ const depositApi = api.injectEndpoints({
 });
 
 interface DepositBody {
-  amount: string;
+  amount: number;
   cardId: number;
 }
 

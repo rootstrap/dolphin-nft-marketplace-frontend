@@ -23,6 +23,7 @@ const initialState: UserState = {
     email: '',
     kyc1ed: false,
     kyc2ed: false,
+    creditCardId: 0,
     id: 0,
   },
   token: '',
@@ -54,8 +55,8 @@ const userSlice = createSlice({
     builder.addMatcher(kycRejected, (state, { payload: { status } }) => {
       ErrorReqHandler({ status });
     });
-    builder.addMatcher(createCreditCardFulfiled, state => {
-      state.user.kyc2ed = true;
+    builder.addMatcher(createCreditCardFulfiled, (state, { payload: { ftxCardId } }) => {
+      state.user.creditCardId = ftxCardId;
     });
     builder.addMatcher(createCreditCardRejected, (state, { payload: { status } }) => {
       ErrorReqHandler({ status });
@@ -72,6 +73,7 @@ interface User {
   email: string;
   kyc1ed: boolean;
   kyc2ed: boolean;
+  creditCardId: number;
   id: number;
 }
 

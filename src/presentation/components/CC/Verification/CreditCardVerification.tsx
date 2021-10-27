@@ -1,16 +1,14 @@
-import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { Button, Typography } from '@material-ui/core';
-import { useCC } from '../useCC';
 import { useCCVerification } from './useCCVerification';
 import { CIRCLE_FAILURE_CODES } from 'app/constants/contants';
+import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import styles from './CCVerification.module.scss';
 
-export const CCVerification = () => {
-  const { ccStatusModalIsOpen, setCcStatusModalIsOpen } = useCC();
+export const CreditCardVerification = () => {
   const { isLoading, creditCardStatus, errorMsg, handleCheckStatus } = useCCVerification();
 
   return (
-    <BaseModal open={ccStatusModalIsOpen} handleClose={() => setCcStatusModalIsOpen(false)}>
+    <div>
       <div className={styles.ccVerification}>
         <Typography gutterBottom variant="h5">{`Credit Card Status: ${creditCardStatus}`}</Typography>
 
@@ -21,10 +19,8 @@ export const CCVerification = () => {
           >{`Description: ${CIRCLE_FAILURE_CODES[errorMsg]}`}</Typography>
         )}
 
-        <Button onClick={handleCheckStatus} disabled={isLoading}>
-          Check Status
-        </Button>
+        {isLoading ? <CustomLoader /> : <Button onClick={handleCheckStatus}>Check Status</Button>}
       </div>
-    </BaseModal>
+    </div>
   );
 };

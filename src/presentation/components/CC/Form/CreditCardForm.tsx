@@ -8,7 +8,8 @@ import styles from './CreditCardForm.module.scss';
 
 export const CreditCardForm = () => {
   const t = useTranslation();
-  const { isSuccess, isLoading, register, handleSubmit, onSubmit, errors, error } = useCreditCardForm();
+  const { isSuccess, isLoading, register, handleSubmit, onSubmit, errors, error, creditCardError } =
+    useCreditCardForm();
 
   const componentToRender = isSuccess ? (
     <CreditCardVerification />

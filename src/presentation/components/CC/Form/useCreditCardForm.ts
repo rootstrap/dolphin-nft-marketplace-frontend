@@ -22,7 +22,8 @@ interface FormValues {
 
 export const useCreditCardForm = () => {
   const t = useTranslation();
-  const [createCreditCard, { isLoading, isSuccess, isError }] = useCreateCreditCardMutation();
+  const [createCreditCard, { error: creditCardError, isLoading, isSuccess, isError }] =
+    useCreateCreditCardMutation();
   const [error, setError] = useState('');
 
   const schema = z.object({
@@ -62,7 +63,7 @@ export const useCreditCardForm = () => {
 
   useEffect(() => {
     if (isError) {
-      setError(t('login.error.systemError'));
+      setError('Credit Card Validation Failed in FTX');
     }
   }, [isError]);
 
@@ -73,6 +74,7 @@ export const useCreditCardForm = () => {
     onSubmit,
     errors,
     error,
+    creditCardError,
     isSuccess,
   };
 };

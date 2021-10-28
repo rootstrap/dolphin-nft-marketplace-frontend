@@ -128,7 +128,7 @@
     "country": "Country of residency",
     "state": "State / Province",
     "postalCode": "Zip Code",
-    "address": "Street Adress",
+    "address": "Street Address",
     "criminalRecord": "I certify that I do not have a criminal record",
     "notExposedPerson": "I certify that I am not a politically exposed person or government official",
     "button": "Continue →"
@@ -141,7 +141,7 @@
     "expireMonth": "Expire Month",
     "expireYear": "Expire Year",
     "country": "Country of residency",
-    "district": "Discrict",
+    "district": "State",
     "addressL1": "Address 1",
     "addressL2": "Address 2",
     "city": "City",

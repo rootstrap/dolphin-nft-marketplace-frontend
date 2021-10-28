@@ -32,9 +32,14 @@ export const theme = createTheme({
         textTransform: 'none',
         width: '10rem',
         padding: '2rem',
-        border: 'solid 2px',
         borderRadius: 0,
         fontSize: '1.2rem',
+      },
+      outlinedSecondary: {
+        border: 'solid 2px',
+        '&:hover': {
+          border: 'solid 2px',
+        },
       },
       contained: {
         border: 'none',

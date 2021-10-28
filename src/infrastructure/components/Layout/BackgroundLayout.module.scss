@@ -10,10 +10,10 @@
 
   &__item {
     width: 100%;
-    border-right: solid 1px $dark-grey;
+    border-right: solid 1px $darkest-grey;
   }
 
   &__item:first-child {
-    border-left: solid 1px $dark-grey;
+    border-left: solid 1px $darkest-grey;
   }
 }

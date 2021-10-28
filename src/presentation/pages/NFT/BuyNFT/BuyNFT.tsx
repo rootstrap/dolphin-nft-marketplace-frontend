@@ -34,9 +34,7 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
           <div className={buyStyles.buyContent__walletContainer}>
             <Typography component="div">{t('nft.buyNft.activateWallet')}</Typography>
 
-            <Button variant="text" onClick={handleOnClick}>
-              {t('nft.buyNft.activateButton')}
-            </Button>
+            <Button onClick={handleOnClick}>{t('nft.buyNft.activateButton')}</Button>
           </div>
           <div className={buyStyles.buyContent__buttonContainer}>
             <div className={buyStyles.buyContent__priceContainer}>

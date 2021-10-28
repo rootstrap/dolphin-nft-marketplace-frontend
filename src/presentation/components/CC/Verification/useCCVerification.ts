@@ -13,7 +13,6 @@ export const useCCVerification = () => {
 
   const loadData = async () => {
     const data: any = await getCreditCardById(String(creditCardId));
-    console.log(data);
 
     if (isSuccess) {
       setCreditCardStatus(data.data.status);

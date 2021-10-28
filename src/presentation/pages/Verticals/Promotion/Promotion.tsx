@@ -1,0 +1,41 @@
+import { Grid, Typography } from '@material-ui/core';
+import styles from './Promotion.module.scss';
+
+export const Promotion = ({ imgSrc, title, subtitle, primaryText, secondaryText }: PromotionProps) => {
+  return (
+    <Grid container className={styles.promotion}>
+      <Grid item xs={12} md={6} lg={4}>
+        <div className={styles.promotion__imgContainer}>
+          <img className={styles.promotion__imgContainerImg} src={imgSrc} alt="" />
+        </div>
+      </Grid>
+      <Grid item xs={12} md={6} lg={8}>
+        <Grid container>
+          <Grid item lg={12}>
+            <Typography className={styles.promotion__title} variant="h6">
+              {title}
+            </Typography>
+            <Typography className={styles.promotion__subtitle} gutterBottom variant="h5">
+              {subtitle}
+            </Typography>
+          </Grid>
+          <Grid item lg={5}>
+            {primaryText}
+          </Grid>
+          <Grid item lg={1}></Grid>
+          <Grid item lg={6}>
+            {secondaryText}
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+};
+
+interface PromotionProps {
+  imgSrc: string;
+  title: string;
+  subtitle: string;
+  primaryText: string;
+  secondaryText: string;
+}

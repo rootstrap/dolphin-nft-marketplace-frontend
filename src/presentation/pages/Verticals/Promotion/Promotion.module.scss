@@ -1,0 +1,11 @@
+@import '../../../../app/styles/base/settings';
+
+.promotion {
+  background-color: black;
+  padding: 2rem;
+  text-align: justify;
+
+  &__title {
+    color: $orange;
+  }
+}

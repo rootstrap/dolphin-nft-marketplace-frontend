@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { AddBox } from '@material-ui/icons';
+import { ReactComponent as PlusBox } from 'app/assets/squareplus.svg';
 
 export const MainImg = ({ link, src, alt, styles, disabled = false }: MainImgProps) => (
   <Link to={`verticals/${link.toLowerCase()}`} className={disabled ? styles.disabledLink : ''}>
@@ -9,7 +9,7 @@ export const MainImg = ({ link, src, alt, styles, disabled = false }: MainImgPro
       </div>
 
       <div className={styles.mainContent__itemIcon}>
-        {!disabled && <AddBox color="secondary" fontSize="large" />}
+        {!disabled && <PlusBox />}
         <span className={disabled ? styles.disabledLink : ''}>{link}</span>
       </div>
     </div>

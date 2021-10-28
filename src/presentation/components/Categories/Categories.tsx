@@ -7,7 +7,14 @@ export const Categories = ({ anchorEl = null, handleClose }: CategoriesProps) =>
   const open = Boolean(anchorEl);
 
   return (
-    <Menu open={open} anchorEl={anchorEl} onClose={handleClose}>
+    <Menu
+      open={open}
+      anchorEl={anchorEl}
+      onClose={handleClose}
+      getContentAnchorEl={null}
+      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+    >
       <div className={styles.categories}>
         {dropDownListCategories.map(category => (
           <Link to={category.route}>

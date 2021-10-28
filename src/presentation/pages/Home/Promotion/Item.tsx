@@ -17,7 +17,6 @@ export const Item = ({ id, name, totalQuantity, image, verticalId, styles }: Ite
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <img src={New} alt="New" className={styles.promotionContent__itemContentNew} />
         <img src={image} alt="Promotion" className={styles.promotionContent__itemContentImg} />
 
         {isVisible && (

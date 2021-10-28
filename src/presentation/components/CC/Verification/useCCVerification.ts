@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import { CIRCLE_FAILURE_CODES } from 'app/constants/contants';
-import { useGetCreditCardMutation } from 'infrastructure/services/creditCard/CreditCardService';
+import { useGetCreditCardByIdMutation } from 'infrastructure/services/creditCard/CreditCardService';
 import { useCreateDepositMutation } from 'infrastructure/services/deposit/DepositService';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 
 export const useCCVerification = () => {
-  const [getCreditCard, { isSuccess, isLoading }] = useGetCreditCardMutation();
+  const [getCreditCardById, { isSuccess, isLoading }] = useGetCreditCardByIdMutation();
   const [creditCardStatus, setCreditCardStatus] = useState<CreditCardStatus>('pending');
   const [errorMsg, setErrorMsg] = useState<ErrorMsg>('no_error');
   const [createDeposit, { isLoading: isDepositLoading }] = useCreateDepositMutation();
   const { creditCardId } = useAppSelector(state => state.user.user);
 
   const loadData = async () => {
-    const data: any = await getCreditCard();
+    const data: any = await getCreditCardById(String(creditCardId));
 
     if (isSuccess) {
       setCreditCardStatus(data.data.status);

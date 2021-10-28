@@ -1,7 +1,6 @@
 @import 'app/styles/base/settings';
 
 .topBar {
-
   margin-bottom: 4.5rem;
 
   &__logo {
@@ -13,6 +12,7 @@
       display: flex;
       color: white;
       justify-content: space-evenly;
+      cursor: pointer;
     }
     text-align: center;
 

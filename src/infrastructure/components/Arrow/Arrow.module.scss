@@ -1,7 +1,9 @@
 @import '../../../app/styles/base/settings';
 
 .arrow {
+  cursor: pointer;
   background-color: $black;
   border: none;
   color: white;
+  padding: 2rem 0;
 }

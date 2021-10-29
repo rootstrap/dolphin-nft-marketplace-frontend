@@ -8,7 +8,7 @@ const depositApi = api.injectEndpoints({
         url: endpoints.DEPOSIT,
         method: 'POST',
         body: {
-          amount: deposit.amount,
+          size: deposit.size,
           cardId: deposit.cardId,
         },
       }),
@@ -17,7 +17,7 @@ const depositApi = api.injectEndpoints({
 });
 
 interface DepositBody {
-  amount: number;
+  size: number;
   cardId: number;
 }
 

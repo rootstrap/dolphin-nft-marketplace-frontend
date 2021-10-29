@@ -22,7 +22,7 @@ export const useCCVerification = () => {
 
   const loadDeposit = async (creditCardAmount: number) => {
     const data: any = await createDeposit({
-      amount: creditCardAmount,
+      size: creditCardAmount,
       cardId: creditCardId,
     });
     console.log(data);

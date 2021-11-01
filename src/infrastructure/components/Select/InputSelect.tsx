@@ -6,9 +6,18 @@ export const InputSelect = ({ className, label = '', name, error, register, opti
   return (
     <div className={className}>
       <Typography>{label}</Typography>
-      <Select {...register(name)} variant="outlined" fullWidth error={!!error} color="secondary">
+      <Select
+        {...register(name)}
+        variant="outlined"
+        fullWidth
+        error={!!error}
+        color="secondary"
+        defaultValue=""
+      >
         {options.map(option => (
-          <MenuItem value={option.code}>{option.name}</MenuItem>
+          <MenuItem key={option.code} value={option.code}>
+            {option.name}
+          </MenuItem>
         ))}
       </Select>
       <small className={styles.inputSelect__error}>{error?.message}</small>

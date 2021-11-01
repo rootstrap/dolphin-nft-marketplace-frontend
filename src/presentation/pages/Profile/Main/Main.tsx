@@ -1,5 +1,5 @@
 import { Typography } from '@material-ui/core';
-import { Facebook, PersonOutlined, Twitter } from '@material-ui/icons';
+import { PersonOutlined, Twitter } from '@material-ui/icons';
 import { ReactComponent as Discord } from 'app/assets/Discord.svg';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import styles from './Main.module.scss';

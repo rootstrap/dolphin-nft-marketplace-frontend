@@ -21,7 +21,6 @@ export const Main = () => {
   const handleClosePeersModal = () => setIsPeersModalOpen(false);
   const handleOpenPeersModal = () => setIsPeersModalOpen(true);
 
-  console.log(nft);
   const componentToRender = showItemDescription ? (
     <>
       <Grid container spacing={0}>

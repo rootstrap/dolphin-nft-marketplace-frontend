@@ -114,10 +114,10 @@
     "signinLink": "Sign in",
     "error": {
       "systemError": "Something went wrong!",
-      "firstNameError": "FirstName shoud be at least 3 chars long",
-      "lastNameError": "Lastname shoud be at least 3 chars long",
+      "firstNameError": "First name must be at least 3 characters long",
+      "lastNameError": "Last name must be at least 3 characters long",
       "emailError": "Invalid email format",
-      "passwordError": "Password must have at least 8 characters and include uppercase, lowercase, symbols and digits",
+      "passwordError": "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one symbol and one number",
       "passwordConfirmationError": "Passwords don't match"
     }
   },

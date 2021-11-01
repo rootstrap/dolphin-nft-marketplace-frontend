@@ -8,10 +8,15 @@ export const api = createApi({
     baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).user.token;
+      const tokenFtx = (getState() as RootState).user.tokenFtx;
 
       // If we have a token set in state, let's assume that we should be passing it.
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
+      }
+
+      if (headers.get('ftxAuthorization')) {
+        headers.set('authorization', `Bearer ${tokenFtx}`);
       }
 
       return headers;

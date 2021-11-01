@@ -27,6 +27,7 @@ const initialState: UserState = {
     id: 0,
   },
   token: '',
+  tokenFtx: '',
   isAuthenticated: false,
 };
 
@@ -35,14 +36,16 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addMatcher(signupFulfiled, (state, { payload: { token, user } }) => {
+    builder.addMatcher(signupFulfiled, (state, { payload: { token, tokenFtx, user } }) => {
       state.isAuthenticated = true;
       state.token = token;
+      state.tokenFtx = tokenFtx;
       state.user = { ...user };
     });
-    builder.addMatcher(loginFulfiled, (state, { payload: { token, user } }) => {
+    builder.addMatcher(loginFulfiled, (state, { payload: { token, tokenFtx, user } }) => {
       state.isAuthenticated = true;
       state.token = token;
+      state.tokenFtx = tokenFtx;
       state.user = { ...user };
     });
     builder.addMatcher(logoutFulfiled, state => (state = initialState));
@@ -80,6 +83,7 @@ interface User {
 interface UserState {
   user: User;
   token: string;
+  tokenFtx: string;
   isAuthenticated: boolean;
 }
 

@@ -47,6 +47,7 @@ export const theme = createTheme({
         color: 'white',
         width: 'min-content',
         margin: '1rem 0',
+        padding: '0.5rem',
       },
       text: {
         margin: '0 0.5rem',

@@ -74,7 +74,7 @@
     "buyButton": "Buy Now",
     "peersButton": "Browse By Edition",
     "buyNft": {
-      "activateWallet": "Please activate your wallet to perform your fist purchase",
+      "activateWallet": "You must activate your wallet in order to start your collection. You only need to do this once!",
       "activateButton": "Activate Wallet ",
       "price": "Price: ",
       "continueButton": "Activate your wallet to continue",

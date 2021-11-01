@@ -4,6 +4,8 @@ import { ModalContext } from 'app/context/ModalContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { useGetCountriesMutation } from 'infrastructure/services/user/UserService';
+import { Country } from 'app/interfaces/common/Country';
 import useTranslation from 'app/hooks/useTranslation';
 
 interface FormValues {
@@ -24,7 +26,9 @@ export const useCreditCardForm = () => {
   const t = useTranslation();
   const [createCreditCard, { error: creditCardError, isLoading, isSuccess, isError }] =
     useCreateCreditCardMutation();
+  const [getCountries] = useGetCountriesMutation();
   const [error, setError] = useState('');
+  const [countries, setCountries] = useState<Country[]>([]);
 
   const schema = z.object({
     name: z.string().min(3, { message: t('creditCard.error.requiredField') }),
@@ -55,6 +59,15 @@ export const useCreditCardForm = () => {
     clearErrors();
   };
 
+  const loadData = async () => {
+    const data: any = await getCountries('');
+    setCountries(data.data);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
   useEffect(() => {
     if (isSuccess) {
       handleClose();
@@ -76,5 +89,6 @@ export const useCreditCardForm = () => {
     error,
     creditCardError,
     isSuccess,
+    countries,
   };
 };

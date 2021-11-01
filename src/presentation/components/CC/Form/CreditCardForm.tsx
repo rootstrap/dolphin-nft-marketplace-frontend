@@ -1,5 +1,6 @@
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Button, Grid, MenuItem, Select, Typography } from '@material-ui/core';
 import { InputText } from 'infrastructure/components/InputText/InputText';
+import { InputSelect } from 'infrastructure/components/Select/InputSelect';
 import { useCreditCardForm } from './useCreditCardForm';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { CreditCardVerification } from '../Verification/CreditCardVerification';
@@ -8,7 +9,7 @@ import styles from './CreditCardForm.module.scss';
 
 export const CreditCardForm = () => {
   const t = useTranslation();
-  const { isSuccess, isLoading, register, handleSubmit, onSubmit, errors, error, creditCardError } =
+  const { isSuccess, isLoading, register, handleSubmit, onSubmit, errors, error, countries } =
     useCreditCardForm();
 
   const componentToRender = isSuccess ? (
@@ -70,13 +71,12 @@ export const CreditCardForm = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <InputText
+          <InputSelect
             className={styles.creditCardForm__input}
             label={t('creditCard.country')}
             register={register}
             name="country"
-            type="text"
-            error={errors.country}
+            options={countries}
           />
         </Grid>
         <Grid item xs={12}>

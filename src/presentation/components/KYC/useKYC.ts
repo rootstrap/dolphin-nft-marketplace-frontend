@@ -1,9 +1,10 @@
-import { useKycMutation } from 'infrastructure/services/user/UserService';
+import { useGetCountriesMutation, useKycMutation } from 'infrastructure/services/user/UserService';
 import { useContext, useEffect, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { Country } from 'app/interfaces/common/Country';
 import useTranslation from 'app/hooks/useTranslation';
 
 interface FormValues {
@@ -20,7 +21,10 @@ interface FormValues {
 export const useKYC = () => {
   const t = useTranslation();
   const [kyc, { isLoading, isSuccess, isError }] = useKycMutation();
+  const [getCountries] = useGetCountriesMutation();
+
   const [error, setError] = useState('');
+  const [countries, setCountries] = useState<Country[]>([]);
   const { kycModalIsOpen, setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
 
   const schema = z.object({
@@ -48,6 +52,15 @@ export const useKYC = () => {
     setKycModalIsOpen(false);
   };
 
+  const loadData = async () => {
+    const data: any = await getCountries('');
+    setCountries(data.data);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
   useEffect(() => {
     if (isSuccess) {
       setCcModalIsOpen(true);
@@ -70,5 +83,6 @@ export const useKYC = () => {
     onSubmit,
     errors,
     error,
+    countries,
   };
 };

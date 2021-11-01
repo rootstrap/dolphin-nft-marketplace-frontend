@@ -1,6 +1,5 @@
+import { useEffect, useState } from 'react';
 import { useCreateCreditCardMutation } from 'infrastructure/services/creditCard/CreditCardService';
-import { useContext, useEffect, useState } from 'react';
-import { ModalContext } from 'app/context/ModalContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';

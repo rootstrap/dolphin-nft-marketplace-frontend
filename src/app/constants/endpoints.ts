@@ -8,3 +8,7 @@ export const endpoints = {
 
   NFT: '/nft',
 };
+
+export const ftxEndpoints = {
+  baseUrl: 'https://ftx.us/api/',
+};

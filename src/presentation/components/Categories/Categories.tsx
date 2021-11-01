@@ -9,6 +9,7 @@ export const Categories = ({ anchorEl = null, handleClose }: CategoriesProps) =>
   return (
     <Menu
       open={open}
+      disableScrollLock
       anchorEl={anchorEl}
       onClose={handleClose}
       getContentAnchorEl={null}

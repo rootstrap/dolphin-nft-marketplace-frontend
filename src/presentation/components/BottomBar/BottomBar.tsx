@@ -19,9 +19,6 @@ export const BottomBar = () => {
         <a href={socialMediaLinks.facebook} target="_blank">
           <Facebook />
         </a>
-        <a href={socialMediaLinks.discord} target="_blank">
-          <Discord />
-        </a>
       </Grid>
       <Grid item xs={4} md={2} lg={2}>
         {t('bottomBar.terms')}

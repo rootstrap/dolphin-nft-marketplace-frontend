@@ -3,6 +3,7 @@ export const endpoints = {
   SIGN_OUT: '/auth/logout',
   SIGN_UP: '/auth/signup',
   KYC: '/kyc',
+  COUNTRIES: '/countries',
   CREDIT_CARD: '/cc',
   DEPOSIT: '/deposit',
 

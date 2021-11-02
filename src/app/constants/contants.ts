@@ -23,7 +23,7 @@ export const dropDownListCategories = [
   },
   {
     key: 2,
-    value: 'Arts (coming soon)',
+    value: 'Creature Chronicles (coming soon)',
     disabled: true,
     route: '/verticals/arts',
   },

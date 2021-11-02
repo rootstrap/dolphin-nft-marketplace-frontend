@@ -18,7 +18,7 @@
   },
   "home": {
     "title": "Athletes collection",
-    "collection": "collection",
+    "collection": "collections",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "latestSection": {
       "description": "Check the lattest NFTs for sale by collectors"
@@ -43,11 +43,11 @@
   },
   "sports": {
     "title": "Real fans never leave early",
-    "description": "Collectibles for the tailgaters, face painters, court stormers, and jersey burners. For the fanatics that live for The Hail Marys, buzzer beaters, walk-offs and winning shots"
+    "description": "Collectibles for the tailgaters, face painters, court stormers, and jersey burners. For the fanatics that live for The Hail Marys, buzzer beaters, walk-offs and winning shots."
   },
   "profile": {
     "collectionTitle": "My Collection",
-    "emptyList": "You don’t have any collectibles in your gallery yet"
+    "emptyList": "You don’t have any collectibles in your gallery yet. Start your collection."
   },
   "verticals": {
     "listTitle": "Explore and select your NFT",
@@ -74,7 +74,7 @@
     "buyButton": "Buy Now",
     "peersButton": "Browse By Edition",
     "buyNft": {
-      "activateWallet": "Please activate your wallet to perform your fist purchase",
+      "activateWallet": "You must activate your wallet in order to start your collection. You only need to do this once!",
       "activateButton": "Activate Wallet ",
       "price": "Price: ",
       "continueButton": "Activate your wallet to continue",
@@ -114,10 +114,10 @@
     "signinLink": "Sign in",
     "error": {
       "systemError": "Something went wrong!",
-      "firstNameError": "FirstName shoud be at least 3 chars long",
-      "lastNameError": "Lastname shoud be at least 3 chars long",
+      "firstNameError": "First name must be at least 3 characters long",
+      "lastNameError": "Last name must be at least 3 characters long",
       "emailError": "Invalid email format",
-      "passwordError": "Password must have at least 8 characters and include uppercase, lowercase, symbols and digits",
+      "passwordError": "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one symbol and one number",
       "passwordConfirmationError": "Passwords don't match"
     }
   },

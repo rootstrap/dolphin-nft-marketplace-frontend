@@ -1,4 +1,5 @@
 import { endpoints } from 'app/constants/endpoints';
+import { Country } from 'app/interfaces/common/Country';
 import { api } from '../Api';
 
 const authApi = api.injectEndpoints({
@@ -43,6 +44,10 @@ const authApi = api.injectEndpoints({
         },
       }),
     }),
+    getCountries: builder.mutation<Country[], string>({
+      query: () => `${endpoints.COUNTRIES}`,
+      transformResponse: (data: Country[]) => data,
+    }),
   }),
   overrideExisting: true,
 });
@@ -79,6 +84,7 @@ export const {
   useLogoutMutation,
   useSignupMutation,
   useKycMutation,
+  useGetCountriesMutation,
   endpoints: {
     signup: { matchFulfilled: signupFulfiled },
     login: { matchFulfilled: loginFulfiled },

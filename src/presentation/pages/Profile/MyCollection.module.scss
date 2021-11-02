@@ -62,8 +62,10 @@
 
   &__items {
     padding: 4rem;
+  }
 
-    &Msg {
+  &__collection {
+    &Btn {
       display: flex;
       justify-content: center;
     }

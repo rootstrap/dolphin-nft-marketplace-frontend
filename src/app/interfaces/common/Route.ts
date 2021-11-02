@@ -1,8 +1,8 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement } from 'react';
 
 export interface Route {
-	path: string;
-	component: ReactElement;
-	exact?: boolean;
-	private?: boolean;
+  path: string;
+  component: ReactElement;
+  exact?: boolean;
+  private?: boolean;
 }

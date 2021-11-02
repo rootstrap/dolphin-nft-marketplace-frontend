@@ -1,6 +1,5 @@
 import { Grid } from '@material-ui/core';
 import { Facebook, Instagram, Twitter } from '@material-ui/icons';
-import { ReactComponent as Discord } from 'app/assets/Discord.svg';
 import { socialMediaLinks } from 'app/constants/contants';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './BottomBar.module.scss';
@@ -10,17 +9,14 @@ export const BottomBar = () => {
   return (
     <Grid container className={styles.bottomBar}>
       <Grid item xs={4} md={3} lg={3} className={styles.bottomBar__social}>
-        <a href={socialMediaLinks.instagram} target="_blank">
+        <a href={socialMediaLinks.instagram} target="_blank" rel="noreferrer">
           <Instagram />
         </a>
-        <a href={socialMediaLinks.twitter} target="_blank">
+        <a href={socialMediaLinks.twitter} target="_blank" rel="noreferrer">
           <Twitter />
         </a>
-        <a href={socialMediaLinks.facebook} target="_blank">
+        <a href={socialMediaLinks.facebook} target="_blank" rel="noreferrer">
           <Facebook />
-        </a>
-        <a href={socialMediaLinks.discord} target="_blank">
-          <Discord />
         </a>
       </Grid>
       <Grid item xs={4} md={2} lg={2}>

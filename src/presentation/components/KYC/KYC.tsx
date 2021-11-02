@@ -5,11 +5,21 @@ import { useKYC } from './useKYC';
 import { Grid } from '@material-ui/core';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './KYC.module.scss';
+import { InputSelect } from 'infrastructure/components/Select/InputSelect';
 
 export const KYC = () => {
   const t = useTranslation();
-  const { kycModalIsOpen, handleClose, isLoading, register, handleSubmit, onSubmit, errors, error } =
-    useKYC();
+  const {
+    kycModalIsOpen,
+    handleClose,
+    isLoading,
+    register,
+    handleSubmit,
+    onSubmit,
+    errors,
+    error,
+    countries,
+  } = useKYC();
 
   return (
     <BaseModal open={kycModalIsOpen} handleClose={handleClose}>
@@ -46,13 +56,13 @@ export const KYC = () => {
             />
           </Grid>
           <Grid item xs={12}>
-            <InputText
+            <InputSelect
               className={styles.kycForm__input}
               label={t('kyc.country')}
               register={register}
               name="country"
-              type="text"
               error={errors.country}
+              options={countries}
             />
           </Grid>
           <Grid item xs={12}>

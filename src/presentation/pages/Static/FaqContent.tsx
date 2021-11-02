@@ -1,11 +1,7 @@
-import { useContext } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import styles from './Faq.module.scss';
-import useTranslation from 'app/hooks/useTranslation';
 
 export const FaqContent = () => {
-  const t = useTranslation();
-
   return (
     <Grid container className={styles.faqContent}>
       <Grid item xs={2}></Grid>

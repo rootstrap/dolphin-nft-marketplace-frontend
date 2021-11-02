@@ -1,8 +1,7 @@
+import { useState } from 'react';
 import { Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import New from 'app/assets/New.png';
 import useTranslation from 'app/hooks/useTranslation';
-import { useState } from 'react';
 
 export const Item = ({ id, name, totalQuantity, image, verticalId, styles }: ItemProps) => {
   const t = useTranslation();

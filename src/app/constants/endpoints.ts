@@ -13,3 +13,8 @@ export const endpoints = {
 export const ftxEndpoints = {
   baseUrl: 'https://ftx.us/api/',
 };
+
+export const zendeskEndpoints = {
+  baseUrl: 'https://dolphinentertainment.zendesk.com/api/v2/',
+  articles: 'https://dolphinentertainment.zendesk.com/hc/en-us',
+};

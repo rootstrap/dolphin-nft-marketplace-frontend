@@ -1,8 +1,7 @@
 import { Grid, Typography } from '@material-ui/core';
-import { zendeskEndpoints } from 'app/constants/endpoints';
 import { useFaq } from './useFaq';
-import styles from './Faq.module.scss';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
+import styles from './Faq.module.scss';
 
 export const FaqContent = () => {
   const { isLoading, faqs } = useFaq();
@@ -21,7 +20,7 @@ export const FaqContent = () => {
 
           <Grid item lg={12} className={styles.faqContent__question}>
             <Typography component="div" variant="subtitle2">
-              <a href={zendeskEndpoints.articles} target="_blank" rel="noreferrer">
+              <a href={process.env.REACT_APP_ZENDESK_URL} target="_blank" rel="noreferrer">
                 Answer
               </a>
             </Typography>

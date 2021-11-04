@@ -1,0 +1,14 @@
+@import 'app/styles/base/settings';
+
+.faqContent {
+  display: flex;
+  text-align: center;
+  &__question {
+    color: #f58550;
+    padding: 2rem;
+  }
+
+  &__answer {
+    margin-bottom: 3rem;
+  }
+}

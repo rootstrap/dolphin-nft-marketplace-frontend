@@ -1,7 +1,7 @@
 import NFTPage from 'presentation/pages/NFT/NFTPage';
 import HomePage from 'presentation/pages/Home/HomePage';
 import MyCollection from 'presentation/pages/Profile/MyCollection';
-import FaqWrapper from 'presentation/pages/Static/FaqWrapper';
+import FAQPage from 'presentation/pages/FAQ/FAQPage';
 import ProfilePage from 'presentation/pages/Profile/ProfilePage';
 import VerticalPage from 'presentation/pages/Verticals/VerticalPage';
 import NFTByIdPage from 'presentation/pages/NFTByFtxId/NFTByIdPage';
@@ -45,7 +45,7 @@ export const routes: Route[] = [
   },
   {
     path: routesPaths.faq,
-    component: <FaqWrapper />,
+    component: <FAQPage />,
     private: true,
   },
 ];

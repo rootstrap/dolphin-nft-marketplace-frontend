@@ -1,19 +1,34 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Button, Grid, Typography } from '@material-ui/core';
 import { ModalContext } from 'app/context/ModalContext';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import { NFT } from 'app/interfaces/NFT/NFT';
+import { useGetCreditCardFeesMutation } from 'infrastructure/services/creditCard/CreditCardService';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Buy.module.scss';
 
 export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
   const t = useTranslation();
+  const [fee, setFee] = useState<number>(0);
   const { setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
   const { user } = useAppSelector(state => state.user);
 
+  const [getCreditCardFees] = useGetCreditCardFeesMutation();
   const handleOnClick = () => {
     user.kyc1ed ? setCcModalIsOpen(true) : setKycModalIsOpen(true);
   };
+
+  const loadData = async () => {
+    const data: any = await getCreditCardFees();
+    const { fixed, variable } = data.data;
+    const fees = (nft.offerPrice * variable + fixed).toFixed(2);
+
+    setFee(fees);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   return (
     <Grid container spacing={2}>
@@ -49,6 +64,15 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
               </Typography>
               <Typography variant="h4" className={styles.buyContent__priceContainer__price}>
                 {nft?.quoteCurrency} ${nft?.offerPrice}
+              </Typography>
+            </div>
+
+            <div className={styles.buyContent__priceContainer}>
+              <Typography variant="h6" className={styles.buyContent__priceContainer__label}>
+                Fee:
+              </Typography>
+              <Typography variant="h6" className={styles.buyContent__priceContainer__price}>
+                ${fee}
               </Typography>
             </div>
 

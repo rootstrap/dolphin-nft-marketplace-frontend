@@ -1,11 +1,10 @@
-import { ftxEndpoints } from 'app/constants/endpoints';
 import { api } from '../Api';
 
 const depositApi = api.injectEndpoints({
   endpoints: builder => ({
     createDeposit: builder.mutation({
       query: (deposit: DepositBody) => ({
-        url: `${ftxEndpoints.baseUrl}cards/${deposit.cardId}/deposit_verify_attempt`,
+        url: `${process.env.REACT_APP_FTX_API_URL}/cards/${deposit.cardId}/deposit_verify_attempt`,
         method: 'POST',
         headers: {
           ftxAuthorization: 'yes',

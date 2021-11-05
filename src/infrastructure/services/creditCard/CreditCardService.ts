@@ -18,6 +18,10 @@ const creditCardApi = api.injectEndpoints({
       query: (id: string) => `${endpoints.CREDIT_CARD}/${id}`,
       transformResponse: (response: CreditCardData) => response,
     }),
+    getCreditCardFees: builder.mutation<FeeResult, void>({
+      query: () => `${process.env.REACT_APP_FTX_API_URL}/cards/fees`,
+      transformResponse: (response: Fee) => response.result,
+    }),
   }),
 });
 
@@ -58,10 +62,19 @@ interface BillingInfo {
   postalCode: string;
 }
 
+interface FeeResult {
+  fixed: number;
+  variable: number;
+}
+interface Fee {
+  result: FeeResult;
+}
+
 export const {
   useCreateCreditCardMutation,
   useGetCreditCardMutation,
   useGetCreditCardByIdMutation,
+  useGetCreditCardFeesMutation,
   endpoints: {
     createCreditCard: { matchFulfilled: createCreditCardFulfiled, matchRejected: createCreditCardRejected },
     getCreditCard: { matchFulfilled: getCreditCardFulfiled, matchRejected: getCreditCardRejected },

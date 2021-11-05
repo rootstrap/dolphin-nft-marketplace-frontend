@@ -3,7 +3,7 @@ import styles from './Modal.module.scss';
 import closeBtn from 'app/assets/close.svg';
 
 export const BaseModal = ({ open, handleClose, children, bigModal = false }: ModalProps) => (
-  <Modal open={open} onClose={handleClose} style={{}}>
+  <Modal open={open} onClose={handleClose} style={{}} disableScrollLock>
     <div className={styles.modal} style={bigModal ? { width: '70%' } : {}}>
       <button className={styles.modal__close} onClick={handleClose} type="button">
         <img src={closeBtn} alt="close" />

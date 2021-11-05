@@ -6,10 +6,7 @@
 
   &__btn {
     background: transparent;
-    color: #c4c4c4!important;
-    border-color: #c4c4c4!important;
-    margin-bottom: 0.5rem!important;
-  } 
+  }
 
   &__buttonContainer {
     display: flex;
@@ -38,7 +35,6 @@
   }
 
   &__item {
-
     &Description {
       display: flex;
       flex-direction: column;
@@ -61,7 +57,9 @@
     &Img {
       img {
         width: 100%;
+        max-width: 100%;
         height: auto;
+        max-height: 100%;
       }
     }
   }

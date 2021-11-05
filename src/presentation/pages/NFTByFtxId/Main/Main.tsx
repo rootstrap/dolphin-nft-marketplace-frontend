@@ -6,8 +6,8 @@ import { useNFT } from './useNFT';
 import { useState } from 'react';
 import { BuyNFT } from '../BuyNFT/BuyNFT';
 import { Peers } from 'presentation/components/Peers/Peers';
-import styles from './Main.module.scss';
 import { useAppSelector } from 'app/hooks/reduxHooks';
+import styles from './Main.module.scss';
 
 export const Main = () => {
   const { ftxId } = useParams<{ ftxId: string }>();
@@ -25,11 +25,11 @@ export const Main = () => {
     <>
       <Grid container spacing={0}>
         <Grid item className={styles.mainContent__item} xs={1}></Grid>
-        <Grid item className={styles.mainContent__item} xs={9} lg={4}>
+        <Grid item className={styles.mainContent__item} xs={12} md={8} lg={4}>
           <iframe className={styles.mainContent__itemVideo} src={nft?.videoUrl} title={nft?.name} />
         </Grid>
-        <Grid item className={styles.mainContent__item} xs={1}></Grid>
-        <Grid item className={styles.mainContent__item} xs={9} lg={5}>
+        <Grid item className={styles.mainContent__item} md={2} lg={1}></Grid>
+        <Grid item className={styles.mainContent__item} xs={12} md={12} lg={4}>
           <Item
             nft={nft}
             styles={styles}
@@ -37,13 +37,11 @@ export const Main = () => {
             handleShowDescription={handleShowDescription}
           />
         </Grid>
-        <Grid item className={styles.mainContent__item} xs={1}></Grid>
+        <Grid item className={styles.mainContent__item} lg={2}></Grid>
       </Grid>
     </>
   ) : (
-    <Grid item className={styles.mainContent__item} xs={12}>
-      <BuyNFT nft={nft} handleShowDescription={handleShowDescription} />
-    </Grid>
+    <BuyNFT nft={nft} handleShowDescription={handleShowDescription} />
   );
 
   return (

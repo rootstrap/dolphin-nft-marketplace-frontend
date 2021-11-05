@@ -147,6 +147,16 @@
     "city": "City",
     "postalCode": "Zip Code",
     "button": "Finish →",
+    "verification": {
+      "title": "We need to verify your card to continue",
+      "description": "This is just a security step. Please enter the amount we just charged to your credit card.",
+      "label": "Introduce the charge on your credit card",
+      "button": "Verify →",
+      "question": "Didn't receive any charges?",
+      "link": "Try again",
+      "loadingMsg": "We are processing your data, this might take a few seconds...",
+      "successMsg": "Great! Your credit card was verified successfully"
+    },
     "error": {
       "invalidError": "Invalid Credit Card",
       "requiredField": "Field Required",

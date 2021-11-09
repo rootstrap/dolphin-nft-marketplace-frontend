@@ -9,7 +9,7 @@ import routesPaths from 'app/constants/routesPath';
 import dolphinBall from 'app/assets/blue_ball.png';
 import useTranslation from 'app/hooks/useTranslation';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
-import { useReCaptcha } from '../ReCaptcha/useReCaptcha';
+import { useReCaptcha } from 'app/hooks/useReCaptcha';
 
 export const Signup = () => {
   const t = useTranslation();

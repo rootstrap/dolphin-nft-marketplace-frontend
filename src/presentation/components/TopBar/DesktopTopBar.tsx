@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { Button, Grid, Typography } from '@material-ui/core';
-import { PersonOutlined } from '@material-ui/icons';
+import { CreditCard, PersonOutlined } from '@material-ui/icons';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import { ModalContext } from 'app/context/ModalContext';
 import { Link, useLocation } from 'react-router-dom';
@@ -65,6 +65,10 @@ export const DesktopTopBar = () => {
               <Link to={routesPaths.profile}>
                 <PersonOutlined />
               </Link>
+            </div>
+
+            <div className={styles.topBar__itemButtonCards}>
+              <CreditCard />
             </div>
 
             <Link to={routesPaths.index} onClick={handleLogout}>

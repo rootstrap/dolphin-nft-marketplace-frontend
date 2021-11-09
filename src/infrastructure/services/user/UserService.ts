@@ -41,6 +41,7 @@ const authApi = api.injectEndpoints({
           lastName: user.lastName,
           email: user.email,
           password: user.password,
+          recaptcha: user.recaptcha,
         },
       }),
     }),
@@ -77,6 +78,7 @@ interface SignupBody {
   lastName: string;
   email: string;
   password: string;
+  recaptcha: string;
 }
 
 export const {

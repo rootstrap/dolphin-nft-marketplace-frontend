@@ -9,6 +9,7 @@ import routesPaths from 'app/constants/routesPath';
 import dolphinBall from 'app/assets/blue_ball.png';
 import useTranslation from 'app/hooks/useTranslation';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
+import { useReCaptcha } from '../ReCaptcha/useReCaptcha';
 
 export const Signup = () => {
   const t = useTranslation();
@@ -23,6 +24,7 @@ export const Signup = () => {
     errors,
     error,
   } = useSignup();
+  const { token } = useReCaptcha();
 
   return (
     <BaseModal open={signupModalIsOpen} handleClose={handleClose}>
@@ -92,6 +94,14 @@ export const Signup = () => {
               type="password"
               error={errors.passwordConfirmation}
               size="small"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <input
+              className={styles.signupForm__input}
+              {...register('recaptcha')}
+              value={token}
+              type="hidden"
             />
           </Grid>
           <Grid item xs={12}>

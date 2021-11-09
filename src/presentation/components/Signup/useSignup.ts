@@ -13,6 +13,7 @@ interface FormValues {
   email: string;
   password: string;
   passwordConfirmation: string;
+  recaptcha: string;
 }
 
 export const useSignup = () => {
@@ -28,6 +29,7 @@ export const useSignup = () => {
       email: z.string().email({ message: t('signup.error.emailError') }),
       password: z.string().regex(PASSWORD_REGEX, { message: t('signup.error.passwordError') }),
       passwordConfirmation: z.string().regex(PASSWORD_REGEX, { message: t('signup.error.passwordError') }),
+      recaptcha: z.string(),
     })
     .refine(data => data.password === data.passwordConfirmation, {
       message: t('signup.error.passwordConfirmationError'),

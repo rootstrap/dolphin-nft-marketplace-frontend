@@ -10,7 +10,7 @@ const creditCardApi = api.injectEndpoints({
         body: creditCard,
       }),
     }),
-    getCreditCard: builder.mutation<CreditCardData[], void>({
+    getCreditCards: builder.mutation<CreditCardData[], void>({
       query: () => `${endpoints.CREDIT_CARD}`,
       transformResponse: (response: CreditCardData[]) => response,
     }),
@@ -72,12 +72,15 @@ interface Fee {
 
 export const {
   useCreateCreditCardMutation,
-  useGetCreditCardMutation,
+  useGetCreditCardsMutation,
   useGetCreditCardByIdMutation,
   useGetCreditCardFeesMutation,
   endpoints: {
     createCreditCard: { matchFulfilled: createCreditCardFulfiled, matchRejected: createCreditCardRejected },
-    getCreditCard: { matchFulfilled: getCreditCardFulfiled, matchRejected: getCreditCardRejected },
-    getCreditCard: { matchFulfilled: getCreditCardByIdFulfiled, matchRejected: getCreditCardByIdRejected },
+    getCreditCards: { matchFulfilled: getCreditCardFulfiled, matchRejected: getCreditCardRejected },
+    getCreditCardById: {
+      matchFulfilled: getCreditCardByIdFulfiled,
+      matchRejected: getCreditCardByIdRejected,
+    },
   },
 } = creditCardApi;

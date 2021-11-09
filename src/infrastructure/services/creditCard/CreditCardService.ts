@@ -1,3 +1,4 @@
+import { CIRCLE_FAILURE_CODES } from 'app/constants/contants';
 import { endpoints } from 'app/constants/endpoints';
 import { api } from '../Api';
 
@@ -39,27 +40,25 @@ interface CreditCardBody {
   postalCode: string;
 }
 
-interface CreditCardData {
-  billingInfo: BillingInfo;
-  data: {
-    mask: string;
-  };
-  depositVerificationErrorCode: string;
-  depositVerificationStatus: string;
-  errorCode: number | null;
-  id: number;
-  name: string;
-  status: string;
-}
+type DepositVerificationStatus =
+  | 'notStarted'
+  | 'pending'
+  | 'submissionFailed'
+  | 'awaitingVerification'
+  | 'successful'
+  | 'failed';
 
-interface BillingInfo {
-  city: string;
-  country: string;
-  district: string;
-  line1: string;
-  line2: string;
+type Status = 'approved' | 'pending' | 'rejected' | 'needsDepositVerification';
+export interface CreditCardData {
+  id: string;
   name: string;
-  postalCode: string;
+  time: string;
+  billingInfo: Record<string, string>;
+  status: Status;
+  errorCode: string;
+  depositVerificationStatus: DepositVerificationStatus;
+  depositVerificationErrorCode: keyof typeof CIRCLE_FAILURE_CODES;
+  data: Record<string, string> | null;
 }
 
 interface FeeResult {
@@ -77,7 +76,7 @@ export const {
   useGetCreditCardFeesMutation,
   endpoints: {
     createCreditCard: { matchFulfilled: createCreditCardFulfiled, matchRejected: createCreditCardRejected },
-    getCreditCards: { matchFulfilled: getCreditCardFulfiled, matchRejected: getCreditCardRejected },
+    getCreditCards: { matchFulfilled: getCreditCardsFulfiled, matchRejected: getCreditCardsRejected },
     getCreditCardById: {
       matchFulfilled: getCreditCardByIdFulfiled,
       matchRejected: getCreditCardByIdRejected,

@@ -16,7 +16,7 @@ export const useReCaptcha = () => {
 
   useEffect(() => {
     const fetchKeys = async () => {
-      const response = await fetch('http://ftx.us/api/recaptcha/key');
+      const response = await fetch(`${process.env.REACT_APP_FTX_API_URL}/recaptcha/key`);
       const data = await response.json();
 
       setKey(data.result.recaptchaKey);

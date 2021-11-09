@@ -34,6 +34,11 @@ export const MainContent = () => {
             </Typography>
           </Grid>
           <Grid item xs={1} md={4}></Grid>
+          <Grid item xs={12}>
+            <Typography variant="h4" className={styles.mainContent__hero__comingSoon}>
+              {t('creatures.comingsoon')}
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12}>
@@ -105,15 +110,6 @@ export const MainContent = () => {
           </Grid>
           <Grid item xs={11} md={4}>
             <img alt="teaser" src={CreaturesTeaser} />
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid item xs={12}>
-        <Grid container>
-          <Grid item xs={12}>
-            <Typography variant="h4" className={styles.mainContent__stepsRoadmap}>
-              {t('creatures.roadmap')}
-            </Typography>
           </Grid>
         </Grid>
       </Grid>

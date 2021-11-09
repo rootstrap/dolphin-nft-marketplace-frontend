@@ -23,9 +23,9 @@ export const dropDownListCategories = [
   },
   {
     key: 2,
-    value: 'Creature Chronicles (coming soon)',
-    disabled: true,
-    route: '/verticals/arts',
+    value: 'Creature Chronicles',
+    disabled: false,
+    route: '/creatures',
   },
 ];
 

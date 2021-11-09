@@ -5,6 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import useTranslation from 'app/hooks/useTranslation';
+import { useGetCreditCardsMutation } from 'infrastructure/services/creditCard/CreditCardService';
 
 interface FormValues {
   email: string;
@@ -14,6 +15,7 @@ interface FormValues {
 export const useLogin = () => {
   const t = useTranslation();
   const [login, { isLoading, isSuccess, isError }] = useLoginMutation();
+  const [getCreditCards] = useGetCreditCardsMutation();
   const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
   const [error, setError] = useState('');
 
@@ -30,7 +32,7 @@ export const useLogin = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
-  const onSubmit: SubmitHandler<FormValues> = data => login(data);
+  const onSubmit: SubmitHandler<FormValues> = async data => await login(data);
 
   const handleClose = () => {
     reset();
@@ -45,6 +47,7 @@ export const useLogin = () => {
 
   useEffect(() => {
     if (isSuccess) {
+      getCreditCards();
       handleClose();
     }
   }, [isSuccess]);

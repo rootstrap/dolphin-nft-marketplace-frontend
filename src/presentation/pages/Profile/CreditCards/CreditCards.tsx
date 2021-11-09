@@ -1,16 +1,13 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import { CreditCard, Delete } from '@material-ui/icons';
-import { useDeleteCreditCardMutation } from 'infrastructure/services/creditCard/CreditCardService';
-import { useAppDispatch, useAppSelector } from 'app/hooks/reduxHooks';
 import { setDefaultCreditCard } from 'app/store/features/creditCardSlice';
+import { useCreditCards } from './useCreditCards';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './CreditCards.module.scss';
 
 export const CreditCards = () => {
   const t = useTranslation();
-  const { creditCards, defaultCreditCard } = useAppSelector(state => state.creditCard);
-  const [deleteCreditCard] = useDeleteCreditCardMutation();
-  const dispatch = useAppDispatch();
+  const { creditCards, defaultCreditCard, dispatch, deleteCreditCard } = useCreditCards();
 
   return (
     <div className={styles.creditCards}>

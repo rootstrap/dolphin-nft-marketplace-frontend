@@ -1,3 +1,4 @@
+import { endpoints } from 'app/constants/endpoints';
 import { api } from '../Api';
 
 const depositApi = api.injectEndpoints({
@@ -14,12 +15,24 @@ const depositApi = api.injectEndpoints({
         },
       }),
     }),
+    initiateDeposit: builder.mutation({
+      query: (deposit: DepositBody) => ({
+        url: `${endpoints.DEPOSIT}/initiate-deposit`,
+        method: 'POST',
+        body: {
+          size: deposit.size,
+          cardId: deposit.cardId,
+          cvv: deposit.cvv,
+        },
+      }),
+    }),
   }),
 });
 
 interface DepositBody {
   size: number;
   cardId: number;
+  cvv?: number;
 }
 
-export const { useCreateDepositMutation } = depositApi;
+export const { useCreateDepositMutation, useInitiateDepositMutation } = depositApi;

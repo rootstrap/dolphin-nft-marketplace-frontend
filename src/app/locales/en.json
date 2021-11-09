@@ -62,7 +62,13 @@
   },
   "profile": {
     "collectionTitle": "My Collection",
-    "emptyList": "You don’t have any collectibles in your gallery yet. Start your collection."
+    "emptyList": "You don’t have any collectibles in your gallery yet. Start your collection.",
+    "creditCards": {
+      "title": "Manage Your Credit Cards",
+      "button": "Set as default",
+      "status": "Status:",
+      "default": "Default Credit Card"
+    }
   },
   "verticals": {
     "listTitle": "Explore and select your NFT",

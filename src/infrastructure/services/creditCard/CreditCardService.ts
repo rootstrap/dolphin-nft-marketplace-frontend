@@ -1,3 +1,4 @@
+import { CIRCLE_FAILURE_CODES } from 'app/constants/contants';
 import { endpoints } from 'app/constants/endpoints';
 import { api } from '../Api';
 
@@ -10,7 +11,7 @@ const creditCardApi = api.injectEndpoints({
         body: creditCard,
       }),
     }),
-    getCreditCard: builder.mutation<CreditCardData[], void>({
+    getCreditCards: builder.mutation<CreditCardData[], void>({
       query: () => `${endpoints.CREDIT_CARD}`,
       transformResponse: (response: CreditCardData[]) => response,
     }),
@@ -21,6 +22,12 @@ const creditCardApi = api.injectEndpoints({
     getCreditCardFees: builder.mutation<FeeResult, void>({
       query: () => `${process.env.REACT_APP_FTX_API_URL}/cards/fees`,
       transformResponse: (response: Fee) => response.result,
+    }),
+    deleteCreditCard: builder.mutation({
+      query: (creditCardId: string) => ({
+        url: `${endpoints.CREDIT_CARD}/${creditCardId}`,
+        method: 'DELETE',
+      }),
     }),
   }),
 });
@@ -39,27 +46,25 @@ interface CreditCardBody {
   postalCode: string;
 }
 
-interface CreditCardData {
-  billingInfo: BillingInfo;
-  data: {
-    mask: string;
-  };
-  depositVerificationErrorCode: string;
-  depositVerificationStatus: string;
-  errorCode: number | null;
-  id: number;
-  name: string;
-  status: string;
-}
+type DepositVerificationStatus =
+  | 'notStarted'
+  | 'pending'
+  | 'submissionFailed'
+  | 'awaitingVerification'
+  | 'successful'
+  | 'failed';
 
-interface BillingInfo {
-  city: string;
-  country: string;
-  district: string;
-  line1: string;
-  line2: string;
+type Status = 'approved' | 'pending' | 'rejected' | 'needsDepositVerification';
+export interface CreditCardData {
+  id: string;
   name: string;
-  postalCode: string;
+  time: string;
+  billingInfo: Record<string, string>;
+  status: Status;
+  errorCode: string;
+  depositVerificationStatus: DepositVerificationStatus;
+  depositVerificationErrorCode: keyof typeof CIRCLE_FAILURE_CODES;
+  data: Record<string, string> | null;
 }
 
 interface FeeResult {
@@ -72,12 +77,17 @@ interface Fee {
 
 export const {
   useCreateCreditCardMutation,
-  useGetCreditCardMutation,
+  useGetCreditCardsMutation,
   useGetCreditCardByIdMutation,
   useGetCreditCardFeesMutation,
+  useDeleteCreditCardMutation,
   endpoints: {
     createCreditCard: { matchFulfilled: createCreditCardFulfiled, matchRejected: createCreditCardRejected },
-    getCreditCard: { matchFulfilled: getCreditCardFulfiled, matchRejected: getCreditCardRejected },
-    getCreditCard: { matchFulfilled: getCreditCardByIdFulfiled, matchRejected: getCreditCardByIdRejected },
+    getCreditCards: { matchFulfilled: getCreditCardsFulfiled, matchRejected: getCreditCardsRejected },
+    getCreditCardById: {
+      matchFulfilled: getCreditCardByIdFulfiled,
+      matchRejected: getCreditCardByIdRejected,
+    },
+    deleteCreditCard: { matchFulfilled: deleteCreditCardFulfiled },
   },
 } = creditCardApi;

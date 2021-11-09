@@ -3,6 +3,7 @@ import HomePage from 'presentation/pages/Home/HomePage';
 import MyCollection from 'presentation/pages/Profile/MyCollection';
 import FAQPage from 'presentation/pages/FAQ/FAQPage';
 import ProfilePage from 'presentation/pages/Profile/ProfilePage';
+import CreaturesPage from 'presentation/pages/Categories/Creatures/CreaturesPage';
 import VerticalPage from 'presentation/pages/Verticals/VerticalPage';
 import NFTByIdPage from 'presentation/pages/NFTByFtxId/NFTByIdPage';
 import routesPaths from '../constants/routesPath';
@@ -18,6 +19,12 @@ export const routes: Route[] = [
   {
     path: routesPaths.verticals,
     component: <VerticalPage />,
+    exact: true,
+    private: false,
+  },
+  {
+    path: routesPaths.creatures,
+    component: <CreaturesPage />,
     exact: true,
     private: false,
   },

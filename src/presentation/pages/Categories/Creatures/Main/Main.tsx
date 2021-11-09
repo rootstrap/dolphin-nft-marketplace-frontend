@@ -1,6 +1,8 @@
 import { Grid, Typography, Button } from '@material-ui/core';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { ModalContext } from 'app/context/ModalContext';
+import { socialMediaLinks } from 'app/constants/contants';
 import styles from './MainContent.module.scss';
 import CreaturesDesc from 'app/assets/creatures_desc.png';
 import useTranslation from 'app/hooks/useTranslation';
@@ -11,11 +13,14 @@ import Fourth from 'app/assets/fourth_small.png';
 import Calendar from 'app/assets/calendar.png';
 import CreaturesTeaser from 'app/assets/creatures_teaser.png';
 import { useAppSelector } from 'app/hooks/reduxHooks';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 
 export const MainContent = () => {
   const t = useTranslation();
   const { setSignupModalIsOpen } = useContext(ModalContext);
   const { isAuthenticated } = useAppSelector(state => state.user);
+
   return (
     <Grid container className={styles.mainContent}>
       <Grid item xs={12} className={styles.mainContent__hero}>
@@ -24,6 +29,7 @@ export const MainContent = () => {
           <Grid item xs={11} md={4}>
             <Typography className={styles.mainContent__hero__mainTitle} variant="h5" component="div">
               {t('creatures.mainTitle')}
+              <div>{location.pathname}</div>
             </Typography>
             <Typography variant="h2" className={styles.mainContent__hero__title}>
               {t('creatures.title')}
@@ -84,7 +90,9 @@ export const MainContent = () => {
               </Grid>
               <Grid item xs={11}>
                 <Typography className={styles.mainContent__stepsContent__stepsDesc__text}>
-                  {t('creatures.steps3')}
+                  <a target="_blank" href={socialMediaLinks.discord}>
+                    {t('creatures.steps3')}
+                  </a>
                 </Typography>
               </Grid>
               <Grid item xs={1}>

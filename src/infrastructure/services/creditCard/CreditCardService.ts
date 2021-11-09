@@ -23,6 +23,12 @@ const creditCardApi = api.injectEndpoints({
       query: () => `${process.env.REACT_APP_FTX_API_URL}/cards/fees`,
       transformResponse: (response: Fee) => response.result,
     }),
+    deleteCreditCard: builder.mutation({
+      query: (creditCardId: string) => ({
+        url: `${endpoints.CREDIT_CARD}/${creditCardId}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 });
 
@@ -74,6 +80,7 @@ export const {
   useGetCreditCardsMutation,
   useGetCreditCardByIdMutation,
   useGetCreditCardFeesMutation,
+  useDeleteCreditCardMutation,
   endpoints: {
     createCreditCard: { matchFulfilled: createCreditCardFulfiled, matchRejected: createCreditCardRejected },
     getCreditCards: { matchFulfilled: getCreditCardsFulfiled, matchRejected: getCreditCardsRejected },
@@ -81,5 +88,6 @@ export const {
       matchFulfilled: getCreditCardByIdFulfiled,
       matchRejected: getCreditCardByIdRejected,
     },
+    deleteCreditCard: { matchFulfilled: deleteCreditCardFulfiled },
   },
 } = creditCardApi;

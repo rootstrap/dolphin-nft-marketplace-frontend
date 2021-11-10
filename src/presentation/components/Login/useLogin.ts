@@ -1,12 +1,14 @@
-import { useLoginMutation } from 'infrastructure/services/user/UserService';
+import { useLoginMutation, useLoginFTXMutation } from 'infrastructure/services/user/UserService';
 import { useEffect, useContext, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { recaptchaActions } from 'app/constants/contants';
 import useTranslation from 'app/hooks/useTranslation';
 import { useGetCreditCardsMutation } from 'infrastructure/services/creditCard/CreditCardService';
 import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositService';
+import { useReCaptcha } from 'app/hooks/useReCaptcha';
 
 interface FormValues {
   email: string;
@@ -15,11 +17,14 @@ interface FormValues {
 
 export const useLogin = () => {
   const t = useTranslation();
-  const [login, { isLoading, isSuccess, isError }] = useLoginMutation();
+  const { getToken } = useReCaptcha();
+  const [login, { isLoading, isSuccess: loginSuccess }] = useLoginMutation();
+  const [loginFTX, { isSuccess, isError }] = useLoginFTXMutation();
   const [getCreditCards] = useGetCreditCardsMutation();
   const [getBalance] = useGetBalanceMutation();
   const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
   const [error, setError] = useState('');
+  const [userInfo, setUserInfo] = useState<FormValues>();
 
   const schema = z.object({
     email: z.string().email({ message: t('login.error.invalidEmail') }),
@@ -34,7 +39,12 @@ export const useLogin = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
-  const onSubmit: SubmitHandler<FormValues> = async data => await login(data);
+  const onSubmit: SubmitHandler<FormValues> = async data => {
+    const token = await getToken(recaptchaActions.login);
+
+    setUserInfo(data);
+    await loginFTX({ ...data, recaptcha: token });
+  };
 
   const handleClose = () => {
     reset();
@@ -54,10 +64,16 @@ export const useLogin = () => {
 
   useEffect(() => {
     if (isSuccess) {
+      login(userInfo);
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (loginSuccess) {
       loadUserData();
       handleClose();
     }
-  }, [isSuccess]);
+  }, [loginSuccess]);
 
   useEffect(() => {
     if (isError) {

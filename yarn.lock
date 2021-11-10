@@ -1950,6 +1950,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/grecaptcha@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@types/grecaptcha/-/grecaptcha-3.0.3.tgz#9b487b1d20f7813ea382e8cf7a4b621ae61782c4"
+  integrity sha512-osLqWRzsRsDtCfiCl1lbtUY8ANGCQsG/hhht3E7g1pVT7fD5SXgAg53S2grKjjSkXcm0fvMDbhUeL9NyAJvzGQ==
+
 "@types/history@*":
   "integrity" "sha512-MUc6zSmU3tEVnkQ78q0peeEjKWPUADMlC/t++2bI8WnAG2tvYRPIgHG8lWkXwqc8MsUF6Z2MOf+Mh5sazOmhiQ=="
   "resolved" "https://registry.npmjs.org/@types/history/-/history-4.7.9.tgz"

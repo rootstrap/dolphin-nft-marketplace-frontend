@@ -28,7 +28,6 @@ export const useCCVerification = () => {
       size: creditCardAmount,
       cardId: creditCardId,
     });
-    console.log(data);
   };
 
   const handleCheckStatus = (creditCardAmount: number) => {

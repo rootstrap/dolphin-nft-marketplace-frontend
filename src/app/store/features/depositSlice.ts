@@ -12,7 +12,6 @@ const depositSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addMatcher(getBalanceFulfiled, (state, { payload }) => {
-      console.log('balance payload: ', payload);
       state.balances = [...payload];
       state.currentBalance = payload[0].total;
     });

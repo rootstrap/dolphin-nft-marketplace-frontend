@@ -3,10 +3,7 @@ import { Button, TextField, Typography } from '@material-ui/core';
 import { ReactComponent as Card } from 'app/assets/CardPicture.svg';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { useAppSelector } from 'app/hooks/reduxHooks';
-import {
-  useGetBalanceMutation,
-  useInitiateDepositMutation,
-} from 'infrastructure/services/deposit/DepositService';
+import { useInitiateDepositMutation } from 'infrastructure/services/deposit/DepositService';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { SuccessVerification } from '../CC/Verification/SuccessVerification';
 import styles from './DepositModal.module.scss';
@@ -17,18 +14,13 @@ export const DepositModal = ({ isOpen, handleClose, depositSize, fee }: DepositM
 
   const { defaultCreditCard } = useAppSelector(state => state.creditCard);
   const [initiateDeposit, { isLoading, isSuccess, isError }] = useInitiateDepositMutation();
-  const [getBalance] = useGetBalanceMutation();
 
   const handleOnClick = async () => {
-    const response = await initiateDeposit({
+    await initiateDeposit({
       cvv: cvv,
       cardId: Number(defaultCreditCard.id),
       size: depositSize,
     });
-    console.log('response: ', response);
-    setTimeout(() => {
-      getBalance();
-    }, 30000);
   };
 
   useEffect(() => {

@@ -15,7 +15,6 @@ export const useBuyNft = (nft: NFT) => {
 
   const [fee, setFee] = useState<number>(0);
   const [depositSize, setDepositSize] = useState<number>(0);
-  const [balance, setBalance] = useState(currentBalance);
   const [enoughBalance, setEnoughBalance] = useState(false);
   const [depositModalIsOpen, setDepositModalIsOpen] = useState(false);
 
@@ -31,13 +30,17 @@ export const useBuyNft = (nft: NFT) => {
 
   const handleOnClick = () =>
     defaultCreditCard.status === 'approved' ? handleFundWallet() : handleActivateWallet();
-  const handleCloseDepositModal = () => setDepositModalIsOpen(false);
+
+  const handleCloseDepositModal = () => {
+    getBalance();
+    setDepositModalIsOpen(false);
+  };
 
   const loadData = async () => {
     const data: any = await getCreditCardFees();
     await getBalance();
     const { fixed, variable } = data.data;
-    const depositSize = nft.offerPrice - balance;
+    const depositSize = nft.offerPrice - currentBalance;
     const fees = (depositSize * variable + fixed).toFixed(2);
 
     setDepositSize(depositSize);
@@ -49,7 +52,7 @@ export const useBuyNft = (nft: NFT) => {
   }, []);
 
   useEffect(() => {
-    setEnoughBalance(hasEnoughBalance(balance, nft.offerPrice));
+    setEnoughBalance(hasEnoughBalance(currentBalance, nft.offerPrice));
   }, [currentBalance]);
 
   return {

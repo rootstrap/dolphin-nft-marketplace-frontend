@@ -65,8 +65,9 @@
     "emptyList": "You don’t have any collectibles in your gallery yet. Start your collection.",
     "creditCards": {
       "title": "Manage Your Credit Cards",
-      "button": "Set as default",
-      "status": "Status:",
+      "defaultButton": "Set as default",
+      "addButton": "Add another credit card",
+      "status": "Status: ",
       "default": "Default Credit Card"
     }
   },

@@ -26,6 +26,9 @@ const depositApi = api.injectEndpoints({
         },
       }),
     }),
+    getBalance: builder.mutation<Balance[], void>({
+      query: () => `${endpoints.BALANCE}`,
+    }),
   }),
 });
 
@@ -35,4 +38,20 @@ interface DepositBody {
   cvv?: number;
 }
 
-export const { useCreateDepositMutation, useInitiateDepositMutation } = depositApi;
+export interface Balance {
+  coin: string;
+  free: number;
+  spotBorrow: number;
+  total: number;
+  usdValue: number;
+  availableWithoutBorrow: number;
+}
+
+export const {
+  useCreateDepositMutation,
+  useInitiateDepositMutation,
+  useGetBalanceMutation,
+  endpoints: {
+    getBalance: { matchFulfilled: getBalanceFulfiled },
+  },
+} = depositApi;

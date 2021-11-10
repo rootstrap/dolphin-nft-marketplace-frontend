@@ -44,6 +44,19 @@ const authApi = api.injectEndpoints({
         },
       }),
     }),
+    signupFTX: builder.mutation({
+      query: (user: signupFTXBody) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/users/create`,
+        method: 'POST',
+        body: {
+          password: user.password,
+          email: user.email,
+          captcha: {
+            recaptcha_challenge: user.recaptcha,
+          },
+        },
+      }),
+    }),
     getCountries: builder.mutation<Country[], string>({
       query: () => `${endpoints.COUNTRIES}`,
       transformResponse: (data: Country[]) => data,
@@ -79,16 +92,24 @@ interface SignupBody {
   password: string;
 }
 
+interface signupFTXBody {
+  email: string;
+  password: string;
+  recaptcha: string;
+}
+
 export const {
   useLoginMutation,
   useLogoutMutation,
   useSignupMutation,
+  useSignupFTXMutation,
   useKycMutation,
   useGetCountriesMutation,
   endpoints: {
     signup: { matchFulfilled: signupFulfiled },
     login: { matchFulfilled: loginFulfiled },
     logout: { matchFulfilled: logoutFulfiled, matchRejected: logoutRejected },
+    signupFTX: { matchFulfilled: signupFTXFulfiled },
     kyc: { matchFulfilled: kycFulfiled, matchRejected: kycRejected },
   },
 } = authApi;

@@ -78,3 +78,9 @@ export const CIRCLE_FAILURE_CODES = {
     'The postal code provided when creating the card does not match the one recorded by the issuer bank',
   card_cvv_required: 'The cvv is either incorrect or missing',
 };
+
+export const recaptchaActions = {
+  changePassword: 'CHANGEPASSWORD',
+  login: 'LOGIN',
+  register: 'REGISTER',
+};

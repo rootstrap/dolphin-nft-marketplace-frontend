@@ -1,11 +1,12 @@
-import { useSignupMutation } from 'infrastructure/services/user/UserService';
+import { useSignupFTXMutation, useSignupMutation } from 'infrastructure/services/user/UserService';
 import { useContext, useEffect, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { PASSWORD_REGEX } from 'app/constants/contants';
+import { PASSWORD_REGEX, recaptchaActions } from 'app/constants/contants';
 import * as z from 'zod';
 import useTranslation from 'app/hooks/useTranslation';
+import { useReCaptcha } from 'app/hooks/useReCaptcha';
 
 interface FormValues {
   firstName: string;
@@ -17,9 +18,12 @@ interface FormValues {
 
 export const useSignup = () => {
   const t = useTranslation();
-  const [signup, { isLoading, isSuccess, isError }] = useSignupMutation();
+  const { getToken } = useReCaptcha();
+  const [signupFTX, { isLoading, isSuccess, isError }] = useSignupFTXMutation();
+  const [signup] = useSignupMutation();
   const { signupModalIsOpen, setSignupModalIsOpen, setLoginModalIsOpen } = useContext(ModalContext);
   const [error, setError] = useState('');
+  const [userInfo, setUserInfo] = useState<FormValues>();
 
   const schema = z
     .object({
@@ -42,7 +46,12 @@ export const useSignup = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
-  const onSubmit: SubmitHandler<FormValues> = data => signup(data);
+  const onSubmit: SubmitHandler<FormValues> = async data => {
+    const token = await getToken(recaptchaActions.register);
+
+    setUserInfo(data);
+    signupFTX({ ...data, recaptcha: token });
+  };
 
   const handleClose = () => {
     clearErrors();
@@ -57,6 +66,7 @@ export const useSignup = () => {
 
   useEffect(() => {
     if (isSuccess) {
+      signup(userInfo);
       handleClose();
     }
   }, [isSuccess]);

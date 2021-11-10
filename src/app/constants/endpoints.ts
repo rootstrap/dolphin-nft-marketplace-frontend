@@ -6,6 +6,7 @@ export const endpoints = {
   COUNTRIES: '/countries',
   CREDIT_CARD: '/cc',
   DEPOSIT: '/deposit',
+  BALANCE: '/balance',
 
   NFT: '/nft',
 };

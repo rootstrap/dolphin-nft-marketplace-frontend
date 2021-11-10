@@ -1,34 +1,22 @@
-import { useContext, useEffect, useState } from 'react';
 import { Button, Grid, Typography } from '@material-ui/core';
-import { ModalContext } from 'app/context/ModalContext';
-import { useAppSelector } from 'app/hooks/reduxHooks';
 import { NFT } from 'app/interfaces/NFT/NFT';
-import { useGetCreditCardFeesMutation } from 'infrastructure/services/creditCard/CreditCardService';
+import { useBuyNft } from './useBuyNft';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Buy.module.scss';
+import { DepositModal } from 'presentation/components/DepositModal/DepositModal';
 
 export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
   const t = useTranslation();
-  const [fee, setFee] = useState<number>(0);
-  const { setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
-  const { user } = useAppSelector(state => state.user);
-
-  const [getCreditCardFees] = useGetCreditCardFeesMutation();
-  const handleOnClick = () => {
-    user.kyc1ed ? setCcModalIsOpen(true) : setKycModalIsOpen(true);
-  };
-
-  const loadData = async () => {
-    const data: any = await getCreditCardFees();
-    const { fixed, variable } = data.data;
-    const fees = (nft.offerPrice * variable + fixed).toFixed(2);
-
-    setFee(fees);
-  };
-
-  useEffect(() => {
-    loadData();
-  }, []);
+  const {
+    defaultCreditCard,
+    handleOnClick,
+    currentBalance,
+    enoughBalance,
+    depositModalIsOpen,
+    handleCloseDepositModal,
+    fee,
+    depositSize,
+  } = useBuyNft(nft);
 
   return (
     <Grid container spacing={2}>
@@ -48,12 +36,18 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
         <div className={styles.buyContent__itemFund}>
           <Grid container className={styles.buyContent__walletContainer}>
             <Grid item xs={12} lg={8}>
-              <Typography component="div">{t('nft.buyNft.activateWallet')}</Typography>
+              <Typography component="div">
+                {defaultCreditCard.status === 'approved'
+                  ? t('nft.buyNft.fundWallet')
+                  : t('nft.buyNft.activateWallet')}
+              </Typography>
             </Grid>
 
             <Grid item xs={12} lg={4}>
-              <Button fullWidth onClick={handleOnClick}>
-                {t('nft.buyNft.activateButton')}
+              <Button fullWidth onClick={handleOnClick} variant="text">
+                {defaultCreditCard.status === 'approved'
+                  ? t('nft.buyNft.fundButton')
+                  : t('nft.buyNft.activateButton')}
               </Button>
             </Grid>
           </Grid>
@@ -69,15 +63,20 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
 
             <div className={styles.buyContent__priceContainer}>
               <Typography variant="h6" className={styles.buyContent__priceContainer__label}>
-                Fee:
+                Your Balance:
               </Typography>
               <Typography variant="h6" className={styles.buyContent__priceContainer__price}>
-                ${fee}
+                ${currentBalance}
               </Typography>
             </div>
 
-            <Button fullWidth className={styles.buyContent__btn} variant="contained" disabled>
-              {t('nft.buyNft.continueButton')}
+            <Button
+              fullWidth
+              className={styles.buyContent__btn}
+              variant="contained"
+              disabled={!enoughBalance}
+            >
+              {t('nft.buyButton')}
             </Button>
             <Button fullWidth size="large" onClick={handleShowDescription}>
               {t('nft.buyNft.cancelButton')}
@@ -86,6 +85,13 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
         </div>
       </Grid>
       <Grid item xs={2} lg={1}></Grid>
+
+      <DepositModal
+        isOpen={depositModalIsOpen}
+        handleClose={handleCloseDepositModal}
+        fee={fee}
+        depositSize={depositSize}
+      />
     </Grid>
   );
 };

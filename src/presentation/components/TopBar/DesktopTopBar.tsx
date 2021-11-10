@@ -2,13 +2,13 @@ import { useContext, useState } from 'react';
 import { Button, Grid, Typography } from '@material-ui/core';
 import { CreditCard, PersonOutlined } from '@material-ui/icons';
 import { useAppSelector } from 'app/hooks/reduxHooks';
+import { useLogoutMutation } from 'infrastructure/services/user/UserService';
 import { ModalContext } from 'app/context/ModalContext';
 import { Link, useLocation } from 'react-router-dom';
 import logoImg from 'app/assets/dolphin_logo.png';
 import routesPaths from 'app/constants/routesPath';
-import useTranslation from 'app/hooks/useTranslation';
-import { useLogoutMutation } from 'infrastructure/services/user/UserService';
 import { Categories } from '../Categories/Categories';
+import useTranslation from 'app/hooks/useTranslation';
 import styles from './TopBar.module.scss';
 
 export const DesktopTopBar = () => {
@@ -16,7 +16,7 @@ export const DesktopTopBar = () => {
   const location = useLocation();
   const [logout] = useLogoutMutation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const { setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
+  const { setCreditCardModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
   const { isAuthenticated, user } = useAppSelector(state => state.user);
 
   const handleLogout = () => {
@@ -68,7 +68,7 @@ export const DesktopTopBar = () => {
             </div>
 
             <div className={styles.topBar__itemButtonCards}>
-              <CreditCard />
+              <CreditCard onClick={() => setCreditCardModalIsOpen(true)} />
             </div>
 
             <Link to={routesPaths.index} onClick={handleLogout}>

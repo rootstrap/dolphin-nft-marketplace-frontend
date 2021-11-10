@@ -1,0 +1,41 @@
+@import '../../../app/styles/base/settings';
+
+.creditCardModal {
+  padding: 2rem;
+
+  &__itemContainer {
+    background-color: black;
+    border-radius: 10px;
+    margin: 1rem 0;
+    padding: 1rem;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__headerContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  &__deleteIcon {
+    cursor: pointer;
+  }
+
+  &__status {
+    color: $primary;
+    font-weight: bolder;
+  }
+
+  &__default {
+    display: flex;
+    justify-content: flex-end;
+    color: $primary;
+    cursor: pointer;
+    &:hover {
+      font-weight: bolder;
+    }
+  }
+}

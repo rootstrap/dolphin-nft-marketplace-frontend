@@ -11,7 +11,7 @@ export const useReCaptcha = () => {
       setKey(data.result.recaptchaKey);
 
       const script = document.createElement('script');
-      script.src = `https://www.google.com/recaptcha/api.js?render=${data.result.recaptchaKey}`;
+      script.src = `https://www.google.com/recaptcha/api.js?render=${data.result.recaptchaKey}&badge=bottomLeft`;
       document.body.appendChild(script);
     };
 

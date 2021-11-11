@@ -3,7 +3,17 @@ import { Link } from 'react-router-dom';
 import New from 'app/assets/New.png';
 import useTranslation from 'app/hooks/useTranslation';
 
-export const Item = ({ id, ftxId, name, totalQuantity, image, price, verticalId, styles }: ItemProps) => {
+export const Item = ({
+  id,
+  ftxId,
+  name,
+  series,
+  totalQuantity,
+  image,
+  price,
+  verticalId,
+  styles,
+}: ItemProps) => {
   const t = useTranslation();
 
   return (
@@ -16,7 +26,7 @@ export const Item = ({ id, ftxId, name, totalQuantity, image, price, verticalId,
       </Link>
 
       <Typography className={styles.mainContent__itemTitle} variant="h5" component="div">
-        {name}
+        {series}
       </Typography>
 
       <div className={styles.mainContent__favContainer}>
@@ -46,6 +56,7 @@ interface ItemProps {
   id: string;
   ftxId: string;
   name: string;
+  series: string;
   totalQuantity: number;
   price: number;
   image: string;

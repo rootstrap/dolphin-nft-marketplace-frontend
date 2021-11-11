@@ -1,23 +1,26 @@
 import { useContext, useState } from 'react';
 import { Button, Grid, Typography } from '@material-ui/core';
-import { PersonOutlined } from '@material-ui/icons';
+import { CreditCard, PersonOutlined } from '@material-ui/icons';
 import { useAppSelector } from 'app/hooks/reduxHooks';
+import { useLogoutMutation } from 'infrastructure/services/user/UserService';
 import { ModalContext } from 'app/context/ModalContext';
 import { Link, useLocation } from 'react-router-dom';
 import logoImg from 'app/assets/dolphin_logo.png';
 import routesPaths from 'app/constants/routesPath';
-import useTranslation from 'app/hooks/useTranslation';
-import { useLogoutMutation } from 'infrastructure/services/user/UserService';
+import { CREATURES_URL } from 'app/constants/contants';
 import { Categories } from '../Categories/Categories';
+import useTranslation from 'app/hooks/useTranslation';
 import styles from './TopBar.module.scss';
 
 export const DesktopTopBar = () => {
   const t = useTranslation();
   const location = useLocation();
+  const domain = window.location.hostname;
   const [logout] = useLogoutMutation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const { setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
+  const { setCreditCardModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
   const { isAuthenticated, user } = useAppSelector(state => state.user);
+  const hasCategories = domain != CREATURES_URL;
 
   const handleLogout = () => {
     logout({ email: user.email });
@@ -39,22 +42,24 @@ export const DesktopTopBar = () => {
         </Link>
       </Grid>
 
-      <Grid item md={2} lg={2} className={styles.topBar__item}>
-        <div className={styles.topBar__itemTextCollection}>
-          <Typography variant="h6" onClick={handleCategories} aria-expanded={anchorEl ? 'true' : undefined}>
-            {t('navBar.categories')}
-          </Typography>
-        </div>
+      {hasCategories && (
+        <Grid item md={2} lg={2} className={styles.topBar__item}>
+          <div className={styles.topBar__itemTextCollection}>
+            <Typography variant="h6" onClick={handleCategories} aria-expanded={anchorEl ? 'true' : undefined}>
+              {t('navBar.categories')}
+            </Typography>
+          </div>
 
-        <Categories anchorEl={anchorEl} handleClose={handleClose} />
-      </Grid>
+          <Categories anchorEl={anchorEl} handleClose={handleClose} />
+        </Grid>
+      )}
 
       <Grid item md={2} lg={2} className={styles.topBar__item}>
-        <Link to={routesPaths.faq}>
+        <a href={process.env.REACT_APP_ZENDESK_URL} target="_blank">
           <div className={styles.topBar__itemTextCollection}>
             <Typography variant="h6">{t('navBar.faq')}</Typography>
           </div>
-        </Link>
+        </a>
       </Grid>
       <Grid item md={2} lg={3} />
 
@@ -65,6 +70,10 @@ export const DesktopTopBar = () => {
               <Link to={routesPaths.profile}>
                 <PersonOutlined />
               </Link>
+            </div>
+
+            <div className={styles.topBar__itemButtonCards}>
+              <CreditCard onClick={() => setCreditCardModalIsOpen(true)} />
             </div>
 
             <Link to={routesPaths.index} onClick={handleLogout}>

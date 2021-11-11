@@ -1,0 +1,18 @@
+@import '../../../app/styles/base/settings';
+
+.depositModal {
+  padding: 1rem;
+  text-align: center;
+
+  &__input {
+    margin: 1rem;
+  }
+
+  &__button {
+    margin: 1rem;
+  }
+
+  &__error {
+    color: $error;
+  }
+}

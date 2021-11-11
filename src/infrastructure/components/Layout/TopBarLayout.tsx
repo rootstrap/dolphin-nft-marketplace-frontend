@@ -1,4 +1,5 @@
 import { BottomBar } from 'presentation/components/BottomBar/BottomBar';
+import { CreditCardModal } from 'presentation/components/CreditCardModal/CreditCardModal';
 import { ReactElement } from 'react';
 import { Login } from '../../../presentation/components/Login/Login';
 import { Signup } from '../../../presentation/components/Signup/Signup';
@@ -17,7 +18,7 @@ export const TopBarLayout = ({ pageComponent }: TopBarLayoutProps) => {
       {pageComponent}
       <Login />
       <Signup />
-
+      <CreditCardModal />
       <BottomBar />
     </>
   );

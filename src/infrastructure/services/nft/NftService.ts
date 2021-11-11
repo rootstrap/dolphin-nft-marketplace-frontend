@@ -26,6 +26,19 @@ const nftApi = api.injectEndpoints({
       query: nftId => `${endpoints.NFT}?ftxId=${nftId}`,
       transformResponse: (data: NFT) => data,
     }),
+    buyNft: builder.mutation({
+      query: (buyNftBody: BuyNFT) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/buy`,
+        method: 'POST',
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+        body: {
+          nftId: buyNftBody.nftId,
+          price: buyNftBody.price,
+        },
+      }),
+    }),
   }),
   overrideExisting: true,
 });
@@ -36,6 +49,7 @@ export const {
   useGetNftsPrimaryMutation,
   useGetNftsFeaturedMutation,
   useGetNftByIdMutation,
+  useBuyNftMutation,
   endpoints: {
     getNftsSecondary: { matchFulfilled: getNftsSecondaryFulfiled },
     getNftsPrimary: { matchFulfilled: getNftsPrimaryFulfiled },
@@ -43,3 +57,8 @@ export const {
     getNftDetails: { matchFulfilled: getNftDetailsFulfiled },
   },
 } = nftApi;
+
+interface BuyNFT {
+  nftId: string;
+  price: number;
+}

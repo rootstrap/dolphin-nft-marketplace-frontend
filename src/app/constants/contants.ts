@@ -23,17 +23,19 @@ export const dropDownListCategories = [
   },
   {
     key: 2,
-    value: 'Creature Chronicles (coming soon)',
-    disabled: true,
-    route: '/verticals/arts',
+    value: 'Creature Chronicles',
+    disabled: false,
+    route: '/creatures',
   },
 ];
+
+export const CREATURES_URL: string = 'creaturechronicles.io';
 
 export const socialMediaLinks = {
   facebook: 'https://www.facebook.com/Dolphin-Marketplace-243870417566415',
   instagram: 'https://www.instagram.com/dolphin_marketplace',
   twitter: 'https://twitter.com/Dolphin_mktpl',
-  discord: 'https://discord.com/dolphin_marketplace',
+  discord: 'https://discord.gg/zpWVRcrNgv',
 };
 
 export const PASSWORD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
@@ -77,4 +79,10 @@ export const CIRCLE_FAILURE_CODES = {
   card_zip_mismatch:
     'The postal code provided when creating the card does not match the one recorded by the issuer bank',
   card_cvv_required: 'The cvv is either incorrect or missing',
+};
+
+export const recaptchaActions = {
+  changePassword: 'CHANGEPASSWORD',
+  login: 'LOGIN',
+  register: 'REGISTER',
 };

@@ -8,7 +8,10 @@ export const useCCVerification = () => {
   const [getCreditCardById, { isSuccess, isLoading }] = useGetCreditCardByIdMutation();
   const [creditCardStatus, setCreditCardStatus] = useState<CreditCardStatus>('pending');
   const [errorMsg, setErrorMsg] = useState<ErrorMsg>('no_error');
-  const [createDeposit, { isLoading: isDepositLoading }] = useCreateDepositMutation();
+  const [
+    createDeposit,
+    { isLoading: isDepositLoading, isSuccess: isDepositSuccess, isError: isDepositError },
+  ] = useCreateDepositMutation();
   const { creditCardId } = useAppSelector(state => state.user.user);
 
   const loadData = async () => {
@@ -25,7 +28,6 @@ export const useCCVerification = () => {
       size: creditCardAmount,
       cardId: creditCardId,
     });
-    console.log(data);
   };
 
   const handleCheckStatus = (creditCardAmount: number) => {
@@ -43,6 +45,8 @@ export const useCCVerification = () => {
     creditCardStatus,
     errorMsg,
     handleCheckStatus,
+    isDepositSuccess,
+    isDepositError,
   };
 };
 

@@ -11,6 +11,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/flat": "^5.0.2",
+    "@types/grecaptcha": "^3.0.3",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
@@ -39,7 +40,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "proxy": "lcp --proxyUrl https://ftx.us/api"
   },
   "eslintConfig": {
     "extends": [
@@ -75,6 +77,7 @@
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.3.1",
+    "local-cors-proxy": "^1.1.0",
     "prettier": "^2.2.1"
   }
 }

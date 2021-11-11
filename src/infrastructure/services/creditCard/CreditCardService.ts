@@ -1,3 +1,4 @@
+import { CIRCLE_FAILURE_CODES } from 'app/constants/contants';
 import { endpoints } from 'app/constants/endpoints';
 import { api } from '../Api';
 
@@ -10,13 +11,23 @@ const creditCardApi = api.injectEndpoints({
         body: creditCard,
       }),
     }),
-    getCreditCard: builder.mutation<CreditCardData[], void>({
+    getCreditCards: builder.mutation<CreditCardData[], void>({
       query: () => `${endpoints.CREDIT_CARD}`,
       transformResponse: (response: CreditCardData[]) => response,
     }),
     getCreditCardById: builder.mutation<CreditCardData, string>({
       query: (id: string) => `${endpoints.CREDIT_CARD}/${id}`,
       transformResponse: (response: CreditCardData) => response,
+    }),
+    getCreditCardFees: builder.mutation<FeeResult, void>({
+      query: () => `${process.env.REACT_APP_FTX_API_URL}/cards/fees`,
+      transformResponse: (response: Fee) => response.result,
+    }),
+    deleteCreditCard: builder.mutation({
+      query: (creditCardId: string) => ({
+        url: `${endpoints.CREDIT_CARD}/${creditCardId}`,
+        method: 'DELETE',
+      }),
     }),
   }),
 });
@@ -35,36 +46,48 @@ interface CreditCardBody {
   postalCode: string;
 }
 
-interface CreditCardData {
-  billingInfo: BillingInfo;
-  data: {
-    mask: string;
-  };
-  depositVerificationErrorCode: string;
-  depositVerificationStatus: string;
-  errorCode: number | null;
-  id: number;
+type DepositVerificationStatus =
+  | 'notStarted'
+  | 'pending'
+  | 'submissionFailed'
+  | 'awaitingVerification'
+  | 'successful'
+  | 'failed';
+
+type Status = 'approved' | 'pending' | 'rejected' | 'needsDepositVerification';
+export interface CreditCardData {
+  id: string;
   name: string;
-  status: string;
+  time: string;
+  billingInfo: Record<string, string>;
+  status: Status;
+  errorCode: string;
+  depositVerificationStatus: DepositVerificationStatus;
+  depositVerificationErrorCode: keyof typeof CIRCLE_FAILURE_CODES;
+  data: Record<string, string> | null;
 }
 
-interface BillingInfo {
-  city: string;
-  country: string;
-  district: string;
-  line1: string;
-  line2: string;
-  name: string;
-  postalCode: string;
+interface FeeResult {
+  fixed: number;
+  variable: number;
+}
+interface Fee {
+  result: FeeResult;
 }
 
 export const {
   useCreateCreditCardMutation,
-  useGetCreditCardMutation,
+  useGetCreditCardsMutation,
   useGetCreditCardByIdMutation,
+  useGetCreditCardFeesMutation,
+  useDeleteCreditCardMutation,
   endpoints: {
     createCreditCard: { matchFulfilled: createCreditCardFulfiled, matchRejected: createCreditCardRejected },
-    getCreditCard: { matchFulfilled: getCreditCardFulfiled, matchRejected: getCreditCardRejected },
-    getCreditCard: { matchFulfilled: getCreditCardByIdFulfiled, matchRejected: getCreditCardByIdRejected },
+    getCreditCards: { matchFulfilled: getCreditCardsFulfiled, matchRejected: getCreditCardsRejected },
+    getCreditCardById: {
+      matchFulfilled: getCreditCardByIdFulfiled,
+      matchRejected: getCreditCardByIdRejected,
+    },
+    deleteCreditCard: { matchFulfilled: deleteCreditCardFulfiled },
   },
 } = creditCardApi;

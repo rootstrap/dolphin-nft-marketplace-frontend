@@ -7,6 +7,7 @@ import { ModalContext } from 'app/context/ModalContext';
 import { Link, useLocation } from 'react-router-dom';
 import logoImg from 'app/assets/dolphin_logo.png';
 import routesPaths from 'app/constants/routesPath';
+import { CREATURES_URL } from 'app/constants/contants';
 import { Categories } from '../Categories/Categories';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './TopBar.module.scss';
@@ -14,10 +15,12 @@ import styles from './TopBar.module.scss';
 export const DesktopTopBar = () => {
   const t = useTranslation();
   const location = useLocation();
+  const domain = window.location.hostname;
   const [logout] = useLogoutMutation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { setCreditCardModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
   const { isAuthenticated, user } = useAppSelector(state => state.user);
+  const hasCategories = domain != CREATURES_URL;
 
   const handleLogout = () => {
     logout({ email: user.email });
@@ -39,15 +42,17 @@ export const DesktopTopBar = () => {
         </Link>
       </Grid>
 
-      <Grid item md={2} lg={2} className={styles.topBar__item}>
-        <div className={styles.topBar__itemTextCollection}>
-          <Typography variant="h6" onClick={handleCategories} aria-expanded={anchorEl ? 'true' : undefined}>
-            {t('navBar.categories')}
-          </Typography>
-        </div>
+      {hasCategories && (
+        <Grid item md={2} lg={2} className={styles.topBar__item}>
+          <div className={styles.topBar__itemTextCollection}>
+            <Typography variant="h6" onClick={handleCategories} aria-expanded={anchorEl ? 'true' : undefined}>
+              {t('navBar.categories')}
+            </Typography>
+          </div>
 
-        <Categories anchorEl={anchorEl} handleClose={handleClose} />
-      </Grid>
+          <Categories anchorEl={anchorEl} handleClose={handleClose} />
+        </Grid>
+      )}
 
       <Grid item md={2} lg={2} className={styles.topBar__item}>
         <Link to={routesPaths.faq}>

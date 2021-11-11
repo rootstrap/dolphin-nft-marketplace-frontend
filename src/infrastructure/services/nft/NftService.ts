@@ -59,6 +59,6 @@ export const {
 } = nftApi;
 
 interface BuyNFT {
-  nftId: number;
+  nftId: string;
   price: number;
 }

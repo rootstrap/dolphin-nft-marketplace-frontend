@@ -1,9 +1,10 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import { NFT } from 'app/interfaces/NFT/NFT';
 import { useBuyNft } from './useBuyNft';
+import { DepositModal } from 'presentation/components/DepositModal/DepositModal';
+import { BuyModal } from 'presentation/components/BuyModal/BuyModal';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Buy.module.scss';
-import { DepositModal } from 'presentation/components/DepositModal/DepositModal';
 
 export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
   const t = useTranslation();
@@ -14,6 +15,9 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
     enoughBalance,
     depositModalIsOpen,
     handleCloseDepositModal,
+    handleOpenBuyNftModal,
+    handleCloseBuyNftModal,
+    buyModalIsOpen,
     fee,
     depositSize,
   } = useBuyNft(nft);
@@ -75,6 +79,7 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
               className={styles.buyContent__btn}
               variant="contained"
               disabled={!enoughBalance}
+              onClick={handleOpenBuyNftModal}
             >
               {t('nft.buyButton')}
             </Button>
@@ -91,6 +96,13 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
         handleClose={handleCloseDepositModal}
         fee={fee}
         depositSize={depositSize}
+      />
+
+      <BuyModal
+        isOpen={buyModalIsOpen}
+        handleClose={handleCloseBuyNftModal}
+        nftId={nft.id}
+        price={nft.offerPrice}
       />
     </Grid>
   );

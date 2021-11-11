@@ -50,7 +50,7 @@ export const DesktopTopBar = () => {
       </Grid>
 
       <Grid item md={2} lg={2} className={styles.topBar__item}>
-        <Link to={routesPaths.faq}>
+        <Link to={routesPaths.index}>
           <div className={styles.topBar__itemTextCollection}>
             <Typography variant="h6">{t('navBar.faq')}</Typography>
           </div>

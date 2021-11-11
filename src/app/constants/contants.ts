@@ -29,11 +29,13 @@ export const dropDownListCategories = [
   },
 ];
 
+export const CREATURES_URL: string = 'creaturechronicles.io';
+
 export const socialMediaLinks = {
   facebook: 'https://www.facebook.com/Dolphin-Marketplace-243870417566415',
   instagram: 'https://www.instagram.com/dolphin_marketplace',
   twitter: 'https://twitter.com/Dolphin_mktpl',
-  discord: 'https://discord.com/dolphin_marketplace',
+  discord: 'https://discord.gg/zpWVRcrNgv',
 };
 
 export const PASSWORD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;

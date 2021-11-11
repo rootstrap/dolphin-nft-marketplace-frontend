@@ -50,9 +50,10 @@
     "description2": "The custom, limited edition Playbooks NFTs - Phenom, Star, Icon and Legend - have unlockable rewards for those who collect all four of the same player, including virtual events with the players and rare signed memorabilia.",
     "stepsDesc": "What you can do to prepare:",
     "steps1": "Sign up now and get notified when they arrive",
-    "steps2": "Activate your wallet",
-    "steps3": "Join our Discord Community",
-    "steps4": "Await for signal",
+    "steps2": "Join our Discord Community",
+    "steps3": "Await for signal",
+    "steps4": "",
+    "discord": "Join Discord",
     "roadmap": "Roadmap",
     "comingsoon": "Coming Soon...",
     "sign_up": "Sign up now, if you dare →",
@@ -198,6 +199,6 @@
   "bottomBar": {
     "terms": "Terms of use",
     "policy": "Privacy policy",
-    "brand": "© Dolphin Entertainment 2021"
+    "brand": "© Dolphin NFTs 2021"
   }
 }

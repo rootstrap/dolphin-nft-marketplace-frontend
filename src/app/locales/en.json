@@ -102,7 +102,10 @@
       "fundButton": "Fund Wallet to buy this NFT",
       "price": "Price: ",
       "continueButton": "Activate your wallet to continue",
-      "cancelButton": "Cancel"
+      "cancelButton": "Cancel",
+      "confirmButton": "Confirm",
+      "buyModalTitle": "We are almost done",
+      "successMsg": "Great. The NFT is yours"
     }
   },
   "peers": {

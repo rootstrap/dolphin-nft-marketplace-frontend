@@ -17,6 +17,7 @@ export const useBuyNft = (nft: NFT) => {
   const [depositSize, setDepositSize] = useState<number>(0);
   const [enoughBalance, setEnoughBalance] = useState(false);
   const [depositModalIsOpen, setDepositModalIsOpen] = useState(false);
+  const [buyModalIsOpen, setBuyModalIsOpen] = useState(false);
 
   const { setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
 
@@ -35,6 +36,9 @@ export const useBuyNft = (nft: NFT) => {
     getBalance();
     setDepositModalIsOpen(false);
   };
+
+  const handleOpenBuyNftModal = () => setBuyModalIsOpen(true);
+  const handleCloseBuyNftModal = () => setBuyModalIsOpen(false);
 
   const loadData = async () => {
     const data: any = await getCreditCardFees();
@@ -62,6 +66,9 @@ export const useBuyNft = (nft: NFT) => {
     enoughBalance,
     depositModalIsOpen,
     handleCloseDepositModal,
+    handleOpenBuyNftModal,
+    handleCloseBuyNftModal,
+    buyModalIsOpen,
     fee,
     depositSize,
   };

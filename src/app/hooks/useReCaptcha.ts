@@ -15,7 +15,9 @@ export const useReCaptcha = () => {
       document.body.appendChild(script);
     };
 
-    fetchFtxKeys();
+    if (!window.grecaptcha) {
+      fetchFtxKeys();
+    }
   }, []);
 
   const getToken = async (action: string) => await window.grecaptcha.execute(key, { action: action });

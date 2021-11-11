@@ -11,6 +11,19 @@ const authApi = api.injectEndpoints({
         body: { email: user.email, password: user.password },
       }),
     }),
+    loginFTX: builder.mutation({
+      query: (user: LoginFTXBody) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/users/login`,
+        method: 'POST',
+        body: {
+          email: user.email,
+          password: user.password,
+          captcha: {
+            recaptcha_challenge: user.recaptcha,
+          },
+        },
+      }),
+    }),
     kyc: builder.mutation({
       query: (kyc: KycBody) => ({
         url: endpoints.KYC,
@@ -70,6 +83,12 @@ interface LoginBody {
   password: string;
 }
 
+interface LoginFTXBody {
+  email: string;
+  password: string;
+  recaptcha: string;
+}
+
 interface LogoutBody {
   email: string;
 }
@@ -100,6 +119,7 @@ interface signupFTXBody {
 
 export const {
   useLoginMutation,
+  useLoginFTXMutation,
   useLogoutMutation,
   useSignupMutation,
   useSignupFTXMutation,
@@ -110,6 +130,7 @@ export const {
     login: { matchFulfilled: loginFulfiled },
     logout: { matchFulfilled: logoutFulfiled, matchRejected: logoutRejected },
     signupFTX: { matchFulfilled: signupFTXFulfiled },
+    loginFTX: { matchFulfilled: loginFTXFulfiled },
     kyc: { matchFulfilled: kycFulfiled, matchRejected: kycRejected },
   },
 } = authApi;

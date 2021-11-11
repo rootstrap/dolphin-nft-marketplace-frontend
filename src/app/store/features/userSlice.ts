@@ -12,6 +12,7 @@ import {
   logoutRejected,
   signupFulfiled,
   signupFTXFulfiled,
+  loginFTXFulfiled,
 } from 'infrastructure/services/user/UserService';
 
 const initialState: UserState = {
@@ -55,12 +56,24 @@ const userSlice = createSlice({
         state.tokenFtx = token;
       }
     );
-    builder.addMatcher(loginFulfiled, (state, { payload: { token, tokenFtx, user } }) => {
+    builder.addMatcher(loginFulfiled, (state, { payload: { token, user } }) => {
       state.isAuthenticated = true;
       state.token = token;
-      state.tokenFtx = tokenFtx;
       state.user = { ...user };
     });
+    builder.addMatcher(
+      loginFTXFulfiled,
+      (
+        state,
+        {
+          payload: {
+            result: { token },
+          },
+        }
+      ) => {
+        state.tokenFtx = token;
+      }
+    );
     builder.addMatcher(logoutFulfiled, state => (state = initialState));
     builder.addMatcher(logoutRejected, (state, { payload: { status } }) => {
       ErrorReqHandler({ status });

@@ -50,11 +50,11 @@ export const DesktopTopBar = () => {
       </Grid>
 
       <Grid item md={2} lg={2} className={styles.topBar__item}>
-        <Link to={routesPaths.index}>
+        <a href={process.env.REACT_APP_ZENDESK_URL} target="_blank">
           <div className={styles.topBar__itemTextCollection}>
             <Typography variant="h6">{t('navBar.faq')}</Typography>
           </div>
-        </Link>
+        </a>
       </Grid>
       <Grid item md={2} lg={3} />
 

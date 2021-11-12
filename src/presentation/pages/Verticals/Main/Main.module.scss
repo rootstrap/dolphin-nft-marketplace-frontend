@@ -1,6 +1,26 @@
 @import '../../../../app/styles/base/settings';
 
 .mainContent {
+  &__title {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 8rem;
+    position: absolute;
+    width: 100%;
+
+    &Featured {
+      color: $orange;
+      margin-bottom: 1rem;
+    }
+    &Issuer {
+      font-size: 700;
+    }
+    &Button {
+      margin-top: 2rem !important;
+      width: 12rem !important;
+    }
+  }
 
   &__item {
     display: flex;

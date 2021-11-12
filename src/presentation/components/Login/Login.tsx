@@ -7,7 +7,6 @@ import { Grid } from '@material-ui/core';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import useTranslation from '../../../app/hooks/useTranslation';
 import routesPaths from '../../../app/constants/routesPath';
-import dolphinBall from 'app/assets/blue_ball.png';
 import styles from './Login.module.scss';
 
 export const Login = () => {
@@ -26,7 +25,6 @@ export const Login = () => {
 
   return (
     <BaseModal open={loginModalIsOpen} handleClose={handleClose}>
-      <img src={dolphinBall} alt="dolphin ball" className={styles.loginForm__img} />
       <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.loginForm__title}>
           <Typography variant="h5">{t('login.title')}</Typography>

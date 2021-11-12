@@ -4,11 +4,10 @@ import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { useSignup } from './useSignup';
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import styles from './Signup.module.scss';
-import routesPaths from 'app/constants/routesPath';
-import dolphinBall from 'app/assets/blue_ball.png';
-import useTranslation from 'app/hooks/useTranslation';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
+import routesPaths from 'app/constants/routesPath';
+import styles from './Signup.module.scss';
+import useTranslation from 'app/hooks/useTranslation';
 
 export const Signup = () => {
   const t = useTranslation();
@@ -26,7 +25,6 @@ export const Signup = () => {
 
   return (
     <BaseModal open={signupModalIsOpen} handleClose={handleClose}>
-      <img src={dolphinBall} alt="dolphin ball" className={styles.signupForm__img} />
       <form className={styles.signupForm} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.signupForm__title}>
           <Typography variant="h5">{t('signup.title')}</Typography>

@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import { Item } from './Item';
 import { useNFT } from './useNFT';
 import { useState } from 'react';
-import { BuyNFT } from '../BuyNFT/BuyNFT';
+import { BuyNFT } from 'presentation/pages/NFT/BuyNFT/BuyNFT';
 import { Peers } from 'presentation/components/Peers/Peers';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import styles from './Main.module.scss';

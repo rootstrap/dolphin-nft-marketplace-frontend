@@ -3,6 +3,10 @@ import { useContext } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import { socialMediaLinks } from 'app/constants/contants';
+import { ReactComponent as Discord } from 'app/assets/Discord.svg';
+import { ReactComponent as Instagram } from 'app/assets/Instagram.svg';
+import { ReactComponent as Facebook } from 'app/assets/Facebook.svg';
+import { ReactComponent as Twitter } from 'app/assets/Twitter.svg';
 import First from 'app/assets/first_small.png';
 import Second from 'app/assets/second_small.png';
 import Third from 'app/assets/third_small.png';
@@ -75,6 +79,31 @@ export const MainContent = () => {
             <img alt="teaser" src={CreaturesTeaser} className={styles.mainContent__teaser} />
           </Grid>
         </Grid>
+      </Grid>
+
+      <Grid container className={styles.mainContent__social}>
+        <Grid item lg={2} className={styles.mainContent__socialItem}></Grid>
+        <Grid item lg={2} className={styles.mainContent__socialItem}>
+          <a href={socialMediaLinks.facebook} target="_blank">
+            <Facebook />
+          </a>
+        </Grid>
+        <Grid item lg={2} className={styles.mainContent__socialItem}>
+          <a href={socialMediaLinks.twitter} target="_blank">
+            <Twitter />
+          </a>
+        </Grid>
+        <Grid item lg={2} className={styles.mainContent__socialItem}>
+          <a href={socialMediaLinks.instagram} target="_blank">
+            <Instagram />
+          </a>
+        </Grid>
+        <Grid item lg={2} className={styles.mainContent__socialItem}>
+          <a href={socialMediaLinks.discord} target="_blank">
+            <Discord />
+          </a>
+        </Grid>
+        <Grid item lg={2} className={styles.mainContent__socialItem}></Grid>
       </Grid>
     </Grid>
   );

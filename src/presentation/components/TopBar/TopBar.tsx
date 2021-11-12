@@ -25,13 +25,13 @@ export const TopBar = ({ isTopBarDisabled }: TopBarProps) => {
   return (
     <nav className={styles.topBar}>
       <Grid container spacing={0} alignItems="center">
-        <Grid item md={2} lg={2} className={styles.topBar__item}>
+        <Grid item xs={4} sm={3} md={2} lg={2} className={styles.topBar__item}>
           <Link to={routesPaths.index}>
             <img src={logoImg} alt="logo" className={styles.topBar__logo} />
           </Link>
         </Grid>
 
-        <Grid item md={2} lg={2} className={styles.topBar__item}>
+        <Grid item xs={4} sm={2} md={2} lg={2} className={styles.topBar__item}>
           <div className={styles.topBar__itemTextCollection}>
             <Typography variant="h6" onClick={handleCategories} aria-expanded={anchorEl ? 'true' : undefined}>
               {t('navBar.categories')}
@@ -41,7 +41,7 @@ export const TopBar = ({ isTopBarDisabled }: TopBarProps) => {
           {!isTopBarDisabled && <Categories anchorEl={anchorEl} handleClose={handleClose} />}
         </Grid>
 
-        <Grid item md={2} lg={2} className={styles.topBar__item}>
+        <Grid item xs={4} sm={2} md={2} lg={2} className={styles.topBar__item}>
           <a href={process.env.REACT_APP_ZENDESK_URL} target="_blank">
             <div className={styles.topBar__itemTextCollection}>
               <Typography variant="h6">{t('navBar.faq')}</Typography>
@@ -50,7 +50,7 @@ export const TopBar = ({ isTopBarDisabled }: TopBarProps) => {
         </Grid>
         <Grid item md={2} lg={3} />
 
-        <Grid item md={4} lg={3} className={styles.topBar__item} alignItems="flex-start">
+        <Grid item xs={12} sm={4} md={4} lg={3} className={styles.topBar__item} alignItems="flex-start">
           {isAuthenticated ? (
             <div className={styles.topBar__itemButton}>
               <div className={styles.topBar__itemButtonProfile}>

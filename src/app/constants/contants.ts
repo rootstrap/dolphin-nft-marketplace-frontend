@@ -32,9 +32,9 @@ export const dropDownListCategories = [
 export const CREATURES_URL: string = 'creaturechronicles.io';
 
 export const socialMediaLinks = {
-  facebook: 'https://www.facebook.com/Dolphin-Marketplace-243870417566415',
-  instagram: 'https://www.instagram.com/dolphin_marketplace',
-  twitter: 'https://twitter.com/Dolphin_mktpl',
+  facebook: 'https://www.facebook.com/exiledaliensmarketplace',
+  instagram: 'https://www.instagram.com/exiledaliens',
+  twitter: 'https://twitter.com/exiled_aliens_',
   discord: 'https://discord.gg/zpWVRcrNgv',
 };
 

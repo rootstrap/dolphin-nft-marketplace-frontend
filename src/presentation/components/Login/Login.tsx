@@ -27,7 +27,9 @@ export const Login = () => {
     <BaseModal open={loginModalIsOpen} handleClose={handleClose}>
       <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.loginForm__title}>
-          <Typography variant="h5">{t('login.title')}</Typography>
+          <Typography gutterBottom variant="h5">
+            {t('login.title')}
+          </Typography>
         </div>
 
         {error && (

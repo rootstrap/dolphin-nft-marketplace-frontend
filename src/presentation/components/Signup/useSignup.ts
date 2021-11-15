@@ -5,8 +5,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PASSWORD_REGEX, recaptchaActions } from 'app/constants/contants';
 import * as z from 'zod';
-import useTranslation from 'app/hooks/useTranslation';
 import { useReCaptcha } from 'app/hooks/useReCaptcha';
+import useTranslation from 'app/hooks/useTranslation';
 
 interface FormValues {
   firstName: string;

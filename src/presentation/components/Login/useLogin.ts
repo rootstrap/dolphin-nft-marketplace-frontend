@@ -49,6 +49,7 @@ export const useLogin = () => {
   const handleClose = () => {
     reset();
     clearErrors();
+    setError('');
     setLoginModalIsOpen(false);
   };
 

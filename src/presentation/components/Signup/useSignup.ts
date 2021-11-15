@@ -19,7 +19,7 @@ interface FormValues {
 export const useSignup = () => {
   const t = useTranslation();
   const { getToken } = useReCaptcha();
-  const [signupFTX, { isLoading, isSuccess, isError }] = useSignupFTXMutation();
+  const [signupFTX, { error: signupError, isLoading, isSuccess, isError }] = useSignupFTXMutation();
   const [signup] = useSignupMutation();
   const { signupModalIsOpen, setSignupModalIsOpen, setLoginModalIsOpen } = useContext(ModalContext);
   const [error, setError] = useState('');
@@ -50,12 +50,13 @@ export const useSignup = () => {
     const token = await getToken(recaptchaActions.register);
 
     setUserInfo(data);
-    signupFTX({ ...data, recaptcha: token });
+    await signupFTX({ ...data, recaptcha: token });
   };
 
   const handleClose = () => {
     clearErrors();
     reset();
+    setError('');
     setSignupModalIsOpen(false);
   };
 
@@ -73,7 +74,8 @@ export const useSignup = () => {
 
   useEffect(() => {
     if (isError) {
-      setError(t('signup.error.systemError'));
+      const error = Object(signupError);
+      setError(error.data.error);
     }
   }, [isError]);
 

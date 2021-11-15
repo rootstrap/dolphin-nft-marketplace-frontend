@@ -27,7 +27,7 @@ export const CreditCardVerification = () => {
       </Typography>
 
       {errorMsg && (
-        <Typography gutterBottom variant="subtitle1">
+        <Typography gutterBottom variant="subtitle1" className={styles.creditCardVerification__error}>
           {CIRCLE_FAILURE_CODES[errorMsg]}
         </Typography>
       )}

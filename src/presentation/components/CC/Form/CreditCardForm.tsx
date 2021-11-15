@@ -18,6 +18,11 @@ export const CreditCardForm = () => {
     <>
       <div className={styles.creditCardForm__title}>
         <Typography variant="h5">{t('creditCard.title')}</Typography>
+        {error && (
+          <Typography variant="h6" className={styles.creditCardForm__error}>
+            {error}
+          </Typography>
+        )}
       </div>
       <Grid container spacing={3} alignItems="center" justifyContent="center">
         <Grid item xs={12}>
@@ -134,7 +139,6 @@ export const CreditCardForm = () => {
           <div className={styles.creditCardForm__button}>
             <Button type="submit">{t('creditCard.button')}</Button>
           </div>
-          {error && <Typography className={styles.creditCardForm__error}>{error}</Typography>}
         </Grid>
       </Grid>
     </>

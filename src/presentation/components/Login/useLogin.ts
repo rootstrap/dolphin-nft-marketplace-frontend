@@ -5,10 +5,10 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { recaptchaActions } from 'app/constants/contants';
-import useTranslation from 'app/hooks/useTranslation';
 import { useGetCreditCardsMutation } from 'infrastructure/services/creditCard/CreditCardService';
 import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositService';
 import { useReCaptcha } from 'app/hooks/useReCaptcha';
+import useTranslation from 'app/hooks/useTranslation';
 
 interface FormValues {
   email: string;
@@ -19,7 +19,7 @@ export const useLogin = () => {
   const t = useTranslation();
   const { getToken } = useReCaptcha();
   const [login, { isLoading, isSuccess: loginSuccess }] = useLoginMutation();
-  const [loginFTX, { isSuccess, isError }] = useLoginFTXMutation();
+  const [loginFTX, { error: signinError, isSuccess, isError }] = useLoginFTXMutation();
   const [getCreditCards] = useGetCreditCardsMutation();
   const [getBalance] = useGetBalanceMutation();
   const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
@@ -49,6 +49,7 @@ export const useLogin = () => {
   const handleClose = () => {
     reset();
     clearErrors();
+    setError('');
     setLoginModalIsOpen(false);
   };
 
@@ -77,7 +78,8 @@ export const useLogin = () => {
 
   useEffect(() => {
     if (isError) {
-      setError(t('login.error.systemError'));
+      const error = Object(signinError);
+      setError(error.data.error);
     }
   }, [isError]);
 

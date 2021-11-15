@@ -75,7 +75,7 @@ export const useCreditCardForm = () => {
 
   useEffect(() => {
     if (isError) {
-      setError('Credit Card Validation Failed in FTX');
+      setError('Invalid Credit Card Information');
     }
   }, [isError]);
 

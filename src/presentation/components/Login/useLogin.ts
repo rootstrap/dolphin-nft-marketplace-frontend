@@ -1,4 +1,8 @@
-import { useLoginMutation, useLoginFTXMutation } from 'infrastructure/services/user/UserService';
+import {
+  useLoginMutation,
+  useLoginFTXMutation,
+  useLoginStatusMutation,
+} from 'infrastructure/services/user/UserService';
 import { useEffect, useContext, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -20,6 +24,7 @@ export const useLogin = () => {
   const { getToken } = useReCaptcha();
   const [login, { isLoading, isSuccess: loginSuccess }] = useLoginMutation();
   const [loginFTX, { error: signinError, isSuccess, isError }] = useLoginFTXMutation();
+  const [loginStatus] = useLoginStatusMutation();
   const [getCreditCards] = useGetCreditCardsMutation();
   const [getBalance] = useGetBalanceMutation();
   const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
@@ -44,6 +49,7 @@ export const useLogin = () => {
 
     setUserInfo(data);
     await loginFTX({ ...data, recaptcha: token });
+    await loginStatus();
   };
 
   const handleClose = () => {

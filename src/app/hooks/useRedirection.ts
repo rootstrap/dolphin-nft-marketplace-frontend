@@ -1,19 +1,14 @@
 import { useEffect, useState } from 'react';
 
 export default () => {
-  const [path, setPath] = useState('');
-  const [redirect, setRedirect] = useState(false);
+  const [isCreaturesUser, setIsCreaturesUser] = useState(false);
 
   useEffect(() => {
     const path = window.location.href;
-    setPath(path);
-  }, [path, setPath]);
-
-  if (path.includes('creaturechronicles')) {
-    setRedirect(true);
-  }
+    setIsCreaturesUser(path.includes('creaturechronicles'));
+  }, []);
 
   return {
-    redirect,
+    isCreaturesUser,
   };
 };

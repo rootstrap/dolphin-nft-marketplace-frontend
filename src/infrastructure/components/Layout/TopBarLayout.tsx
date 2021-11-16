@@ -8,14 +8,13 @@ import { BackgroundLayout } from './BackgroundLayout';
 
 interface TopBarLayoutProps {
   pageComponent: ReactElement;
-  isTopBarDisabled?: boolean;
 }
 
-export const TopBarLayout = ({ pageComponent, isTopBarDisabled = false }: TopBarLayoutProps) => {
+export const TopBarLayout = ({ pageComponent }: TopBarLayoutProps) => {
   return (
     <>
       <BackgroundLayout />
-      <TopBar isTopBarDisabled={isTopBarDisabled} />
+      <TopBar />
       {pageComponent}
       <Login />
       <Signup />

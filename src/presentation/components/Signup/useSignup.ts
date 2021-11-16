@@ -5,8 +5,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PASSWORD_REGEX, recaptchaActions } from 'app/constants/contants';
 import * as z from 'zod';
-import useTranslation from 'app/hooks/useTranslation';
 import { useReCaptcha } from 'app/hooks/useReCaptcha';
+import useTranslation from 'app/hooks/useTranslation';
 
 interface FormValues {
   firstName: string;
@@ -19,7 +19,7 @@ interface FormValues {
 export const useSignup = () => {
   const t = useTranslation();
   const { getToken } = useReCaptcha();
-  const [signupFTX, { isLoading, isSuccess, isError }] = useSignupFTXMutation();
+  const [signupFTX, { error: signupError, isLoading, isSuccess, isError }] = useSignupFTXMutation();
   const [signup] = useSignupMutation();
   const { signupModalIsOpen, setSignupModalIsOpen, setLoginModalIsOpen } = useContext(ModalContext);
   const [error, setError] = useState('');
@@ -50,12 +50,13 @@ export const useSignup = () => {
     const token = await getToken(recaptchaActions.register);
 
     setUserInfo(data);
-    signupFTX({ ...data, recaptcha: token });
+    await signupFTX({ ...data, recaptcha: token });
   };
 
   const handleClose = () => {
     clearErrors();
     reset();
+    setError('');
     setSignupModalIsOpen(false);
   };
 
@@ -73,7 +74,8 @@ export const useSignup = () => {
 
   useEffect(() => {
     if (isError) {
-      setError(t('signup.error.systemError'));
+      const error = Object(signupError);
+      setError(error.data.error);
     }
   }, [isError]);
 

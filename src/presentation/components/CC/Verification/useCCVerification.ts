@@ -24,15 +24,15 @@ export const useCCVerification = () => {
   };
 
   const loadDeposit = async (creditCardAmount: number) => {
-    const data: any = await createDeposit({
+    await createDeposit({
       size: creditCardAmount,
       cardId: creditCardId,
     });
   };
 
   const handleCheckStatus = (creditCardAmount: number) => {
-    loadData();
     loadDeposit(creditCardAmount);
+    loadData();
   };
 
   useEffect(() => {

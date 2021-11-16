@@ -11,7 +11,7 @@ export const api = createApi({
       const tokenFtx = (getState() as RootState).user.tokenFtx;
 
       // If we have a token set in state, let's assume that we should be passing it.
-      if (token) {
+      if (token || tokenFtx) {
         headers.set('authorization', `Bearer ${token}`);
         headers.set('x-auth-token', tokenFtx);
       }

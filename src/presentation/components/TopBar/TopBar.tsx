@@ -5,12 +5,15 @@ import { Categories } from '../Categories/Categories';
 import { useTopBar } from './useTopBar';
 import logoImg from 'app/assets/dolphin_logo.png';
 import routesPaths from 'app/constants/routesPath';
+import useRedirection from 'app/hooks/useRedirection';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './TopBar.module.scss';
 
-export const TopBar = ({ isTopBarDisabled }: TopBarProps) => {
+export const TopBar = () => {
   const t = useTranslation();
   const location = useLocation();
+  const { isCreaturesUser } = useRedirection();
+
   const {
     handleCategories,
     anchorEl,
@@ -31,15 +34,20 @@ export const TopBar = ({ isTopBarDisabled }: TopBarProps) => {
           </Link>
         </Grid>
 
-        <Grid item xs={4} sm={2} md={2} lg={2} className={styles.topBar__item}>
-          <div className={styles.topBar__itemTextCollection}>
-            <Typography variant="h6" onClick={handleCategories} aria-expanded={anchorEl ? 'true' : undefined}>
-              {t('navBar.categories')}
-            </Typography>
-          </div>
-
-          {!isTopBarDisabled && <Categories anchorEl={anchorEl} handleClose={handleClose} />}
-        </Grid>
+        {!isCreaturesUser && (
+          <Grid item xs={4} sm={2} md={2} lg={2} className={styles.topBar__item}>
+            <div className={styles.topBar__itemTextCollection}>
+              <Typography
+                variant="h6"
+                onClick={handleCategories}
+                aria-expanded={anchorEl ? 'true' : undefined}
+              >
+                {t('navBar.categories')}
+              </Typography>
+            </div>
+            <Categories anchorEl={anchorEl} handleClose={handleClose} />
+          </Grid>
+        )}
 
         <Grid item xs={4} sm={2} md={2} lg={2} className={styles.topBar__item}>
           <a href={process.env.REACT_APP_ZENDESK_URL} target="_blank">
@@ -48,7 +56,7 @@ export const TopBar = ({ isTopBarDisabled }: TopBarProps) => {
             </div>
           </a>
         </Grid>
-        <Grid item md={2} lg={3} />
+        <Grid item md={2} lg={isCreaturesUser ? 5 : 3} />
 
         <Grid item xs={12} sm={4} md={4} lg={3} className={styles.topBar__item} alignItems="flex-start">
           {isAuthenticated ? (
@@ -81,7 +89,3 @@ export const TopBar = ({ isTopBarDisabled }: TopBarProps) => {
     </nav>
   );
 };
-
-interface TopBarProps {
-  isTopBarDisabled: boolean;
-}

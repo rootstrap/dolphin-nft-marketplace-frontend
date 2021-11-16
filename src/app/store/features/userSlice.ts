@@ -13,6 +13,7 @@ import {
   signupFulfiled,
   signupFTXFulfiled,
   loginFTXFulfiled,
+  loginStatusFulfiled,
 } from 'infrastructure/services/user/UserService';
 
 const initialState: UserState = {
@@ -72,6 +73,19 @@ const userSlice = createSlice({
         }
       ) => {
         state.tokenFtx = token;
+      }
+    );
+    builder.addMatcher(
+      loginStatusFulfiled,
+      (
+        state,
+        {
+          payload: {
+            result: { user },
+          },
+        }
+      ) => {
+        state.user.kyc1ed = Boolean(user.kycLevel);
       }
     );
     builder.addMatcher(logoutFulfiled, state => (state = initialState));

@@ -1,5 +1,6 @@
 import { endpoints } from 'app/constants/endpoints';
 import { Country } from 'app/interfaces/common/Country';
+import { ILoginStatusResponse } from 'app/interfaces/user/LoginStatus';
 import { api } from '../Api';
 
 const authApi = api.injectEndpoints({
@@ -21,6 +22,14 @@ const authApi = api.injectEndpoints({
           captcha: {
             recaptcha_challenge: user.recaptcha,
           },
+        },
+      }),
+    }),
+    loginStatus: builder.mutation<ILoginStatusResponse, void>({
+      query: () => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/login_status`,
+        headers: {
+          ftxAuthorization: 'yes',
         },
       }),
     }),
@@ -120,6 +129,7 @@ interface signupFTXBody {
 export const {
   useLoginMutation,
   useLoginFTXMutation,
+  useLoginStatusMutation,
   useLogoutMutation,
   useSignupMutation,
   useSignupFTXMutation,
@@ -129,6 +139,7 @@ export const {
     signup: { matchFulfilled: signupFulfiled },
     login: { matchFulfilled: loginFulfiled },
     logout: { matchFulfilled: logoutFulfiled, matchRejected: logoutRejected },
+    loginStatus: { matchFulfilled: loginStatusFulfiled },
     signupFTX: { matchFulfilled: signupFTXFulfiled },
     loginFTX: { matchFulfilled: loginFTXFulfiled },
     kyc: { matchFulfilled: kycFulfiled, matchRejected: kycRejected },

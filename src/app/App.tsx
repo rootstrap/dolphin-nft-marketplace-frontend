@@ -9,11 +9,10 @@ import useTranslation from './hooks/useTranslation';
 
 export const App = () => {
   const { isAuthenticated } = useAppSelector(state => state.user);
-  const { redirect } = useRedirection();
+  const { isCreaturesUser } = useRedirection();
   const t = useTranslation();
 
-  redirect && window.location.replace('/creatures');
-
+  const user = isCreaturesUser ? 'isCreatures' : 'isNormalUser';
   return (
     <>
       <Helmet>
@@ -22,7 +21,7 @@ export const App = () => {
 
       <Router>
         <Switch>
-          {routes.map(route => (
+          {routes[user].map(route => (
             <RouteFromPath key={`route-${route.path}`} authenticated={isAuthenticated} {...route} />
           ))}
         </Switch>

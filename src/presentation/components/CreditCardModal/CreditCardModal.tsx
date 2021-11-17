@@ -3,13 +3,22 @@ import { Button, Grid, Typography } from '@material-ui/core';
 import { CreditCard, Delete } from '@material-ui/icons';
 import { useCreditCardModal } from './useCreditCardModal';
 import { setDefaultCreditCard } from 'app/store/features/creditCardSlice';
+import { useAppSelector } from 'app/hooks/reduxHooks';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './CreditCardModal.module.scss';
 
 export const CreditCardModal = () => {
   const t = useTranslation();
-  const { creditCardModalIsOpen, handleClose, creditCards, defaultCreditCard, dispatch, deleteCreditCard } =
-    useCreditCardModal();
+  const { kyc1ed } = useAppSelector(state => state.user.user);
+  const {
+    handleAddCreditCard,
+    creditCardModalIsOpen,
+    handleClose,
+    creditCards,
+    defaultCreditCard,
+    dispatch,
+    deleteCreditCard,
+  } = useCreditCardModal();
 
   return (
     <BaseModal open={creditCardModalIsOpen} handleClose={handleClose}>
@@ -63,7 +72,7 @@ export const CreditCardModal = () => {
           </Grid>
         ))}
 
-        <Button fullWidth disabled variant="contained">
+        <Button fullWidth disabled={!kyc1ed} variant="text" onClick={handleAddCreditCard}>
           {t('profile.creditCards.addButton')}
         </Button>
       </div>

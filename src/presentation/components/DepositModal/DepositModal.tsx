@@ -1,33 +1,15 @@
-import { useEffect, useState } from 'react';
 import { Button, TextField, Typography } from '@material-ui/core';
-import { ReactComponent as Card } from 'app/assets/CardPicture.svg';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
-import { useAppSelector } from 'app/hooks/reduxHooks';
-import { useInitiateDepositMutation } from 'infrastructure/services/deposit/DepositService';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { SuccessVerification } from '../CC/Verification/SuccessVerification';
+import { useDepositModal } from './useDepositModal';
+import Cards from 'react-credit-cards';
 import styles from './DepositModal.module.scss';
+import 'react-credit-cards/es/styles-compiled.css';
 
 export const DepositModal = ({ isOpen, handleClose, depositSize, fee }: DepositModalProps) => {
-  const [cvv, setCvv] = useState<number>(0);
-  const [error, setError] = useState('');
-
-  const { defaultCreditCard } = useAppSelector(state => state.creditCard);
-  const [initiateDeposit, { isLoading, isSuccess, isError }] = useInitiateDepositMutation();
-
-  const handleOnClick = async () => {
-    await initiateDeposit({
-      cvv: cvv,
-      cardId: Number(defaultCreditCard.id),
-      size: depositSize,
-    });
-  };
-
-  useEffect(() => {
-    if (isError) {
-      setError('An Error has ocurred');
-    }
-  }, [isError]);
+  const { isSuccess, isLoading, data, cvv, name, handleInputChange, handleInputFocus, handleOnClick, error } =
+    useDepositModal(depositSize);
 
   const componentToRender = isSuccess ? (
     <div className={styles.depositModal}>
@@ -39,7 +21,14 @@ export const DepositModal = ({ isOpen, handleClose, depositSize, fee }: DepositM
         <CustomLoader msg="Waiting for your deposit" />
       ) : (
         <>
-          <Card />
+          <Cards
+            preview
+            cvc={cvv.cvc}
+            name={name}
+            number={`************${data.mask}`}
+            expiry={''}
+            focused={cvv.focus}
+          />
 
           <div className={styles.depositModal__text}>
             <Typography variant="h5">Please Introduce your CVV</Typography>
@@ -50,9 +39,11 @@ export const DepositModal = ({ isOpen, handleClose, depositSize, fee }: DepositM
           <div className={styles.depositModal__input}>
             <TextField
               label="CVV"
+              name="cvc"
               type="number"
-              value={cvv || ''}
-              onChange={e => setCvv(Number(e.target.value))}
+              value={cvv.cvc || ''}
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
             />
           </div>
 

@@ -32,10 +32,10 @@ export const dropDownListCategories = [
 export const CREATURES_URL: string = 'creaturechronicles.io';
 
 export const socialMediaLinks = {
-  facebook: 'https://www.facebook.com/exiledaliensmarketplace',
-  instagram: 'https://www.instagram.com/exiledaliens',
-  twitter: 'https://twitter.com/exiled_aliens_',
-  discord: 'https://discord.gg/zpWVRcrNgv',
+  facebook: 'https://www.facebook.com/creaturechroniclesnft',
+  instagram: 'https://www.instagram.com/creaturechronicles_',
+  twitter: 'https://twitter.com/creature_chron',
+  discord: 'https://discord.com/invite/CRD4t276Vj',
 };
 
 export const PASSWORD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;

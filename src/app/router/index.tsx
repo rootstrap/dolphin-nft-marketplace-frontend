@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import NFTPage from 'presentation/pages/NFT/NFTPage';
 import HomePage from 'presentation/pages/Home/HomePage';
 import MyCollection from 'presentation/pages/Profile/MyCollection';
@@ -15,6 +14,11 @@ export const routes = {
       component: <CreaturesPage />,
       exact: true,
       private: false,
+    },
+    {
+      path: routesPaths.profile,
+      component: <ProfilePage />,
+      private: true,
     },
   ],
   isNormalUser: [

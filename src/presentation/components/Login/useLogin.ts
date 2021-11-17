@@ -13,6 +13,7 @@ import { useGetCreditCardsMutation } from 'infrastructure/services/creditCard/Cr
 import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositService';
 import { getToken } from 'app/helpers/GetToken';
 import useTranslation from 'app/hooks/useTranslation';
+import routesPaths from 'app/constants/routesPath';
 
 interface FormValues {
   email: string;
@@ -22,8 +23,8 @@ interface FormValues {
 export const useLogin = () => {
   const t = useTranslation();
   const [login, { isLoading, isSuccess: loginSuccess }] = useLoginMutation();
-  const [loginFTX, { error: signinError, isSuccess, isError }] = useLoginFTXMutation();
-  const [loginStatus] = useLoginStatusMutation();
+  const [loginFTX, { error: signinError, isError }] = useLoginFTXMutation();
+  const [loginStatus, { isSuccess: isLoginStatusSuccess }] = useLoginStatusMutation();
   const [getCreditCards] = useGetCreditCardsMutation();
   const [getBalance] = useGetBalanceMutation();
   const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
@@ -69,10 +70,10 @@ export const useLogin = () => {
   };
 
   useEffect(() => {
-    if (isSuccess) {
-      login(userInfo);
+    if (isLoginStatusSuccess) {
+      login(userInfo).then(() => window.location.replace(routesPaths.profile));
     }
-  }, [isSuccess]);
+  }, [isLoginStatusSuccess]);
 
   useEffect(() => {
     if (loginSuccess) {

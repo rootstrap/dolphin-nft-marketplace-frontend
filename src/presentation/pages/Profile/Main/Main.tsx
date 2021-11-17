@@ -1,7 +1,7 @@
 import { Typography } from '@material-ui/core';
-import { PersonOutlined, Twitter } from '@material-ui/icons';
-import { ReactComponent as Discord } from 'app/assets/Discord.svg';
+import { PersonOutlined } from '@material-ui/icons';
 import { useAppSelector } from 'app/hooks/reduxHooks';
+import { Checkboxes } from '../Checkboxes/Checkboxes';
 import styles from './Main.module.scss';
 
 export const Main = () => {
@@ -32,9 +32,8 @@ export const Main = () => {
           </Typography>
         </div>
 
-        <div className={styles.main__containerSocial}>
-          <Twitter />
-          <Discord />
+        <div className={styles.main__containerText}>
+          <Checkboxes />
         </div>
       </div>
     </div>

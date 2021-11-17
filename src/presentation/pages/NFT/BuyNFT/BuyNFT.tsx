@@ -38,23 +38,26 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
       <Grid item xs={2} md={2} lg={1}></Grid>
       <Grid item xs={8} md={12} lg={5}>
         <div className={styles.buyContent__itemFund}>
-          <Grid container className={styles.buyContent__walletContainer}>
-            <Grid item xs={12} lg={8}>
-              <Typography component="div">
-                {defaultCreditCard.status === 'approved'
-                  ? t('nft.buyNft.fundWallet')
-                  : t('nft.buyNft.activateWallet')}
-              </Typography>
-            </Grid>
+          {depositSize ? (
+            <Grid container className={styles.buyContent__walletContainer}>
+              <Grid item xs={12} lg={8}>
+                <Typography component="div">
+                  {defaultCreditCard.status === 'approved'
+                    ? t('nft.buyNft.fundWallet')
+                    : t('nft.buyNft.activateWallet')}
+                </Typography>
+              </Grid>
 
-            <Grid item xs={12} lg={4}>
-              <Button fullWidth onClick={handleOnClick} variant="text">
-                {defaultCreditCard.status === 'approved'
-                  ? t('nft.buyNft.fundButton')
-                  : t('nft.buyNft.activateButton')}
-              </Button>
+              <Grid item xs={12} lg={4}>
+                <Button fullWidth onClick={handleOnClick} variant="text">
+                  {defaultCreditCard.status === 'approved'
+                    ? t('nft.buyNft.fundButton')
+                    : t('nft.buyNft.activateButton')}
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
+          ) : null}
+
           <div className={styles.buyContent__buttonContainer}>
             <div className={styles.buyContent__priceContainer}>
               <Typography variant="h5" className={styles.buyContent__priceContainer__label}>

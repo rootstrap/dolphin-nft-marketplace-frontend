@@ -7,7 +7,7 @@ import { ModalContext } from 'app/context/ModalContext';
 import { useAppDispatch, useAppSelector } from 'app/hooks/reduxHooks';
 
 export const useCreditCardModal = () => {
-  const { creditCardModalIsOpen, setCreditCardModalIsOpen } = useContext(ModalContext);
+  const { setCcModalIsOpen, creditCardModalIsOpen, setCreditCardModalIsOpen } = useContext(ModalContext);
   const handleClose = () => setCreditCardModalIsOpen(false);
 
   const [deleteCreditCard] = useDeleteCreditCardMutation();
@@ -18,9 +18,22 @@ export const useCreditCardModal = () => {
 
   const loadData = useCallback(async () => await getCreditCards(), [getCreditCards]);
 
+  const handleAddCreditCard = () => {
+    handleClose();
+    setCcModalIsOpen(true);
+  };
+
   useEffect(() => {
     loadData();
   }, [loadData]);
 
-  return { creditCardModalIsOpen, handleClose, creditCards, defaultCreditCard, dispatch, deleteCreditCard };
+  return {
+    handleAddCreditCard,
+    creditCardModalIsOpen,
+    handleClose,
+    creditCards,
+    defaultCreditCard,
+    dispatch,
+    deleteCreditCard,
+  };
 };

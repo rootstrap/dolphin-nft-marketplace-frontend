@@ -6,6 +6,7 @@ import { Signup } from 'presentation/components/Signup/Signup';
 import { TopBar } from 'presentation/components/TopBar/TopBar';
 import { BackgroundLayout } from './BackgroundLayout';
 import { CC } from 'presentation/components/CC/CC';
+import { KYC } from 'presentation/components/KYC/KYC';
 
 interface TopBarLayoutProps {
   pageComponent: ReactElement;
@@ -21,6 +22,7 @@ export const TopBarLayout = ({ pageComponent }: TopBarLayoutProps) => {
       <Signup />
       <CreditCardModal />
       <CC />
+      <KYC />
       <BottomBar />
     </>
   );

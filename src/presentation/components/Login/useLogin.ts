@@ -11,7 +11,7 @@ import * as z from 'zod';
 import { recaptchaActions } from 'app/constants/contants';
 import { useGetCreditCardsMutation } from 'infrastructure/services/creditCard/CreditCardService';
 import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositService';
-import { useReCaptcha } from 'app/hooks/useReCaptcha';
+import { getToken } from 'app/helpers/GetToken';
 import useTranslation from 'app/hooks/useTranslation';
 
 interface FormValues {
@@ -21,7 +21,6 @@ interface FormValues {
 
 export const useLogin = () => {
   const t = useTranslation();
-  const { getToken } = useReCaptcha();
   const [login, { isLoading, isSuccess: loginSuccess }] = useLoginMutation();
   const [loginFTX, { error: signinError, isSuccess, isError }] = useLoginFTXMutation();
   const [loginStatus] = useLoginStatusMutation();

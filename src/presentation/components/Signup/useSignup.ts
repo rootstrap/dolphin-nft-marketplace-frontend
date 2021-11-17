@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PASSWORD_REGEX, recaptchaActions } from 'app/constants/contants';
 import * as z from 'zod';
-import { useReCaptcha } from 'app/hooks/useReCaptcha';
+import { getToken } from 'app/helpers/GetToken';
 import useTranslation from 'app/hooks/useTranslation';
 
 interface FormValues {
@@ -18,7 +18,6 @@ interface FormValues {
 
 export const useSignup = () => {
   const t = useTranslation();
-  const { getToken } = useReCaptcha();
   const [signupFTX, { error: signupError, isLoading, isSuccess, isError }] = useSignupFTXMutation();
   const [signup] = useSignupMutation();
   const { signupModalIsOpen, setSignupModalIsOpen, setLoginModalIsOpen } = useContext(ModalContext);

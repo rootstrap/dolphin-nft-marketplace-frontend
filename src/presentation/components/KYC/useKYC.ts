@@ -8,9 +8,9 @@ import { Country } from 'app/interfaces/common/Country';
 import useTranslation from 'app/hooks/useTranslation';
 
 interface FormValues {
-  fullName: string;
+  fullLegalName: string;
   country: string;
-  state: string;
+  stateProvinceRegion: string;
   dateOfBirth: Date;
   postalCode: string;
   streetAddress: string;
@@ -20,7 +20,7 @@ interface FormValues {
 
 export const useKYC = () => {
   const t = useTranslation();
-  const [kyc, { isLoading, isSuccess, isError }] = useKycMutation();
+  const [kyc, { isLoading, isSuccess, isError, error: kycError }] = useKycMutation();
   const [getCountries] = useGetCountriesMutation();
 
   const [error, setError] = useState('');
@@ -28,9 +28,9 @@ export const useKYC = () => {
   const { kycModalIsOpen, setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
 
   const schema = z.object({
-    fullName: z.string().min(2, { message: 'Field Required' }),
+    fullLegalName: z.string().min(2, { message: 'Field Required' }),
     country: z.string().min(2, { message: 'Field Required' }),
-    state: z.string().min(2, { message: 'Field Required' }),
+    stateProvinceRegion: z.string().min(2, { message: 'Field Required' }),
     dateOfBirth: z.string().min(7, { message: 'Field Required' }),
     postalCode: z.string().min(2, { message: 'Field Required' }),
     streetAddress: z.string().min(2, { message: 'Field Required' }),
@@ -70,7 +70,8 @@ export const useKYC = () => {
 
   useEffect(() => {
     if (isError) {
-      setError(t('login.error.systemError'));
+      const error = Object(kycError);
+      setError(error.data.error);
     }
   }, [isError]);
 

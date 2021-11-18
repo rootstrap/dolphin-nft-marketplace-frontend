@@ -7,6 +7,7 @@ import { PASSWORD_REGEX, recaptchaActions } from 'app/constants/contants';
 import * as z from 'zod';
 import { getToken } from 'app/helpers/GetToken';
 import useTranslation from 'app/hooks/useTranslation';
+import routesPaths from 'app/constants/routesPath';
 
 interface FormValues {
   firstName: string;
@@ -66,7 +67,7 @@ export const useSignup = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      signup(userInfo);
+      signup(userInfo).then(() => window.location.replace(routesPaths.profile));
       handleClose();
     }
   }, [isSuccess]);

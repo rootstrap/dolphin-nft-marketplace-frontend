@@ -12,10 +12,8 @@ import { useVertical } from '../useVertical';
 import { Item } from './Item';
 import { NFT } from 'app/interfaces/NFT/NFT';
 import { Promotion } from '../Promotion/Promotion';
-import { Link } from 'react-router-dom';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Main.module.scss';
-import routesPaths from 'app/constants/routesPath';
 
 export const Main = () => {
   const { verticalId } = useParams<{ verticalId?: string }>();

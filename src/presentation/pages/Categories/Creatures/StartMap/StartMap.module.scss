@@ -1,0 +1,26 @@
+@import '../../../../../app/styles/base/settings';
+
+.startmap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+  text-align: center;
+
+  &__title {
+    color: $orange-creatures;
+    font-weight: 900;
+    font-family: 'The Neue' !important;
+    margin: 1rem 0;
+  }
+
+  &__text {
+    width: 90%;
+    margin: 1rem 0;
+
+    &Title {
+      margin: 1rem 0;
+      color: $orange-creatures;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../../app/styles/base/settings';
+
+.faqAccordion {
+  background-color: black;
+  padding: 4rem;
+  &__item {
+    border-bottom: 1px solid $dark-grey;
+    padding: 1rem;
+  }
+
+  &__title {
+    color: $orange-creatures;
+    font-weight: 900;
+    font-family: 'The Neue' !important;
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  &__question {
+    color: $orange-creatures;
+  }
+
+  &__answer {
+    color: '#fff';
+  }
+}

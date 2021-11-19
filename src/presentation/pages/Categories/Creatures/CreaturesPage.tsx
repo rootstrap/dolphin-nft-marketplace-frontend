@@ -1,8 +1,14 @@
+import { ThemeProvider } from '@material-ui/core';
+import { creaturesTheme } from 'app/themes/CreaturesTheme';
 import { TopBarLayout } from 'infrastructure/components/Layout/TopBarLayout';
-import { MainContent } from './Main/Main';
+import { Main } from './Main/Main';
 
 const CreaturesPage = () => {
-  return <TopBarLayout pageComponent={<MainContent />} />;
+  return (
+    <ThemeProvider theme={creaturesTheme}>
+      <TopBarLayout pageComponent={<Main />} />
+    </ThemeProvider>
+  );
 };
 
 export default CreaturesPage;

@@ -5,6 +5,7 @@ import { useLogin } from './useLogin';
 import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
+import { ReactComponent as FTXLogo } from 'app/assets/ftxus_logo.svg';
 import useTranslation from '../../../app/hooks/useTranslation';
 import routesPaths from '../../../app/constants/routesPath';
 import styles from './Login.module.scss';
@@ -26,6 +27,9 @@ export const Login = () => {
   return (
     <BaseModal open={loginModalIsOpen} handleClose={handleClose}>
       <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.loginForm__logo}>
+          <FTXLogo />
+        </div>
         <div className={styles.loginForm__title}>
           <Typography gutterBottom variant="h5">
             {t('login.title')}

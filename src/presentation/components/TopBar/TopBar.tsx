@@ -35,28 +35,31 @@ export const TopBar = () => {
         </Grid>
 
         {!isCreaturesUser && (
-          <Grid item xs={4} sm={2} md={2} lg={2} className={styles.topBar__item}>
-            <div className={styles.topBar__itemTextCollection}>
-              <Typography
-                variant="h6"
-                onClick={handleCategories}
-                aria-expanded={anchorEl ? 'true' : undefined}
-              >
-                {t('navBar.categories')}
-              </Typography>
-            </div>
-            <Categories anchorEl={anchorEl} handleClose={handleClose} />
-          </Grid>
+          <>
+            <Grid item xs={4} sm={2} md={2} lg={2} className={styles.topBar__item}>
+              <div className={styles.topBar__itemTextCollection}>
+                <Typography
+                  variant="h6"
+                  onClick={handleCategories}
+                  aria-expanded={anchorEl ? 'true' : undefined}
+                >
+                  {t('navBar.categories')}
+                </Typography>
+              </div>
+              <Categories anchorEl={anchorEl} handleClose={handleClose} />
+            </Grid>
+
+            <Grid item xs={4} sm={2} md={2} lg={2} className={styles.topBar__item}>
+              <a href={process.env.REACT_APP_ZENDESK_URL} target="_blank">
+                <div className={styles.topBar__itemTextCollection}>
+                  <Typography variant="h6">{t('navBar.faq')}</Typography>
+                </div>
+              </a>
+            </Grid>
+          </>
         )}
 
-        <Grid item xs={4} sm={2} md={2} lg={2} className={styles.topBar__item}>
-          <a href={process.env.REACT_APP_ZENDESK_URL} target="_blank">
-            <div className={styles.topBar__itemTextCollection}>
-              <Typography variant="h6">{t('navBar.faq')}</Typography>
-            </div>
-          </a>
-        </Grid>
-        <Grid item md={2} lg={isCreaturesUser ? 5 : 3} />
+        <Grid item xs={isCreaturesUser ? 4 : 2} md={isCreaturesUser ? 6 : 2} lg={isCreaturesUser ? 7 : 3} />
 
         <Grid item xs={12} sm={4} md={4} lg={3} className={styles.topBar__item} alignItems="flex-start">
           {isAuthenticated ? (
@@ -78,10 +81,20 @@ export const TopBar = () => {
           ) : (
             <div className={styles.topBar__itemButton}>
               <Button onClick={() => setSignupModalIsOpen(true)}>{t('global.signup')} </Button>
-              <span className={styles.topBar__itemLink}>{t('global.signinMsg')}</span>
-              <Link to={location.pathname} onClick={() => setLoginModalIsOpen(true)}>
-                &nbsp;{t('global.signinLink')}
-              </Link>
+              {isCreaturesUser ? (
+                <>
+                  <Button variant="text" color="secondary" onClick={() => setLoginModalIsOpen(true)}>
+                    {t('global.login')}{' '}
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <span className={styles.topBar__itemLink}>{t('global.signinMsg')}</span>
+                  <Link to={location.pathname} onClick={() => setLoginModalIsOpen(true)}>
+                    &nbsp;{t('global.signinLink')}
+                  </Link>
+                </>
+              )}
             </div>
           )}
         </Grid>

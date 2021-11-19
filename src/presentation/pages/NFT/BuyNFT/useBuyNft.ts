@@ -53,7 +53,7 @@ export const useBuyNft = (nft: NFT) => {
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [depositSize]);
 
   useEffect(() => {
     setEnoughBalance(hasEnoughBalance(currentBalance, nft.offerPrice));

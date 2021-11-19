@@ -15,7 +15,7 @@ export const Main = () => {
     <>
       <MainContent />
 
-      <div className={styles.carousel}>
+      <div className={styles.carousel} id="carousel">
         <div className={styles.carousel__background}>
           <img src={BackgroundCarousel} alt="" />
         </div>

@@ -2,6 +2,7 @@ import { Button, Typography } from '@material-ui/core';
 import { ReactComponent as SmallDiscord } from 'app/assets/SmallDiscord.svg';
 import { socialMediaLinks } from '../../../../../app/constants/contants';
 import CreaturesBackground from 'app/assets/CreaturesBackground.png';
+import routesPaths from 'app/constants/routesPath';
 import styles from './MainContent.module.scss';
 
 export const MainContent = () => {
@@ -12,9 +13,11 @@ export const MainContent = () => {
           <img src={CreaturesBackground} alt="" />
         </div>
         <div className={styles.mainContent__backgroundButton}>
-          <Button size="large" variant="outlined" color="inherit">
-            Explore Collection
-          </Button>
+          <a href={routesPaths.creaturesCarousel}>
+            <Button size="large" variant="outlined" color="inherit">
+              Explore Collection
+            </Button>
+          </a>
         </div>
       </div>
 
@@ -57,16 +60,16 @@ export const MainContent = () => {
         </Typography>
 
         <div className={styles.discord__button}>
-          <Button size="large" variant="outlined" color="inherit">
-            <div className={styles.discord__buttonContent}>
-              <a href={socialMediaLinks.discord} target="_blank">
+          <a href={socialMediaLinks.discord} target="_blank">
+            <Button size="large" variant="outlined" color="inherit">
+              <div className={styles.discord__buttonContent}>
                 Join now
-              </a>
-              <div>
-                <SmallDiscord />
+                <div>
+                  <SmallDiscord />
+                </div>
               </div>
-            </div>
-          </Button>
+            </Button>
+          </a>
         </div>
       </div>
     </>

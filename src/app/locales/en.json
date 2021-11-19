@@ -121,11 +121,11 @@
     "priceColumn": "Sale Price"
   },
   "login": {
-    "title": "Sign in",
+    "title": "Sign in using your FTX account",
     "email": "E-mail",
     "password": "Password",
     "inputError": "Invalid Email/Password",
-    "button": "Sign in",
+    "button": "Get started!",
     "signupMsg": "Don’t have an account yet?",
     "signupLink": "Sign up",
     "error": {
@@ -143,7 +143,13 @@
     "passwordConfirmation": "Confirm Password",
     "inputError": "Invalid Input Values",
     "passwordError": "Passwords don't match",
-    "button": "Sign up",
+    "button": "Get started!",
+    "TOS": {
+      "agrees": "Agrees to the ",
+      "terms": "Terms of Service ",
+      "and": "and ",
+      "privacyPolicy": "Privacy Policy"
+    },
     "signinMsg": "Already have an account?",
     "signinLink": "Sign in",
     "error": {

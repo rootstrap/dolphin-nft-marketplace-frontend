@@ -23,6 +23,7 @@ export const useSignup = () => {
   const { signupModalIsOpen, setSignupModalIsOpen, setLoginModalIsOpen } = useContext(ModalContext);
   const [error, setError] = useState('');
   const [userInfo, setUserInfo] = useState<FormValues>();
+  const [isTosAgree, setIsTosAgree] = useState<boolean>(false);
 
   const schema = z
     .object({
@@ -86,6 +87,8 @@ export const useSignup = () => {
     register,
     handleSubmit,
     onSubmit,
+    setIsTosAgree,
+    isTosAgree,
     errors,
     error,
   };

@@ -10,6 +10,7 @@ export const colors = {
   backgroundDark: '#1f1f1f',
   backgroundPromotion: '#161616',
   orange: '#f58550',
+  orangeCreatures: '##FF751D',
   black: '#000',
   white: '#FFF',
 };

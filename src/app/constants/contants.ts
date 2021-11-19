@@ -10,6 +10,7 @@ export const colors = {
   backgroundDark: '#1f1f1f',
   backgroundPromotion: '#161616',
   orange: '#f58550',
+  orangeCreatures: '#FF751D',
   black: '#000',
   white: '#FFF',
 };
@@ -25,7 +26,7 @@ export const dropDownListCategories = [
     key: 2,
     value: 'Creature Chronicles',
     disabled: false,
-    route: '/creatures',
+    route: process.env.REACT_APP_CREATURES_URL,
   },
 ];
 
@@ -38,9 +39,9 @@ export const socialMediaLinks = {
   discord: 'https://discord.com/invite/CRD4t276Vj',
 };
 
-export const termsOfService = {
-  tos: 'https://dolphinentertainment.zendesk.com/hc/en-us/articles/4410741678491-Terms-of-Service',
+export const dolphinServiceLinks = {
   privacyPolicy: 'https://dolphinentertainment.zendesk.com/hc/en-us/articles/4410741692059-Privacy-Policy',
+  termOfService: 'https://dolphinentertainment.zendesk.com/hc/en-us/articles/4410741678491-Terms-of-Service',
 };
 
 export const PASSWORD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;

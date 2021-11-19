@@ -1,0 +1,24 @@
+@import '../../../../../app/styles/base/settings';
+
+.knowUs {
+  align-items: center;
+  background-color: $dark-grey;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  text-align: center;
+
+  &__textTitle {
+    font-weight: 900;
+    font-family: 'The Neue' !important;
+    margin: 1rem 0;
+  }
+
+  &__textDescription {
+    padding: 0 20%;
+  }
+
+  &__button {
+    width: 20%;
+  }
+}

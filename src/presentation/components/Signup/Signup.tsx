@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { ReactComponent as FTXLogo } from 'app/assets/ftxus_logo.svg';
 import routesPaths from 'app/constants/routesPath';
-import { termsOfService } from 'app/constants/contants';
+import { dolphinServiceLinks } from 'app/constants/contants';
 import styles from './Signup.module.scss';
 import useTranslation from 'app/hooks/useTranslation';
 
@@ -103,11 +103,11 @@ export const Signup = () => {
             <Checkbox checked={isTosAgree} onChange={() => setIsTosAgree(currentValue => !currentValue)} />
             <Typography>
               {t('signup.TOS.agrees')}
-              <a href={termsOfService.tos} target="_blank">
+              <a href={dolphinServiceLinks.termOfService} target="_blank">
                 {t('signup.TOS.terms')}
               </a>
               {t('signup.TOS.and')}
-              <a href={termsOfService.privacyPolicy} target="_blank">
+              <a href={dolphinServiceLinks.privacyPolicy} target="_blank">
                 {t('signup.TOS.privacyPolicy')}
               </a>
             </Typography>

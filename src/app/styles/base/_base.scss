@@ -5,8 +5,17 @@
   src: url('../fonts/transat_medium.ttf');
 }
 
+@font-face {
+  font-family: 'The Neue';
+  src: url('../fonts/TheNeue.otf');
+}
+
+@font-face {
+  font-family: 'Avenue X';
+  src: url('../fonts/AvenueX.otf');
+}
+
 * {
-  font-family: 'transat';
   margin: 0;
   padding: 0;
   box-sizing: border-box;

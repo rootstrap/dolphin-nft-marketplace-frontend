@@ -2,27 +2,35 @@
 
 .mainContent {
   background-color: black;
+  background-image: url('../../../../../app/assets/CreaturesBackgroundGif.gif');
+  background-size: cover;
+  padding: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: center;
+  margin-top: -4rem;
 
   &__background {
     img {
-      max-width: 100%;
+      max-width: 70%;
       height: auto;
       object-fit: cover;
     }
 
     &Button {
       color: white;
-      margin-top: 12rem;
+      margin-top: 16rem;
       position: absolute;
       button {
         border: 2px solid $orange-creatures;
       }
     }
+  }
+
+  a {
+    color: white;
   }
 }
 
@@ -32,6 +40,7 @@
 
   &__header {
     color: $orange-creatures;
+    font-family: 'The Neue' !important;
   }
 }
 

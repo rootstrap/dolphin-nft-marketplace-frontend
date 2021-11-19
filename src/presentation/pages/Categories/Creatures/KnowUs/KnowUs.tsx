@@ -16,10 +16,6 @@ export const KnowUs = () => {
         hierarchy, assigned traits, randomly generated, and revealed to the world sometime after the Geminids
         Meteor Shower.
       </Typography>
-
-      <div className={styles.knowUs__button}>
-        <Button fullWidth>Meet Anthony Francisco</Button>
-      </div>
     </div>
   );
 };

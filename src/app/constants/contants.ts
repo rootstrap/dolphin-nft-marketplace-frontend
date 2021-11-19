@@ -26,7 +26,7 @@ export const dropDownListCategories = [
     key: 2,
     value: 'Creature Chronicles',
     disabled: false,
-    route: '/creatures',
+    route: process.env.REACT_APP_CREATURES_URL,
   },
 ];
 

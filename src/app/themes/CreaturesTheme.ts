@@ -35,6 +35,11 @@ export const creaturesTheme = createTheme({
         textTransform: 'none',
       },
     },
+    MuiInputBase: {
+      input: {
+        color: colors.white,
+      },
+    },
     MuiAccordion: {
       root: {
         background: colors.black,

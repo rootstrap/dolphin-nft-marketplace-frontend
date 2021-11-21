@@ -7,7 +7,7 @@ export const faqCreatures = [
   {
     question: 'How much will Exiled Aliens cost?',
     answer:
-      'Once we launch you are able to mint an Exiled Alien NFT´s from our website creaturecronicles.io. You will be able to purchase using U.S. dollars or by connecting your FTX.US wallet. The fixed price will be $199 USD',
+      'Once we launch you are able to mint an Exiled Alien NFT´s from our website creaturecronicles.io. You will be able to purchase using U.S. dollars or by connecting your FTX.US wallet. The fixed price will be $200 USD',
   },
   {
     question: 'Do I need crypto currency to purchase Exiled Aliens?',
@@ -45,9 +45,5 @@ export const faqCreatures = [
     question: 'What happens when you sell all 10,000?',
     answer:
       'Once the 10,000 are sold out you will only be able to purchase an Exiled Alien on the secondary market.',
-  },
-  {
-    question: 'Have more questions?',
-    answer: 'Join our Discord (link) or find additional FAQs here (link to zendesk page).',
   },
 ];

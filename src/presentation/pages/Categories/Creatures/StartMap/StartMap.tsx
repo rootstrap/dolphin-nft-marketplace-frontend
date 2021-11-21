@@ -53,8 +53,9 @@ export const StartMap = () => {
         REVEAL - Mid-December
       </Typography>
       <Typography gutterBottom className={styles.startmap__text}>
-        Presale will be reserved for Discord whitelist members and partners. Presale is limited to 30% of the
-        total NFT supply.
+        You’re invited to our exclusive reveal party, hosted by Anthony Francisco and friends. Meet your
+        fellow members and get to know our community. There will be special guests and the reveal of our first
+        contest.
       </Typography>
 
       <Typography gutterBottom className={styles.startmap__textTitle}>

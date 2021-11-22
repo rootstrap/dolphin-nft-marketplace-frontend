@@ -121,7 +121,7 @@
     "priceColumn": "Sale Price"
   },
   "login": {
-    "title": "Sign in using your FTX account",
+    "title": "Sign in using your FTX.us account",
     "email": "E-mail",
     "password": "Password",
     "inputError": "Invalid Email/Password",
@@ -145,7 +145,7 @@
     "passwordError": "Passwords don't match",
     "button": "Get started!",
     "TOS": {
-      "agrees": "Agrees to the ",
+      "agrees": "I Agree to the ",
       "terms": "Terms of Service ",
       "and": "and ",
       "privacyPolicy": "Privacy Policy"

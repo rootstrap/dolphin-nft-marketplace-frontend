@@ -8,6 +8,7 @@ const routesPaths = {
   my_collection: '/collection',
 
   knowHow: '/#knowHow',
+  creaturesCarousel: '/#carousel',
 };
 
 export default routesPaths;

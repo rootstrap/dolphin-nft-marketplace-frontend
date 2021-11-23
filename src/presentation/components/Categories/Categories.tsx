@@ -18,11 +18,11 @@ export const Categories = ({ anchorEl = null, handleClose }: CategoriesProps) =>
     >
       <div className={styles.categories}>
         {dropDownListCategories.map(category => (
-          <Link to={category.route}>
+          <a href={category.route}>
             <MenuItem key={category.key} value={category.value} disabled={category.disabled}>
               {category.value}
             </MenuItem>
-          </Link>
+          </a>
         ))}
       </div>
     </Menu>

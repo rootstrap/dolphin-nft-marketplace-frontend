@@ -1,11 +1,13 @@
-import { Button, Typography } from '@material-ui/core';
+import { Button, Checkbox, Typography } from '@material-ui/core';
 import { InputText } from '../../../infrastructure/components/InputText/InputText';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { useSignup } from './useSignup';
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
+import { ReactComponent as FTXLogo } from 'app/assets/ftxus_logo.svg';
 import routesPaths from 'app/constants/routesPath';
+import { dolphinServiceLinks } from 'app/constants/contants';
 import styles from './Signup.module.scss';
 import useTranslation from 'app/hooks/useTranslation';
 
@@ -19,6 +21,8 @@ export const Signup = () => {
     register,
     handleSubmit,
     onSubmit,
+    setIsTosAgree,
+    isTosAgree,
     errors,
     error,
   } = useSignup();
@@ -26,6 +30,9 @@ export const Signup = () => {
   return (
     <BaseModal open={signupModalIsOpen} handleClose={handleClose}>
       <form className={styles.signupForm} onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.signupForm__logo}>
+          <FTXLogo />
+        </div>
         <div className={styles.signupForm__title}>
           <Typography variant="h5">{t('signup.title')}</Typography>
         </div>
@@ -92,12 +99,27 @@ export const Signup = () => {
               size="small"
             />
           </Grid>
+          <Grid item xs={12} className={styles.signupForm__checkbox}>
+            <Checkbox checked={isTosAgree} onChange={() => setIsTosAgree(currentValue => !currentValue)} />
+            <Typography>
+              {t('signup.TOS.agrees')}
+              <a href={dolphinServiceLinks.termOfService} target="_blank">
+                {t('signup.TOS.terms')}
+              </a>
+              {t('signup.TOS.and')}
+              <a href={dolphinServiceLinks.privacyPolicy} target="_blank">
+                {t('signup.TOS.privacyPolicy')}
+              </a>
+            </Typography>
+          </Grid>
           <Grid item xs={12}>
             {isLoading ? (
               <CustomLoader />
             ) : (
               <div className={styles.signupForm__button}>
-                <Button type="submit">{t('signup.button')}</Button>
+                <Button disabled={!isTosAgree} type="submit">
+                  {t('signup.button')}
+                </Button>
               </div>
             )}
           </Grid>

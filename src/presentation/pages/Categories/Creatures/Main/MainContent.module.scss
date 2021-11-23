@@ -79,15 +79,3 @@
     color: white;
   }
 }
-
-.carousel {
-  margin-top: 2rem;
-  margin-bottom: -1rem;
-  &__background {
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-  }
-}

@@ -8,10 +8,17 @@
   text-align: center;
 
   &__title {
+    border: 1px solid $orange-creatures;
     color: $orange-creatures;
+    cursor: pointer;
     font-weight: 900;
     font-family: 'The Neue' !important;
     margin: 1rem 0;
+    padding: 2rem;
+  }
+
+  &__titleContainer {
+    width: 100%;
   }
 
   &__text {

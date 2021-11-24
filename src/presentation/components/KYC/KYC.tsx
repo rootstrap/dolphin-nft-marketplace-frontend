@@ -40,9 +40,9 @@ export const KYC = () => {
               className={styles.kycForm__input}
               label={t('kyc.fullName')}
               register={register}
-              name="fullName"
+              name="fullLegalName"
               type="text"
-              error={errors.fullName}
+              error={errors.fullLegalName}
             />
           </Grid>
           <Grid item xs={12}>
@@ -70,9 +70,9 @@ export const KYC = () => {
               className={styles.kycForm__input}
               label={t('kyc.state')}
               register={register}
-              name="state"
+              name="stateProvinceRegion"
               type="text"
-              error={errors.state}
+              error={errors.stateProvinceRegion}
             />
           </Grid>
           <Grid item xs={12}>

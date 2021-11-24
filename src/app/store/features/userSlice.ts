@@ -75,19 +75,10 @@ const userSlice = createSlice({
         state.tokenFtx = token;
       }
     );
-    builder.addMatcher(
-      loginStatusFulfiled,
-      (
-        state,
-        {
-          payload: {
-            result: { user },
-          },
-        }
-      ) => {
-        state.user.kyc1ed = Boolean(user.kycLevel);
-      }
-    );
+    builder.addMatcher(loginStatusFulfiled, (state, { payload }) => {
+      state.isAuthenticated = payload.loggedIn;
+      state.user.kyc1ed = payload.user?.kycLevel && Boolean(payload.user.kycLevel);
+    });
     builder.addMatcher(logoutFulfiled, state => (state = initialState));
     builder.addMatcher(logoutRejected, (state, { payload: { status } }) => {
       ErrorReqHandler({ status });
@@ -95,14 +86,8 @@ const userSlice = createSlice({
     builder.addMatcher(kycFulfiled, state => {
       state.user.kyc1ed = true;
     });
-    builder.addMatcher(kycRejected, (state, { payload: { status } }) => {
-      ErrorReqHandler({ status });
-    });
     builder.addMatcher(createCreditCardFulfiled, (state, { payload: { ftxCardId } }) => {
       state.user.creditCardId = ftxCardId;
-    });
-    builder.addMatcher(createCreditCardRejected, (state, { payload: { status } }) => {
-      ErrorReqHandler({ status });
     });
   },
 });

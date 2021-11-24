@@ -68,7 +68,7 @@ export const useSignup = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      signup(userInfo).then(() => window.location.replace(routesPaths.profile));
+      signup(userInfo);
       handleClose();
     }
   }, [isSuccess]);

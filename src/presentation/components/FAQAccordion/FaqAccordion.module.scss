@@ -9,10 +9,13 @@
   }
 
   &__title {
-    color: $orange-creatures;
+    border: 1px solid $orange-creatures;
     font-weight: 900;
     font-family: 'The Neue' !important;
+    color: $orange-creatures;
+    cursor: pointer;
     margin: 1rem 0;
+    padding: 2rem;
     text-align: center;
   }
 

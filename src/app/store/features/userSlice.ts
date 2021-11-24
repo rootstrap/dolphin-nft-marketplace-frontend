@@ -86,8 +86,14 @@ const userSlice = createSlice({
     builder.addMatcher(kycFulfiled, state => {
       state.user.kyc1ed = true;
     });
+    builder.addMatcher(kycRejected, (state, { payload: { status } }) => {
+      ErrorReqHandler({ status });
+    });
     builder.addMatcher(createCreditCardFulfiled, (state, { payload: { ftxCardId } }) => {
       state.user.creditCardId = ftxCardId;
+    });
+    builder.addMatcher(createCreditCardRejected, (state, { payload: { status } }) => {
+      ErrorReqHandler({ status });
     });
   },
 });

@@ -1,6 +1,6 @@
 import { Modal } from '@material-ui/core';
-import styles from './Modal.module.scss';
 import closeBtn from 'app/assets/close.svg';
+import styles from './Modal.module.scss';
 
 export const BaseModal = ({ open, handleClose, children, bigModal = false }: ModalProps) => (
   <Modal open={open} onClose={handleClose} style={{}} disableScrollLock>

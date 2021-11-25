@@ -5,6 +5,11 @@
   font-size: $font-size-modal;
   align-items: center;
 
+  @media screen and (min-width: $sm-min-width) and (max-width: $sm-max-width) {
+    padding: 0.2rem 0.5rem;
+    text-align: center;
+  }
+
   &__title {
     margin-bottom: 5.5rem;
   }

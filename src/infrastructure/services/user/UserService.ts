@@ -1,6 +1,7 @@
 import { endpoints } from 'app/constants/endpoints';
 import { Country } from 'app/interfaces/common/Country';
 import { ILoginStatusResponse, LoginStatusResult } from 'app/interfaces/user/LoginStatus';
+import { getFormData } from 'app/helpers/getFormData';
 import { api } from '../Api';
 
 const authApi = api.injectEndpoints({
@@ -36,16 +37,12 @@ const authApi = api.injectEndpoints({
     }),
     kyc: builder.mutation({
       query: (kyc: KycBody) => ({
-        url: endpoints.KYC,
+        url: `${process.env.REACT_APP_FTX_API_URL}/kyc/level_1`,
         method: 'POST',
-        body: {
-          fullLegalName: kyc.fullName,
-          country: kyc.country,
-          stateProvinceRegion: kyc.state,
-          dateOfBirth: kyc.dateOfBirth,
-          postalCode: kyc.postalCode,
-          streetAddress: kyc.streetAddress,
+        headers: {
+          ftxAuthorization: 'yes',
         },
+        body: getFormData(kyc),
       }),
     }),
     logout: builder.mutation({
@@ -104,9 +101,9 @@ interface LogoutBody {
 }
 
 interface KycBody {
-  fullName: string;
+  fullLegalName: string;
   country: string;
-  state: string;
+  stateProvinceRegion: string;
   dateOfBirth: Date;
   postalCode: string;
   streetAddress: string;

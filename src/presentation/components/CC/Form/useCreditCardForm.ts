@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useCreateCreditCardMutation } from 'infrastructure/services/creditCard/CreditCardService';
+import {
+  useCreateCreditCardMutation,
+  useGetPublicKeysMutation,
+} from 'infrastructure/services/creditCard/CreditCardService';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useGetCountriesMutation } from 'infrastructure/services/user/UserService';
 import { Country } from 'app/interfaces/common/Country';
 import useTranslation from 'app/hooks/useTranslation';
+import { encryptData } from 'app/helpers/encryptData';
+import { ICreditCardError } from 'app/interfaces/creditCard/creditCard';
 
 interface FormValues {
   name: string;
@@ -25,9 +30,11 @@ export const useCreditCardForm = () => {
   const t = useTranslation();
   const [createCreditCard, { error: creditCardError, isLoading, isSuccess, isError }] =
     useCreateCreditCardMutation();
+  const [getPublicKeys, { data: publicKeysData }] = useGetPublicKeysMutation();
   const [getCountries] = useGetCountriesMutation();
   const [error, setError] = useState('');
   const [countries, setCountries] = useState<Country[]>([]);
+  const [creditCardForm, setCreditCardForm] = useState<FormValues>();
 
   const schema = z.object({
     name: z.string().min(3, { message: t('creditCard.error.requiredField') }),
@@ -51,7 +58,13 @@ export const useCreditCardForm = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
-  const onSubmit: SubmitHandler<FormValues> = data => createCreditCard(data);
+  const onSubmit: SubmitHandler<FormValues> = async data => {
+    setCreditCardForm(data);
+
+    if (!publicKeysData) {
+      await getPublicKeys();
+    }
+  };
 
   const handleClose = () => {
     reset();
@@ -74,10 +87,32 @@ export const useCreditCardForm = () => {
   }, [isSuccess]);
 
   useEffect(() => {
-    if (isError) {
-      setError('Invalid Credit Card Information');
+    const createCC = async () => {
+      const data = await encryptData(publicKeysData.publicKey, publicKeysData.keyId, {
+        number: creditCardForm.ccNumber,
+        cvv: creditCardForm.cvv,
+      });
+
+      createCreditCard({
+        ...creditCardForm,
+        publicKey: publicKeysData.publicKey,
+        keyId: publicKeysData.keyId,
+        encryptedData: data.encryptedData,
+      });
+    };
+
+    if (publicKeysData && creditCardForm) {
+      createCC();
     }
-  }, [isError]);
+  }, [publicKeysData, creditCardForm, createCreditCard]);
+
+  useEffect(() => {
+    if (isError) {
+      const creationError = creditCardError as ICreditCardError;
+
+      setError(creationError.data.error || 'Invalid Credit Card Information');
+    }
+  }, [isError, creditCardError]);
 
   return {
     isLoading,

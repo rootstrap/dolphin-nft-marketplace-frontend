@@ -1,14 +1,34 @@
 import { CIRCLE_FAILURE_CODES } from 'app/constants/contants';
 import { endpoints } from 'app/constants/endpoints';
+import { IPublicKeysResponse, PublicKeysResult } from 'app/interfaces/creditCard/creditCard';
 import { api } from '../Api';
 
 const creditCardApi = api.injectEndpoints({
   endpoints: builder => ({
     createCreditCard: builder.mutation({
       query: (creditCard: CreditCardBody) => ({
-        url: endpoints.CREDIT_CARD,
+        url: `${process.env.REACT_APP_FTX_API_URL}/cards`,
         method: 'POST',
-        body: creditCard,
+        headers: { ftxAuthorization: 'yes' },
+        body: {
+          data: {
+            mask: creditCard.ccNumber.toString().slice(creditCard.ccNumber.toString().length - 4),
+          },
+          expiryMonth: creditCard.expiryMonth,
+          expiryYear: creditCard.expiryYear,
+          keyId: creditCard.keyId,
+          name: creditCard.name,
+          encryptedData: creditCard.encryptedData,
+          billingInfo: {
+            name: creditCard.name,
+            country: 'US',
+            district: creditCard.district,
+            line1: creditCard.address1,
+            line2: creditCard.address2,
+            city: creditCard.city,
+            postalCode: creditCard.postalCode,
+          },
+        },
       }),
     }),
     getCreditCards: builder.mutation<CreditCardData[], void>({
@@ -29,6 +49,14 @@ const creditCardApi = api.injectEndpoints({
         method: 'DELETE',
       }),
     }),
+    getPublicKeys: builder.mutation<PublicKeysResult, void>({
+      query: () => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/cards/public_key`,
+        method: 'GET',
+        headers: { ftxAuthorization: 'yes' },
+      }),
+      transformResponse: (response: IPublicKeysResponse) => response.result,
+    }),
   }),
 });
 
@@ -36,6 +64,7 @@ interface CreditCardBody {
   name: string;
   ccNumber: number;
   cvv: number;
+  encryptedData: string;
   expiryMonth: number;
   expiryYear: number;
   country: string;
@@ -44,6 +73,8 @@ interface CreditCardBody {
   address2: string;
   city: string;
   postalCode: string;
+  publicKey: string;
+  keyId: string;
 }
 
 type DepositVerificationStatus =
@@ -81,6 +112,7 @@ export const {
   useGetCreditCardByIdMutation,
   useGetCreditCardFeesMutation,
   useDeleteCreditCardMutation,
+  useGetPublicKeysMutation,
   endpoints: {
     createCreditCard: { matchFulfilled: createCreditCardFulfiled, matchRejected: createCreditCardRejected },
     getCreditCards: { matchFulfilled: getCreditCardsFulfiled, matchRejected: getCreditCardsRejected },
@@ -89,5 +121,6 @@ export const {
       matchRejected: getCreditCardByIdRejected,
     },
     deleteCreditCard: { matchFulfilled: deleteCreditCardFulfiled },
+    getPublicKeys: { matchFulfilled: getPublicKeysFulfilled },
   },
 } = creditCardApi;

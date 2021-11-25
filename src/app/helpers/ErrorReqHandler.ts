@@ -1,5 +1,5 @@
 export const ErrorReqHandler = ({ status }: Status) => {
-  if (status === 401 || status === 400) {
+  if (status === 401) {
     window.localStorage.clear();
     window.location.reload();
     window.alert(errorMessages.expiredSession);

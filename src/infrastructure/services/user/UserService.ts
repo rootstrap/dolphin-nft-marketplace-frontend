@@ -1,6 +1,6 @@
 import { endpoints } from 'app/constants/endpoints';
 import { Country } from 'app/interfaces/common/Country';
-import { ILoginStatusResponse } from 'app/interfaces/user/LoginStatus';
+import { ILoginStatusResponse, LoginStatusResult } from 'app/interfaces/user/LoginStatus';
 import { getFormData } from 'app/helpers/getFormData';
 import { api } from '../Api';
 
@@ -26,13 +26,14 @@ const authApi = api.injectEndpoints({
         },
       }),
     }),
-    loginStatus: builder.mutation<ILoginStatusResponse, void>({
+    loginStatus: builder.mutation<LoginStatusResult, void>({
       query: () => ({
         url: `${process.env.REACT_APP_FTX_API_URL}/login_status`,
         headers: {
           ftxAuthorization: 'yes',
         },
       }),
+      transformResponse: (data: ILoginStatusResponse) => data.result,
     }),
     kyc: builder.mutation({
       query: (kyc: KycBody) => ({

@@ -1,9 +1,9 @@
 export interface ILoginStatusResponse {
   success: boolean;
-  result: Result;
+  result: LoginStatusResult;
 }
 
-export interface Result {
+export interface LoginStatusResult {
   loggedIn: boolean;
   account: Account;
   user: User;

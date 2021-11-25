@@ -20,32 +20,32 @@ export const Peers = ({ open, handleClose, nfts }: PeersProps) => {
         </Grid>
 
         <Grid container justifyContent="center" className={styles.peers__itemContainer}>
-          <Grid item md={1} lg={4}>
+          <Grid item xs={6} sm={6} md={4} lg={4}>
             <Typography variant="h5" onClick={handleSortByNumber} className={styles.peers__column}>
               {t('peers.editionNumberColumn')}
             </Typography>
           </Grid>
-          <Grid item md={1} lg={2}>
+          <Grid item xs={6} sm={6} md={4} lg={2}>
             <Typography variant="h5" onClick={handleSortByPrice} className={styles.peers__column}>
               {t('peers.priceColumn')}
             </Typography>
           </Grid>
           <Grid item lg={3}></Grid>
-          <Grid item md={6} lg={3}></Grid>
+          <Grid item md={4} lg={3}></Grid>
         </Grid>
 
         <hr className={styles.peers__separator} />
 
         {items.map(nft => (
           <Grid container justifyContent="center" key={nft.id} className={styles.peers__itemContainer}>
-            <Grid item md={1} lg={4}>
+            <Grid item xs={6} sm={2} md={4} lg={4}>
               {nft.number && `#${nft.number}`}
             </Grid>
-            <Grid item md={1} lg={2}>
+            <Grid item xs={6} sm={2} md={4} lg={2}>
               {nft.offerPrice && `$${nft.offerPrice}`}
             </Grid>
             <Grid item lg={3}></Grid>
-            <Grid item md={6} lg={3}>
+            <Grid item xs={12} sm={8} md={4} lg={3}>
               <Button variant="text" fullWidth onClick={handleClose}>
                 <Link to={`/nft/${nft.id}`}>{t('peers.buyButton')}</Link>
               </Button>

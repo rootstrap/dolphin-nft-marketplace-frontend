@@ -71,7 +71,7 @@ export const useLogin = () => {
 
   useEffect(() => {
     if (isLoginStatusSuccess) {
-      login(userInfo).then(() => window.location.replace(routesPaths.index));
+      login(userInfo);
     }
   }, [isLoginStatusSuccess]);
 

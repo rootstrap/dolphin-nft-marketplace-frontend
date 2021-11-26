@@ -1,4 +1,6 @@
 export interface Country {
   name: string;
-  code: string;
+  alpha2Code: string;
+  alpha3Code: string;
+  numeric: string;
 }

@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  useCreateCreditCardMutation,
-  useGetPublicKeysMutation,
-} from 'infrastructure/services/creditCard/CreditCardService';
+import { useCreateCreditCardMutation } from 'infrastructure/services/creditCard/CreditCardService';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -30,11 +27,11 @@ export const useCreditCardForm = () => {
   const t = useTranslation();
   const [createCreditCard, { error: creditCardError, isLoading, isSuccess, isError }] =
     useCreateCreditCardMutation();
-  const [getPublicKeys, { data: publicKeysData }] = useGetPublicKeysMutation();
   const [getCountries] = useGetCountriesMutation();
   const [error, setError] = useState('');
   const [countries, setCountries] = useState<Country[]>([]);
-  const [creditCardForm, setCreditCardForm] = useState<FormValues>();
+  const publicKey = process.env.REACT_APP_CC_PUBLIC_KEY;
+  const keyId = process.env.REACT_APP_CC_KEY_ID;
 
   const schema = z.object({
     name: z.string().min(3, { message: t('creditCard.error.requiredField') }),
@@ -42,7 +39,7 @@ export const useCreditCardForm = () => {
     cvv: z.string().min(3, { message: t('creditCard.error.cvvNumber') }),
     expiryMonth: z.string().min(1, { message: t('creditCard.error.expiryMonth') }),
     expiryYear: z.string().length(4, { message: t('creditCard.error.expiryYear') }),
-    country: z.string().length(3, { message: t('creditCard.error.country') }),
+    country: z.string().length(2, { message: t('creditCard.error.country') }),
     district: z.string().length(2, { message: t('creditCard.error.district') }),
     address1: z.string().min(3, { message: t('creditCard.error.requiredField') }),
     address2: z.string(),
@@ -58,12 +55,20 @@ export const useCreditCardForm = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
-  const onSubmit: SubmitHandler<FormValues> = async data => {
-    setCreditCardForm(data);
+  const onSubmit: SubmitHandler<FormValues> = async form => {
+    console.log('publicKey', publicKey);
 
-    if (!publicKeysData) {
-      await getPublicKeys();
-    }
+    const data = await encryptData(publicKey, keyId, {
+      number: form.ccNumber,
+      cvv: form.cvv,
+    });
+
+    createCreditCard({
+      ...form,
+      publicKey: publicKey,
+      keyId: keyId,
+      encryptedData: data.encryptedData,
+    });
   };
 
   const handleClose = () => {
@@ -85,26 +90,6 @@ export const useCreditCardForm = () => {
       handleClose();
     }
   }, [isSuccess]);
-
-  useEffect(() => {
-    const createCC = async () => {
-      const data = await encryptData(publicKeysData.publicKey, publicKeysData.keyId, {
-        number: creditCardForm.ccNumber,
-        cvv: creditCardForm.cvv,
-      });
-
-      createCreditCard({
-        ...creditCardForm,
-        publicKey: publicKeysData.publicKey,
-        keyId: publicKeysData.keyId,
-        encryptedData: data.encryptedData,
-      });
-    };
-
-    if (publicKeysData && creditCardForm) {
-      createCC();
-    }
-  }, [publicKeysData, creditCardForm, createCreditCard]);
 
   useEffect(() => {
     if (isError) {

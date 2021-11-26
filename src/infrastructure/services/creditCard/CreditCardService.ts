@@ -21,7 +21,7 @@ const creditCardApi = api.injectEndpoints({
           encryptedData: creditCard.encryptedData,
           billingInfo: {
             name: creditCard.name,
-            country: 'US',
+            country: creditCard.country,
             district: creditCard.district,
             line1: creditCard.address1,
             line2: creditCard.address2,

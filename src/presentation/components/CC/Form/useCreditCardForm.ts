@@ -56,8 +56,6 @@ export const useCreditCardForm = () => {
   } = useForm({ resolver: zodResolver(schema) });
 
   const onSubmit: SubmitHandler<FormValues> = async form => {
-    console.log('publicKey', publicKey);
-
     const data = await encryptData(publicKey, keyId, {
       number: form.ccNumber,
       cvv: form.cvv,

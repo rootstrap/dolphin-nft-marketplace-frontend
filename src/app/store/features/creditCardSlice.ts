@@ -40,8 +40,9 @@ const creditCardSlice = createSlice({
   },
   extraReducers: builder => {
     builder.addMatcher(getCreditCardsFulfiled, (state, { payload }) => {
-      state.creditCards = [...payload];
-      state.defaultCreditCard = { ...payload[0] };
+      state.creditCards = payload;
+      state.defaultCreditCard =
+        payload.length === 0 ? { ...initialState.defaultCreditCard } : { ...payload[0] };
     });
     builder.addMatcher(deleteCreditCardFulfiled, (state, { payload }) => {
       state.creditCards = state.creditCards.filter(creditCard => creditCard.id != payload.cardId);

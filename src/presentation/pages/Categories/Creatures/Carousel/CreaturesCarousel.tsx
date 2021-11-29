@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import { carouselItems } from '../../../../../app/constants/creatures/carouselItems';
 import styles from './CreaturesCarousel.module.scss';
 
@@ -12,6 +12,7 @@ export const CreaturesCarousel = () => {
         <Typography component="div" variant="h4" className={styles.carousel__title}>
           {carouselItems[selectedItem].name}
         </Typography>
+        <Typography className={styles.carousel__title}>{carouselItems[selectedItem].banner}</Typography>
 
         <div className={styles.carousel__info}>
           <div className={styles.carousel__infoImg}>
@@ -19,8 +20,6 @@ export const CreaturesCarousel = () => {
           </div>
 
           <div className={styles.carousel__infoTextContainer}>
-            <Typography className={styles.carousel__infoText}>{carouselItems[selectedItem].name}</Typography>
-            <Typography>{carouselItems[selectedItem].banner}</Typography>
             <Typography gutterBottom className={styles.carousel__infoTextDescription}>
               {carouselItems[selectedItem].description}
             </Typography>
@@ -31,9 +30,14 @@ export const CreaturesCarousel = () => {
           </div>
         </div>
 
-        <div className={styles.carousel__list}>
+        <Grid container>
           {carouselItems.map(item => (
-            <div
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={2}
+              lg={2}
               className={
                 item.id === selectedItem ? styles.carousel__listImg : styles.carousel__listImgOpacity
               }
@@ -42,9 +46,9 @@ export const CreaturesCarousel = () => {
                 <img src={item.src} alt="" />
               </button>
               <Typography gutterBottom>{item.name}</Typography>
-            </div>
+            </Grid>
           ))}
-        </div>
+        </Grid>
       </div>
     </div>
   );

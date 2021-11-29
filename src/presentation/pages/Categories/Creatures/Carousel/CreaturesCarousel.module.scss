@@ -1,12 +1,14 @@
 .carousel {
   margin-top: 2rem;
   margin-bottom: -1rem;
+
   &__background {
     background-image: url('../../../../../app/assets/BackgroundCarousel.png');
     background-size: cover;
     background-position: top;
     object-fit: cover;
     max-width: 100%;
+    padding: 1rem;
   }
 
   &__title {
@@ -19,13 +21,10 @@
   }
 
   &__info {
-    display: flex;
     padding: 2rem;
+    text-align: center;
 
     &Img {
-      padding: 1rem 0;
-      margin-left: 10%;
-      flex: 0.4;
       img {
         object-fit: cover;
         max-width: 100%;
@@ -34,7 +33,6 @@
 
     &TextContainer {
       padding: 2rem;
-      flex: 0.6;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
@@ -50,11 +48,8 @@
       }
 
       &Description {
-        width: 80%;
-        height: 2.8rem;
-        text-overflow: clip;
-        white-space: pre-line;
-        overflow-y: hidden;
+        padding: 0 20%;
+        width: 100%;
       }
     }
   }
@@ -62,13 +57,13 @@
   &__list {
     display: flex;
     justify-content: center;
-    max-width: 100%;
+    width: 100%;
     text-transform: uppercase;
 
     &ImgOpacity {
-      margin: 1%;
       text-align: center;
       color: black;
+      padding: 1%;
 
       button {
         background: #ff751d99;
@@ -88,7 +83,6 @@
     }
 
     &Img {
-      margin: 1%;
       text-align: center;
       color: black;
 

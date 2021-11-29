@@ -1,0 +1,35 @@
+@import '../../../app/styles/base/settings';
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  &__title {
+    text-align: center;
+    margin: 2rem;
+  }
+
+  &__remind {
+    cursor: pointer;
+    text-align: center;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    &Text {
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}

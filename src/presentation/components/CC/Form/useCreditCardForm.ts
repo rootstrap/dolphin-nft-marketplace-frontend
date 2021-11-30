@@ -6,6 +6,8 @@ import * as z from 'zod';
 import { useGetCountriesMutation } from 'infrastructure/services/user/UserService';
 import { Country } from 'app/interfaces/common/Country';
 import useTranslation from 'app/hooks/useTranslation';
+import { encryptData } from 'app/helpers/encryptData';
+import { ICreditCardError } from 'app/interfaces/creditCard/creditCard';
 
 interface FormValues {
   name: string;
@@ -28,6 +30,8 @@ export const useCreditCardForm = () => {
   const [getCountries] = useGetCountriesMutation();
   const [error, setError] = useState('');
   const [countries, setCountries] = useState<Country[]>([]);
+  const publicKey = process.env.REACT_APP_CC_PUBLIC_KEY;
+  const keyId = process.env.REACT_APP_CC_KEY_ID;
 
   const schema = z.object({
     name: z.string().min(3, { message: t('creditCard.error.requiredField') }),
@@ -35,7 +39,7 @@ export const useCreditCardForm = () => {
     cvv: z.string().min(3, { message: t('creditCard.error.cvvNumber') }),
     expiryMonth: z.string().min(1, { message: t('creditCard.error.expiryMonth') }),
     expiryYear: z.string().length(4, { message: t('creditCard.error.expiryYear') }),
-    country: z.string().length(3, { message: t('creditCard.error.country') }),
+    country: z.string().length(2, { message: t('creditCard.error.country') }),
     district: z.string().length(2, { message: t('creditCard.error.district') }),
     address1: z.string().min(3, { message: t('creditCard.error.requiredField') }),
     address2: z.string(),
@@ -51,7 +55,19 @@ export const useCreditCardForm = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
-  const onSubmit: SubmitHandler<FormValues> = data => createCreditCard(data);
+  const onSubmit: SubmitHandler<FormValues> = async form => {
+    const data = await encryptData(publicKey, keyId, {
+      number: form.ccNumber,
+      cvv: form.cvv,
+    });
+
+    createCreditCard({
+      ...form,
+      publicKey: publicKey,
+      keyId: keyId,
+      encryptedData: data.encryptedData,
+    });
+  };
 
   const handleClose = () => {
     reset();
@@ -75,9 +91,11 @@ export const useCreditCardForm = () => {
 
   useEffect(() => {
     if (isError) {
-      setError('Invalid Credit Card Information');
+      const creationError = creditCardError as ICreditCardError;
+
+      setError(creationError.data.error || 'Invalid Credit Card Information');
     }
-  }, [isError]);
+  }, [isError, creditCardError]);
 
   return {
     isLoading,

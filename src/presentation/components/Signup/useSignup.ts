@@ -1,13 +1,13 @@
-import { useSignupFTXMutation, useSignupMutation } from 'infrastructure/services/user/UserService';
+import { useSignupFTXMutation, useSignupMutation, authApi } from 'infrastructure/services/user/UserService';
 import { useContext, useEffect, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PASSWORD_REGEX, recaptchaActions } from 'app/constants/contants';
 import * as z from 'zod';
+import { useAppDispatch } from 'app/hooks/reduxHooks';
 import { getToken } from 'app/helpers/GetToken';
 import useTranslation from 'app/hooks/useTranslation';
-import routesPaths from 'app/constants/routesPath';
 
 interface FormValues {
   firstName: string;
@@ -19,6 +19,7 @@ interface FormValues {
 
 export const useSignup = () => {
   const t = useTranslation();
+  const dispatch = useAppDispatch();
   const [signupFTX, { error: signupError, isLoading, isSuccess, isError }] = useSignupFTXMutation();
   const [signup] = useSignupMutation();
   const { signupModalIsOpen, setSignupModalIsOpen, setLoginModalIsOpen } = useContext(ModalContext);
@@ -59,6 +60,7 @@ export const useSignup = () => {
     reset();
     setError('');
     setSignupModalIsOpen(false);
+    resetErrors();
   };
 
   const handleOpenSigninModal = () => {
@@ -69,7 +71,6 @@ export const useSignup = () => {
   useEffect(() => {
     if (isSuccess) {
       signup(userInfo);
-      handleClose();
     }
   }, [isSuccess]);
 
@@ -79,6 +80,8 @@ export const useSignup = () => {
       setError(error.data.error);
     }
   }, [isError]);
+
+  const resetErrors = () => dispatch(authApi.util.resetApiState());
 
   return {
     signupModalIsOpen,
@@ -92,5 +95,6 @@ export const useSignup = () => {
     isTosAgree,
     errors,
     error,
+    isSuccess,
   };
 };

@@ -70,12 +70,6 @@
       "addButton": "Add another credit card",
       "status": "Status: ",
       "default": "Default Credit Card"
-    },
-    "checkboxes": {
-      "firstCheck": "Create Account",
-      "secondCheck": "Tell us about yourself",
-      "thirdCheck": "Activate your wallet",
-      "description": "You’re almost ready! You must activate your wallet before you start collecting. We recommend doing this ahead of time -- don’t worry, you won’t be charged until you decide to purchase."
     }
   },
   "verticals": {
@@ -160,6 +154,16 @@
       "passwordError": "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one symbol and one number",
       "passwordConfirmationError": "Passwords don't match"
     }
+  },
+  "walletSetup": {
+    "title": "Account Set Up",
+    "subtitle": "You are almost ready",
+    "activate": "Activate Now",
+    "remindMeLater": "Remind Me Later",
+    "firstCheck": "Create Account",
+    "secondCheck": "Tell us about yourself",
+    "thirdCheck": "Activate your wallet",
+    "description": "You’re almost ready! You must activate your wallet before you start collecting. We recommend doing this ahead of time -- don’t worry, you won’t be charged until you decide to purchase."
   },
   "kyc": {
     "title": "Set your wallet to continue",

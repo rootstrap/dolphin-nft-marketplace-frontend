@@ -4,7 +4,7 @@ import { ILoginStatusResponse, LoginStatusResult } from 'app/interfaces/user/Log
 import { getFormData } from 'app/helpers/getFormData';
 import { api } from '../Api';
 
-const authApi = api.injectEndpoints({
+export const authApi = api.injectEndpoints({
   endpoints: builder => ({
     login: builder.mutation({
       query: (user: LoginBody) => ({

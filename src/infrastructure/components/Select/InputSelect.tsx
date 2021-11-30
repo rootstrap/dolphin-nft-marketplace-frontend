@@ -9,7 +9,7 @@ export const InputSelect = ({
   error,
   register,
   options,
-  alpha3Code,
+  isAlpha3Code = false,
 }: InputSelectProps) => {
   return (
     <div className={className}>
@@ -23,10 +23,7 @@ export const InputSelect = ({
         defaultValue=""
       >
         {options.map(option => (
-          <MenuItem
-            key={alpha3Code ? option.alpha3Code : option.alpha2Code}
-            value={alpha3Code ? option.alpha3Code : option.alpha2Code}
-          >
+          <MenuItem key={option.alpha3Code} value={isAlpha3Code ? option.alpha3Code : option.alpha2Code}>
             {option.name}
           </MenuItem>
         ))}
@@ -38,7 +35,7 @@ export const InputSelect = ({
 
 interface InputSelectProps {
   options: Option[];
-  alpha3Code?: boolean;
+  isAlpha3Code?: boolean;
   className: string;
   label?: string;
   name?: string;

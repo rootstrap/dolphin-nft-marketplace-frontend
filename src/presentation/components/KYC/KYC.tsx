@@ -63,7 +63,7 @@ export const KYC = () => {
               name="country"
               error={errors.country}
               options={countries}
-              alpha3Code
+              isAlpha3Code
             />
           </Grid>
           <Grid item xs={12}>

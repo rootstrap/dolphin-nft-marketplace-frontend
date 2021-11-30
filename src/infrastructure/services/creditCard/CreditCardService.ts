@@ -1,6 +1,5 @@
 import { CIRCLE_FAILURE_CODES } from 'app/constants/contants';
 import { endpoints } from 'app/constants/endpoints';
-import { IPublicKeysResponse, PublicKeysResult } from 'app/interfaces/creditCard/creditCard';
 import { api } from '../Api';
 
 const creditCardApi = api.injectEndpoints({
@@ -48,14 +47,6 @@ const creditCardApi = api.injectEndpoints({
         url: `${endpoints.CREDIT_CARD}/${creditCardId}`,
         method: 'DELETE',
       }),
-    }),
-    getPublicKeys: builder.mutation<PublicKeysResult, void>({
-      query: () => ({
-        url: `${process.env.REACT_APP_FTX_API_URL}/cards/public_key`,
-        method: 'GET',
-        headers: { ftxAuthorization: 'yes' },
-      }),
-      transformResponse: (response: IPublicKeysResponse) => response.result,
     }),
   }),
 });
@@ -112,7 +103,6 @@ export const {
   useGetCreditCardByIdMutation,
   useGetCreditCardFeesMutation,
   useDeleteCreditCardMutation,
-  useGetPublicKeysMutation,
   endpoints: {
     createCreditCard: { matchFulfilled: createCreditCardFulfiled, matchRejected: createCreditCardRejected },
     getCreditCards: { matchFulfilled: getCreditCardsFulfiled, matchRejected: getCreditCardsRejected },
@@ -121,6 +111,5 @@ export const {
       matchRejected: getCreditCardByIdRejected,
     },
     deleteCreditCard: { matchFulfilled: deleteCreditCardFulfiled },
-    getPublicKeys: { matchFulfilled: getPublicKeysFulfilled },
   },
 } = creditCardApi;

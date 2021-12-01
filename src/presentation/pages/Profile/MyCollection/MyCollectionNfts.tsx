@@ -1,7 +1,7 @@
 import { Button, Grid, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import routesPaths from 'app/constants/routesPath';
 import useTranslation from 'app/hooks/useTranslation';
-import { Link } from 'react-router-dom';
 import styles from './MyCollection.module.scss';
 
 export const MyCollectionNfts = () => {

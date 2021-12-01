@@ -7,6 +7,7 @@ import { Grid } from '@material-ui/core';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { ReactComponent as FTXLogo } from 'app/assets/ftxus_logo.svg';
 import { Checkboxes } from '../Checkboxes/Checkboxes';
+import { Mfa } from '../Mfa/Mfa';
 import useTranslation from '../../../app/hooks/useTranslation';
 import routesPaths from '../../../app/constants/routesPath';
 import styles from './Login.module.scss';
@@ -24,10 +25,16 @@ export const Login = () => {
     errors,
     error,
     isGetCreditCardsSuccess,
+    isMfaRequired,
+    setIsMfaRequired,
   } = useLogin();
 
   const formToRender = isGetCreditCardsSuccess ? (
-    <Checkboxes handleClose={handleClose} />
+    isMfaRequired ? (
+      <Mfa setIsMfaRequired={setIsMfaRequired} />
+    ) : (
+      <Checkboxes handleClose={handleClose} />
+    )
   ) : (
     <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.loginForm__logo}>

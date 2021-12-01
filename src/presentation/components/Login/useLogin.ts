@@ -30,10 +30,11 @@ export const useLogin = () => {
   const [error, setError] = useState('');
   const [userInfo, setUserInfo] = useState<FormValues>();
   const [isLoading, setIsLoading] = useState(false);
+  const [isMfaRequired, setIsMfaRequired] = useState(false);
 
   const [login, { isSuccess: isLoginSuccess }] = useLoginMutation();
   const [loginFTX, { isSuccess: isLoginFTXSuccess, error: signinError, isError }] = useLoginFTXMutation();
-  const [loginStatus] = useLoginStatusMutation();
+  const [loginStatus, { isSuccess: isLoginStatusSuccess, data: loginStatusData }] = useLoginStatusMutation();
   const [getCreditCards, { isSuccess: isGetCreditCardsSuccess }] = useGetCreditCardsMutation();
   const [getBalance] = useGetBalanceMutation();
   const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
@@ -97,6 +98,13 @@ export const useLogin = () => {
   }, [isLoginFTXSuccess]);
 
   useEffect(() => {
+    if (isLoginStatusSuccess) {
+      const { mfaRequired } = loginStatusData;
+      setIsMfaRequired(Boolean(mfaRequired));
+    }
+  }, [isLoginStatusSuccess]);
+
+  useEffect(() => {
     if (isLoginSuccess) {
       loadUserData();
     }
@@ -134,5 +142,7 @@ export const useLogin = () => {
     errors,
     error,
     isGetCreditCardsSuccess,
+    isMfaRequired,
+    setIsMfaRequired,
   };
 };

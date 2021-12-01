@@ -22,6 +22,11 @@
     margin: 1rem;
   }
 
+  &__spinner {
+    display: flex;
+    justify-content: center;
+  }
+
   &__container {
     display: flex;
     align-items: center;

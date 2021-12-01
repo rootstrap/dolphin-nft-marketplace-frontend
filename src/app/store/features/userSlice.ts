@@ -4,6 +4,7 @@ import {
   createCreditCardFulfiled,
   createCreditCardRejected,
 } from 'infrastructure/services/creditCard/CreditCardService';
+import { loginMfaFulfilled } from 'infrastructure/services/mfa/MfaService';
 import {
   kycFulfiled,
   kycRejected,
@@ -94,6 +95,9 @@ const userSlice = createSlice({
     });
     builder.addMatcher(createCreditCardRejected, (state, { payload: { status } }) => {
       ErrorReqHandler({ status });
+    });
+    builder.addMatcher(loginMfaFulfilled, (state, { payload }) => {
+      state.tokenFtx = payload.result.token;
     });
   },
 });

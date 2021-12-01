@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { useCreateCreditCardMutation } from 'infrastructure/services/creditCard/CreditCardService';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useGetCountriesMutation } from 'infrastructure/services/user/UserService';
-import { Country } from 'app/interfaces/common/Country';
+import { useGetCountriesMutation, useGetSubregionsMutation } from 'infrastructure/services/user/UserService';
+import { Country, Subregion } from 'app/interfaces/common/Country';
 import useTranslation from 'app/hooks/useTranslation';
 import { encryptData } from 'app/helpers/encryptData';
 import { ICreditCardError } from 'app/interfaces/creditCard/creditCard';
@@ -28,8 +28,10 @@ export const useCreditCardForm = () => {
   const [createCreditCard, { error: creditCardError, isLoading, isSuccess, isError }] =
     useCreateCreditCardMutation();
   const [getCountries] = useGetCountriesMutation();
+  const [getSubregions] = useGetSubregionsMutation();
   const [error, setError] = useState('');
   const [countries, setCountries] = useState<Country[]>([]);
+  const [subregions, setSubregions] = useState<Subregion[]>([]);
   const publicKey = process.env.REACT_APP_CC_PUBLIC_KEY;
   const keyId = process.env.REACT_APP_CC_KEY_ID;
 
@@ -40,7 +42,7 @@ export const useCreditCardForm = () => {
     expiryMonth: z.string().min(1, { message: t('creditCard.error.expiryMonth') }),
     expiryYear: z.string().length(4, { message: t('creditCard.error.expiryYear') }),
     country: z.string().length(2, { message: t('creditCard.error.country') }),
-    district: z.string().length(2, { message: t('creditCard.error.district') }),
+    district: z.string().min(1, { message: t('creditCard.error.district') }),
     address1: z.string().min(3, { message: t('creditCard.error.requiredField') }),
     address2: z.string(),
     city: z.string().min(2, { message: t('creditCard.error.requiredField') }),
@@ -79,6 +81,11 @@ export const useCreditCardForm = () => {
     setCountries(data.data);
   };
 
+  const getStates = async (country: BaseSyntheticEvent) => {
+    const data: any = await getSubregions(country.target.value);
+    setSubregions(data.data);
+  };
+
   useEffect(() => {
     loadData();
   }, []);
@@ -107,5 +114,7 @@ export const useCreditCardForm = () => {
     creditCardError,
     isSuccess,
     countries,
+    getStates,
+    subregions,
   };
 };

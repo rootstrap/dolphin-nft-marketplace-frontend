@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Button, Grid, Typography, MenuItem } from '@material-ui/core';
 import { InputText } from 'infrastructure/components/InputText/InputText';
 import { InputSelect } from 'infrastructure/components/Select/InputSelect';
 import { useCreditCardForm } from './useCreditCardForm';
@@ -9,8 +9,18 @@ import styles from './CreditCardForm.module.scss';
 
 export const CreditCardForm = () => {
   const t = useTranslation();
-  const { isSuccess, isLoading, register, handleSubmit, onSubmit, errors, error, countries } =
-    useCreditCardForm();
+  const {
+    isSuccess,
+    isLoading,
+    register,
+    handleSubmit,
+    onSubmit,
+    errors,
+    error,
+    countries,
+    getStates,
+    subregions,
+  } = useCreditCardForm();
 
   const componentToRender = isSuccess ? (
     <CreditCardVerification />
@@ -81,17 +91,25 @@ export const CreditCardForm = () => {
             label={t('creditCard.country')}
             register={register}
             name="country"
-            options={countries}
+            onChange={getStates}
+            options={countries.map(option => (
+              <MenuItem key={option.alpha2Code} value={option.alpha2Code}>
+                {option.name}
+              </MenuItem>
+            ))}
           />
         </Grid>
         <Grid item xs={12}>
-          <InputText
+          <InputSelect
             className={styles.creditCardForm__input}
             label={t('creditCard.district')}
             register={register}
             name="district"
-            type="text"
-            error={errors.district}
+            options={subregions.map(option => (
+              <MenuItem key={option.code} value={option.code}>
+                {option.name} - {option.subRegionType}
+              </MenuItem>
+            ))}
           />
         </Grid>
         <Grid item xs={6}>

@@ -4,3 +4,9 @@ export interface Country {
   alpha3Code: string;
   numeric: string;
 }
+
+export interface Subregion {
+  code: string;
+  subRegionType: string;
+  name: string;
+}

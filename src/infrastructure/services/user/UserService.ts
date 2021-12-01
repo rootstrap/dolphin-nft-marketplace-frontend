@@ -1,5 +1,5 @@
 import { endpoints } from 'app/constants/endpoints';
-import { Country } from 'app/interfaces/common/Country';
+import { Country, Subregion } from 'app/interfaces/common/Country';
 import { ILoginStatusResponse, LoginStatusResult } from 'app/interfaces/user/LoginStatus';
 import { getFormData } from 'app/helpers/getFormData';
 import { api } from '../Api';
@@ -81,6 +81,10 @@ export const authApi = api.injectEndpoints({
       query: () => `${endpoints.COUNTRIES}`,
       transformResponse: (data: Country[]) => data,
     }),
+    getSubregions: builder.mutation<Subregion[], string>({
+      query: countryCode => `${endpoints.SUBREGIONS}?country=${countryCode}`,
+      transformResponse: (data: Subregion[]) => data,
+    }),
   }),
   overrideExisting: true,
 });
@@ -133,6 +137,7 @@ export const {
   useSignupFTXMutation,
   useKycMutation,
   useGetCountriesMutation,
+  useGetSubregionsMutation,
   endpoints: {
     signup: { matchFulfilled: signupFulfiled },
     login: { matchFulfilled: loginFulfiled },

@@ -4,9 +4,9 @@ export const endpoints = {
   SIGN_UP: '/auth/signup',
   KYC: '/kyc',
   COUNTRIES: '/countries',
+  SUBREGIONS: '/countries/subregions',
   CREDIT_CARD: '/cc',
   DEPOSIT: '/deposit',
   BALANCE: '/balance',
-
   NFT: '/nft',
 };

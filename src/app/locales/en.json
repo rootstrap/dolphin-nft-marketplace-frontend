@@ -126,6 +126,12 @@
       "systemError": "Something went wrong!",
       "invalidEmail": "Invalid email format",
       "requiredPassword": "Password is required"
+    },
+    "mfa": {
+      "title": "Two-factor authentication required",
+      "subtitle": "Please enter the 6-digit verification code that we've just sent to your phone.",
+      "subtitle2": "Or, if you are using Time-based One-time Password (TOTP) checkout your app",
+      "button": "Submit"
     }
   },
   "signup": {

@@ -29,13 +29,13 @@ export const useLogin = () => {
   const [isWalletReady, setIsWalletReady] = useState(false);
   const [error, setError] = useState('');
   const [userInfo, setUserInfo] = useState<FormValues>();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isMfaRequired, setIsMfaRequired] = useState(false);
 
   const [login, { isSuccess: isLoginSuccess }] = useLoginMutation();
-  const [loginFTX, { isLoading, isSuccess: isLoginFTXSuccess, error: signinError, isError }] =
-    useLoginFTXMutation();
-  const [loginStatus] = useLoginStatusMutation();
-  const [getCreditCards, { isSuccess: isGetCreditCardsSuccess, isLoading: isGetCreditCardsLoading }] =
-    useGetCreditCardsMutation();
+  const [loginFTX, { isSuccess: isLoginFTXSuccess, error: signinError, isError }] = useLoginFTXMutation();
+  const [loginStatus, { isSuccess: isLoginStatusSuccess, data: loginStatusData }] = useLoginStatusMutation();
+  const [getCreditCards, { isSuccess: isGetCreditCardsSuccess }] = useGetCreditCardsMutation();
   const [getBalance] = useGetBalanceMutation();
   const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
 
@@ -53,11 +53,17 @@ export const useLogin = () => {
   } = useForm({ resolver: zodResolver(schema) });
 
   const onSubmit: SubmitHandler<FormValues> = async data => {
-    const token = await getToken(recaptchaActions.login);
-
+    setIsLoading(true);
     setUserInfo(data);
-    await loginFTX({ ...data, recaptcha: token });
-    await loginStatus();
+
+    try {
+      const token = await getToken(recaptchaActions.login);
+
+      await loginFTX({ ...data, recaptcha: token });
+      await loginStatus();
+    } catch (e: any) {
+      throw new Error(e);
+    }
   };
 
   const handleClose = () => {
@@ -74,8 +80,15 @@ export const useLogin = () => {
   };
 
   const loadUserData = async () => {
-    await getCreditCards();
-    await getBalance();
+    setIsLoading(true);
+    try {
+      await getCreditCards();
+      await getBalance();
+    } catch (e: any) {
+      throw new Error(e);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -83,6 +96,13 @@ export const useLogin = () => {
       login(userInfo);
     }
   }, [isLoginFTXSuccess]);
+
+  useEffect(() => {
+    if (isLoginStatusSuccess) {
+      const { mfaRequired } = loginStatusData;
+      setIsMfaRequired(Boolean(mfaRequired));
+    }
+  }, [isLoginStatusSuccess]);
 
   useEffect(() => {
     if (isLoginSuccess) {
@@ -122,5 +142,7 @@ export const useLogin = () => {
     errors,
     error,
     isGetCreditCardsSuccess,
+    isMfaRequired,
+    setIsMfaRequired,
   };
 };

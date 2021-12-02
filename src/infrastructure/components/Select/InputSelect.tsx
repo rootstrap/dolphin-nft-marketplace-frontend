@@ -2,15 +2,7 @@ import { Select, Typography } from '@material-ui/core';
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 import styles from './InputSelect.module.scss';
 
-export const InputSelect = ({
-  className,
-  label = '',
-  name,
-  error,
-  register,
-  options,
-  onChange,
-}: InputSelectProps) => {
+export const InputSelect = ({ className, label = '', name, error, register, children }: InputSelectProps) => {
   return (
     <div className={className}>
       <Typography>{label}</Typography>
@@ -18,12 +10,11 @@ export const InputSelect = ({
         {...register(name)}
         variant="outlined"
         fullWidth
-        onChange={onChange ? event => onChange(event) : undefined}
         error={!!error}
         color="secondary"
         defaultValue=""
       >
-        {options}
+        {children}
       </Select>
       <small className={styles.inputSelect__error}>{error?.message}</small>
     </div>
@@ -31,8 +22,7 @@ export const InputSelect = ({
 };
 
 interface InputSelectProps {
-  options: JSX.Element[];
-  onChange?: Function;
+  children: JSX.Element[];
   className: string;
   label?: string;
   name?: string;

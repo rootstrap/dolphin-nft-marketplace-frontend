@@ -19,7 +19,6 @@ export const KYC = () => {
     errors,
     error,
     countries,
-    getStates,
     subregions,
   } = useKYC();
 
@@ -63,14 +62,14 @@ export const KYC = () => {
               label={t('kyc.country')}
               register={register}
               name="country"
-              onChange={getStates}
               error={errors.country}
-              options={countries.map(option => (
+            >
+              {countries.map(option => (
                 <MenuItem key={option.alpha3Code} value={option.alpha3Code}>
                   {option.name}
                 </MenuItem>
               ))}
-            />
+            </InputSelect>
           </Grid>
           <Grid item xs={12}>
             <InputSelect
@@ -79,12 +78,13 @@ export const KYC = () => {
               register={register}
               name="stateProvinceRegion"
               error={errors.stateProvinceRegion}
-              options={subregions.map(option => (
+            >
+              {subregions.map(option => (
                 <MenuItem key={option.code} value={option.code}>
                   {option.name} - {option.subRegionType}
                 </MenuItem>
               ))}
-            />
+            </InputSelect>
           </Grid>
           <Grid item xs={12}>
             <InputText

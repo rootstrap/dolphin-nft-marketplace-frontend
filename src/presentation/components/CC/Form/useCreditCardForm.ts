@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useCreateCreditCardMutation } from 'infrastructure/services/creditCard/CreditCardService';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -54,6 +54,7 @@ export const useCreditCardForm = () => {
     handleSubmit,
     clearErrors,
     reset,
+    watch,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
@@ -81,14 +82,21 @@ export const useCreditCardForm = () => {
     setCountries(data.data);
   };
 
-  const getStates = async (country: BaseSyntheticEvent) => {
-    const data: any = await getSubregions(country.target.value);
-    setSubregions(data.data);
-  };
+  const getStates = useCallback(
+    async (country: string) => {
+      const data: any = await getSubregions(country);
+      setSubregions(data.data);
+    },
+    [getSubregions]
+  );
 
   useEffect(() => {
     loadData();
   }, []);
+
+  useEffect(() => {
+    getStates(watch('country'));
+  }, [getStates, watch('country')]);
 
   useEffect(() => {
     if (isSuccess) {

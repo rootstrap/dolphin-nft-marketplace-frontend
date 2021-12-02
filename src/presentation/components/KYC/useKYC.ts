@@ -3,7 +3,7 @@ import {
   useGetSubregionsMutation,
   useKycMutation,
 } from 'infrastructure/services/user/UserService';
-import { BaseSyntheticEvent, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -47,6 +47,7 @@ export const useKYC = () => {
     handleSubmit,
     clearErrors,
     reset,
+    watch,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
@@ -63,14 +64,21 @@ export const useKYC = () => {
     setCountries(data.data);
   };
 
-  const getStates = async (country: BaseSyntheticEvent) => {
-    const data: any = await getSubregions(country.target.value);
-    setSubregions(data.data);
-  };
+  const getStates = useCallback(
+    async (country: string) => {
+      const data: any = await getSubregions(country);
+      setSubregions(data.data);
+    },
+    [getSubregions]
+  );
 
   useEffect(() => {
     loadData();
   }, []);
+
+  useEffect(() => {
+    getStates(watch('country'));
+  }, [getStates, watch('country')]);
 
   useEffect(() => {
     if (isSuccess) {

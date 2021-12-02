@@ -9,18 +9,8 @@ import styles from './CreditCardForm.module.scss';
 
 export const CreditCardForm = () => {
   const t = useTranslation();
-  const {
-    isSuccess,
-    isLoading,
-    register,
-    handleSubmit,
-    onSubmit,
-    errors,
-    error,
-    countries,
-    getStates,
-    subregions,
-  } = useCreditCardForm();
+  const { isSuccess, isLoading, register, handleSubmit, onSubmit, errors, error, countries, subregions } =
+    useCreditCardForm();
 
   const componentToRender = isSuccess ? (
     <CreditCardVerification />
@@ -91,13 +81,13 @@ export const CreditCardForm = () => {
             label={t('creditCard.country')}
             register={register}
             name="country"
-            onChange={getStates}
-            options={countries.map(option => (
+          >
+            {countries.map(option => (
               <MenuItem key={option.alpha2Code} value={option.alpha2Code}>
                 {option.name}
               </MenuItem>
             ))}
-          />
+          </InputSelect>
         </Grid>
         <Grid item xs={12}>
           <InputSelect
@@ -105,12 +95,13 @@ export const CreditCardForm = () => {
             label={t('creditCard.district')}
             register={register}
             name="district"
-            options={subregions.map(option => (
+          >
+            {subregions.map(option => (
               <MenuItem key={option.code} value={option.code}>
                 {option.name} - {option.subRegionType}
               </MenuItem>
             ))}
-          />
+          </InputSelect>
         </Grid>
         <Grid item xs={6}>
           <InputText

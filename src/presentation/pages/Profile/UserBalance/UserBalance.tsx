@@ -11,11 +11,11 @@ export const UserBalance = () => {
     <div>
       <Grid container justifyContent="center">
         <Grid container>
-          <Grid item md={1} lg={1} />
-          <Grid item xs={12} md={10} lg={10}>
-            <Typography variant="h4">{t('profile.userBalance.title')}</Typography>
+          <Grid item xs={12}>
+            <Typography variant="h4" gutterBottom align="center">
+              {t('profile.userBalance.title')}
+            </Typography>
           </Grid>
-          <Grid item md={1} lg={1} />
         </Grid>
 
         {Boolean(balances.length) && (

@@ -1,10 +1,14 @@
-import { useGetCountriesMutation, useKycMutation } from 'infrastructure/services/user/UserService';
-import { useContext, useEffect, useState } from 'react';
+import {
+  useGetCountriesMutation,
+  useGetSubregionsMutation,
+  useKycMutation,
+} from 'infrastructure/services/user/UserService';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Country } from 'app/interfaces/common/Country';
+import { Country, Subregion } from 'app/interfaces/common/Country';
 import useTranslation from 'app/hooks/useTranslation';
 
 interface FormValues {
@@ -22,15 +26,17 @@ export const useKYC = () => {
   const t = useTranslation();
   const [kyc, { isLoading, isSuccess, isError, error: kycError }] = useKycMutation();
   const [getCountries] = useGetCountriesMutation();
+  const [getSubregions] = useGetSubregionsMutation();
 
   const [error, setError] = useState('');
   const [countries, setCountries] = useState<Country[]>([]);
+  const [subregions, setSubregions] = useState<Subregion[]>([]);
   const { kycModalIsOpen, setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
 
   const schema = z.object({
     fullLegalName: z.string().min(2, { message: 'Field Required' }),
     country: z.string().min(2, { message: 'Field Required' }),
-    stateProvinceRegion: z.string().min(2, { message: 'Field Required' }),
+    stateProvinceRegion: z.string().min(1, { message: 'Field Required' }),
     dateOfBirth: z.string().min(7, { message: 'Field Required' }),
     postalCode: z.string().min(2, { message: 'Field Required' }),
     streetAddress: z.string().min(2, { message: 'Field Required' }),
@@ -41,6 +47,7 @@ export const useKYC = () => {
     handleSubmit,
     clearErrors,
     reset,
+    watch,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
@@ -57,9 +64,21 @@ export const useKYC = () => {
     setCountries(data.data);
   };
 
+  const getStates = useCallback(
+    async (country: string) => {
+      const data: any = await getSubregions(country);
+      setSubregions(data.data);
+    },
+    [getSubregions]
+  );
+
   useEffect(() => {
     loadData();
   }, []);
+
+  useEffect(() => {
+    getStates(watch('country'));
+  }, [getStates, watch('country')]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -85,5 +104,7 @@ export const useKYC = () => {
     errors,
     error,
     countries,
+    getStates,
+    subregions,
   };
 };

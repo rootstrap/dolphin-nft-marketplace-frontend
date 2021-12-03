@@ -1,4 +1,4 @@
-import { Typography, Checkbox, Button } from '@material-ui/core';
+import { Typography, Checkbox, Button, MenuItem } from '@material-ui/core';
 import { InputText } from 'infrastructure/components/InputText/InputText';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { useKYC } from './useKYC';
@@ -19,6 +19,7 @@ export const KYC = () => {
     errors,
     error,
     countries,
+    subregions,
   } = useKYC();
 
   return (
@@ -62,19 +63,28 @@ export const KYC = () => {
               register={register}
               name="country"
               error={errors.country}
-              options={countries}
-              isAlpha3Code
-            />
+            >
+              {countries.map(option => (
+                <MenuItem key={option.alpha3Code} value={option.alpha3Code}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </InputSelect>
           </Grid>
           <Grid item xs={12}>
-            <InputText
+            <InputSelect
               className={styles.kycForm__input}
               label={t('kyc.state')}
               register={register}
               name="stateProvinceRegion"
-              type="text"
               error={errors.stateProvinceRegion}
-            />
+            >
+              {subregions.map(option => (
+                <MenuItem key={option.code} value={option.code}>
+                  {option.name} - {option.subRegionType}
+                </MenuItem>
+              ))}
+            </InputSelect>
           </Grid>
           <Grid item xs={12}>
             <InputText

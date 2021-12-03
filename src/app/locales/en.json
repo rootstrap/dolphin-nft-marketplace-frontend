@@ -70,6 +70,13 @@
       "addButton": "Add another credit card",
       "status": "Status: ",
       "default": "Default Credit Card"
+    },
+    "userBalance": {
+      "title": "My Balances",
+      "coinColumn": "Coin",
+      "balanceColumn": "Balance",
+      "availableBalanceColumn": "Available Balance",
+      "usdValueColumn": "USD Value"
     }
   },
   "verticals": {

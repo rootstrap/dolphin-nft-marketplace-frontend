@@ -1,0 +1,32 @@
+@import '../../../../app/styles/base/settings';
+
+.userBalance {
+  &__heading {
+    background-color: $black;
+    padding: 1rem 0;
+  }
+
+  &__container {
+    padding: 0 10rem;
+  }
+
+  &__item {
+    background-color: $background-promotion;
+    padding: 0.5rem 0;
+
+    &:first-child {
+      padding-top: 2rem;
+    }
+
+    &:last-child {
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__column {
+    &__balance {
+      color: $orange;
+    }
+  }
+}

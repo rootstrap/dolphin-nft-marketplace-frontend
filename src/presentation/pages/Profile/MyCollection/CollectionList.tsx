@@ -16,8 +16,8 @@ export const CollectionList = ({ nfts }: CollectionListProps) => {
       </div>
       {nfts.length ? (
         <Grid container className={styles.list__collection}>
-          {nfts.map(nft => {
-            const { id, ftx_id, name, totalQuantity, offerPrice, imageUrl } = nft.nft;
+          {nfts.map(({ nft }) => {
+            const { id, ftx_id, name, totalQuantity, offerPrice, imageUrl } = nft;
             return (
               <Grid item xs={12} md={6} lg={4} className={styles.list__collection}>
                 <Item

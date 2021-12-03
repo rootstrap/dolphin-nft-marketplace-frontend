@@ -17,3 +17,18 @@ export interface NFT {
   created_at: string;
   quoteCurrency: string;
 }
+
+export interface FillsResult {
+  fee: number;
+  id: number;
+  nft: NFT;
+  price: number;
+  quoteCurrency: string;
+  royalty: number;
+  side: string;
+  time: string;
+}
+export interface IFillsResponse {
+  success: boolean;
+  result: FillsResult[];
+}

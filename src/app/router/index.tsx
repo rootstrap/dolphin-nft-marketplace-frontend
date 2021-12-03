@@ -1,6 +1,5 @@
 import NFTPage from 'presentation/pages/NFT/NFTPage';
 import HomePage from 'presentation/pages/Home/HomePage';
-import MyCollection from 'presentation/pages/Profile/MyCollection';
 import ProfilePage from 'presentation/pages/Profile/ProfilePage';
 import CreaturesPage from 'presentation/pages/Categories/Creatures/CreaturesPage';
 import VerticalPage from 'presentation/pages/Verticals/VerticalPage';
@@ -55,11 +54,6 @@ export const routes = {
     {
       path: routesPaths.profile,
       component: <ProfilePage />,
-      private: true,
-    },
-    {
-      path: routesPaths.my_collection,
-      component: <MyCollection />,
       private: true,
     },
   ],

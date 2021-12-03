@@ -1,4 +1,5 @@
 import { endpoints } from 'app/constants/endpoints';
+import { Balance } from 'app/interfaces/common/Balance';
 import { api } from '../Api';
 
 const depositApi = api.injectEndpoints({
@@ -36,15 +37,6 @@ interface DepositBody {
   size: number;
   cardId: number;
   cvv?: number;
-}
-
-export interface Balance {
-  coin: string;
-  free: number;
-  spotBorrow: number;
-  total: number;
-  usdValue: number;
-  availableWithoutBorrow: number;
 }
 
 export const {

@@ -16,4 +16,4 @@ export interface NFT {
   createdAt: string;
   created_at: string;
   quoteCurrency: string;
- }
+}

@@ -1,6 +1,6 @@
 import { TopBarLayout } from 'infrastructure/components/Layout/TopBarLayout';
 import { Main } from './Main/Main';
-import { MyCollectionNfts } from './MyCollectionNfts';
+import { MyCollectionNfts } from './MyCollection/MyCollectionNfts';
 
 const ProfilePage = () => {
   return (

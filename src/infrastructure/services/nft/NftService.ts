@@ -1,5 +1,5 @@
 import { endpoints } from 'app/constants/endpoints';
-import { NFT } from 'app/interfaces/NFT/NFT';
+import { FillsResult, IFillsResponse, NFT } from 'app/interfaces/NFT/NFT';
 import { api } from '../Api';
 
 const nftApi = api.injectEndpoints({
@@ -26,6 +26,15 @@ const nftApi = api.injectEndpoints({
       query: nftId => `${endpoints.NFT}?ftxId=${nftId}`,
       transformResponse: (data: NFT) => data,
     }),
+    getNftsByUser: builder.mutation<FillsResult[], void>({
+      query: () => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/fills`,
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+      }),
+      transformResponse: (data: IFillsResponse) => data.result,
+    }),
     buyNft: builder.mutation({
       query: (buyNftBody: BuyNFT) => ({
         url: `${process.env.REACT_APP_FTX_API_URL}/nft/buy`,
@@ -50,6 +59,7 @@ export const {
   useGetNftsFeaturedMutation,
   useGetNftByIdMutation,
   useBuyNftMutation,
+  useGetNftsByUserMutation,
   endpoints: {
     getNftsSecondary: { matchFulfilled: getNftsSecondaryFulfiled },
     getNftsPrimary: { matchFulfilled: getNftsPrimaryFulfiled },

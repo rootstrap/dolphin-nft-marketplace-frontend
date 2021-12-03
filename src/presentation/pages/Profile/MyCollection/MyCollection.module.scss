@@ -1,0 +1,104 @@
+@import 'app/styles/base/settings';
+
+.myCollection {
+  padding: 4rem;
+
+  &__collectionText {
+    margin: 1rem;
+    text-align: center;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__spinner {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.list {
+  &__title {
+    text-align: center;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+
+    &Description {
+      height: 5rem;
+      overflow-y: hidden;
+    }
+
+    &Content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      object-fit: cover;
+      background-color: $background-promotion;
+      margin: 1rem auto;
+      width: 99%;
+      text-align: left;
+      padding: 0 1rem;
+      height: 20rem;
+      position: relative;
+
+      &Hidden {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(0, #000000 14.58%, rgba(0, 0, 0, 0) 100%);
+
+        &Title {
+          text-align: center;
+          width: 90%;
+          height: 2rem;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow-x: hidden;
+        }
+      }
+
+      &Img {
+        background-color: $black;
+        height: 100%;
+        width: auto;
+        max-height: 100%;
+      }
+
+      &New {
+        position: absolute;
+        right: 0;
+        background-color: $orange;
+        padding: 0.3rem;
+      }
+    }
+
+    &Text {
+      margin: 0 auto;
+      width: 22rem;
+
+      font-size: $font-size-big;
+    }
+
+    &Icon {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      span {
+        margin-left: 1rem;
+        font-size: $font-size-med;
+      }
+    }
+
+    &Button {
+      margin: 2rem auto;
+    }
+  }
+}

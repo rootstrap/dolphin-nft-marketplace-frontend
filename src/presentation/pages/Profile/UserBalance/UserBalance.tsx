@@ -22,18 +22,18 @@ export const UserBalance = () => {
           <Grid container className={styles.userBalance__container}>
             <Grid container justifyContent="space-around" className={styles.userBalance__heading}>
               <Grid item xs={2}>
-                <Typography variant="h5">{t('profile.userBalance.coinColumn')}</Typography>
+                <Typography variant="h6">{t('profile.userBalance.coinColumn')}</Typography>
               </Grid>
               <Grid item xs={2}>
-                <Typography variant="h5" className={styles.userBalance__column__balance}>
+                <Typography variant="h6" className={styles.userBalance__column__balance}>
                   {t('profile.userBalance.balanceColumn')}
                 </Typography>
               </Grid>
               <Grid item xs={2}>
-                <Typography variant="h5">{t('profile.userBalance.availableBalanceColumn')}</Typography>
+                <Typography variant="h6">{t('profile.userBalance.availableBalanceColumn')}</Typography>
               </Grid>
               <Grid item xs={2}>
-                <Typography variant="h5">{t('profile.userBalance.usdValueColumn')}</Typography>
+                <Typography variant="h6">{t('profile.userBalance.usdValueColumn')}</Typography>
               </Grid>
             </Grid>
 
@@ -54,7 +54,7 @@ export const UserBalance = () => {
                   {balance.availableWithoutBorrow}
                 </Grid>
                 <Grid item xs={2} className={styles.userBalance__column}>
-                  ${balance.usdValue}
+                  ${balance.usdValue.toFixed(2)}
                 </Grid>
               </Grid>
             ))}

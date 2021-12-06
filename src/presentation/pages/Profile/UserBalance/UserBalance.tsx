@@ -8,7 +8,7 @@ export const UserBalance = () => {
   const { balances } = useUserBalance();
 
   return (
-    <div>
+    <div className={styles.userBalance}>
       <Grid container justifyContent="center">
         <Grid container>
           <Grid item xs={12}>

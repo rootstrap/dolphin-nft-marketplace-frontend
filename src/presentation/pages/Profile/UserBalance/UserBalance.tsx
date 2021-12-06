@@ -1,11 +1,13 @@
 import { Grid, Typography } from '@material-ui/core';
+import { useUserBalance } from './useUserBalance';
+import { useResponsive } from '../../../../app/hooks/useResponsive';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './UserBalance.module.scss';
-import { useUserBalance } from './useUserBalance';
 
 export const UserBalance = () => {
   const t = useTranslation();
   const { balances } = useUserBalance();
+  const { isMobileView } = useResponsive();
 
   return (
     <div>
@@ -24,11 +26,14 @@ export const UserBalance = () => {
               <Grid item xs={2}>
                 <Typography variant="h6">{t('profile.userBalance.coinColumn')}</Typography>
               </Grid>
-              <Grid item xs={2}>
-                <Typography variant="h6" className={styles.userBalance__column__balance}>
-                  {t('profile.userBalance.balanceColumn')}
-                </Typography>
-              </Grid>
+              {!isMobileView && (
+                <Grid item xs={2}>
+                  <Typography variant="h6" className={styles.userBalance__column__balance}>
+                    {t('profile.userBalance.balanceColumn')}
+                  </Typography>
+                </Grid>
+              )}
+
               <Grid item xs={2}>
                 <Typography variant="h6">{t('profile.userBalance.availableBalanceColumn')}</Typography>
               </Grid>
@@ -47,9 +52,12 @@ export const UserBalance = () => {
                 <Grid item xs={2} className={styles.userBalance__column}>
                   {balance.coin}
                 </Grid>
-                <Grid item xs={2} className={styles.userBalance__column__balance}>
-                  {balance.total}
-                </Grid>
+                {!isMobileView && (
+                  <Grid item xs={2} className={styles.userBalance__column__balance}>
+                    {balance.total}
+                  </Grid>
+                )}
+
                 <Grid item xs={2} className={styles.userBalance__column}>
                   {balance.availableWithoutBorrow}
                 </Grid>

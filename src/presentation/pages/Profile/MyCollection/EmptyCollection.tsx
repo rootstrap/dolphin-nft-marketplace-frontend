@@ -8,14 +8,6 @@ export const EmptyCollection = () => {
   const t = useTranslation();
   return (
     <>
-      <Grid container className={styles.myCollection__title}>
-        <Grid item md={1} lg={1}></Grid>
-        <Grid item xs={12} md={10} lg={10}>
-          <Typography variant="h4">{t('profile.collectionTitle')}</Typography>
-        </Grid>
-        <Grid item md={1} lg={1}></Grid>
-      </Grid>
-
       <Grid container className={styles.myCollection__items}>
         <Grid item md={2} lg={2}></Grid>
         <Grid item xs={12} md={8} lg={8} className={styles.myCollection__collection}>

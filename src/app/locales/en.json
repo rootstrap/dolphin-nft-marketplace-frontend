@@ -71,11 +71,12 @@
       "status": "Status: ",
       "default": "Default Credit Card"
     },
-    "checkboxes": {
-      "firstCheck": "Create Account",
-      "secondCheck": "Tell us about yourself",
-      "thirdCheck": "Activate your wallet",
-      "description": "You’re almost ready! You must activate your wallet before you start collecting. We recommend doing this ahead of time -- don’t worry, you won’t be charged until you decide to purchase."
+    "userBalance": {
+      "title": "My Balances",
+      "coinColumn": "Coin",
+      "balanceColumn": "Balance",
+      "availableBalanceColumn": "Available Balance",
+      "usdValueColumn": "USD Value"
     }
   },
   "verticals": {
@@ -132,6 +133,12 @@
       "systemError": "Something went wrong!",
       "invalidEmail": "Invalid email format",
       "requiredPassword": "Password is required"
+    },
+    "mfa": {
+      "title": "Two-factor authentication required",
+      "subtitle": "Please enter the 6-digit verification code that we've just sent to your phone.",
+      "subtitle2": "Or, if you are using Time-based One-time Password (TOTP) checkout your app",
+      "button": "Submit"
     }
   },
   "signup": {
@@ -161,6 +168,16 @@
       "passwordConfirmationError": "Passwords don't match"
     }
   },
+  "walletSetup": {
+    "title": "Account Set Up",
+    "subtitle": "You are almost ready!",
+    "activate": "Activate Now",
+    "remindMeLater": "Remind Me Later",
+    "firstCheck": "Create Account",
+    "secondCheck": "Tell us about yourself",
+    "thirdCheck": "Activate your wallet",
+    "description": "You must activate your wallet before you start collecting. We recommend doing this ahead of time -- don’t worry, you won’t be charged until you decide to purchase."
+  },
   "kyc": {
     "title": "Set your wallet to continue",
     "fullName": "Full name",
@@ -187,6 +204,7 @@
     "city": "City",
     "postalCode": "Zip Code",
     "button": "Finish →",
+    "text": "We recommend funding your wallet ahead of purchasing as there may be processing time needed. Using a credit or debit card is the easiest way to get started! You can also use a bank account or crypto currency",
     "verification": {
       "title": "We need to verify your card to continue",
       "description": "This is just a security step. Please enter the amount we just charged to your credit card.",

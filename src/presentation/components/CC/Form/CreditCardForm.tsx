@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Button, Grid, Typography, MenuItem } from '@material-ui/core';
 import { InputText } from 'infrastructure/components/InputText/InputText';
 import { InputSelect } from 'infrastructure/components/Select/InputSelect';
 import { useCreditCardForm } from './useCreditCardForm';
@@ -9,7 +9,7 @@ import styles from './CreditCardForm.module.scss';
 
 export const CreditCardForm = () => {
   const t = useTranslation();
-  const { isSuccess, isLoading, register, handleSubmit, onSubmit, errors, error, countries } =
+  const { isSuccess, isLoading, register, handleSubmit, onSubmit, errors, error, countries, subregions } =
     useCreditCardForm();
 
   const componentToRender = isSuccess ? (
@@ -23,6 +23,10 @@ export const CreditCardForm = () => {
             {error}
           </Typography>
         )}
+      </div>
+
+      <div className={styles.creditCardForm__text}>
+        <Typography variant="h6">{t('creditCard.text')}</Typography>
       </div>
       <Grid container spacing={3} alignItems="center" justifyContent="center">
         <Grid item xs={12}>
@@ -81,18 +85,27 @@ export const CreditCardForm = () => {
             label={t('creditCard.country')}
             register={register}
             name="country"
-            options={countries}
-          />
+          >
+            {countries.map(option => (
+              <MenuItem key={option.alpha2Code} value={option.alpha2Code}>
+                {option.name}
+              </MenuItem>
+            ))}
+          </InputSelect>
         </Grid>
         <Grid item xs={12}>
-          <InputText
+          <InputSelect
             className={styles.creditCardForm__input}
             label={t('creditCard.district')}
             register={register}
             name="district"
-            type="text"
-            error={errors.district}
-          />
+          >
+            {subregions.map(option => (
+              <MenuItem key={option.code} value={option.code}>
+                {option.name}
+              </MenuItem>
+            ))}
+          </InputSelect>
         </Grid>
         <Grid item xs={6}>
           <InputText

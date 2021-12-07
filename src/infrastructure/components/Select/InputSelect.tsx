@@ -1,8 +1,8 @@
-import { MenuItem, Select, Typography } from '@material-ui/core';
+import { Select, Typography } from '@material-ui/core';
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 import styles from './InputSelect.module.scss';
 
-export const InputSelect = ({ className, label = '', name, error, register, options }: InputSelectProps) => {
+export const InputSelect = ({ className, label = '', name, error, register, children }: InputSelectProps) => {
   return (
     <div className={className}>
       <Typography>{label}</Typography>
@@ -14,11 +14,7 @@ export const InputSelect = ({ className, label = '', name, error, register, opti
         color="secondary"
         defaultValue=""
       >
-        {options.map(option => (
-          <MenuItem key={option.code} value={option.code}>
-            {option.name}
-          </MenuItem>
-        ))}
+        {children}
       </Select>
       <small className={styles.inputSelect__error}>{error?.message}</small>
     </div>
@@ -26,15 +22,10 @@ export const InputSelect = ({ className, label = '', name, error, register, opti
 };
 
 interface InputSelectProps {
-  options: Option[];
+  children: JSX.Element[];
   className: string;
   label?: string;
   name?: string;
   error?: { message: string };
   register: UseFormRegister<FieldValues>;
-}
-
-interface Option {
-  name: string;
-  code: string;
 }

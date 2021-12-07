@@ -11,9 +11,9 @@ export interface LoginStatusResult {
   country: string;
   state: string;
   supportOnly: boolean;
-  mfaRequired: null;
+  mfaRequired: string;
   requiresEmailLink: boolean;
-  mfa: null;
+  mfa: string;
   readOnly: boolean;
   restrictedToSubaccount: boolean;
   withdrawalEnabled: boolean;

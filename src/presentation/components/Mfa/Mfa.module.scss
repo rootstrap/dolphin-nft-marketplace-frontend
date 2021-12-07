@@ -1,0 +1,27 @@
+@import '../../../app/styles/base/settings';
+
+.mfa {
+  padding: 2rem;
+  text-align: center;
+
+  &__subtitle {
+    color: $mid-grey;
+  }
+
+  &__input {
+    padding: 0.5rem 6rem;
+  }
+
+  &__button {
+    margin: 1rem;
+  }
+
+  &__spinner {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__error {
+    color: $error;
+  }
+}

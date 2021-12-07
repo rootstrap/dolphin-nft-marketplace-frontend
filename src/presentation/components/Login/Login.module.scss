@@ -36,4 +36,9 @@
   &__button {
     margin: 1rem 2rem 4rem 2rem;
   }
+
+  &__spinner {
+    display: flex;
+    justify-content: center;
+  }
 }

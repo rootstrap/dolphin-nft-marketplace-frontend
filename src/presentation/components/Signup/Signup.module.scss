@@ -48,4 +48,9 @@
     top: 0;
     padding: 1rem;
   }
+
+  &__spinner {
+    display: flex;
+    justify-content: center;
+  }
 }

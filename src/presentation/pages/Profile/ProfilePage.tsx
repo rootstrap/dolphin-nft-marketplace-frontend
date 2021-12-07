@@ -1,6 +1,8 @@
 import { TopBarLayout } from 'infrastructure/components/Layout/TopBarLayout';
 import { Main } from './Main/Main';
-import { MyCollectionNfts } from './MyCollectionNfts';
+import { MyCollectionNfts } from './MyCollection/MyCollectionNfts';
+import { UserBalance } from './UserBalance/UserBalance';
+import { TabPanel } from 'infrastructure/components/TabPanel/TabPanel';
 
 const ProfilePage = () => {
   return (
@@ -8,7 +10,12 @@ const ProfilePage = () => {
       pageComponent={
         <>
           <Main />
-          <MyCollectionNfts />
+          <TabPanel
+            tabs={[
+              { content: <MyCollectionNfts />, tabName: 'My Gallery' },
+              { content: <UserBalance />, tabName: 'My Balances' },
+            ]}
+          />
         </>
       }
     />

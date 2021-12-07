@@ -81,7 +81,7 @@ export const KYC = () => {
             >
               {subregions.map(option => (
                 <MenuItem key={option.code} value={option.code}>
-                  {option.name} - {option.subRegionType}
+                  {option.name}
                 </MenuItem>
               ))}
             </InputSelect>

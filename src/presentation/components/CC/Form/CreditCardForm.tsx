@@ -24,6 +24,10 @@ export const CreditCardForm = () => {
           </Typography>
         )}
       </div>
+
+      <div className={styles.creditCardForm__text}>
+        <Typography variant="h6">{t('creditCard.text')}</Typography>
+      </div>
       <Grid container spacing={3} alignItems="center" justifyContent="center">
         <Grid item xs={12}>
           <InputText
@@ -98,7 +102,7 @@ export const CreditCardForm = () => {
           >
             {subregions.map(option => (
               <MenuItem key={option.code} value={option.code}>
-                {option.name} - {option.subRegionType}
+                {option.name}
               </MenuItem>
             ))}
           </InputSelect>

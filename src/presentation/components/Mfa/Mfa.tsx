@@ -45,7 +45,6 @@ export const Mfa = ({ setIsMfaRequired }: MfaProps) => {
           <div className={styles.mfa__input}>
             <InputText
               className={styles.mfa__inputText}
-              label="2FA"
               register={register}
               name="securityCode"
               type="number"

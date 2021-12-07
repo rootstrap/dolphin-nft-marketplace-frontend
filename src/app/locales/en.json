@@ -204,6 +204,7 @@
     "city": "City",
     "postalCode": "Zip Code",
     "button": "Finish →",
+    "text": "We recommend funding your wallet ahead of purchasing as there may be processing time needed. Using a credit or debit card is the easiest way to get started! You can also use a bank account or crypto currency",
     "verification": {
       "title": "We need to verify your card to continue",
       "description": "This is just a security step. Please enter the amount we just charged to your credit card.",

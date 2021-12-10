@@ -1,5 +1,10 @@
 import { endpoints } from 'app/constants/endpoints';
-import { Balance } from 'app/interfaces/common/Balance';
+import {
+  Balance,
+  GetCoinsResponse,
+  GetConvertResponse,
+  GetConvertResult,
+} from 'app/interfaces/common/Balance';
 import { api } from '../Api';
 
 const depositApi = api.injectEndpoints({
@@ -27,8 +32,45 @@ const depositApi = api.injectEndpoints({
         },
       }),
     }),
+    getCoins: builder.mutation<GetCoinsResponse, void>({
+      query: () => `${process.env.REACT_APP_FTX_API_URL}/wallet/coins`,
+    }),
     getBalance: builder.mutation<Balance[], void>({
       query: () => `${endpoints.BALANCE}`,
+    }),
+    getConvertBalance: builder.mutation<GetConvertResult, void>({
+      query: convertId => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/otc/quotes/${convertId}`,
+        method: 'GET',
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+      }),
+      transformResponse: (data: GetConvertResponse) => data.result,
+    }),
+    convertBalance: builder.mutation({
+      query: (convert: ConvertBody) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/otc/quotes`,
+        method: 'POST',
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+        body: {
+          fromCoin: convert.fromCoin,
+          toCoin: convert.toCoin,
+          size: Number(convert.size),
+          whitelabel: 'dolphin',
+        },
+      }),
+    }),
+    confirmConvertBalance: builder.mutation({
+      query: convertId => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/otc/quotes/${convertId}/accept`,
+        method: 'POST',
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+      }),
     }),
   }),
 });
@@ -39,10 +81,20 @@ interface DepositBody {
   cvv?: number;
 }
 
+interface ConvertBody {
+  fromCoin: string;
+  toCoin: string;
+  size: string;
+}
+
 export const {
   useCreateDepositMutation,
   useInitiateDepositMutation,
   useGetBalanceMutation,
+  useGetCoinsMutation,
+  useConvertBalanceMutation,
+  useGetConvertBalanceMutation,
+  useConfirmConvertBalanceMutation,
   endpoints: {
     getBalance: { matchFulfilled: getBalanceFulfiled },
   },

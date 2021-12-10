@@ -64,6 +64,10 @@
   "profile": {
     "collectionTitle": "My Collection",
     "emptyList": "You don’t have any collectibles in your gallery yet. Start your collection.",
+    "tabs": {
+      "gallery": "My galery",
+      "balances": "My balances"
+    },
     "creditCards": {
       "title": "Manage Your Credit Cards",
       "defaultButton": "Set as default",
@@ -77,6 +81,17 @@
       "balanceColumn": "Balance",
       "availableBalanceColumn": "Available Balance",
       "usdValueColumn": "USD Value"
+    },
+    "convertCoins": {
+      "title": "Convert your currencies",
+      "from": "From: ",
+      "to": "To: ",
+      "amount": "Amount",
+      "cost": "Cost: ",
+      "price": "Price: ",
+      "proceeds": "Proceeds: ",
+      "convertButton": "Convert",
+      "confirmButton": "Confirm"
     }
   },
   "verticals": {

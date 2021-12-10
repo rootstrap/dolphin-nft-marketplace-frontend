@@ -9,6 +9,7 @@ export const InputText = ({
   error,
   type = 'text',
   size = 'medium',
+  inputProps,
   register,
 }: InputTextProps) => (
   <div className={className}>
@@ -21,6 +22,7 @@ export const InputText = ({
       fullWidth
       error={!!error}
       color="secondary"
+      inputProps={inputProps}
     />
     <small className={styles.inputText__error}>{error?.message}</small>
   </div>
@@ -29,7 +31,7 @@ export const InputText = ({
 interface InputTextProps {
   className: string;
   label?: string;
-
+  inputProps?: any;
   name?: string;
   error?: { message: string };
 

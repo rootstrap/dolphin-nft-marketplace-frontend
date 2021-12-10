@@ -83,7 +83,7 @@
       "usdValueColumn": "USD Value"
     },
     "convertCoins": {
-      "title": "Convert Your currencies",
+      "title": "Convert your currencies",
       "from": "From: ",
       "to": "To: ",
       "amount": "Amount",

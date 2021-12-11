@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useGetNftsPrimaryMutation } from 'infrastructure/services/nft/NftService';
 import { NFT } from 'app/interfaces/NFT/NFT';
 
-export const useVertical = () => {
+export const useHallOfFame = () => {
   const [getNftsPrimary, { isError, isLoading, isSuccess }] = useGetNftsPrimaryMutation();
   const [nfts, setNfts] = useState<NFT[]>([]);
 

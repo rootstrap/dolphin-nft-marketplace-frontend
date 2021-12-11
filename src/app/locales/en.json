@@ -80,12 +80,19 @@
     }
   },
   "verticals": {
-    "listTitle": "Explore and select your NFT",
-    "promotion": {
-      "title": "Featured Collection",
-      "subtitle": "Pro Football Hall of Fame Village",
+    "title": "Hall of Fame Village",
+    "preTitle": "Featured Collection",
+    "playbooks": {
+      "title": "Playbooks",
       "primaryText": "Playbooks brings to life the most memorable plays from the college and professional careers of football legends. Each NFT focuses on a defining gridiron moment, chosen by the player, and highlighted with artistry, animation and recorded commentary from the athletes themselves.",
-      "secondaryText": "The custom, limited edition Playbooks NFTs - Phenom, Star, Icon and Legend - have unlockable rewards for those who collect all four of the same player, including virtual events with the players and rare signed memorabilia."
+      "secondaryText": "The custom, limited edition Playbooks NFTs - Phenom, Star, Icon and Legend - have unlockable rewards for those who collect all four of the same player, including virtual events with the players and rare signed memorabilia.",
+      "actionButton": "Explore Collection"
+    },
+    "fantasyLeague": {
+      "title": "Hall of Fantasy League",
+      "primaryText": "Playbooks brings to life the most memorable plays from the college and professional careers of football legends. Each NFT focuses on a defining gridiron moment, chosen by the player, and highlighted with artistry, animation and recorded commentary from the athletes themselves.",
+      "secondaryText": "The custom, limited edition Playbooks NFTs - Phenom, Star, Icon and Legend - have unlockable rewards for those who collect all four of the same player, including virtual events with the players and rare signed memorabilia.",
+      "actionButton": "Explore Collection"
     },
     "item": {
       "price": "Price",

@@ -1,6 +1,12 @@
-@import '../../../../app/styles/base/settings';
+@import '../../../../app/styles/base/_settings.scss';
 
-.mainContent {
+.hallOfFame {
+  padding: 10rem;
+
+  &__accordion {
+    background-color: $background-dark !important;
+  }
+
   &__title {
     display: flex;
     flex-direction: column;

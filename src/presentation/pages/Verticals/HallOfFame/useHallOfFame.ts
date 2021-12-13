@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useGetNftsPrimaryMutation } from 'infrastructure/services/nft/NftService';
 import { NFT } from 'app/interfaces/NFT/NFT';
+import { Tiers, Legends } from 'app/interfaces/HallOfFame/HallOfFame';
 
 export const useHallOfFame = () => {
   const [getNftsPrimary, { isError, isLoading, isSuccess, data }] = useGetNftsPrimaryMutation();
   const [nfts, setNfts] = useState<NFT[]>([]);
-  const [tier, setTier] = useState<string>('');
-  const [legend, setLegend] = useState<string>('');
+  const [tier, setTier] = useState<Tiers>('');
+  const [legend, setLegend] = useState<Legends>('');
 
   const loadData = useCallback(async () => {
     const data: any = await getNftsPrimary();

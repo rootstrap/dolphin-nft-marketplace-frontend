@@ -16,9 +16,11 @@ import JoeTheissmann from 'app/assets/Athlete-JoeTheissmann.png';
 import ShannonSharpe from 'app/assets/Athlete-ShannonSharpe.png';
 import TimBrown from 'app/assets/Athlete-TimBrown.png';
 import MoreSoon from 'app/assets/Athlete-MoreSoon.png';
+import { ItemBanner } from './ItemBanner/ItemBanner';
+import { Tiers, Legends, ITiers } from 'app/interfaces/HallOfFame/HallOfFame';
+import { FilterButton } from './FilterButton/FilterButton';
 import styles from './HallOfFame.module.scss';
 import mainContentStyles from '../Main/Main.module.scss';
-import { ItemBanner } from './ItemBanner/ItemBanner';
 
 export const HallOfFame = () => {
   const { verticalId } = useParams<{ verticalId?: string }>();
@@ -45,37 +47,37 @@ export const HallOfFame = () => {
               <ItemBanner
                 setLegend={setLegend}
                 image={MarcusAllen}
-                legend={LEGENDS.marcusAllen}
+                legend={LEGENDS.marcusAllen as Legends}
                 selectedLegend={legend}
               />
               <ItemBanner
                 setLegend={setLegend}
                 image={DoakWalker}
-                legend={LEGENDS.doakWalker}
+                legend={LEGENDS.doakWalker as Legends}
                 selectedLegend={legend}
               />
               <ItemBanner
                 setLegend={setLegend}
                 image={EarlCampbell}
-                legend={LEGENDS.earlCampbell}
+                legend={LEGENDS.earlCampbell as Legends}
                 selectedLegend={legend}
               />
               <ItemBanner
                 setLegend={setLegend}
                 image={JoeTheissmann}
-                legend={LEGENDS.joeTheissmann}
+                legend={LEGENDS.joeTheissmann as Legends}
                 selectedLegend={legend}
               />
               <ItemBanner
                 setLegend={setLegend}
                 image={ShannonSharpe}
-                legend={LEGENDS.shannonSharpe}
+                legend={LEGENDS.shannonSharpe as Legends}
                 selectedLegend={legend}
               />
               <ItemBanner
                 setLegend={setLegend}
                 image={TimBrown}
-                legend={LEGENDS.timBrown}
+                legend={LEGENDS.timBrown as Legends}
                 selectedLegend={legend}
               />
               <div className={styles.hallOfFame__itemImgContainer}>
@@ -86,46 +88,9 @@ export const HallOfFame = () => {
               </div>
             </Grid>
             <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Button
-                  size="small"
-                  className={styles.hallOfFame__tierButton}
-                  onClick={() => setTier(currentValue => (currentValue !== TIERS.phenom ? TIERS.phenom : ''))}
-                  endIcon={tier === TIERS.phenom ? <Remove /> : <Add />}
-                >
-                  Phenom
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  size="small"
-                  className={styles.hallOfFame__tierButton}
-                  onClick={() => setTier(currentValue => (currentValue !== TIERS.star ? TIERS.star : ''))}
-                  endIcon={tier === TIERS.star ? <Remove /> : <Add />}
-                >
-                  Star
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  size="small"
-                  className={styles.hallOfFame__tierButton}
-                  onClick={() => setTier(currentValue => (currentValue !== TIERS.icon ? TIERS.icon : ''))}
-                  endIcon={tier === TIERS.icon ? <Remove /> : <Add />}
-                >
-                  Icon
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  size="small"
-                  className={styles.hallOfFame__tierButton}
-                  onClick={() => setTier(currentValue => (currentValue !== TIERS.legend ? TIERS.legend : ''))}
-                  endIcon={tier === TIERS.legend ? <Remove /> : <Add />}
-                >
-                  Legend
-                </Button>
-              </Grid>
+              {Object.entries(TIERS as ITiers).map(([key, value]) => (
+                <FilterButton setTier={setTier} selectedTier={tier} tier={value as Tiers} styles={styles} />
+              ))}
             </Grid>
             <Grid container>
               {nfts.map((nft: NFT) => (

@@ -2,6 +2,7 @@ import NFTPage from 'presentation/pages/NFT/NFTPage';
 import HomePage from 'presentation/pages/Home/HomePage';
 import ProfilePage from 'presentation/pages/Profile/ProfilePage';
 import CreaturesPage from 'presentation/pages/Creatures/CreaturesPage';
+import CreaturesWhiteListPage from 'presentation/pages/CreaturesWhitelist/CreaturesWhiteListPage';
 import VerticalPage from 'presentation/pages/Verticals/VerticalPage';
 import NFTByIdPage from 'presentation/pages/NFTByFtxId/NFTByIdPage';
 import routesPaths from '../constants/routesPath';
@@ -11,6 +12,12 @@ export const routes = {
     {
       path: routesPaths.index,
       component: <CreaturesPage />,
+      exact: true,
+      private: false,
+    },
+    {
+      path: routesPaths.creaturesWhitelist,
+      component: <CreaturesWhiteListPage />,
       exact: true,
       private: false,
     },

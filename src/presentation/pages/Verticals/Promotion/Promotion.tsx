@@ -1,4 +1,5 @@
 import { Button, Grid, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import styles from './Promotion.module.scss';
 
 export const Promotion = ({
@@ -8,6 +9,7 @@ export const Promotion = ({
   primaryText,
   secondaryText,
   buttonText,
+  link,
 }: PromotionProps) => {
   return (
     <Grid container className={styles.promotion}>
@@ -43,7 +45,7 @@ export const Promotion = ({
                 color="secondary"
                 className={styles.promotion__actionButton}
               >
-                {buttonText}
+                {link ? <Link to={link}>{buttonText}</Link> : buttonText}
               </Button>
             </Grid>
           )}
@@ -60,4 +62,5 @@ interface PromotionProps {
   primaryText: string;
   secondaryText: string;
   buttonText?: string;
+  link?: string;
 }

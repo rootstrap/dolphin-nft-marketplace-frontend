@@ -25,3 +25,8 @@ export interface ILegends {
   timBrown: string;
   moreSoon: string;
 }
+
+export interface IItemBanner {
+  image: string;
+  legend: Legends;
+}

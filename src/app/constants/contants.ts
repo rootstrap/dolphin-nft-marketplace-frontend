@@ -92,20 +92,3 @@ export const recaptchaActions = {
   login: 'LOGIN',
   register: 'REGISTER',
 };
-
-export const LEGENDS = {
-  marcusAllen: 'Marcus Allen',
-  doakWalker: 'Doak Walker',
-  earlCampbell: 'Earl Campbell',
-  joeTheissmann: 'Joe Theismann',
-  shannonSharpe: 'Shannon Sharpe',
-  timBrown: 'Tim Brown',
-  moreSoon: 'More Soon',
-};
-
-export const TIERS = {
-  legend: 'legend',
-  icon: 'icon',
-  star: 'star',
-  phenom: 'phenom',
-};

@@ -3,9 +3,21 @@
 .promotion {
   background-color: black;
   padding: 2rem;
-  text-align: justify;
+
+  &__imgContainer {
+    display: flex;
+    justify-content: center;
+  }
 
   &__title {
     color: $orange;
+  }
+
+  &__row {
+    margin-top: 1rem !important;
+  }
+
+  &__actionButton {
+    width: 12rem !important;
   }
 }

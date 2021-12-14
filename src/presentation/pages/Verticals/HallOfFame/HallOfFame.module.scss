@@ -1,0 +1,51 @@
+@import '../../../../app/styles/base/_settings.scss';
+
+.hallOfFame {
+  padding: 10rem;
+
+  &__accordion {
+    background-color: $background-dark !important;
+  }
+
+  &__tierButton {
+    width: 7rem !important;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
+
+  &__imgContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    object-fit: cover;
+    width: 100%;
+    min-width: 10%;
+    margin: 0 0 1rem;
+    filter: grayscale(100%);
+
+    &:hover {
+      filter: saturate(2);
+    }
+
+    &Selected {
+      filter: saturate(2);
+    }
+
+    &Img {
+      background-color: $black;
+      height: auto;
+    }
+
+    &Text {
+      bottom: 1rem;
+      color: $light-grey;
+      left: 1rem;
+      position: absolute;
+    }
+  }
+}

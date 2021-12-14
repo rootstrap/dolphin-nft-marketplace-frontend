@@ -1,20 +1,31 @@
-import { Grid, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import styles from './Promotion.module.scss';
 
-export const Promotion = ({ imgSrc, title, subtitle, primaryText, secondaryText }: PromotionProps) => {
+export const Promotion = ({
+  imgSrc,
+  title,
+  subtitle,
+  primaryText,
+  secondaryText,
+  buttonText,
+  link,
+}: PromotionProps) => {
   return (
     <Grid container className={styles.promotion}>
-      <Grid item xs={12} md={6} lg={4}>
+      <Grid item xs={12} md={6} lg={3}>
         <div className={styles.promotion__imgContainer}>
           <img className={styles.promotion__imgContainerImg} src={imgSrc} alt="" />
         </div>
       </Grid>
-      <Grid item xs={12} md={6} lg={8}>
+      <Grid item xs={12} md={6} lg={9}>
         <Grid container>
           <Grid item lg={12}>
-            <Typography className={styles.promotion__title} variant="h6">
-              {title}
-            </Typography>
+            {title && (
+              <Typography className={styles.promotion__title} variant="h6">
+                {title}
+              </Typography>
+            )}
             <Typography className={styles.promotion__subtitle} gutterBottom variant="h5">
               {subtitle}
             </Typography>
@@ -23,9 +34,21 @@ export const Promotion = ({ imgSrc, title, subtitle, primaryText, secondaryText 
             {primaryText}
           </Grid>
           <Grid item lg={1}></Grid>
-          <Grid item lg={6}>
+          <Grid item lg={5}>
             {secondaryText}
           </Grid>
+          {buttonText && (
+            <Grid item lg={6} className={styles.promotion__row}>
+              <Button
+                size="large"
+                variant="outlined"
+                color="secondary"
+                className={styles.promotion__actionButton}
+              >
+                {link ? <Link to={link}>{buttonText}</Link> : buttonText}
+              </Button>
+            </Grid>
+          )}
         </Grid>
       </Grid>
     </Grid>
@@ -34,8 +57,10 @@ export const Promotion = ({ imgSrc, title, subtitle, primaryText, secondaryText 
 
 interface PromotionProps {
   imgSrc: string;
-  title: string;
+  title?: string;
   subtitle: string;
   primaryText: string;
   secondaryText: string;
+  buttonText?: string;
+  link?: string;
 }

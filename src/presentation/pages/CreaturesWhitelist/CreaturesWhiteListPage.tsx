@@ -6,7 +6,7 @@ import { MainContent } from './Main/MainContent';
 const CreaturesPage = () => {
   return (
     <ThemeProvider theme={creaturesTheme}>
-      <TopBarLayout pageComponent={<MainContent />} />
+      <TopBarLayout pageComponent={<MainContent />} isTopBarVisible={false} />
     </ThemeProvider>
   );
 };

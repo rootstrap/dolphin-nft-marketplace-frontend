@@ -64,19 +64,17 @@ export const TopBar = () => {
         <Grid item xs={12} sm={4} md={4} lg={3} className={styles.topBar__item} alignItems="flex-start">
           {isAuthenticated ? (
             <div className={styles.topBar__itemButton}>
-              {!isCreaturesUser && (
-                <>
-                  <div className={styles.topBar__itemButtonProfile}>
-                    <Link to={routesPaths.profile}>
-                      <PersonOutlined />
-                    </Link>
-                  </div>
+              <>
+                <div className={styles.topBar__itemButtonProfile}>
+                  <Link to={routesPaths.profile}>
+                    <PersonOutlined />
+                  </Link>
+                </div>
 
-                  <div className={styles.topBar__itemButtonCards}>
-                    <CreditCard onClick={() => setCreditCardModalIsOpen(true)} />
-                  </div>
-                </>
-              )}
+                <div className={styles.topBar__itemButtonCards}>
+                  <CreditCard onClick={() => setCreditCardModalIsOpen(true)} />
+                </div>
+              </>
 
               <Link to={routesPaths.index} onClick={handleLogout}>
                 {t('global.logout')}

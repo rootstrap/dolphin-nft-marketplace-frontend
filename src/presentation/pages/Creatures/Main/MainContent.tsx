@@ -1,6 +1,6 @@
 import { Button, Typography } from '@material-ui/core';
 import { ReactComponent as SmallDiscord } from 'app/assets/SmallDiscord.svg';
-import { socialMediaLinks } from '../../../../../app/constants/contants';
+import { socialMediaLinks } from 'app/constants/contants';
 import CreaturesBackground from 'app/assets/CreaturesBackground.png';
 import routesPaths from 'app/constants/routesPath';
 import styles from './MainContent.module.scss';

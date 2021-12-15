@@ -11,9 +11,10 @@ import { useLoginStatusMutation } from 'infrastructure/services/user/UserService
 
 interface TopBarLayoutProps {
   pageComponent: ReactElement;
+  isTopBarVisible?: boolean;
 }
 
-export const TopBarLayout = ({ pageComponent }: TopBarLayoutProps) => {
+export const TopBarLayout = ({ pageComponent, isTopBarVisible = true }: TopBarLayoutProps) => {
   const [loginStatus] = useLoginStatusMutation();
 
   const verifyStatus = useCallback(async () => await loginStatus(), [loginStatus]);
@@ -25,7 +26,7 @@ export const TopBarLayout = ({ pageComponent }: TopBarLayoutProps) => {
   return (
     <>
       <BackgroundLayout />
-      <TopBar />
+      {isTopBarVisible && <TopBar />}
       {pageComponent}
       <Login />
       <Signup />

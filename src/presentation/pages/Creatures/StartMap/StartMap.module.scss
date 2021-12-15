@@ -1,6 +1,6 @@
-@import '../../../../../app/styles/base/settings';
+@import '../../../../app/styles/base/settings';
 
-.perks {
+.startmap {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,14 +8,26 @@
   text-align: center;
 
   &__title {
+    border: 1px solid $orange-creatures;
     color: $orange-creatures;
+    cursor: pointer;
     font-weight: 900;
     font-family: 'The Neue' !important;
     margin: 1rem 0;
+    padding: 2rem;
+  }
+
+  &__titleContainer {
+    width: 100%;
   }
 
   &__text {
-    width: 60%;
+    width: 90%;
     margin: 1rem 0;
+
+    &Title {
+      margin: 1rem 0;
+      color: $orange-creatures;
+    }
   }
 }

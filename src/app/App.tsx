@@ -1,4 +1,4 @@
-import { Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { routes } from './router';
 import { useAppSelector } from './hooks/reduxHooks';
@@ -24,9 +24,10 @@ export const App = () => {
           {routes[user].map(route => (
             <RouteFromPath key={`route-${route.path}`} authenticated={isAuthenticated} {...route} />
           ))}
+          <Redirect to={routes[user][0].path} />
         </Switch>
-        <CssBaseline />
       </Router>
+      <CssBaseline />
     </>
   );
 };

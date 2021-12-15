@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Typography, Grid } from '@material-ui/core';
-import { carouselItems } from '../../../../../app/constants/creatures/carouselItems';
+import { carouselItems } from 'app/constants/creatures/carouselItems';
 import styles from './CreaturesCarousel.module.scss';
 
 export const CreaturesCarousel = () => {

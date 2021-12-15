@@ -105,8 +105,8 @@
     },
     "fantasyLeague": {
       "title": "Hall of Fantasy League",
-      "primaryText": "Playbooks brings to life the most memorable plays from the college and professional careers of football legends. Each NFT focuses on a defining gridiron moment, chosen by the player, and highlighted with artistry, animation and recorded commentary from the athletes themselves.",
-      "secondaryText": "The custom, limited edition Playbooks NFTs - Phenom, Star, Icon and Legend - have unlockable rewards for those who collect all four of the same player, including virtual events with the players and rare signed memorabilia.",
+      "primaryText": "The Hall Of Fantasy League (“HOFL”) is the first National Fantasy League that allows its participants to experience a fantasy team with a community of shared Stakeholders. The HOFL is backed by The Hall of Fame Resort & Entertainment Company (NASDAQ: HOFV, HOFVW), the only resort, ",
+      "secondaryText": "entertainment and media company centered around the power of professional football. 2021 marks the HOFL’s inaugural season and the 10 league teams are celebrated through the first, exclusive HOFL NFT drop.",
       "actionButton": "Explore Collection"
     },
     "item": {
@@ -226,11 +226,14 @@
     "city": "City",
     "postalCode": "Zip Code",
     "button": "Finish →",
-    "text": "We recommend funding your wallet ahead of purchasing as there may be processing time needed. Using a credit or debit card is the easiest way to get started! You can also use a bank account or crypto currency",
+    "text": "We recommend funding your wallet ahead of purchasing as there may be processing time needed. Using a credit or debit card is the easiest way to get started!",
+    "text2": "You can also use ",
+    "bankAccount": "bank account ",
+    "cryptoCurrency": " crypto currency ",
+    "text3": "from another wallet to get started.",
     "verification": {
       "title": "We need to verify your card to continue",
       "description": "This is just a security step. Please enter the amount we just charged to your credit card.",
-      "label": "Introduce the charge on your credit card",
       "button": "Verify →",
       "question": "Didn't receive any charges?",
       "link": "Try again",

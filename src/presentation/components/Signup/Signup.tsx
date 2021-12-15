@@ -1,13 +1,11 @@
-import { Button, Checkbox, Typography } from '@material-ui/core';
+import { Button, Checkbox, Typography, Link } from '@material-ui/core';
 import { InputText } from '../../../infrastructure/components/InputText/InputText';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { useSignup } from './useSignup';
 import { Grid } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 import { Checkboxes } from '../Checkboxes/Checkboxes';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { ReactComponent as FTXLogo } from 'app/assets/ftxus_logo.svg';
-import routesPaths from 'app/constants/routesPath';
 import { dolphinServiceLinks } from 'app/constants/contants';
 import styles from './Signup.module.scss';
 import useTranslation from 'app/hooks/useTranslation';
@@ -106,13 +104,13 @@ export const Signup = () => {
           <Checkbox checked={isTosAgree} onChange={() => setIsTosAgree(!isTosAgree)} />
           <Typography>
             {t('signup.TOS.agrees')}
-            <a href={dolphinServiceLinks.termOfService} target="_blank">
+            <Link href={dolphinServiceLinks.termOfService} target="_blank">
               {t('signup.TOS.terms')}
-            </a>
+            </Link>
             {t('signup.TOS.and')}
-            <a href={dolphinServiceLinks.privacyPolicy} target="_blank">
+            <Link href={dolphinServiceLinks.privacyPolicy} target="_blank">
               {t('signup.TOS.privacyPolicy')}
-            </a>
+            </Link>
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -125,7 +123,7 @@ export const Signup = () => {
         <Grid item xs={12}>
           <div>
             <Typography>{t('signup.signinMsg')}</Typography>
-            <Link to={routesPaths.index} onClick={handleOpenSigninModal}>
+            <Link onClick={handleOpenSigninModal}>
               <Typography>{t('signup.signinLink')}</Typography>
             </Link>
           </div>

@@ -26,6 +26,12 @@ export const theme = createTheme({
     },
   },
   overrides: {
+    MuiLink: {
+      root: {
+        color: colors.primary,
+        cursor: 'pointer',
+      },
+    },
     MuiButton: {
       root: {
         backgroundColor: 'black',

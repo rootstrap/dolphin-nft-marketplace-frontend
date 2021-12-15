@@ -21,6 +21,11 @@ export const creaturesTheme = createTheme({
     },
   },
   overrides: {
+    MuiLink: {
+      root: {
+        cursor: 'pointer',
+      },
+    },
     MuiButton: {
       root: {
         fontFamily: 'Avenue X',
@@ -36,8 +41,10 @@ export const creaturesTheme = createTheme({
       },
     },
     MuiInputBase: {
-      input: {
-        color: colors.white,
+      root: {
+        color: colors.orange,
+        border: `1px solid ${colors.white}`,
+        fontSize: 13,
       },
     },
     MuiAccordion: {

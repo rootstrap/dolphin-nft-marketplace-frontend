@@ -1,4 +1,4 @@
-import { Button, Grid, Typography, MenuItem } from '@material-ui/core';
+import { Button, Grid, Typography, MenuItem, Link } from '@material-ui/core';
 import { InputText } from 'infrastructure/components/InputText/InputText';
 import { InputSelect } from 'infrastructure/components/Select/InputSelect';
 import { useCreditCardForm } from './useCreditCardForm';
@@ -26,7 +26,18 @@ export const CreditCardForm = () => {
       </div>
 
       <div className={styles.creditCardForm__text}>
-        <Typography variant="h6">{t('creditCard.text')}</Typography>
+        <Typography variant="body1">{t('creditCard.text')}</Typography>
+        <Typography variant="body1">
+          {t('creditCard.text2')}
+          <Link href="https://help.ftx.us/hc/en-us/articles/360048573453-How-to-Deposit-via-Bank-Transfer-ACH-Using-Bank-Login-Details">
+            {t('creditCard.bankAccount')}
+          </Link>
+          or
+          <Link href="https://help.ftx.us/hc/en-us/articles/4408515463703-How-to-Deposit-Crypto">
+            {t('creditCard.cryptoCurrency')}
+          </Link>
+          {t('creditCard.text3')}
+        </Typography>
       </div>
       <Grid container spacing={3} alignItems="center" justifyContent="center">
         <Grid item xs={12}>

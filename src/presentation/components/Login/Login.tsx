@@ -1,15 +1,13 @@
-import { Button, Typography } from '@material-ui/core';
+import { Button, Typography, Link } from '@material-ui/core';
 import { BaseModal } from '../../../infrastructure/components/Modal/Modal';
 import { InputText } from '../../../infrastructure/components/InputText/InputText';
 import { useLogin } from './useLogin';
-import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { ReactComponent as FTXLogo } from 'app/assets/ftxus_logo.svg';
 import { Checkboxes } from '../Checkboxes/Checkboxes';
 import { Mfa } from '../Mfa/Mfa';
 import useTranslation from '../../../app/hooks/useTranslation';
-import routesPaths from '../../../app/constants/routesPath';
 import styles from './Login.module.scss';
 
 export const Login = () => {
@@ -83,7 +81,7 @@ export const Login = () => {
           <div>
             <Typography>{t('login.signupMsg')}</Typography>
 
-            <Link to={routesPaths.index} onClick={handleOpenSignupModal}>
+            <Link onClick={handleOpenSignupModal}>
               <Typography>{t('login.signupLink')}</Typography>
             </Link>
           </div>

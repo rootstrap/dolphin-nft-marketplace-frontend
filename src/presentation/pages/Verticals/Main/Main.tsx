@@ -30,7 +30,7 @@ export const Main = () => {
         </Typography>
         <div>
           <Link href="#hallOfFame" underline="none">
-            <Button className={styles.mainContent__titleButton}>Explore Collection</Button>
+            <Button className={styles.mainContent__titleButton}> {t('verticals.actionButton')}</Button>
           </Link>
         </div>
       </div>

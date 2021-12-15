@@ -33,9 +33,6 @@ export const CreditCardVerification = () => {
       )}
 
       <div className={styles.creditCardVerification__input}>
-        <Typography gutterBottom variant="subtitle2">
-          {t('creditCard.verification.label')}
-        </Typography>
         <TextField
           type="number"
           value={creditCardAmount}

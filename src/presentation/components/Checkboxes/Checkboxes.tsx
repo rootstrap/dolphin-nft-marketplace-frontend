@@ -43,14 +43,14 @@ export const Checkboxes = ({ handleClose }: CheckboxesProps) => {
           </div>
 
           <div className={styles.checkboxes__container}>
-            <Checkbox checked={Boolean(kyc1ed)} disabled />
+            <Checkbox checked={Boolean(kyc1ed)} />
             <Typography variant="h6" className={styles.checkboxes__containerText}>
               {t('walletSetup.secondCheck')}
             </Typography>
           </div>
 
           <div className={styles.checkboxes__container}>
-            <Checkbox checked={isWalletReady} disabled />
+            <Checkbox checked={isWalletReady} />
             <Typography variant="h6" className={styles.checkboxes__containerText}>
               {t('walletSetup.thirdCheck')}
             </Typography>
@@ -60,7 +60,7 @@ export const Checkboxes = ({ handleClose }: CheckboxesProps) => {
             <Button onClick={handleOnClick}>{t('walletSetup.activate')}</Button>
           </div>
 
-          <Typography variant="h6" onClick={handleClose} className={styles.checkboxes__remind}>
+          <Typography variant="body1" onClick={handleClose} className={styles.checkboxes__remind}>
             {t('walletSetup.remindMeLater')}
           </Typography>
         </>

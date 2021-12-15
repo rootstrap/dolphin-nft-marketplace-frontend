@@ -95,8 +95,9 @@
     }
   },
   "verticals": {
-    "title": "Hall of Fame Village",
+    "title": "Hall of Fame Village Media",
     "preTitle": "Featured Collection",
+    "actionButton": "Explore Collections",
     "playbooks": {
       "title": "Playbooks",
       "primaryText": "Playbooks brings to life the most memorable plays from the college and professional careers of football legends. Each NFT focuses on a defining gridiron moment, chosen by the player, and highlighted with artistry, animation and recorded commentary from the athletes themselves.",

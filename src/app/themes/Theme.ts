@@ -28,7 +28,7 @@ export const theme = createTheme({
   overrides: {
     MuiLink: {
       root: {
-        color: '#35aed7',
+        color: colors.primary,
         cursor: 'pointer',
       },
     },

@@ -59,7 +59,12 @@
     "sign_up": "Sign up now, if you dare →",
     "mainTitle": "Creature Chronicles",
     "title": "Exiled Aliens",
-    "dropDate": "Drop: December 15th / 2021"
+    "dropDate": "Drop: December 15th / 2021",
+    "whitelist": {
+      "mint": "Mint Now!",
+      "walletInvalid": "Your Address wallet is not enabled to Mint NFTs now. Plase come back Tomorrow",
+      "disconnect": "Disconnect"
+    }
   },
   "profile": {
     "collectionTitle": "My Collection",

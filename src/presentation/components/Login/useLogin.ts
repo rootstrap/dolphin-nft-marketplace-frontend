@@ -81,10 +81,13 @@ export const useLogin = () => {
 
   const loadUserData = async () => {
     setIsLoading(true);
+
     try {
       await getCreditCards();
       await getBalance();
     } catch (e: any) {
+      setIsLoading(false);
+
       throw new Error(e);
     } finally {
       setIsLoading(false);
@@ -114,6 +117,8 @@ export const useLogin = () => {
     if (isError) {
       const error = Object(signinError);
       setError(error.data.error);
+
+      setIsLoading(false);
     }
   }, [isError]);
 

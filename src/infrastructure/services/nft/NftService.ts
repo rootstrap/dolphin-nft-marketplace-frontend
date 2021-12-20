@@ -48,6 +48,15 @@ const nftApi = api.injectEndpoints({
         },
       }),
     }),
+    buyNftByPack: builder.mutation({
+      query: () => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/packs/3/buy`,
+        method: 'POST',
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+      }),
+    }),
   }),
   overrideExisting: true,
 });
@@ -59,6 +68,7 @@ export const {
   useGetNftsFeaturedMutation,
   useGetNftByIdMutation,
   useBuyNftMutation,
+  useBuyNftByPackMutation,
   useGetNftsByUserMutation,
   endpoints: {
     getNftsSecondary: { matchFulfilled: getNftsSecondaryFulfiled },

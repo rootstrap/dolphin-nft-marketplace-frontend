@@ -5,7 +5,7 @@ import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoade
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Checkboxes.module.scss';
 
-export const Checkboxes = ({ handleClose }: CheckboxesProps) => {
+export const Checkboxes = ({ handleClose, error }: CheckboxesProps) => {
   const t = useTranslation();
   const { kyc1ed, isWalletReady, handleOnClick, isLoading } = useCheckboxes();
 
@@ -34,6 +34,8 @@ export const Checkboxes = ({ handleClose }: CheckboxesProps) => {
               {t('walletSetup.description')}
             </Typography>
           </div>
+
+          {error && <div>{error}</div>}
 
           <div className={styles.checkboxes__container}>
             <Checkbox checked />
@@ -71,4 +73,5 @@ export const Checkboxes = ({ handleClose }: CheckboxesProps) => {
 
 interface CheckboxesProps {
   handleClose: () => void;
+  error?: string;
 }

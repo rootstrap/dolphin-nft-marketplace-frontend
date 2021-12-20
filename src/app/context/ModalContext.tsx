@@ -11,6 +11,8 @@ const initialState: ModalContextState = {
   setCcModalIsOpen: () => {},
   creditCardModalIsOpen: false,
   setCreditCardModalIsOpen: () => {},
+  creaturesBuyNowModalIsOpen: false,
+  setCreaturesBuyNowModalIsOpen: () => {},
 };
 
 export const ModalContext = createContext(initialState);
@@ -25,6 +27,7 @@ export const ModalProvider = ({ children }: ModalProviderProps) => {
   const [kycModalIsOpen, setKycModalIsOpen] = useState<boolean>(false);
   const [ccModalIsOpen, setCcModalIsOpen] = useState<boolean>(false);
   const [creditCardModalIsOpen, setCreditCardModalIsOpen] = useState<boolean>(false);
+  const [creaturesBuyNowModalIsOpen, setCreaturesBuyNowModalIsOpen] = useState<boolean>(false);
 
   return (
     <ModalContext.Provider
@@ -39,6 +42,8 @@ export const ModalProvider = ({ children }: ModalProviderProps) => {
         setCcModalIsOpen,
         creditCardModalIsOpen,
         setCreditCardModalIsOpen,
+        creaturesBuyNowModalIsOpen,
+        setCreaturesBuyNowModalIsOpen,
       }}
     >
       {children}
@@ -57,4 +62,6 @@ interface ModalContextState {
   setCcModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   creditCardModalIsOpen: boolean;
   setCreditCardModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  creaturesBuyNowModalIsOpen: boolean;
+  setCreaturesBuyNowModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

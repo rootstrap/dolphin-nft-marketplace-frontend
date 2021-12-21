@@ -36,6 +36,7 @@ export const MintCandyMachine = ({
   isValidAddress,
 }: HomeProps) => {
   const t = useTranslation();
+  const [error, setError] = useState('');
   const [balance, setBalance] = useState<number>();
   const [isActive, setIsActive] = useState(false); // true when countdown completes
   const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
@@ -67,6 +68,7 @@ export const MintCandyMachine = ({
   };
 
   const onMint = async () => {
+    setError('');
     try {
       setIsMinting(true);
       if (wallet && candyMachine?.program) {
@@ -79,28 +81,10 @@ export const MintCandyMachine = ({
           'singleGossip',
           false
         );
-
-        console.log(status);
       }
     } catch (error: any) {
-      console.log('catch error: ', error);
-      // TODO: blech:
-      let message = error.msg || 'Minting failed! Please try again!';
-      if (!error.msg) {
-        if (error.message.indexOf('0x138')) {
-        } else if (error.message.indexOf('0x137')) {
-          message = `SOLD OUT!`;
-        } else if (error.message.indexOf('0x135')) {
-          message = `Insufficient funds to mint. Please fund your wallet.`;
-        }
-      } else {
-        if (error.code === 311) {
-          message = `SOLD OUT!`;
-          setIsSoldOut(true);
-        } else if (error.code === 312) {
-          message = `Minting period hasn't started yet.`;
-        }
-      }
+      const mintError: MintError = JSON.parse(JSON.stringify(error, null, 2));
+      setError(mintError.msg);
     } finally {
       if (wallet) {
         const balance = await connection.getBalance(wallet.publicKey);
@@ -123,14 +107,24 @@ export const MintCandyMachine = ({
   useEffect(refreshCandyMachineState, [wallet, candyMachineId, connection]);
 
   return (
-    <div>
-      {isValidAddress ? (
-        <Button onClick={onMint} variant="outlined" disabled={!isValidAddress} fullWidth>
-          {t('creatures.whitelist.mint')}
-        </Button>
-      ) : (
-        <Typography variant="h6">{t('creatures.whitelist.walletInvalid')}</Typography>
-      )}
-    </div>
+    <>
+      <div>
+        {isValidAddress ? (
+          <Button onClick={onMint} variant="outlined" disabled={!isValidAddress} size="large">
+            {t('creatures.whitelist.mint')}
+          </Button>
+        ) : (
+          <Typography variant="h6">{t('creatures.whitelist.walletInvalid')}</Typography>
+        )}
+      </div>
+      <div>
+        <Typography variant="h6">{error}</Typography>
+      </div>
+    </>
   );
 };
+
+interface MintError {
+  code: number;
+  msg: string;
+}

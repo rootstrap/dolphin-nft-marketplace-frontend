@@ -61,9 +61,11 @@
     "title": "Exiled Aliens",
     "dropDate": "Drop: December 15th / 2021",
     "whitelist": {
+      "welcome": "Welcome to the whitelist",
       "mint": "Mint Now!",
-      "walletInvalid": "Your Address wallet is not enabled to Mint NFTs now. Plase come back Tomorrow",
-      "disconnect": "Disconnect"
+      "walletInvalid": "Your wallet address is not approved for minting at this time. Please come back tomorrow.",
+      "disconnect": "Disconnect",
+      "wallet": "Connect your Solana wallet"
     }
   },
   "profile": {

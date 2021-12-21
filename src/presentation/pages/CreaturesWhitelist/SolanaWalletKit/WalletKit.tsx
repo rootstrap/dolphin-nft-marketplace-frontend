@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import { ConnectWalletButton } from '@gokiprotocol/walletkit';
 import { MintCandyMachine } from '../MintCandyMachine/MintCandyMachine';
 import { candyMachineConfig } from 'app/constants/creatures/candyMachineConfig';
@@ -27,7 +27,15 @@ export const WalletKit = () => {
           <Button onClick={disconnect}>{t('creatures.whitelist.disconnect')}</Button>
         </>
       ) : (
-        <ConnectWalletButton style={WalletButtonStyle} />
+        <div>
+          <Typography gutterBottom variant="h6">
+            {t('creatures.whitelist.welcome')}
+          </Typography>
+          <Typography gutterBottom variant="h6">
+            {t('creatures.whitelist.wallet')}
+          </Typography>
+          <ConnectWalletButton style={WalletButtonStyle} />
+        </div>
       )}
     </>
   );
@@ -38,5 +46,5 @@ const WalletButtonStyle = {
   color: 'white',
   justifyContent: 'center',
   padding: '1.5rem',
-  width: '15rem',
+  width: '100%',
 };

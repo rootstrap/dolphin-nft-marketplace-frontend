@@ -92,3 +92,13 @@ export const recaptchaActions = {
   login: 'LOGIN',
   register: 'REGISTER',
 };
+
+export const creditCardStatus = {
+  approved: 'approved',
+  rejected: 'rejected',
+};
+
+export const currency = {
+  sol: 'SOL',
+  usd: 'USD',
+};

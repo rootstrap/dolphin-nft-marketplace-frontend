@@ -59,7 +59,15 @@
     "sign_up": "Sign up now, if you dare →",
     "mainTitle": "Creature Chronicles",
     "title": "Exiled Aliens",
-    "dropDate": "Drop: December 15th / 2021"
+    "dropDate": "Drop: December 15th / 2021",
+    "buyCreatures": {
+      "buyButton": "Buy now with FTX",
+      "creditDebitCard": "Credit or debit cards accepted",
+      "fundWallet": "You don't have enough money for buying a Creature. You can fund your wallet here",
+      "activateWallet": "You must activate your wallet in order to start your collection. You only need to do this once!",
+      "fundButton": "Fund Wallet to buy a Creature",
+      "activateButton": "Activate Wallet "
+    }
   },
   "profile": {
     "collectionTitle": "My Collection",

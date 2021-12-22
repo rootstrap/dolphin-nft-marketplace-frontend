@@ -31,10 +31,10 @@ export const CreaturesCarousel = () => {
         </div>
 
         <Grid container>
-          {carouselItems.map((item, index) => (
+          {carouselItems.map(item => (
             <Grid
               item
-              key={index}
+              key={item.id}
               xs={12}
               sm={6}
               md={2}

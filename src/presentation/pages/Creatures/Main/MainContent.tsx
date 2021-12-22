@@ -6,8 +6,10 @@ import routesPaths from 'app/constants/routesPath';
 import { BuyNowButton } from 'presentation/components/BuyNowButton/BuyNowButton';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import styles from './MainContent.module.scss';
+import useTranslation from 'app/hooks/useTranslation';
 
 export const MainContent = () => {
+  const t = useTranslation();
   const { isAuthenticated } = useAppSelector(state => state.user);
 
   return (
@@ -22,7 +24,7 @@ export const MainContent = () => {
           ) : (
             <a href={routesPaths.creaturesCarousel}>
               <Button size="large" variant="outlined" color="inherit">
-                Explore Collection
+                {t('creatures.exploreCollectionBtn')}
               </Button>
             </a>
           )}

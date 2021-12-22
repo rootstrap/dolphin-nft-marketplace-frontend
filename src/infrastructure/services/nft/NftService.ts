@@ -51,7 +51,7 @@ const nftApi = api.injectEndpoints({
     }),
     buyNftByPack: builder.mutation({
       query: () => ({
-        url: `${process.env.REACT_APP_FTX_API_URL}/nft/packs/3/buy`,
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/packs/${process.env.REACT_APP_PACK_ID}/buy`,
         method: 'POST',
         headers: {
           ftxAuthorization: 'yes',
@@ -60,7 +60,7 @@ const nftApi = api.injectEndpoints({
     }),
     getNftPackInfo: builder.mutation<CreaturesPackInfo, void>({
       query: () => ({
-        url: `${process.env.REACT_APP_FTX_API_URL}/nft/packs/3`,
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/packs/${process.env.REACT_APP_PACK_ID}`,
         transformResponse: (data: CreaturesPackInfo) => data,
         headers: {
           ftxAuthorization: 'yes',

@@ -38,6 +38,10 @@ export const creaturesTheme = createTheme({
       },
       outlined: {
         textTransform: 'none',
+        '&.Mui-disabled': {
+          color: colors.darkGrey,
+          border: `1px solid ${colors.darkGrey}`,
+        },
       },
     },
     MuiInputBase: {

@@ -15,7 +15,7 @@ export const useBuyNowButton = () => {
     deposit: { balances },
   } = useAppSelector(state => state);
 
-  const [buyNft] = useBuyNftByPackMutation();
+  const [buyNft, { isSuccess }] = useBuyNftByPackMutation();
   const [getPackInfo] = useGetNftPackInfoMutation();
   const [getCreditCardFees] = useGetCreditCardFeesMutation();
   const [getBalance] = useGetBalanceMutation();
@@ -26,6 +26,7 @@ export const useBuyNowButton = () => {
   const [depositSize, setDepositSize] = useState<number>(0);
   const [enoughBalance, setEnoughBalance] = useState(false);
   const [fee, setFee] = useState<number>(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   const [depositModalIsOpen, setDepositModalIsOpen] = useState(false);
   const { setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
@@ -43,6 +44,11 @@ export const useBuyNowButton = () => {
 
   const handleOnClick = () =>
     defaultCreditCard.status === creditCardStatus.approved ? handleFundWallet() : handleActivateWallet();
+
+  const handleClose = () => {
+    setIsOpen(false);
+    window.location.href = '/profile';
+  };
 
   const loadData = useCallback(async () => {
     try {
@@ -80,6 +86,12 @@ export const useBuyNowButton = () => {
     }
   }, [balances]);
 
+  useEffect(() => {
+    if (isSuccess) {
+      setIsOpen(true);
+    }
+  }, [isSuccess]);
+
   return {
     buyNft,
     depositSize,
@@ -89,6 +101,8 @@ export const useBuyNowButton = () => {
     fee,
     isLoadingData,
     depositModalIsOpen,
+    isOpen,
+    handleClose,
     handleCloseDepositModal,
   };
 };

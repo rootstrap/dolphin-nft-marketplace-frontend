@@ -67,7 +67,8 @@
       "fundWallet": "You don't have enough money for buying a Creature. You can fund your wallet here",
       "activateWallet": "You must activate your wallet in order to start your collection. You only need to do this once!",
       "fundButton": "Fund Wallet to buy a Creature",
-      "activateButton": "Activate Wallet "
+      "activateButton": "Activate Wallet ",
+      "successMsg": "Great. The Creature is yours!"
     }
   },
   "profile": {

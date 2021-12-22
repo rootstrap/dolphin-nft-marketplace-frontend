@@ -5,6 +5,8 @@ import { DepositModal } from '../DepositModal/DepositModal';
 import { creditCardStatus } from 'app/constants/contants';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { colors } from 'app/constants/contants';
+import { BaseModal } from 'infrastructure/components/Modal/Modal';
+import { SuccessVerification } from '../CC/Verification/SuccessVerification';
 
 export const BuyNowButton = () => {
   const t = useTranslation();
@@ -15,8 +17,10 @@ export const BuyNowButton = () => {
     handleOnClick,
     enoughBalance,
     fee,
+    isOpen,
     isLoadingData,
     depositModalIsOpen,
+    handleClose,
     handleCloseDepositModal,
   } = useBuyNowButton();
 
@@ -62,6 +66,11 @@ export const BuyNowButton = () => {
         fee={fee}
         depositSize={depositSize}
       />
+      <BaseModal open={isOpen} handleClose={handleClose}>
+        <div style={{ textAlign: 'center' }}>
+          <SuccessVerification successMsg={t('creatures.buyCreatures.successMsg')} />
+        </div>
+      </BaseModal>
     </>
   );
 };

@@ -10,7 +10,15 @@ import useTranslation from 'app/hooks/useTranslation';
 
 export const MainContent = () => {
   const t = useTranslation();
-  const { isAuthenticated } = useAppSelector(state => state.user);
+  const { isAuthenticated, user } = useAppSelector(state => state.user);
+  const whitelist = [
+    'gaston.rivata@rootstrap.com',
+    'andreafajardotestingtest@email.com',
+    'alejo.boga@rootstrap.com',
+    'gastonrivata@gmail.com',
+    'julia@dolphinentertainment.com',
+    'julialevy22@gmail.com',
+  ];
 
   return (
     <>
@@ -19,7 +27,7 @@ export const MainContent = () => {
           <img src={CreaturesBackground} alt="" />
         </div>
         <div className={styles.mainContent__backgroundButton}>
-          {isAuthenticated ? (
+          {isAuthenticated && whitelist.find(email => email === user.email) ? (
             <BuyNowButton />
           ) : (
             <a href={routesPaths.creaturesCarousel}>

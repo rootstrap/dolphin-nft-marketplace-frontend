@@ -1,33 +1,94 @@
 import { ModalContext } from 'app/context/ModalContext';
-import { useBuyNftByPackMutation } from 'infrastructure/services/nft/NftService';
-import { useContext, useEffect, useState } from 'react';
+import { hasEnoughBalance } from 'app/helpers/HasEnoughBalance';
+import { useAppSelector } from 'app/hooks/reduxHooks';
+import { useGetCreditCardFeesMutation } from 'infrastructure/services/creditCard/CreditCardService';
+import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositService';
+import { useBuyNftByPackMutation, useGetNftPackInfoMutation } from 'infrastructure/services/nft/NftService';
+import { useCallback, useContext, useEffect, useState } from 'react';
+import { creditCardStatus, currency } from 'app/constants/contants';
+import { Balance } from 'app/interfaces/common/Balance';
 
 export const useBuyNowButton = () => {
-  const [buyNft, { isLoading, isSuccess, isError, error: buyError }] = useBuyNftByPackMutation();
-  const { creaturesBuyNowModalIsOpen, setCreaturesBuyNowModalIsOpen } = useContext(ModalContext);
+  const {
+    user: { user },
+    creditCard: { defaultCreditCard },
+    deposit: { balances },
+  } = useAppSelector(state => state);
 
-  const [error, setError] = useState<string>('');
+  const [buyNft] = useBuyNftByPackMutation();
+  const [getPackInfo] = useGetNftPackInfoMutation();
+  const [getCreditCardFees] = useGetCreditCardFeesMutation();
+  const [getBalance] = useGetBalanceMutation();
+  const [isLoadingData, setIsLoadingData] = useState(false);
 
-  const handleClose = () => {
-    setError('');
-    setCreaturesBuyNowModalIsOpen(false);
+  const [currentBalanceUSD, setCurrentBalanceUSD] = useState(0);
+  const [creaturePrice, setCreaturePrice] = useState<number>(0);
+  const [depositSize, setDepositSize] = useState<number>(0);
+  const [enoughBalance, setEnoughBalance] = useState(false);
+  const [fee, setFee] = useState<number>(0);
+
+  const [depositModalIsOpen, setDepositModalIsOpen] = useState(false);
+  const { setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
+
+  const handleActivateWallet = () => {
+    user.kyc1ed ? setCcModalIsOpen(true) : setKycModalIsOpen(true);
   };
 
-  useEffect(() => {
-    if (isError) {
-      const error = Object(buyError);
-      setError(error.data.error);
-      setCreaturesBuyNowModalIsOpen(true);
+  const handleCloseDepositModal = () => {
+    getBalance();
+    setDepositModalIsOpen(false);
+  };
+
+  const handleFundWallet = () => setDepositModalIsOpen(true);
+
+  const handleOnClick = () =>
+    defaultCreditCard.status === creditCardStatus.approved ? handleFundWallet() : handleActivateWallet();
+
+  const loadData = useCallback(async () => {
+    try {
+      setIsLoadingData(true);
+
+      const data: any = await getCreditCardFees();
+      const packInfo: any = await getPackInfo();
+      const { fixed, variable } = data.data;
+      const depositSize = packInfo.data.result.price - currentBalanceUSD;
+      const fees = (depositSize * variable + fixed).toFixed(2);
+
+      setCreaturePrice(packInfo.data.result.price);
+      setDepositSize(depositSize);
+      setFee(fees);
+    } catch (error) {
+      throw error;
+    } finally {
+      setIsLoadingData(false);
     }
-  }, [isError]);
+  }, [getCreditCardFees, getPackInfo, getBalance]);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
+
+  useEffect(() => {
+    setEnoughBalance(hasEnoughBalance(currentBalanceUSD, creaturePrice));
+  }, [currentBalanceUSD, creaturePrice]);
+
+  useEffect(() => {
+    const balanceSomething: Balance = balances.find(balance => balance.coin === currency.sol);
+
+    if (balanceSomething) {
+      setCurrentBalanceUSD(balanceSomething.total);
+    }
+  }, [balances]);
 
   return {
     buyNft,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-    handleClose,
-    creaturesBuyNowModalIsOpen,
+    depositSize,
+    defaultCreditCard,
+    handleOnClick,
+    enoughBalance,
+    fee,
+    isLoadingData,
+    depositModalIsOpen,
+    handleCloseDepositModal,
   };
 };

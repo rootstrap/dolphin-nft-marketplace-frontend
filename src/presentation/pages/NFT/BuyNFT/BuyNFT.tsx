@@ -38,7 +38,7 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
       <Grid item xs={2} md={2} lg={1}></Grid>
       <Grid item xs={8} md={12} lg={5}>
         <div className={styles.buyContent__itemFund}>
-          {depositSize ? (
+          {depositSize && (
             <Grid container className={styles.buyContent__walletContainer}>
               <Grid item xs={12} lg={8}>
                 <Typography component="div">
@@ -56,7 +56,7 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
                 </Button>
               </Grid>
             </Grid>
-          ) : null}
+          )}
 
           <div className={styles.buyContent__buttonContainer}>
             <div className={styles.buyContent__priceContainer}>

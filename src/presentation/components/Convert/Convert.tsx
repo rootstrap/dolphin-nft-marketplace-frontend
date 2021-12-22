@@ -70,7 +70,7 @@ export const Convert = () => {
             <div className={styles.convert__inputContainer}>
               <label htmlFor="size">{t('profile.convertCoins.amount')}</label>
               <InputText
-                inputProps={{ min: 0, style: { textAlign: 'center' } }}
+                inputProps={{ min: 0, step: 0.00001, style: { textAlign: 'center' } }}
                 className=""
                 register={register}
                 type="number"

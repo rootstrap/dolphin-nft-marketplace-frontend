@@ -1,6 +1,6 @@
 import { Button, Typography } from '@material-ui/core';
 import { ReactComponent as SmallDiscord } from 'app/assets/SmallDiscord.svg';
-import { socialMediaLinks } from 'app/constants/contants';
+import { socialMediaLinks, whitelist } from 'app/constants/contants';
 import CreaturesBackground from 'app/assets/CreaturesBackground.png';
 import routesPaths from 'app/constants/routesPath';
 import { BuyNowButton } from 'presentation/components/BuyNowButton/BuyNowButton';
@@ -11,14 +11,6 @@ import useTranslation from 'app/hooks/useTranslation';
 export const MainContent = () => {
   const t = useTranslation();
   const { isAuthenticated, user } = useAppSelector(state => state.user);
-  const whitelist = [
-    'gaston.rivata@rootstrap.com',
-    'andreafajardotestingtest@email.com',
-    'alejo.boga@rootstrap.com',
-    'gastonrivata@gmail.com',
-    'julia@dolphinentertainment.com',
-    'julialevy22@gmail.com',
-  ];
 
   return (
     <>

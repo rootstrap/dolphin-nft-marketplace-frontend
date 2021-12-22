@@ -1,29 +1,41 @@
-import { useCallback, useEffect, useState } from 'react';
+import { Button, Typography } from '@material-ui/core';
 import { ConnectWalletButton } from '@gokiprotocol/walletkit';
-import { useConnectedWallet, useSolana } from '@saberhq/use-solana';
-import { Button } from '@material-ui/core';
+import { MintCandyMachine } from '../MintCandyMachine/MintCandyMachine';
+import { candyMachineConfig } from 'app/constants/creatures/candyMachineConfig';
+import { useWalletKit } from './useWalletKit';
+import useTranslation from 'app/hooks/useTranslation';
 
 export const WalletKit = () => {
-  const { disconnect, providerMut } = useSolana();
-  const wallet = useConnectedWallet();
-  const [balance, setBalance] = useState<number | null>(null);
-
-  const refetchSOL = useCallback(async () => {
-    if (wallet && providerMut) {
-      setBalance(await providerMut.connection.getBalance(wallet.publicKey));
-    }
-  }, [providerMut, wallet]);
-
-  useEffect(() => {
-    void refetchSOL();
-  }, [refetchSOL]);
+  const t = useTranslation();
+  const { connection, treasury, config, candyMachineId, startDateSeed, txTimeout } = candyMachineConfig;
+  const { wallet, isValidAddress, disconnect } = useWalletKit();
 
   return (
     <>
       {wallet ? (
-        <Button onClick={disconnect}>Disconnect</Button>
+        <>
+          <MintCandyMachine
+            candyMachineId={candyMachineId}
+            config={config}
+            connection={connection}
+            startDate={startDateSeed}
+            treasury={treasury}
+            txTimeout={txTimeout}
+            wallet={wallet}
+            isValidAddress={isValidAddress}
+          />
+          <Button onClick={disconnect}>{t('creatures.whitelist.disconnect')}</Button>
+        </>
       ) : (
-        <ConnectWalletButton style={WalletButtonStyle} />
+        <div>
+          <Typography gutterBottom variant="h6">
+            {t('creatures.whitelist.welcome')}
+          </Typography>
+          <Typography gutterBottom variant="h6">
+            {t('creatures.whitelist.wallet')}
+          </Typography>
+          <ConnectWalletButton style={WalletButtonStyle} />
+        </div>
       )}
     </>
   );
@@ -34,5 +46,5 @@ const WalletButtonStyle = {
   color: 'white',
   justifyContent: 'center',
   padding: '1.5rem',
-  width: '15rem',
+  width: '100%',
 };

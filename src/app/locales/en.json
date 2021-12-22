@@ -69,6 +69,13 @@
       "fundButton": "Fund Wallet to buy a Creature",
       "activateButton": "Activate Wallet ",
       "successMsg": "Great. The Creature is yours!"
+    },
+    "whitelist": {
+      "welcome": "Welcome to the whitelist",
+      "mint": "Mint Now!",
+      "walletInvalid": "Your wallet address is not approved for minting at this time. Please come back tomorrow.",
+      "disconnect": "Disconnect",
+      "wallet": "Connect your Solana wallet"
     }
   },
   "profile": {

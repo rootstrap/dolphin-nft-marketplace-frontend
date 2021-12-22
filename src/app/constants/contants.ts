@@ -37,6 +37,7 @@ export const socialMediaLinks = {
   instagram: 'https://www.instagram.com/creaturechronicles_',
   twitter: 'https://twitter.com/creature_chron',
   discord: 'https://discord.com/invite/CRD4t276Vj',
+  planetary: 'https://www.planetary.org/',
 };
 
 export const dolphinServiceLinks = {

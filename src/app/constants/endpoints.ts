@@ -8,5 +8,6 @@ export const endpoints = {
   CREDIT_CARD: '/cc',
   DEPOSIT: '/deposit',
   BALANCE: '/balance',
+  WHITELIST: '/whitelist',
   NFT: '/nft',
 };

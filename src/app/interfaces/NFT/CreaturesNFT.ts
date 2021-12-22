@@ -13,8 +13,8 @@ export interface Result {
   maxPerUser: number;
   enabled: boolean;
   hidden: boolean;
-  startTime: null;
-  endTime: null;
+  startTime: string;
+  endTime: string;
   createdAt: string;
   quoteCurrency: string;
   numRemaining: number;
@@ -22,9 +22,9 @@ export interface Result {
 
 export interface Collection {
   name: string;
-  twitterUrl: null;
-  discordUrl: null;
-  homepageUrl: null;
-  description: null;
-  createdAt: number;
+  twitterUrl: string;
+  discordUrl: string;
+  homepageUrl: string;
+  description: string;
+  createdAt: string;
 }

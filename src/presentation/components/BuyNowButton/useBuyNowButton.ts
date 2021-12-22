@@ -73,7 +73,7 @@ export const useBuyNowButton = () => {
   }, [currentBalanceUSD, creaturePrice]);
 
   useEffect(() => {
-    const balanceSomething: Balance = balances.find(balance => balance.coin === currency.sol);
+    const balanceSomething: Balance = balances.find(balance => balance.coin === currency.usd);
 
     if (balanceSomething) {
       setCurrentBalanceUSD(balanceSomething.total);

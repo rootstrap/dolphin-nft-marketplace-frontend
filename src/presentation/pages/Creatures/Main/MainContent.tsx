@@ -1,11 +1,17 @@
 import { Button, Typography } from '@material-ui/core';
 import { ReactComponent as SmallDiscord } from 'app/assets/SmallDiscord.svg';
-import { socialMediaLinks } from 'app/constants/contants';
+import { socialMediaLinks, whitelist } from 'app/constants/contants';
 import CreaturesBackground from 'app/assets/CreaturesBackground.png';
 import routesPaths from 'app/constants/routesPath';
+import { BuyNowButton } from 'presentation/components/BuyNowButton/BuyNowButton';
+import { useAppSelector } from 'app/hooks/reduxHooks';
 import styles from './MainContent.module.scss';
+import useTranslation from 'app/hooks/useTranslation';
 
 export const MainContent = () => {
+  const t = useTranslation();
+  const { isAuthenticated, user } = useAppSelector(state => state.user);
+
   return (
     <>
       <div className={styles.mainContent}>
@@ -13,11 +19,15 @@ export const MainContent = () => {
           <img src={CreaturesBackground} alt="" />
         </div>
         <div className={styles.mainContent__backgroundButton}>
-          <a href={routesPaths.creaturesCarousel}>
-            <Button size="large" variant="outlined" color="inherit">
-              Explore Collection
-            </Button>
-          </a>
+          {isAuthenticated && whitelist.find(email => email === user.email) ? (
+            <BuyNowButton />
+          ) : (
+            <a href={routesPaths.creaturesCarousel}>
+              <Button size="large" variant="outlined" color="inherit">
+                {t('creatures.exploreCollectionBtn')}
+              </Button>
+            </a>
+          )}
         </div>
       </div>
 

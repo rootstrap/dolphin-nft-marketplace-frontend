@@ -1,4 +1,5 @@
 import { endpoints } from 'app/constants/endpoints';
+import { CreaturesPackInfo } from 'app/interfaces/NFT/CreaturesNFT';
 import { FillsResult, IFillsResponse, NFT } from 'app/interfaces/NFT/NFT';
 import { api } from '../Api';
 
@@ -48,6 +49,24 @@ const nftApi = api.injectEndpoints({
         },
       }),
     }),
+    buyNftByPack: builder.mutation({
+      query: () => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/packs/${process.env.REACT_APP_PACK_ID}/buy`,
+        method: 'POST',
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+      }),
+    }),
+    getNftPackInfo: builder.mutation<CreaturesPackInfo, void>({
+      query: () => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/packs/${process.env.REACT_APP_PACK_ID}`,
+        transformResponse: (data: CreaturesPackInfo) => data,
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+      }),
+    }),
   }),
   overrideExisting: true,
 });
@@ -59,7 +78,9 @@ export const {
   useGetNftsFeaturedMutation,
   useGetNftByIdMutation,
   useBuyNftMutation,
+  useBuyNftByPackMutation,
   useGetNftsByUserMutation,
+  useGetNftPackInfoMutation,
   endpoints: {
     getNftsSecondary: { matchFulfilled: getNftsSecondaryFulfiled },
     getNftsPrimary: { matchFulfilled: getNftsPrimaryFulfiled },

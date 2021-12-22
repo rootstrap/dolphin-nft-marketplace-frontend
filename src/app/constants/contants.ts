@@ -93,3 +93,22 @@ export const recaptchaActions = {
   login: 'LOGIN',
   register: 'REGISTER',
 };
+
+export const creditCardStatus = {
+  approved: 'approved',
+  rejected: 'rejected',
+};
+
+export const currency = {
+  sol: 'SOL',
+  usd: 'USD',
+};
+
+export const whitelist = [
+  'gaston.rivata@rootstrap.com',
+  'andreafajardotestingtest@email.com',
+  'alejo.boga@rootstrap.com',
+  'gastonrivata@gmail.com',
+  'julia@dolphinentertainment.com',
+  'julialevy22@gmail.com',
+];

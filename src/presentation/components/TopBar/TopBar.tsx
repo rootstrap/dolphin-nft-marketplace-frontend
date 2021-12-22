@@ -61,7 +61,7 @@ export const TopBar = () => {
 
         <Grid item xs={isCreaturesUser ? 4 : 2} md={isCreaturesUser ? 6 : 2} lg={isCreaturesUser ? 7 : 3} />
 
-        <Grid item xs={12} sm={4} md={4} lg={3} className={styles.topBar__item} alignItems="flex-start">
+        <Grid item xs={12} sm={4} md={4} lg={3} className={styles.topBar__item}>
           {isAuthenticated ? (
             <div className={styles.topBar__itemButton}>
               <>

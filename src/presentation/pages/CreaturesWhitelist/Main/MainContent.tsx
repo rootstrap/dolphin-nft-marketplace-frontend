@@ -1,8 +1,9 @@
-import { Button, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import CreaturesBackground from 'app/assets/CreaturesBackground.png';
 import { WalletKitProvider } from '@gokiprotocol/walletkit';
-import styles from './MainContent.module.scss';
 import { WalletKit } from '../SolanaWalletKit/WalletKit';
+
+import styles from './MainContent.module.scss';
 
 export const MainContent = () => {
   return (

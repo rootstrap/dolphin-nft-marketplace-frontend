@@ -59,7 +59,14 @@
     "sign_up": "Sign up now, if you dare →",
     "mainTitle": "Creature Chronicles",
     "title": "Exiled Aliens",
-    "dropDate": "Drop: December 15th / 2021"
+    "dropDate": "Drop: December 15th / 2021",
+    "whitelist": {
+      "welcome": "Welcome to the whitelist",
+      "mint": "Mint Now!",
+      "walletInvalid": "Your wallet address is not approved for minting at this time. Please come back tomorrow.",
+      "disconnect": "Disconnect",
+      "wallet": "Connect your Solana wallet"
+    }
   },
   "profile": {
     "collectionTitle": "My Collection",

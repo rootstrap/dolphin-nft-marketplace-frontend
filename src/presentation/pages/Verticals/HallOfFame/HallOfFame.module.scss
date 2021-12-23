@@ -29,11 +29,8 @@
     filter: grayscale(100%);
 
     &:hover {
-      filter: saturate(2);
-    }
-
-    &Selected {
-      filter: saturate(2);
+      border: 2px solid $primary;
+      filter: saturate(1);
     }
 
     &Img {
@@ -47,5 +44,10 @@
       left: 1rem;
       position: absolute;
     }
+  }
+
+  &__selected {
+    border: 2px solid $primary;
+    filter: saturate(2);
   }
 }

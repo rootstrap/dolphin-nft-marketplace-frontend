@@ -9,9 +9,15 @@ export const ItemBanner = ({ setLegend, legend, image, selectedLegend }: ItemBan
       onClick={() => setLegend((currentLegend: Legends) => (currentLegend !== legend ? legend : ''))}
     >
       <div className={styles.hallOfFame__itemImgContainer}>
-        <div className={`${styles.hallOfFame__imgContainer}${selectedLegend === legend ? 'Selected' : ''}`}>
+        <div
+          className={`${styles.hallOfFame__imgContainer} ${
+            selectedLegend === legend ? styles.hallOfFame__selected : ''
+          }`}
+        >
           <img src={image} alt={legend} className={styles.hallOfFame__imgContainerImg} />
-          <Typography className={styles.hallOfFame__imgContainerText}>{legend}</Typography>
+          <Typography variant="h5" className={styles.hallOfFame__imgContainerText}>
+            {legend}
+          </Typography>
         </div>
       </div>
     </Link>

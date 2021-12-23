@@ -42,8 +42,18 @@ export const useHallOfFame = () => {
     if (data) {
       setNfts(
         data
+          .slice(0, -1)
           .filter(nft => nft.collection.includes(legend))
           .filter(nft => nft.tier.includes(tier.toLowerCase()))
+          .sort((a: NFT, b: NFT) => {
+            if (a.name < b.name) {
+              return -1;
+            }
+            if (a.name > b.name) {
+              return 1;
+            }
+            return 0;
+          })
       );
     }
   }, [tier, legend, data]);

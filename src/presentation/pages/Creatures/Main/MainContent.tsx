@@ -41,7 +41,16 @@ export const MainContent = () => {
           EXILED ALIENS IS THE FIRST CHAPTER ON THIS GALACTIC JOYRIDE.
         </Typography>
       </div>
-
+      <div className={styles.video}>
+        <iframe
+          className={styles.video__content}
+          frameBorder={0}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          src="https://player.vimeo.com/video/659708054?h=36212d5d68&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+          title="CreatureChronicles"
+        />
+      </div>
       <div className={styles.description}>
         <Typography gutterBottom variant="subtitle1" className={styles.description__text}>
           By 2051, space exploration has become a quadrillion SOL industry. Governments and the elite

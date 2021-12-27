@@ -24,7 +24,6 @@ export const App = () => {
           {routes[user].map(route => (
             <RouteFromPath key={`route-${route.path}`} authenticated={isAuthenticated} {...route} />
           ))}
-          <Redirect to={routes[user][0].path} />
         </Switch>
       </Router>
       <CssBaseline />

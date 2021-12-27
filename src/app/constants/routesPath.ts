@@ -2,7 +2,7 @@ const routesPaths = {
   index: '/',
   profile: '/profile',
   creatures: '/creatures',
-  creaturesWhitelist: '/creatureswhitelist',
+  creaturesWhitelist: '/whitelist',
   verticals: '/verticals/:verticalId',
   nftDetails: '/verticals/:verticalId/:nftId',
   nftById: '/nft/:ftxId',

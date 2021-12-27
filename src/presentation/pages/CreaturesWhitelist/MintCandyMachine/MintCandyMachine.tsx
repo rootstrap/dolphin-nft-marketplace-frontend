@@ -3,14 +3,11 @@ import { Button, CircularProgress, Typography } from '@material-ui/core';
 
 import * as anchor from '@project-serum/anchor';
 
-import { LAMPORTS_PER_SOL } from '@solana/web3.js';
-
 import {
   CandyMachine,
   awaitTransactionSignatureConfirmation,
   getCandyMachineState,
   mintOneToken,
-  shortenAddress,
 } from 'app/helpers/candyMachine';
 import useTranslation from 'app/hooks/useTranslation';
 
@@ -37,16 +34,7 @@ export const MintCandyMachine = ({
 }: HomeProps) => {
   const t = useTranslation();
   const [error, setError] = useState('');
-  const [balance, setBalance] = useState<number>();
-  const [isActive, setIsActive] = useState(false); // true when countdown completes
-  const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
-
-  const [itemsAvailable, setItemsAvailable] = useState(0);
-  const [itemsRedeemed, setItemsRedeemed] = useState(0);
-  const [itemsRemaining, setItemsRemaining] = useState(0);
-
-  const [startDate, setStartDate] = useState(new Date(startDateProps));
 
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
 
@@ -54,15 +42,12 @@ export const MintCandyMachine = ({
     (async () => {
       if (!wallet) return;
 
-      const { candyMachine, goLiveDate, itemsAvailable, itemsRemaining, itemsRedeemed } =
-        await getCandyMachineState(wallet as anchor.Wallet, candyMachineId, connection);
+      const { candyMachine } = await getCandyMachineState(
+        wallet as anchor.Wallet,
+        candyMachineId,
+        connection
+      );
 
-      setItemsAvailable(itemsAvailable);
-      setItemsRemaining(itemsRemaining);
-      setItemsRedeemed(itemsRedeemed);
-
-      setIsSoldOut(itemsRemaining === 0);
-      setStartDate(goLiveDate);
       setCandyMachine(candyMachine);
     })();
   };
@@ -74,35 +59,16 @@ export const MintCandyMachine = ({
       if (wallet && candyMachine?.program) {
         const mintTxId = await mintOneToken(candyMachine, config, wallet.publicKey, treasury);
 
-        const status = await awaitTransactionSignatureConfirmation(
-          mintTxId,
-          txTimeout,
-          connection,
-          'singleGossip',
-          false
-        );
+        await awaitTransactionSignatureConfirmation(mintTxId, txTimeout, connection, 'singleGossip', false);
       }
     } catch (error: any) {
       const mintError: MintError = JSON.parse(JSON.stringify(error, null, 2));
       setError(mintError.msg);
     } finally {
-      if (wallet) {
-        const balance = await connection.getBalance(wallet.publicKey);
-        setBalance(balance / LAMPORTS_PER_SOL);
-      }
       setIsMinting(false);
       refreshCandyMachineState();
     }
   };
-
-  useEffect(() => {
-    (async () => {
-      if (wallet) {
-        const balance = await connection.getBalance(wallet.publicKey);
-        setBalance(balance / LAMPORTS_PER_SOL);
-      }
-    })();
-  }, [wallet, connection]);
 
   useEffect(refreshCandyMachineState, [wallet, candyMachineId, connection]);
 
@@ -110,8 +76,8 @@ export const MintCandyMachine = ({
     <>
       <div>
         {isValidAddress ? (
-          <Button onClick={onMint} variant="outlined" disabled={!isValidAddress} size="large">
-            {t('creatures.whitelist.mint')}
+          <Button onClick={onMint} variant="outlined" disabled={isMinting} size="large">
+            {isMinting ? <CircularProgress /> : t('creatures.whitelist.mint')}
           </Button>
         ) : (
           <Typography variant="h6">{t('creatures.whitelist.walletInvalid')}</Typography>

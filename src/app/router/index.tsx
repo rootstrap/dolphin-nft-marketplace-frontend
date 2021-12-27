@@ -18,7 +18,6 @@ export const routes = {
     {
       path: routesPaths.creaturesWhitelist,
       component: <CreaturesWhiteListPage />,
-      exact: true,
       private: false,
     },
     {

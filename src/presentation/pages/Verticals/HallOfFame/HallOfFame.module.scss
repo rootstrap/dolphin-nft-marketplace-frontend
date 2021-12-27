@@ -48,6 +48,11 @@
 
   &__selected {
     border: 2px solid $primary;
-    filter: saturate(2);
+    filter: saturate(1.5);
+
+    &:hover {
+      border: 2px solid $primary;
+      filter: saturate(1.5);
+    }
   }
 }

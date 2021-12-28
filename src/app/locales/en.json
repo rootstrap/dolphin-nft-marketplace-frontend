@@ -249,6 +249,8 @@
     "bankAccount": "bank account ",
     "cryptoCurrency": " crypto currency ",
     "text3": "from another wallet to get started.",
+    "faqText": "Need help? Check out the ",
+    "faq": "FAQs",
     "verification": {
       "title": "We need to verify your card to continue",
       "description": "This is just a security step. Please enter the amount we just charged to your credit card.",

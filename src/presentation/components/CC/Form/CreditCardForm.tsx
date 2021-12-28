@@ -165,7 +165,7 @@ export const CreditCardForm = () => {
           </div>
           <Typography variant="body1">
             {t('creditCard.faqText')}
-            <Link href="https://dolphinentertainment.zendesk.com/">{t('creditCard.faq')}</Link>
+            <Link href={process.env.REACT_APP_ZENDESK_URL}>{t('creditCard.faq')}</Link>
           </Typography>
         </Grid>
       </Grid>

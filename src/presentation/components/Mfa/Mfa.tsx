@@ -57,7 +57,7 @@ export const Mfa = ({ setIsMfaRequired }: MfaProps) => {
           </div>
           <Typography variant="body1">
             {t('login.mfa.faqText')}
-            <Link href="https://dolphinentertainment.zendesk.com/">{t('login.mfa.faq')}</Link>
+            <Link href={process.env.REACT_APP_ZENDESK_URL}>{t('login.mfa.faq')}</Link>
           </Typography>
         </>
       )}

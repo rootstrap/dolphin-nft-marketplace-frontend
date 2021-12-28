@@ -7,6 +7,7 @@ import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoade
 import { colors } from 'app/constants/contants';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { SuccessVerification } from '../CC/Verification/SuccessVerification';
+import styles from './BuyNowButton.module.scss';
 
 export const BuyNowButton = () => {
   const t = useTranslation();
@@ -31,8 +32,16 @@ export const BuyNowButton = () => {
           <>
             {enoughBalance ? (
               <Grid item xs={12} lg={12}>
-                <Button size="large" onClick={buyNft} variant="outlined" color="secondary">
-                  <Typography variant="button">{t('creatures.buyCreatures.buyButton')}</Typography>
+                <Button
+                  className={styles.buyNowButton}
+                  size="large"
+                  onClick={buyNft}
+                  variant="outlined"
+                  color="secondary"
+                >
+                  <Typography variant="h5" className={styles.buyNowButton__typography}>
+                    {t('creatures.buyCreatures.buyButton')}
+                  </Typography>
                 </Button>
               </Grid>
             ) : (

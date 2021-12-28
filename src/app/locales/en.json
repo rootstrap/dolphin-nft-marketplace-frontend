@@ -178,7 +178,9 @@
       "title": "Two-factor authentication required",
       "subtitle": "Please enter the 6-digit verification code that we've just sent to your phone.",
       "subtitle2": "Or, if you are using Time-based One-time Password (TOTP) checkout your app",
-      "button": "Submit"
+      "button": "Submit",
+      "faqText": "Need help? Check out the ",
+      "faq": "FAQs"
     }
   },
   "signup": {

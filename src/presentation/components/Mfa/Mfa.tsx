@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Typography, Button } from '@material-ui/core';
+import { Typography, Button, Link } from '@material-ui/core';
 import { PhoneAndroidOutlined } from '@material-ui/icons';
 import { useMfa } from './useMfa';
 import { InputText } from 'infrastructure/components/InputText/InputText';
@@ -55,6 +55,10 @@ export const Mfa = ({ setIsMfaRequired }: MfaProps) => {
           <div className={styles.mfa__button}>
             <Button type="submit">{t('login.mfa.button')}</Button>
           </div>
+          <Typography variant="body1">
+            {t('login.mfa.faqText')}
+            <Link href="https://dolphinentertainment.zendesk.com/">{t('login.mfa.faq')}</Link>
+          </Typography>
         </>
       )}
     </form>

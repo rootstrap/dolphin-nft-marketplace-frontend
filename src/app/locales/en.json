@@ -73,7 +73,7 @@
     "whitelist": {
       "welcome": "Welcome to the whitelist",
       "mint": "Mint Now!",
-      "walletInvalid": "Your wallet address is not approved for minting at this time. Please come back tomorrow.",
+      "walletInvalid": "Your wallet address is not approved for minting at this time. Please check the Discord for when you are eligible.",
       "disconnect": "Disconnect",
       "wallet": "Connect your Solana wallet"
     }

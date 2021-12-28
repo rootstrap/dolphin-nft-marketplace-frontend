@@ -62,7 +62,7 @@
     "title": "Exiled Aliens",
     "dropDate": "Drop: December 15th / 2021",
     "buyCreatures": {
-      "buyButton": "Buy now with FTX",
+      "buyButton": "BUY NOW WITH FTX",
       "creditDebitCard": "Credit or debit cards accepted",
       "fundWallet": "You don't have enough money for buying a Creature. You can fund your wallet here",
       "activateWallet": "You must activate your wallet in order to start your collection. You only need to do this once!",
@@ -73,7 +73,7 @@
     "whitelist": {
       "welcome": "Welcome to the whitelist",
       "mint": "Mint Now!",
-      "walletInvalid": "Your wallet address is not approved for minting at this time. Please come back tomorrow.",
+      "walletInvalid": "Your wallet address is not approved for minting at this time. Please check the Discord for when you are eligible.",
       "disconnect": "Disconnect",
       "wallet": "Connect your Solana wallet"
     }
@@ -178,7 +178,9 @@
       "title": "Two-factor authentication required",
       "subtitle": "Please enter the 6-digit verification code that we've just sent to your phone.",
       "subtitle2": "Or, if you are using Time-based One-time Password (TOTP) checkout your app",
-      "button": "Submit"
+      "button": "Submit",
+      "faqText": "Need help? Check out the ",
+      "faq": "FAQs"
     }
   },
   "signup": {
@@ -249,6 +251,8 @@
     "bankAccount": "bank account ",
     "cryptoCurrency": " crypto currency ",
     "text3": "from another wallet to get started.",
+    "faqText": "Need help? Check out the ",
+    "faq": "FAQs",
     "verification": {
       "title": "We need to verify your card to continue",
       "description": "This is just a security step. Please enter the amount we just charged to your credit card.",

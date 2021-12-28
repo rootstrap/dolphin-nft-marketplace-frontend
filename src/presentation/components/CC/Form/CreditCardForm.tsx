@@ -163,6 +163,10 @@ export const CreditCardForm = () => {
           <div className={styles.creditCardForm__button}>
             <Button type="submit">{t('creditCard.button')}</Button>
           </div>
+          <Typography variant="body1">
+            {t('creditCard.faqText')}
+            <Link href={process.env.REACT_APP_ZENDESK_URL}>{t('creditCard.faq')}</Link>
+          </Typography>
         </Grid>
       </Grid>
     </>

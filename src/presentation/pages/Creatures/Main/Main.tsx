@@ -5,6 +5,8 @@ import CreaturesBackground from 'app/assets/CreaturesBackground.png';
 import routesPaths from 'app/constants/routesPath';
 import { BuyNowButton } from 'presentation/components/BuyNowButton/BuyNowButton';
 import { useAppSelector } from 'app/hooks/reduxHooks';
+import { WalletKitProvider } from '@gokiprotocol/walletkit';
+import { WalletKit } from '../../CreaturesWhitelist/SolanaWalletKit/WalletKit';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Main.module.scss';
 
@@ -20,7 +22,21 @@ export const Main = () => {
         </div>
         <div className={styles.mainContent__backgroundButton}>
           {isAuthenticated && whitelist.find(email => email === user.email) ? (
-            <BuyNowButton />
+            <>
+              <div>
+                <BuyNowButton />
+              </div>
+              <div>
+                <WalletKitProvider
+                  defaultNetwork="devnet"
+                  app={{
+                    name: 'Creatures Marketplace',
+                  }}
+                >
+                  <WalletKit />
+                </WalletKitProvider>
+              </div>
+            </>
           ) : (
             <a href={routesPaths.creaturesCarousel}>
               <Button size="large" variant="outlined" color="inherit">

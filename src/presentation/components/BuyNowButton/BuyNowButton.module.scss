@@ -1,7 +1,9 @@
 .buyNowButton {
-  padding: 1.5rem 4rem !important;
+  background-color: black !important;
+  width: 20rem !important;
 
   &__typography {
-    font-family: The Neue, Avenue X !important;
+    font-family: The Neue;
+    font-size: 16px;
   }
 }

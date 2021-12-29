@@ -1,12 +1,13 @@
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import { useBuyNowButton } from './useBuyNowButton';
-import useTranslation from 'app/hooks/useTranslation';
 import { DepositModal } from '../DepositModal/DepositModal';
 import { creditCardStatus } from 'app/constants/contants';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { colors } from 'app/constants/contants';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { SuccessVerification } from '../CC/Verification/SuccessVerification';
+import { useResponsive } from 'app/hooks/useResponsive';
+import useTranslation from 'app/hooks/useTranslation';
 import styles from './BuyNowButton.module.scss';
 
 export const BuyNowButton = () => {
@@ -24,50 +25,53 @@ export const BuyNowButton = () => {
     handleClose,
     handleCloseDepositModal,
   } = useBuyNowButton();
+  const { isMobileView } = useResponsive();
 
   return (
     <>
-      <Grid container direction="column" alignItems="center" spacing={2}>
-        {!isLoadingData ? (
-          <>
-            {enoughBalance ? (
-              <Grid item xs={12} lg={12}>
-                <Button
-                  className={styles.buyNowButton}
-                  size="large"
-                  onClick={buyNft}
-                  variant="outlined"
-                  color="secondary"
-                >
-                  <Typography variant="h5" className={styles.buyNowButton__typography}>
-                    {t('creatures.buyCreatures.buyButton')}
-                  </Typography>
-                </Button>
-              </Grid>
-            ) : (
+      {!isLoadingData ? (
+        <>
+          {enoughBalance ? (
+            <>
+              <Button
+                fullWidth
+                className={styles.buyNowButton}
+                onClick={buyNft}
+                variant="outlined"
+                color="secondary"
+              >
+                <span className={styles.buyNowButton__typography}>
+                  {t('creatures.buyCreatures.buyButton')}
+                </span>
+              </Button>
+            </>
+          ) : (
+            <>
               <>
-                <Grid item xs={12} lg={12}>
-                  <Typography component="div">
-                    {defaultCreditCard.status === creditCardStatus.approved
-                      ? t('creatures.buyCreatures.fundWallet')
-                      : t('creatures.buyCreatures.activateWallet')}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} lg={12}>
-                  <Button fullWidth onClick={handleOnClick} variant="text" color="secondary">
-                    {defaultCreditCard.status === creditCardStatus.approved
-                      ? t('creatures.buyCreatures.fundButton')
-                      : t('creatures.buyCreatures.activateButton')}
-                  </Button>
-                </Grid>
+                <Typography component="div">
+                  {defaultCreditCard.status === creditCardStatus.approved
+                    ? t('creatures.buyCreatures.fundWallet')
+                    : t('creatures.buyCreatures.activateWallet')}
+                </Typography>
               </>
-            )}
-            <Typography component="div">{t('creatures.buyCreatures.creditDebitCard')}</Typography>
-          </>
-        ) : (
-          <CustomLoader color={colors.orangeCreatures} />
-        )}
-      </Grid>
+              <>
+                <Button fullWidth onClick={handleOnClick} variant="text" color="secondary">
+                  {defaultCreditCard.status === creditCardStatus.approved
+                    ? t('creatures.buyCreatures.fundButton')
+                    : t('creatures.buyCreatures.activateButton')}
+                </Button>
+              </>
+            </>
+          )}
+          {!isMobileView && (
+            <div className={styles.buyNowButton__typography}>
+              {t('creatures.buyCreatures.creditDebitCard')}
+            </div>
+          )}
+        </>
+      ) : (
+        <CustomLoader color={colors.orangeCreatures} />
+      )}
 
       <DepositModal
         isOpen={depositModalIsOpen}

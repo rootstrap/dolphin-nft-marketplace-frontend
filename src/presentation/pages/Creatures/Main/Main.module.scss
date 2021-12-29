@@ -20,10 +20,20 @@
     }
 
     &Button {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
       color: white;
 
       button {
         border: 2px solid $orange-creatures;
+        margin: 1rem;
+        width: 20rem;
+      }
+
+      @media screen and (min-width: $sm-min-width) and (max-width: $sm-max-width) {
+        flex-direction: column;
+        align-items: center;
       }
     }
   }

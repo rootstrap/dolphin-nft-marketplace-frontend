@@ -59,7 +59,6 @@ const userSlice = createSlice({
       }
     );
     builder.addMatcher(loginFulfiled, (state, { payload: { token, user } }) => {
-      state.isAuthenticated = true;
       state.token = token;
       state.user = { ...user };
     });

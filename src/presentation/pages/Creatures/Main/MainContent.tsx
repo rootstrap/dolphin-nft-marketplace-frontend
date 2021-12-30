@@ -1,4 +1,4 @@
-import { Button, Typography } from '@material-ui/core';
+import { Button, Typography, Link } from '@material-ui/core';
 import { ReactComponent as SmallDiscord } from 'app/assets/SmallDiscord.svg';
 import { socialMediaLinks, whitelist } from 'app/constants/contants';
 import CreaturesBackground from 'app/assets/CreaturesBackground.png';
@@ -22,11 +22,11 @@ export const MainContent = () => {
           {isAuthenticated && whitelist.find(email => email === user.email) ? (
             <BuyNowButton />
           ) : (
-            <a href={routesPaths.creaturesCarousel}>
+            <Link className={styles.mainContent__link} href={routesPaths.creaturesWhitelist}>
               <Button size="large" variant="outlined" color="inherit">
                 {t('creatures.exploreCollectionBtn')}
               </Button>
-            </a>
+            </Link>
           )}
         </div>
       </div>

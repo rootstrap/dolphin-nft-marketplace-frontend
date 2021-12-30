@@ -1,0 +1,10 @@
+@import '../../../../app/styles/base/settings';
+
+.walletKit {
+  &__disconnect {
+    color: $orange-creatures;
+    cursor: pointer;
+    padding: 1rem;
+    text-decoration: underline;
+  }
+}

@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button, CircularProgress, Typography } from '@material-ui/core';
-
 import * as anchor from '@project-serum/anchor';
-
 import {
   CandyMachine,
   awaitTransactionSignatureConfirmation,
@@ -10,6 +8,7 @@ import {
   mintOneToken,
 } from 'app/helpers/candyMachine';
 import useTranslation from 'app/hooks/useTranslation';
+import styles from './MintCandyMachine.module.scss';
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -74,10 +73,22 @@ export const MintCandyMachine = ({
 
   return (
     <>
-      <div>
+      <div className={styles.candyMachine}>
         {isValidAddress ? (
-          <Button onClick={onMint} variant="outlined" disabled={isMinting} size="large">
-            {isMinting ? <CircularProgress /> : t('creatures.whitelist.mint')}
+          <Button
+            className={styles.candyMachine__button}
+            onClick={onMint}
+            variant="outlined"
+            disabled={isMinting}
+            size="large"
+          >
+            {isMinting ? (
+              <CircularProgress />
+            ) : (
+              <Typography className={styles.candyMachine__buttonText} variant="h5">
+                {t('creatures.buyCreatures.mintButton')}
+              </Typography>
+            )}
           </Button>
         ) : (
           <Typography variant="h6">{t('creatures.whitelist.walletInvalid')}</Typography>

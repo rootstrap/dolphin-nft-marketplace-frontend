@@ -4,6 +4,7 @@ import { MintCandyMachine } from '../MintCandyMachine/MintCandyMachine';
 import { candyMachineConfig } from 'app/constants/creatures/candyMachineConfig';
 import { useWalletKit } from './useWalletKit';
 import useTranslation from 'app/hooks/useTranslation';
+import styles from './WalletKit.module.scss';
 
 export const WalletKit = () => {
   const t = useTranslation();
@@ -24,7 +25,14 @@ export const WalletKit = () => {
             wallet={wallet}
             isValidAddress={isValidAddress}
           />
-          <Button onClick={disconnect}>{t('creatures.whitelist.disconnect')}</Button>
+          <Typography
+            className={styles.walletKit__disconnect}
+            variant="h6"
+            onClick={disconnect}
+            component="div"
+          >
+            {t('creatures.whitelist.disconnect')}
+          </Typography>
         </>
       ) : (
         <div>

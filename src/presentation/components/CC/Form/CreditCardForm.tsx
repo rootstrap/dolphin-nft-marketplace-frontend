@@ -4,6 +4,7 @@ import { InputSelect } from 'infrastructure/components/Select/InputSelect';
 import { useCreditCardForm } from './useCreditCardForm';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { CreditCardVerification } from '../Verification/CreditCardVerification';
+import { helpLinks } from 'app/constants/contants';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './CreditCardForm.module.scss';
 
@@ -29,13 +30,9 @@ export const CreditCardForm = () => {
         <Typography variant="body1">{t('creditCard.text')}</Typography>
         <Typography variant="body1">
           {t('creditCard.text2')}
-          <Link href="https://help.ftx.us/hc/en-us/articles/360048573453-How-to-Deposit-via-Bank-Transfer-ACH-Using-Bank-Login-Details">
-            {t('creditCard.bankAccount')}
-          </Link>
+          <Link href={helpLinks.bankAccount}>{t('creditCard.bankAccount')}</Link>
           or
-          <Link href="https://help.ftx.us/hc/en-us/articles/4408515463703-How-to-Deposit-Crypto">
-            {t('creditCard.cryptoCurrency')}
-          </Link>
+          <Link href={helpLinks.cryptoWallet}>{t('creditCard.cryptoCurrency')}</Link>
           {t('creditCard.text3')}
         </Typography>
       </div>

@@ -1,16 +1,12 @@
-import { ReactNode } from 'react';
 import { Route } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
+import { RouteElement } from '../interfaces/common/Route';
 
-interface RouteFromPathProps {
-  path: string;
-  component: ReactNode;
+interface RouteFromPathProps extends RouteElement {
   authenticated?: boolean;
-  exact?: boolean;
-  private?: boolean;
 }
 
-const RouteFromPath = ({ component, ...route }: RouteFromPathProps) =>
-  route.private ? <PrivateRoute {...route}>{component}</PrivateRoute> : <Route {...route}>{component}</Route>;
+const RouteFromPath = ({ Component, ...route }: RouteFromPathProps) =>
+  route.private ? <PrivateRoute {...route}>{Component}</PrivateRoute> : <Route {...route}>{Component}</Route>;
 
 export default RouteFromPath;

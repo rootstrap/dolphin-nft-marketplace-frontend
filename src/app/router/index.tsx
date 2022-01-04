@@ -1,3 +1,4 @@
+import { Route } from '../interfaces/common/Route';
 import NFTPage from 'presentation/pages/NFT/NFTPage';
 import HomePage from 'presentation/pages/Home/HomePage';
 import ProfilePage from 'presentation/pages/Profile/ProfilePage';
@@ -7,59 +8,59 @@ import VerticalPage from 'presentation/pages/Verticals/VerticalPage';
 import NFTByIdPage from 'presentation/pages/NFTByFtxId/NFTByIdPage';
 import routesPaths from '../constants/routesPath';
 
-export const routes = {
+export const routes: Route = {
   isCreatures: [
     {
       path: routesPaths.index,
-      component: <CreaturesPage />,
+      Component: CreaturesPage,
       exact: true,
       private: false,
     },
     {
       path: routesPaths.creaturesWhitelist,
-      component: <CreaturesWhiteListPage />,
+      Component: CreaturesWhiteListPage,
       private: false,
     },
     {
       path: routesPaths.profile,
-      component: <ProfilePage />,
+      Component: ProfilePage,
       private: true,
     },
   ],
   isNormalUser: [
     {
       path: routesPaths.index,
-      component: <HomePage />,
+      Component: HomePage,
       exact: true,
       private: false,
     },
     {
       path: routesPaths.verticals,
-      component: <VerticalPage />,
+      Component: VerticalPage,
       exact: true,
       private: false,
     },
     {
       path: routesPaths.creatures,
-      component: <CreaturesPage />,
+      Component: CreaturesPage,
       exact: true,
       private: false,
     },
     {
       path: routesPaths.nftDetails,
-      component: <NFTPage />,
+      Component: NFTPage,
       exact: true,
       private: false,
     },
     {
       path: routesPaths.nftById,
-      component: <NFTByIdPage />,
+      Component: NFTByIdPage,
       exact: true,
       private: false,
     },
     {
       path: routesPaths.profile,
-      component: <ProfilePage />,
+      Component: ProfilePage,
       private: true,
     },
   ],

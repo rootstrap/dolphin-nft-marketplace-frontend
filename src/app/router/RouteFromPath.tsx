@@ -6,7 +6,11 @@ interface RouteFromPathProps extends RouteElement {
   authenticated?: boolean;
 }
 
-const RouteFromPath = ({ Component, ...route }: RouteFromPathProps) =>
-  route.private ? <PrivateRoute {...route}>{Component}</PrivateRoute> : <Route {...route}>{Component}</Route>;
+const RouteFromPath = ({ Component, ...props }: RouteFromPathProps) =>
+  props.private ? (
+    <PrivateRoute Component={Component} {...props} />
+  ) : (
+    <Route render={() => <Component />} {...props} />
+  );
 
 export default RouteFromPath;

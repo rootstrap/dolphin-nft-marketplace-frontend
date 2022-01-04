@@ -1,21 +1,16 @@
-import { ReactNode } from 'react';
+import { RouteElement } from 'app/interfaces/common/Route';
 import { Route, Redirect, useLocation } from 'react-router-dom';
 import routesPaths from '../constants/routesPath';
 
-export interface PrivateRouteProps {
-  children: ReactNode;
-  path: string;
+export interface PrivateRouteProps extends RouteElement {
   authenticated?: boolean;
-  exact?: boolean;
 }
 
-const PrivateRoute = ({ children, exact = false, path, authenticated }: PrivateRouteProps) => {
+const PrivateRoute = ({ Component, exact = false, path, authenticated }: PrivateRouteProps) => {
   const location = useLocation();
 
   return authenticated ? (
-    <Route exact={exact} path={path}>
-      {children}
-    </Route>
+    <Route exact={exact} path={path} render={() => <Component />} />
   ) : (
     <Redirect
       to={{

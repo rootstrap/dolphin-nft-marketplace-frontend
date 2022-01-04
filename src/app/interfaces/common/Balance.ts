@@ -1,3 +1,8 @@
+export interface BalanceResults {
+  result: Balance[];
+  success: boolean;
+}
+
 export interface Balance {
   coin: string;
   free: number;

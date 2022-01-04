@@ -5,7 +5,7 @@ export const MainImg = ({ link, src, alt, styles, disabled = false }: MainImgPro
   <Link to={`verticals/${link.toLowerCase()}`} className={disabled ? styles.disabledLink : ''}>
     <div className={styles.mainContent__itemImgContainer}>
       <div className={styles.mainContent__imgContainer}>
-        <img src={src} alt={alt} className={styles.mainContent__imgContainerImg} />
+        <img src={src} alt={alt} className={styles.mainContent__imgContainerImg} loading="lazy" />
       </div>
 
       <div className={styles.mainContent__itemIcon}>

@@ -1,8 +1,10 @@
-import { Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Switch, BrowserRouter as Router } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { routes } from './router';
 import { useAppSelector } from './hooks/reduxHooks';
 import { CssBaseline } from '@material-ui/core';
+import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import RouteFromPath from './router/RouteFromPath';
 import useRedirection from './hooks/useRedirection';
 import useTranslation from './hooks/useTranslation';
@@ -19,13 +21,16 @@ export const App = () => {
         <title>{t('global.pageTitle')}</title>
       </Helmet>
 
-      <Router>
-        <Switch>
-          {routes[user].map(route => (
-            <RouteFromPath key={`route-${route.path}`} authenticated={isAuthenticated} {...route} />
-          ))}
-        </Switch>
-      </Router>
+      <Suspense fallback={<CustomLoader height={50} width={50} type="ThreeDots" />}>
+        <Router>
+          <Switch>
+            {routes[user].map(route => (
+              <RouteFromPath key={`route-${route.path}`} authenticated={isAuthenticated} {...route} />
+            ))}
+          </Switch>
+        </Router>
+      </Suspense>
+
       <CssBaseline />
     </>
   );

@@ -15,21 +15,21 @@ export const useBuyNowButton = () => {
     deposit: { balances },
   } = useAppSelector(state => state);
 
-  const [buyNft, { isSuccess }] = useBuyNftByPackMutation();
-  const [getPackInfo] = useGetNftPackInfoMutation();
-  const [getCreditCardFees] = useGetCreditCardFeesMutation();
-  const [getBalance] = useGetBalanceMutation();
-  const [isLoadingData, setIsLoadingData] = useState(false);
-
   const [currentBalanceUSD, setCurrentBalanceUSD] = useState(0);
   const [creaturePrice, setCreaturePrice] = useState<number>(0);
   const [depositSize, setDepositSize] = useState<number>(0);
   const [enoughBalance, setEnoughBalance] = useState(false);
   const [fee, setFee] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
-
   const [depositModalIsOpen, setDepositModalIsOpen] = useState(false);
+
   const { setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
+
+  const [buyNft, { isSuccess }] = useBuyNftByPackMutation();
+  const [getPackInfo] = useGetNftPackInfoMutation();
+  const [getCreditCardFees] = useGetCreditCardFeesMutation();
+  const [getBalance] = useGetBalanceMutation();
+  const [isLoadingData, setIsLoadingData] = useState(false);
 
   const handleActivateWallet = () => {
     user.kyc1ed ? setCcModalIsOpen(true) : setKycModalIsOpen(true);
@@ -68,7 +68,7 @@ export const useBuyNowButton = () => {
     } finally {
       setIsLoadingData(false);
     }
-  }, [getCreditCardFees, getPackInfo, getBalance]);
+  }, [getCreditCardFees, getPackInfo, getBalance, currentBalanceUSD]);
 
   useEffect(() => {
     loadData();
@@ -84,7 +84,7 @@ export const useBuyNowButton = () => {
     if (usdBalance) {
       setCurrentBalanceUSD(usdBalance.total);
     }
-  }, [balances]);
+  }, []);
 
   useEffect(() => {
     if (isSuccess) {

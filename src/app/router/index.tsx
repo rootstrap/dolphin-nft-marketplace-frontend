@@ -1,29 +1,32 @@
 import { lazy } from 'react';
 import { Route } from 'app/interfaces/common/Route';
-import NFTPage from 'presentation/pages/NFT/NFTPage';
-import ProfilePage from 'presentation/pages/Profile/ProfilePage';
-import CreaturesPage from 'presentation/pages/Creatures/CreaturesPage';
-import CreaturesWhiteListPage from 'presentation/pages/CreaturesWhitelist/CreaturesWhiteListPage';
-import VerticalPage from 'presentation/pages/Verticals/VerticalPage';
-import NFTByIdPage from 'presentation/pages/NFTByFtxId/NFTByIdPage';
 import routesPaths from '../constants/routesPath';
 
 export const routes: Route = {
   isCreatures: [
     {
       path: routesPaths.index,
-      Component: CreaturesPage,
+      Component: lazy(
+        () => import(/* webpackChunkName: "CreaturesPage" */ 'presentation/pages/Creatures/CreaturesPage')
+      ),
       exact: true,
       private: false,
     },
     {
       path: routesPaths.creaturesWhitelist,
-      Component: CreaturesWhiteListPage,
+      Component: lazy(
+        () =>
+          import(
+            /* webpackChunkName: "CreaturesWhiteListPage" */ 'presentation/pages/CreaturesWhitelist/CreaturesWhiteListPage'
+          )
+      ),
       private: false,
     },
     {
       path: routesPaths.profile,
-      Component: ProfilePage,
+      Component: lazy(
+        () => import(/* webpackChunkName: "ProfilePage" */ 'presentation/pages/Profile/ProfilePage')
+      ),
       private: true,
     },
   ],
@@ -36,25 +39,31 @@ export const routes: Route = {
     },
     {
       path: routesPaths.verticals,
-      Component: VerticalPage,
+      Component: lazy(
+        () => import(/* webpackChunkName: "VerticalPage" */ 'presentation/pages/Verticals/VerticalPage')
+      ),
       exact: true,
       private: false,
     },
     {
       path: routesPaths.nftDetails,
-      Component: NFTPage,
+      Component: lazy(() => import(/* webpackChunkName: "NFTPage" */ 'presentation/pages/NFT/NFTPage')),
       exact: true,
       private: false,
     },
     {
       path: routesPaths.nftById,
-      Component: NFTByIdPage,
+      Component: lazy(
+        () => import(/* webpackChunkName: "NFTByIdPage" */ 'presentation/pages/NFTByFtxId/NFTByIdPage')
+      ),
       exact: true,
       private: false,
     },
     {
       path: routesPaths.profile,
-      Component: ProfilePage,
+      Component: lazy(
+        () => import(/* webpackChunkName: "ProfilePage" */ 'presentation/pages/Profile/ProfilePage')
+      ),
       private: true,
     },
   ],

@@ -11,50 +11,51 @@ export const DepositModal = ({ isOpen, handleClose, depositSize, fee }: DepositM
   const { isSuccess, isLoading, data, cvv, name, handleInputChange, handleInputFocus, handleOnClick, error } =
     useDepositModal(depositSize);
 
-  const componentToRender = isSuccess ? (
-    <div className={styles.depositModal}>
-      <SuccessVerification successMsg="Your deposit was successful" />
-    </div>
-  ) : (
-    <div className={styles.depositModal}>
-      {isLoading ? (
-        <CustomLoader msg="Waiting for your deposit" />
-      ) : (
-        <>
-          <Cards
-            preview
-            cvc={cvv.cvc}
-            name={name}
-            number={`************${data.mask}`}
-            expiry={''}
-            focused={cvv.focus}
-          />
-
-          <div className={styles.depositModal__text}>
-            <Typography variant="h5">Please Introduce your CVV</Typography>
-            <Typography variant="h6">Deposit: ${depositSize}</Typography>
-            <Typography variant="subtitle1">Fee: ${fee}</Typography>
-          </div>
-
-          <div className={styles.depositModal__input}>
-            <TextField
-              label="CVV"
-              name="cvc"
-              type="number"
-              value={cvv.cvc || ''}
-              onChange={handleInputChange}
-              onFocus={handleInputFocus}
+  const componentToRender =
+    isSuccess && !error ? (
+      <div className={styles.depositModal}>
+        <SuccessVerification successMsg="Your deposit was successful" />
+      </div>
+    ) : (
+      <div className={styles.depositModal}>
+        {isLoading ? (
+          <CustomLoader msg="Waiting for your deposit" />
+        ) : (
+          <>
+            <Cards
+              preview
+              cvc={cvv.cvc}
+              name={name}
+              number={`************${data.mask}`}
+              expiry={''}
+              focused={cvv.focus}
             />
-          </div>
 
-          <div className={styles.depositModal__button}>
-            <Button onClick={handleOnClick}>Make Deposit</Button>
-          </div>
-        </>
-      )}
-      <Typography className={styles.depositModal__error}>{error}</Typography>
-    </div>
-  );
+            <div className={styles.depositModal__text}>
+              <Typography variant="h5">Please Introduce your CVV</Typography>
+              <Typography variant="h6">Deposit: ${depositSize}</Typography>
+              <Typography variant="subtitle1">Fee: ${fee}</Typography>
+            </div>
+
+            <div className={styles.depositModal__input}>
+              <TextField
+                label="CVV"
+                name="cvc"
+                type="number"
+                value={cvv.cvc || ''}
+                onChange={handleInputChange}
+                onFocus={handleInputFocus}
+              />
+            </div>
+
+            <div className={styles.depositModal__button}>
+              <Button onClick={handleOnClick}>Make Deposit</Button>
+            </div>
+          </>
+        )}
+        <Typography className={styles.depositModal__error}>{error}</Typography>
+      </div>
+    );
 
   return (
     <BaseModal open={isOpen} handleClose={handleClose}>

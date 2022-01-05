@@ -1,3 +1,5 @@
+export type Currency = 'USD' | 'SOL';
+
 export interface BalanceResults {
   result: Balance[];
   success: boolean;

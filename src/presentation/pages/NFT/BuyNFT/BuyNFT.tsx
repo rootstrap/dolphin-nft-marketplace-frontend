@@ -11,7 +11,7 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
   const {
     defaultCreditCard,
     handleOnClick,
-    currentBalance,
+    totalBalance,
     enoughBalance,
     depositModalIsOpen,
     handleCloseDepositModal,
@@ -73,7 +73,7 @@ export const BuyNFT = ({ nft, handleShowDescription }: BuyNFTProps) => {
                 Your Balance:
               </Typography>
               <Typography variant="h6" className={styles.buyContent__priceContainer__price}>
-                ${currentBalance}
+                ${totalBalance}
               </Typography>
             </div>
 

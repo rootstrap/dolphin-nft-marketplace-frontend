@@ -46,7 +46,7 @@
     "description": "Collectibles for the tailgaters, face painters, court stormers, and jersey burners. For the fanatics that live for The Hail Marys, buzzer beaters, walk-offs and winning shots."
   },
   "creatures": {
-    "exploreCollectionBtn": "White List Mint Now",
+    "exploreCollectionBtn": "EXPLORE COLLECTION",
     "description1": "Playbooks brings to life the most memorable plays from the college and professional careers of football legends. Each NFT focuses on a defining gridiron moment, chosen by the player, and highlighted with artistry, animation and recorded commentary from the athletes themselves.",
     "description2": "The custom, limited edition Playbooks NFTs - Phenom, Star, Icon and Legend - have unlockable rewards for those who collect all four of the same player, including virtual events with the players and rare signed memorabilia.",
     "stepsDesc": "What you can do to prepare:",
@@ -69,7 +69,9 @@
       "activateWallet": "You must activate your wallet in order to start your collection. You only need to do this once!",
       "fundButton": "Fund Wallet to buy a Creature",
       "activateButton": "Activate Wallet ",
-      "successMsg": "Great. The Creature is yours!"
+      "successMsg": "Great. The Creature is yours!",
+      "mintWithSol": "MINT WITH SOLANA",
+      "solana": "Solana only"
     },
     "whitelist": {
       "welcome": "Welcome to the whitelist",

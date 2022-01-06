@@ -1,8 +1,9 @@
-import { Button, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { ConnectWalletButton } from '@gokiprotocol/walletkit';
 import { MintCandyMachine } from '../MintCandyMachine/MintCandyMachine';
 import { candyMachineConfig } from 'app/constants/creatures/candyMachineConfig';
 import { useWalletKit } from './useWalletKit';
+import { useResponsive } from 'app/hooks/useResponsive';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './WalletKit.module.scss';
 
@@ -10,6 +11,7 @@ export const WalletKit = () => {
   const t = useTranslation();
   const { connection, treasury, config, candyMachineId, startDateSeed, txTimeout } = candyMachineConfig;
   const { wallet, isValidAddress, disconnect } = useWalletKit();
+  const { isMobileView } = useResponsive();
 
   return (
     <>
@@ -35,14 +37,9 @@ export const WalletKit = () => {
           </Typography>
         </>
       ) : (
-        <div>
-          <Typography gutterBottom variant="h6">
-            {t('creatures.whitelist.welcome')}
-          </Typography>
-          <Typography gutterBottom variant="h6">
-            {t('creatures.whitelist.wallet')}
-          </Typography>
+        <div className={styles.walletKit}>
           <ConnectWalletButton style={WalletButtonStyle} />
+          {!isMobileView && <div className={styles.walletKit__text}>{t('creatures.whitelist.welcome')}</div>}
         </div>
       )}
     </>
@@ -51,8 +48,9 @@ export const WalletKit = () => {
 
 const WalletButtonStyle = {
   backgroundColor: 'black',
+  fontFamily: 'The Neue',
   color: 'white',
   justifyContent: 'center',
-  padding: '1.5rem',
-  width: '100%',
+  margin: '1rem',
+  width: '20rem',
 };

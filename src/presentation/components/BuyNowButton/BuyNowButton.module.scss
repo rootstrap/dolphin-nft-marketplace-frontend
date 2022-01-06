@@ -1,7 +1,18 @@
-.buyNowButton {
-  padding: 1.5rem 4rem !important;
+@import '../../../app/styles/base/settings';
 
-  &__typography {
-    font-family: The Neue, Avenue X !important;
+.buyNowButton {
+  button {
+    background-color: black;
+    border: 2px solid $orange-creatures;
+    color: white;
+    cursor: pointer;
+    margin: 1rem;
+    padding: 1rem;
+    width: 20rem;
+  }
+
+  p {
+    color: white;
+    font-family: The Neue;
   }
 }

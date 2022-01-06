@@ -1,9 +1,18 @@
-.buyNowButton {
-  background-color: black !important;
-  width: 20rem !important;
+@import '../../../app/styles/base/settings';
 
-  &__typography {
+.buyNowButton {
+  button {
+    background-color: black;
+    border: 2px solid $orange-creatures;
+    color: white;
+    cursor: pointer;
+    margin: 1rem;
+    padding: 1rem;
+    width: 20rem;
+  }
+
+  p {
+    color: white;
     font-family: The Neue;
-    font-size: 16px;
   }
 }

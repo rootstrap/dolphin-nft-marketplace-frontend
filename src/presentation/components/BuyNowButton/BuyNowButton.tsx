@@ -32,19 +32,13 @@ export const BuyNowButton = () => {
       {!isLoadingData ? (
         <>
           {enoughBalance ? (
-            <>
-              <Button
-                fullWidth
-                className={styles.buyNowButton}
-                onClick={buyNft}
-                variant="outlined"
-                color="secondary"
-              >
-                <span className={styles.buyNowButton__typography}>
+            <div className={styles.buyNowButton}>
+              <Button onClick={buyNft} variant="outlined">
+                <Typography variant="h6" component="p">
                   {t('creatures.buyCreatures.buyButton')}
-                </span>
+                </Typography>
               </Button>
-            </>
+            </div>
           ) : (
             <>
               <>
@@ -55,7 +49,7 @@ export const BuyNowButton = () => {
                 </Typography>
               </>
               <>
-                <Button fullWidth onClick={handleOnClick} variant="text" color="secondary">
+                <Button onClick={handleOnClick} variant="outlined">
                   {defaultCreditCard.status === creditCardStatus.approved
                     ? t('creatures.buyCreatures.fundButton')
                     : t('creatures.buyCreatures.activateButton')}
@@ -65,7 +59,7 @@ export const BuyNowButton = () => {
           )}
           {!isMobileView && (
             <div className={styles.buyNowButton__typography}>
-              {t('creatures.buyCreatures.creditDebitCard')}
+              <Typography variant="body1"> {t('creatures.buyCreatures.creditDebitCard')}</Typography>
             </div>
           )}
         </>

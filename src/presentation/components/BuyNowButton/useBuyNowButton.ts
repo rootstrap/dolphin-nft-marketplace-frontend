@@ -5,16 +5,16 @@ import { useGetCreditCardFeesMutation } from 'infrastructure/services/creditCard
 import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositService';
 import { useBuyNftByPackMutation, useGetNftPackInfoMutation } from 'infrastructure/services/nft/NftService';
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { creditCardStatus } from 'app/constants/contants';
-import { useTotalBalance } from 'app/hooks/useTotalBalance';
+import { creditCardStatus, currency } from 'app/constants/contants';
 
 export const useBuyNowButton = () => {
   const {
     user: { user },
     creditCard: { defaultCreditCard },
+    deposit: { balances },
   } = useAppSelector(state => state);
 
-  const { totalBalance } = useTotalBalance('USD');
+  const totalBalance = balances.find(balance => balance.coin === currency.usd).total || 0;
   const [creaturePrice, setCreaturePrice] = useState<number>(0);
   const [depositSize, setDepositSize] = useState<number>(0);
   const [enoughBalance, setEnoughBalance] = useState(false);

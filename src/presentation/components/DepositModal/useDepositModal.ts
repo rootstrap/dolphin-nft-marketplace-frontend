@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import { useInitiateDepositMutation } from 'infrastructure/services/deposit/DepositService';
 import { encryptData } from 'app/helpers/encryptData';
+import { keyId, publicKey } from 'app/constants/contants';
 
 export const useDepositModal = (depositSize: number) => {
-  const publicKey = process.env.REACT_APP_CC_PUBLIC_KEY;
-  const keyId = process.env.REACT_APP_CC_KEY_ID;
   const [cvv, setCvv] = useState<CreditCard>({
     focus: 'number',
     cvc: 0,

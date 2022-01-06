@@ -5,15 +5,16 @@ import { useAppSelector } from 'app/hooks/reduxHooks';
 import { useGetCreditCardFeesMutation } from 'infrastructure/services/creditCard/CreditCardService';
 import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositService';
 import { NFT } from 'app/interfaces/NFT/NFT';
-import { useTotalBalance } from 'app/hooks/useTotalBalance';
+import { currency } from 'app/constants/contants';
 
 export const useBuyNft = (nft: NFT) => {
   const {
     user: { user },
     creditCard: { defaultCreditCard },
+    deposit: { balances },
   } = useAppSelector(state => state);
 
-  const { totalBalance } = useTotalBalance('USD');
+  const totalBalance = balances.find(balance => balance.coin === currency.usd).total || 0;
   const [fee, setFee] = useState<number>(0);
   const [depositSize, setDepositSize] = useState<number>(0);
   const [enoughBalance, setEnoughBalance] = useState(false);

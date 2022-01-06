@@ -30,6 +30,9 @@ export const dropDownListCategories = [
   },
 ];
 
+export const publicKey = process.env.REACT_APP_CC_PUBLIC_KEY;
+export const keyId = process.env.REACT_APP_CC_KEY_ID;
+
 export const CREATURES_URL: string = 'creaturechronicles.io';
 
 export const socialMediaLinks = {

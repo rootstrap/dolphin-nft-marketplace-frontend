@@ -18,28 +18,41 @@
       height: auto;
       object-fit: cover;
     }
-
-    &Button {
-      width: 100%;
-      display: flex;
-      justify-content: space-evenly;
-      color: white;
-
-      button {
-        border: 2px solid $orange-creatures;
-        margin: 1rem;
-        width: 20rem;
-      }
-
-      @media screen and (min-width: $sm-min-width) and (max-width: $sm-max-width) {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
   }
 
-  a {
+  &__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
     color: white;
+
+    button {
+      background-color: black;
+      border: 2px solid $orange-creatures;
+      color: white;
+      cursor: pointer;
+      margin: 1rem;
+      padding: 1rem;
+      width: 20rem;
+    }
+
+    p {
+      font-family: The Neue;
+    }
+
+    a {
+      color: white;
+    }
+
+    @media screen and (min-width: $sm-min-width) and (max-width: $sm-max-width) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &Button {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 

@@ -5,14 +5,15 @@ import CreaturesBackground from 'app/assets/CreaturesBackground.png';
 import routesPaths from 'app/constants/routesPath';
 import { BuyNowButton } from 'presentation/components/BuyNowButton/BuyNowButton';
 import { useAppSelector } from 'app/hooks/reduxHooks';
-import { WalletKitProvider } from '@gokiprotocol/walletkit';
-import { WalletKit } from '../../CreaturesWhitelist/SolanaWalletKit/WalletKit';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Main.module.scss';
+import { useContext } from 'react';
+import { ModalContext } from '../../../../app/context/ModalContext';
 
 export const Main = () => {
   const t = useTranslation();
   const { isAuthenticated, user } = useAppSelector(state => state.user);
+  const { setLoginModalIsOpen } = useContext(ModalContext);
 
   return (
     <>
@@ -20,31 +21,49 @@ export const Main = () => {
         <div className={styles.mainContent__background}>
           <img src={CreaturesBackground} alt="" />
         </div>
-        <div className={styles.mainContent__backgroundButton}>
-          {isAuthenticated && whitelist.find(email => email === user.email) ? (
-            <>
-              <div>
-                <BuyNowButton />
-              </div>
-              <div>
-                <WalletKitProvider
-                  defaultNetwork="devnet"
-                  app={{
-                    name: 'Creatures Marketplace',
-                  }}
-                >
-                  <WalletKit />
-                </WalletKitProvider>
-              </div>
-            </>
-          ) : (
-            <a href={routesPaths.creaturesCarousel}>
-              <Button size="large" variant="outlined" color="inherit">
-                {t('creatures.exploreCollectionBtn')}
+
+        {!isAuthenticated && (
+          <div className={styles.mainContent__buttons}>
+            <div className={styles.mainContent__buttonsButton}>
+              <Button variant="outlined" onClick={() => setLoginModalIsOpen(true)}>
+                <Typography variant="h6" component="p">
+                  {t('creatures.buyCreatures.buyButton')}
+                </Typography>
               </Button>
-            </a>
-          )}
-        </div>
+              <Typography variant="body1" component="p">
+                {t('creatures.buyCreatures.creditDebitCard')}
+              </Typography>
+            </div>
+            <div className={styles.mainContent__buttonsButton}>
+              <a href="/whitelist">
+                <Button variant="outlined">
+                  <Typography variant="h6" component="p">
+                    {t('creatures.buyCreatures.mintWithSol')}
+                  </Typography>
+                </Button>
+              </a>
+              <Typography variant="body1" component="p">
+                {t('creatures.buyCreatures.solana')}
+              </Typography>
+            </div>
+          </div>
+        )}
+
+        {isAuthenticated && whitelist.find(email => email === user.email) && <BuyNowButton />}
+
+        {isAuthenticated && !whitelist.find(email => email === user.email) && (
+          <div className={styles.mainContent__buttons}>
+            <div className={styles.mainContent__buttonsButton}>
+              <a href={routesPaths.creaturesCarousel}>
+                <Button size="large" variant="outlined" color="inherit">
+                  <Typography variant="h6" component="p">
+                    {t('creatures.exploreCollectionBtn')}
+                  </Typography>
+                </Button>
+              </a>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className={styles.legend}>

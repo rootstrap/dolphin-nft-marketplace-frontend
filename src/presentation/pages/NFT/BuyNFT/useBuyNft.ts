@@ -14,7 +14,7 @@ export const useBuyNft = (nft: NFT) => {
     deposit: { balances },
   } = useAppSelector(state => state);
 
-  const totalBalance = balances.find(balance => balance.coin === currency.usd).total || 0;
+  const [totalBalance, setTotalBalance] = useState(0);
   const [fee, setFee] = useState<number>(0);
   const [depositSize, setDepositSize] = useState<number>(0);
   const [enoughBalance, setEnoughBalance] = useState(false);
@@ -60,6 +60,10 @@ export const useBuyNft = (nft: NFT) => {
   useEffect(() => {
     setEnoughBalance(hasEnoughBalance(totalBalance, nft.offerPrice));
   }, [totalBalance, nft]);
+
+  useEffect(() => {
+    setTotalBalance(() => balances.find(balance => balance.coin === currency.usd)?.total || 0);
+  }, [balances]);
 
   return {
     defaultCreditCard,

@@ -14,7 +14,7 @@ export const useBuyNowButton = () => {
     deposit: { balances },
   } = useAppSelector(state => state);
 
-  const totalBalance = balances.find(balance => balance.coin === currency.usd).total || 0;
+  const [totalBalance, setTotalBalance] = useState(0);
   const [creaturePrice, setCreaturePrice] = useState<number>(0);
   const [depositSize, setDepositSize] = useState<number>(0);
   const [enoughBalance, setEnoughBalance] = useState(false);
@@ -68,6 +68,10 @@ export const useBuyNowButton = () => {
       setIsLoadingData(false);
     }
   }, [getCreditCardFees, getPackInfo, totalBalance]);
+
+  useEffect(() => {
+    setTotalBalance(() => balances.find(balance => balance.coin === currency.usd)?.total || 0);
+  }, [balances]);
 
   useEffect(() => {
     loadData();

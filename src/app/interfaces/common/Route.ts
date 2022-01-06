@@ -1,8 +1,14 @@
-import { ReactElement } from 'react';
+import { LazyExoticComponent } from 'react';
 
 export interface Route {
+  [role: string]: RouteElement[];
+}
+
+export interface RouteElement {
   path: string;
-  component: ReactElement;
+  Component: LazyExoticComponent<JSXComponent> | JSXComponent;
   exact?: boolean;
   private?: boolean;
 }
+
+type JSXComponent = () => JSX.Element;

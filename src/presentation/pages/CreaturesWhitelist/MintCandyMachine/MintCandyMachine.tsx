@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button, CircularProgress, Typography } from '@material-ui/core';
-
 import * as anchor from '@project-serum/anchor';
-
 import {
   CandyMachine,
   awaitTransactionSignatureConfirmation,
@@ -10,6 +8,7 @@ import {
   mintOneToken,
 } from 'app/helpers/candyMachine';
 import useTranslation from 'app/hooks/useTranslation';
+import styles from './MintCandyMachine.module.scss';
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -34,6 +33,7 @@ export const MintCandyMachine = ({
 }: HomeProps) => {
   const t = useTranslation();
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
 
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
@@ -54,12 +54,16 @@ export const MintCandyMachine = ({
 
   const onMint = async () => {
     setError('');
+    setSuccess('');
+
     try {
       setIsMinting(true);
       if (wallet && candyMachine?.program) {
         const mintTxId = await mintOneToken(candyMachine, config, wallet.publicKey, treasury);
 
         await awaitTransactionSignatureConfirmation(mintTxId, txTimeout, connection, 'singleGossip', false);
+
+        setSuccess('Mint Confirmed');
       }
     } catch (error: any) {
       const mintError: MintError = JSON.parse(JSON.stringify(error, null, 2));
@@ -74,14 +78,29 @@ export const MintCandyMachine = ({
 
   return (
     <>
-      <div>
+      <div className={styles.candyMachine}>
         {isValidAddress ? (
-          <Button onClick={onMint} variant="outlined" disabled={isMinting} size="large">
-            {isMinting ? <CircularProgress /> : t('creatures.whitelist.mint')}
+          <Button
+            className={styles.candyMachine__button}
+            onClick={onMint}
+            variant="outlined"
+            disabled={isMinting}
+            size="large"
+          >
+            {isMinting ? (
+              <CircularProgress />
+            ) : (
+              <Typography className={styles.candyMachine__buttonText} variant="h5">
+                {t('creatures.buyCreatures.mintButton')}
+              </Typography>
+            )}
           </Button>
         ) : (
           <Typography variant="h6">{t('creatures.whitelist.walletInvalid')}</Typography>
         )}
+      </div>
+      <div>
+        <Typography variant="h6">{success}</Typography>
       </div>
       <div>
         <Typography variant="h6">{error}</Typography>

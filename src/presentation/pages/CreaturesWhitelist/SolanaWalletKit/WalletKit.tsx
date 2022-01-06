@@ -27,7 +27,14 @@ export const WalletKit = () => {
             wallet={wallet}
             isValidAddress={isValidAddress}
           />
-          <Button onClick={disconnect}>{t('creatures.whitelist.disconnect')}</Button>
+          <Typography
+            className={styles.walletKit__disconnect}
+            variant="h6"
+            onClick={disconnect}
+            component="div"
+          >
+            {t('creatures.whitelist.disconnect')}
+          </Typography>
         </>
       ) : (
         <div className={styles.walletKit}>

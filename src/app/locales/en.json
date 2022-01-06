@@ -63,6 +63,7 @@
     "dropDate": "Drop: December 15th / 2021",
     "buyCreatures": {
       "buyButton": "BUY NOW WITH FTX",
+      "mintButton": "Mint now!",
       "creditDebitCard": "Credit or debit cards accepted",
       "fundWallet": "You don't have enough money for buying a Creature. You can fund your wallet here",
       "activateWallet": "You must activate your wallet in order to start your collection. You only need to do this once!",
@@ -76,7 +77,7 @@
       "welcome": "Welcome to the whitelist",
       "mint": "Mint Now!",
       "walletInvalid": "Your wallet address is not approved for minting at this time. Please check the Discord for when you are eligible.",
-      "disconnect": "Disconnect",
+      "disconnect": "Disconnect Wallet",
       "wallet": "Connect your Solana wallet"
     }
   },

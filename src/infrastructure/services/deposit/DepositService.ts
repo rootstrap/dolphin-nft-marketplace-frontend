@@ -1,9 +1,9 @@
 import { endpoints } from 'app/constants/endpoints';
 import {
-  Balance,
   GetCoinsResponse,
   GetConvertResponse,
   GetConvertResult,
+  BalanceResults,
 } from 'app/interfaces/common/Balance';
 import { api } from '../Api';
 
@@ -35,8 +35,14 @@ const depositApi = api.injectEndpoints({
     getCoins: builder.mutation<GetCoinsResponse, void>({
       query: () => `${process.env.REACT_APP_FTX_API_URL}/wallet/coins`,
     }),
-    getBalance: builder.mutation<Balance[], void>({
-      query: () => `${endpoints.BALANCE}`,
+    getBalance: builder.mutation<BalanceResults, void>({
+      query: () => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/wallet/balances`,
+        method: 'GET',
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+      }),
     }),
     getConvertBalance: builder.mutation<GetConvertResult, void>({
       query: convertId => ({

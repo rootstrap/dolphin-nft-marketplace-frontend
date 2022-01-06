@@ -1,0 +1,13 @@
+.candyMachine {
+  &__button {
+    background-color: black !important;
+    padding: 1rem 4rem !important;
+    width: 20rem;
+
+    &Text {
+      color: white;
+      font-family: The Neue, Avenue X !important;
+      text-transform: uppercase;
+    }
+  }
+}

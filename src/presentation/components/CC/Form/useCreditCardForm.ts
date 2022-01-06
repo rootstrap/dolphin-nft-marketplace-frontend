@@ -8,6 +8,7 @@ import { Country, Subregion } from 'app/interfaces/common/Country';
 import useTranslation from 'app/hooks/useTranslation';
 import { encryptData } from 'app/helpers/encryptData';
 import { ICreditCardError } from 'app/interfaces/creditCard/creditCard';
+import { keyId, publicKey } from 'app/constants/contants';
 
 interface FormValues {
   name: string;
@@ -32,8 +33,6 @@ export const useCreditCardForm = () => {
   const [error, setError] = useState('');
   const [countries, setCountries] = useState<Country[]>([]);
   const [subregions, setSubregions] = useState<Subregion[]>([]);
-  const publicKey = process.env.REACT_APP_CC_PUBLIC_KEY;
-  const keyId = process.env.REACT_APP_CC_KEY_ID;
 
   const schema = z.object({
     name: z.string().min(3, { message: t('creditCard.error.requiredField') }),

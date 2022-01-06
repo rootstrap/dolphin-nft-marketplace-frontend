@@ -1,4 +1,3 @@
-import { endpoints } from 'app/constants/endpoints';
 import {
   GetCoinsResponse,
   GetConvertResponse,
@@ -10,7 +9,7 @@ import { api } from '../Api';
 const depositApi = api.injectEndpoints({
   endpoints: builder => ({
     createDeposit: builder.mutation({
-      query: (deposit: DepositBody) => ({
+      query: (deposit: CreateDepositBody) => ({
         url: `${process.env.REACT_APP_FTX_API_URL}/cards/${deposit.cardId}/deposit_verify_attempt`,
         method: 'POST',
         headers: {
@@ -22,13 +21,18 @@ const depositApi = api.injectEndpoints({
       }),
     }),
     initiateDeposit: builder.mutation({
-      query: (deposit: DepositBody) => ({
-        url: `${endpoints.DEPOSIT}/initiate-deposit`,
+      query: (deposit: InitiateDepositBody) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/cards/deposit`,
         method: 'POST',
+        headers: {
+          ftxAuthorization: 'yes',
+        },
         body: {
-          size: deposit.size,
           cardId: deposit.cardId,
-          cvv: deposit.cvv,
+          coin: 'USD',
+          encryptedData: deposit.encryptedData,
+          keyId: deposit.keyId,
+          size: deposit.size,
         },
       }),
     }),
@@ -81,10 +85,16 @@ const depositApi = api.injectEndpoints({
   }),
 });
 
-interface DepositBody {
+interface CreateDepositBody {
   size: number;
   cardId: number;
-  cvv?: number;
+}
+
+interface InitiateDepositBody {
+  cardId: string;
+  encryptedData: string;
+  keyId: string;
+  size: number;
 }
 
 interface ConvertBody {

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import { useInitiateDepositMutation } from 'infrastructure/services/deposit/DepositService';
+import { encryptData } from 'app/helpers/encryptData';
+import { keyId, publicKey } from 'app/constants/contants';
 
 export const useDepositModal = (depositSize: number) => {
   const [cvv, setCvv] = useState<CreditCard>({
@@ -11,21 +13,27 @@ export const useDepositModal = (depositSize: number) => {
   const [error, setError] = useState('');
   const { id, name, data } = useAppSelector(state => state.creditCard.defaultCreditCard);
 
-  const [initiateDeposit, { isLoading, isSuccess, isError }] = useInitiateDepositMutation();
+  const [initiateDeposit, { isLoading, isSuccess, isError, data: depositData }] =
+    useInitiateDepositMutation();
 
   const handleOnClick = async () => {
-    await initiateDeposit({
+    const data = await encryptData(publicKey, keyId, {
       cvv: cvv.cvc,
-      cardId: Number(id),
+    });
+
+    await initiateDeposit({
+      keyId: keyId,
+      encryptedData: data.encryptedData,
+      cardId: id,
       size: depositSize,
     });
   };
 
   useEffect(() => {
-    if (isError) {
+    if ((isSuccess && depositData.result?.errorCode) || isError) {
       setError('An Error has ocurred');
     }
-  }, [isError]);
+  }, [isError, isSuccess, depositData]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const { name, value } = e.target;

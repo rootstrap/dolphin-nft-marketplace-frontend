@@ -1,18 +1,20 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import { hasEnoughBalance } from 'app/helpers/HasEnoughBalance';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import { useGetCreditCardFeesMutation } from 'infrastructure/services/creditCard/CreditCardService';
 import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositService';
 import { NFT } from 'app/interfaces/NFT/NFT';
+import { currency } from 'app/constants/contants';
 
 export const useBuyNft = (nft: NFT) => {
   const {
     user: { user },
     creditCard: { defaultCreditCard },
-    deposit: { currentBalance },
+    deposit: { balances },
   } = useAppSelector(state => state);
 
+  const totalBalance = balances.find(balance => balance.coin === currency.usd).total || 0;
   const [fee, setFee] = useState<number>(0);
   const [depositSize, setDepositSize] = useState<number>(0);
   const [enoughBalance, setEnoughBalance] = useState(false);
@@ -40,29 +42,29 @@ export const useBuyNft = (nft: NFT) => {
   const handleOpenBuyNftModal = () => setBuyModalIsOpen(true);
   const handleCloseBuyNftModal = () => setBuyModalIsOpen(false);
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     const data: any = await getCreditCardFees();
     await getBalance();
     const { fixed, variable } = data.data;
-    const depositSize = nft.offerPrice - currentBalance;
+    const depositSize = nft.offerPrice - totalBalance;
     const fees = (depositSize * variable + fixed).toFixed(2);
 
     setDepositSize(depositSize);
     setFee(fees);
-  };
+  }, [totalBalance, getBalance, getCreditCardFees, nft]);
 
   useEffect(() => {
     loadData();
-  }, [depositSize]);
+  }, [loadData, depositSize]);
 
   useEffect(() => {
-    setEnoughBalance(hasEnoughBalance(currentBalance, nft.offerPrice));
-  }, [currentBalance]);
+    setEnoughBalance(hasEnoughBalance(totalBalance, nft.offerPrice));
+  }, [totalBalance, nft]);
 
   return {
     defaultCreditCard,
     handleOnClick,
-    currentBalance,
+    totalBalance,
     enoughBalance,
     depositModalIsOpen,
     handleCloseDepositModal,

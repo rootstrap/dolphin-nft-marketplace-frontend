@@ -6,7 +6,6 @@ import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositSe
 import { useBuyNftByPackMutation, useGetNftPackInfoMutation } from 'infrastructure/services/nft/NftService';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { creditCardStatus, currency } from 'app/constants/contants';
-import { Balance } from 'app/interfaces/common/Balance';
 
 export const useBuyNowButton = () => {
   const {
@@ -15,7 +14,7 @@ export const useBuyNowButton = () => {
     deposit: { balances },
   } = useAppSelector(state => state);
 
-  const [currentBalanceUSD, setCurrentBalanceUSD] = useState(0);
+  const totalBalance = balances.find(balance => balance.coin === currency.usd).total || 0;
   const [creaturePrice, setCreaturePrice] = useState<number>(0);
   const [depositSize, setDepositSize] = useState<number>(0);
   const [enoughBalance, setEnoughBalance] = useState(false);
@@ -57,7 +56,7 @@ export const useBuyNowButton = () => {
       const data: any = await getCreditCardFees();
       const packInfo: any = await getPackInfo();
       const { fixed, variable } = data.data;
-      const depositSize = packInfo.data.result.price - currentBalanceUSD;
+      const depositSize = packInfo.data.result.price - totalBalance;
       const fees = (depositSize * variable + fixed).toFixed(2);
 
       setCreaturePrice(packInfo.data.result.price);
@@ -68,23 +67,15 @@ export const useBuyNowButton = () => {
     } finally {
       setIsLoadingData(false);
     }
-  }, [getCreditCardFees, getPackInfo, getBalance, currentBalanceUSD]);
+  }, [getCreditCardFees, getPackInfo, totalBalance]);
 
   useEffect(() => {
     loadData();
   }, [loadData]);
 
   useEffect(() => {
-    setEnoughBalance(hasEnoughBalance(currentBalanceUSD, creaturePrice));
-  }, [currentBalanceUSD, creaturePrice]);
-
-  useEffect(() => {
-    const usdBalance: Balance = balances.find(balance => balance.coin === currency.usd);
-
-    if (usdBalance) {
-      setCurrentBalanceUSD(usdBalance.total);
-    }
-  }, []);
+    setEnoughBalance(hasEnoughBalance(totalBalance, creaturePrice));
+  }, [totalBalance, creaturePrice]);
 
   useEffect(() => {
     if (isSuccess) {

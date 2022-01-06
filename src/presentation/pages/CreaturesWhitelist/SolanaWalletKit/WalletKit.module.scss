@@ -7,4 +7,13 @@
     font-family: 'The Neue';
     font-size: 16px;
   }
+
+  &__disconnect {
+    cursor: pointer;
+    color: orange;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

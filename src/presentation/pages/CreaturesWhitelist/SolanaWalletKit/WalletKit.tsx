@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { ConnectWalletButton } from '@gokiprotocol/walletkit';
 import { MintCandyMachine } from '../MintCandyMachine/MintCandyMachine';
 import { candyMachineConfig } from 'app/constants/creatures/candyMachineConfig';

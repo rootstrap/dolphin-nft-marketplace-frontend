@@ -1,7 +1,10 @@
 import { ModalContext } from 'app/context/ModalContext';
 import { hasEnoughBalance } from 'app/helpers/HasEnoughBalance';
-import { useAppSelector } from 'app/hooks/reduxHooks';
-import { useGetCreditCardFeesMutation } from 'infrastructure/services/creditCard/CreditCardService';
+import { useAppDispatch, useAppSelector } from 'app/hooks/reduxHooks';
+import {
+  useGetCreditCardFeesMutation,
+  creditCardApi,
+} from 'infrastructure/services/creditCard/CreditCardService';
 import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositService';
 import { useBuyNftByPackMutation, useGetNftPackInfoMutation } from 'infrastructure/services/nft/NftService';
 import { useCallback, useContext, useEffect, useState } from 'react';
@@ -13,6 +16,7 @@ export const useBuyNowButton = () => {
     creditCard: { defaultCreditCard },
     deposit: { balances },
   } = useAppSelector(state => state);
+  const dispatch = useAppDispatch();
 
   const [totalBalance, setTotalBalance] = useState(0);
   const [creaturePrice, setCreaturePrice] = useState<number>(0);
@@ -24,7 +28,7 @@ export const useBuyNowButton = () => {
 
   const { setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
 
-  const [buyNft, { isSuccess, isLoading: isLoadingBuyNFT }] = useBuyNftByPackMutation();
+  const [buyNft, { isSuccess, isError, isLoading: isLoadingBuyNFT }] = useBuyNftByPackMutation();
   const [getPackInfo] = useGetNftPackInfoMutation();
   const [getCreditCardFees] = useGetCreditCardFeesMutation();
   const [getBalance] = useGetBalanceMutation();
@@ -46,7 +50,11 @@ export const useBuyNowButton = () => {
 
   const handleClose = () => {
     setIsOpen(false);
-    window.location.href = '/profile';
+    resetErrors();
+
+    if (isSuccess) {
+      window.location.href = '/profile';
+    }
   };
 
   const loadData = useCallback(async () => {
@@ -87,6 +95,14 @@ export const useBuyNowButton = () => {
     }
   }, [isSuccess]);
 
+  useEffect(() => {
+    if (isError) {
+      setIsOpen(true);
+    }
+  }, [isError]);
+
+  const resetErrors = () => dispatch(creditCardApi.util.resetApiState());
+
   return {
     buyNft,
     depositSize,
@@ -100,5 +116,6 @@ export const useBuyNowButton = () => {
     isOpen,
     handleClose,
     handleCloseDepositModal,
+    isSuccess,
   };
 };

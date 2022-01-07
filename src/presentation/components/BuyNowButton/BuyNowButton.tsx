@@ -7,6 +7,7 @@ import { colors } from 'app/constants/contants';
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { SuccessVerification } from '../CC/Verification/SuccessVerification';
 import { useResponsive } from 'app/hooks/useResponsive';
+import { FailedVerification } from '../CC/Verification/FailedVerification';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './BuyNowButton.module.scss';
 
@@ -14,6 +15,7 @@ export const BuyNowButton = () => {
   const t = useTranslation();
   const {
     buyNft,
+    isSuccess,
     depositSize,
     defaultCreditCard,
     handleOnClick,
@@ -78,9 +80,14 @@ export const BuyNowButton = () => {
         fee={fee}
         depositSize={depositSize}
       />
+
       <BaseModal open={isOpen} handleClose={handleClose}>
         <div style={{ textAlign: 'center' }}>
-          <SuccessVerification successMsg={t('creatures.buyCreatures.successMsg')} />
+          {isSuccess ? (
+            <SuccessVerification successMsg={t('creatures.buyCreatures.successMsg')} />
+          ) : (
+            <FailedVerification errorMsg={t('creatures.buyCreatures.errorMsg')} />
+          )}
         </div>
       </BaseModal>
     </>

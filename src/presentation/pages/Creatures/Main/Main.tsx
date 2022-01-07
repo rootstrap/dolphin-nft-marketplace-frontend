@@ -1,18 +1,17 @@
 import { Button, Typography } from '@material-ui/core';
 import { ReactComponent as SmallDiscord } from 'app/assets/SmallDiscord.svg';
-import { socialMediaLinks, whitelist } from 'app/constants/contants';
+import { socialMediaLinks } from 'app/constants/contants';
 import CreaturesBackground from 'app/assets/CreaturesBackground.png';
-import routesPaths from 'app/constants/routesPath';
 import { BuyNowButton } from 'presentation/components/BuyNowButton/BuyNowButton';
 import { useAppSelector } from 'app/hooks/reduxHooks';
-import useTranslation from 'app/hooks/useTranslation';
-import styles from './Main.module.scss';
 import { useContext } from 'react';
 import { ModalContext } from '../../../../app/context/ModalContext';
+import useTranslation from 'app/hooks/useTranslation';
+import styles from './Main.module.scss';
 
 export const Main = () => {
   const t = useTranslation();
-  const { isAuthenticated, user } = useAppSelector(state => state.user);
+  const { isAuthenticated } = useAppSelector(state => state.user);
   const { setLoginModalIsOpen } = useContext(ModalContext);
 
   return (
@@ -22,7 +21,9 @@ export const Main = () => {
           <img src={CreaturesBackground} alt="" />
         </div>
 
-        {!isAuthenticated && (
+        {isAuthenticated ? (
+          <BuyNowButton />
+        ) : (
           <div className={styles.mainContent__buttons}>
             <div className={styles.mainContent__buttonsButton}>
               <Button variant="outlined" onClick={() => setLoginModalIsOpen(true)}>
@@ -45,22 +46,6 @@ export const Main = () => {
               <Typography variant="body1" component="p">
                 {t('creatures.buyCreatures.solana')}
               </Typography>
-            </div>
-          </div>
-        )}
-
-        {isAuthenticated && whitelist.find(email => email === user.email) && <BuyNowButton />}
-
-        {isAuthenticated && !whitelist.find(email => email === user.email) && (
-          <div className={styles.mainContent__buttons}>
-            <div className={styles.mainContent__buttonsButton}>
-              <a href={routesPaths.creaturesCarousel}>
-                <Button size="large" variant="outlined" color="inherit">
-                  <Typography variant="h6" component="p">
-                    {t('creatures.exploreCollectionBtn')}
-                  </Typography>
-                </Button>
-              </a>
             </div>
           </div>
         )}

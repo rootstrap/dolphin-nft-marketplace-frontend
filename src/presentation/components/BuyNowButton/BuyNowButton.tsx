@@ -21,6 +21,7 @@ export const BuyNowButton = () => {
     fee,
     isOpen,
     isLoadingData,
+    isLoadingBuyNFT,
     depositModalIsOpen,
     handleClose,
     handleCloseDepositModal,
@@ -33,10 +34,14 @@ export const BuyNowButton = () => {
         <>
           {enoughBalance ? (
             <div className={styles.buyNowButton}>
-              <Button onClick={buyNft} variant="outlined">
-                <Typography variant="h6" component="p">
-                  {t('creatures.buyCreatures.buyButton')}
-                </Typography>
+              <Button onClick={buyNft} variant="outlined" disabled={isLoadingBuyNFT}>
+                {isLoadingBuyNFT ? (
+                  <CustomLoader color={colors.orangeCreatures} height={30} width={30} />
+                ) : (
+                  <Typography variant="h6" component="p">
+                    {t('creatures.buyCreatures.buyButton')}
+                  </Typography>
+                )}
               </Button>
             </div>
           ) : (

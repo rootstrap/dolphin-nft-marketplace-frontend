@@ -24,7 +24,7 @@ export const useBuyNowButton = () => {
 
   const { setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
 
-  const [buyNft, { isSuccess }] = useBuyNftByPackMutation();
+  const [buyNft, { isSuccess, isLoading: isLoadingBuyNFT }] = useBuyNftByPackMutation();
   const [getPackInfo] = useGetNftPackInfoMutation();
   const [getCreditCardFees] = useGetCreditCardFeesMutation();
   const [getBalance] = useGetBalanceMutation();
@@ -95,6 +95,7 @@ export const useBuyNowButton = () => {
     enoughBalance,
     fee,
     isLoadingData,
+    isLoadingBuyNFT,
     depositModalIsOpen,
     isOpen,
     handleClose,

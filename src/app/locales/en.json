@@ -70,6 +70,7 @@
       "fundButton": "Fund Wallet to buy a Creature",
       "activateButton": "Activate Wallet ",
       "successMsg": "Great. The Creature is yours!",
+      "errorMsg": "You can not buy at this time",
       "mintWithSol": "MINT WITH SOLANA",
       "solana": "Solana only"
     },

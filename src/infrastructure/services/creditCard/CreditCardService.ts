@@ -2,7 +2,7 @@ import { CIRCLE_FAILURE_CODES } from 'app/constants/contants';
 import { endpoints } from 'app/constants/endpoints';
 import { api } from '../Api';
 
-const creditCardApi = api.injectEndpoints({
+export const creditCardApi = api.injectEndpoints({
   endpoints: builder => ({
     createCreditCard: builder.mutation({
       query: (creditCard: CreditCardBody) => ({

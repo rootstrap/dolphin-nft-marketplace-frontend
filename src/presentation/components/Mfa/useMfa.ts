@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useLoginMfaMutation, useRequestCodeMutation } from 'infrastructure/services/mfa/MfaService';
+import { ModalContext } from 'app/context/ModalContext';
+import { useLoginStatusMutation } from 'infrastructure/services/user/UserService';
 
 interface FormValues {
   securityCode: string;
@@ -11,7 +13,10 @@ interface FormValues {
 export const useMfa = () => {
   const [requestCode] = useRequestCodeMutation();
   const [loginMfa, { isLoading, isError, error: loginMfaError, isSuccess }] = useLoginMfaMutation();
+  const [loginStatus] = useLoginStatusMutation();
   const [error, setError] = useState('');
+
+  const { setCheckboxesModalIsOpen, setLoginModalIsOpen } = useContext(ModalContext);
 
   const schema = z.object({
     securityCode: z.string().length(6, { message: 'Code should be 6 chars long' }),
@@ -31,14 +36,22 @@ export const useMfa = () => {
 
   useEffect(() => {
     requestCode('');
-  }, []);
+  }, [requestCode]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      loginStatus();
+      setCheckboxesModalIsOpen(true);
+      setLoginModalIsOpen(false);
+    }
+  }, [isSuccess, setCheckboxesModalIsOpen, setLoginModalIsOpen, loginStatus]);
 
   useEffect(() => {
     if (isError) {
       const errorMsg = Object(loginMfaError);
       setError(errorMsg.data.error);
     }
-  }, [isError]);
+  }, [isError, setError, loginMfaError]);
 
   return {
     register,

@@ -27,7 +27,6 @@ export const useCheckboxes = () => {
 
   const loadUserData = useCallback(async () => {
     setIsLoading(true);
-    console.log('sarasa');
     try {
       await getCreditCards();
       await getBalance();

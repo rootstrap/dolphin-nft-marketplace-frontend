@@ -60,7 +60,7 @@ const userSlice = createSlice({
     );
     builder.addMatcher(loginFulfiled, (state, { payload: { token, user } }) => {
       state.token = token;
-      state.user = { ...user };
+      state.user = { ...state.user, ...user };
     });
     builder.addMatcher(
       loginFTXFulfiled,
@@ -97,6 +97,7 @@ const userSlice = createSlice({
     });
     builder.addMatcher(loginMfaFulfilled, (state, { payload }) => {
       state.tokenFtx = payload.result.token;
+      state.user.kyc1ed = payload.result.target.kycLevel && Boolean(payload.result.target.kycLevel);
     });
   },
 });

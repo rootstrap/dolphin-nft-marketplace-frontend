@@ -79,7 +79,13 @@ const userSlice = createSlice({
       state.isAuthenticated = payload.loggedIn;
       state.user.kyc1ed = payload.user?.kycLevel && Boolean(payload.user.kycLevel);
     });
-    builder.addMatcher(logoutFulfiled, state => (state = initialState));
+    builder.addMatcher(logoutFulfiled, state => {
+      state.isAuthenticated = false;
+      state.tokenFtx = '';
+      state.token = '';
+      state.user = { ...initialState.user };
+      localStorage.clear();
+    });
     builder.addMatcher(logoutRejected, (state, { payload: { status } }) => {
       ErrorReqHandler({ status });
     });

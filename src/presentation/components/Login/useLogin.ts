@@ -4,16 +4,14 @@ import {
   useLoginStatusMutation,
   authApi,
 } from 'infrastructure/services/user/UserService';
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext, useState, useCallback } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { recaptchaActions } from 'app/constants/contants';
-import { useGetCreditCardsMutation } from 'infrastructure/services/creditCard/CreditCardService';
-import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositService';
 import { getToken } from 'app/helpers/GetToken';
-import { useAppDispatch, useAppSelector } from 'app/hooks/reduxHooks';
+import { useAppDispatch } from 'app/hooks/reduxHooks';
 import useTranslation from 'app/hooks/useTranslation';
 
 interface FormValues {
@@ -24,9 +22,7 @@ interface FormValues {
 export const useLogin = () => {
   const t = useTranslation();
   const dispatch = useAppDispatch();
-  const { defaultCreditCard } = useAppSelector(state => state.creditCard);
 
-  const [isWalletReady, setIsWalletReady] = useState(false);
   const [error, setError] = useState('');
   const [userInfo, setUserInfo] = useState<FormValues>();
   const [isLoading, setIsLoading] = useState(false);
@@ -35,9 +31,8 @@ export const useLogin = () => {
   const [login, { isSuccess: isLoginSuccess }] = useLoginMutation();
   const [loginFTX, { isSuccess: isLoginFTXSuccess, error: signinError, isError }] = useLoginFTXMutation();
   const [loginStatus, { isSuccess: isLoginStatusSuccess, data: loginStatusData }] = useLoginStatusMutation();
-  const [getCreditCards, { isSuccess: isGetCreditCardsSuccess }] = useGetCreditCardsMutation();
-  const [getBalance] = useGetBalanceMutation();
-  const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen } = useContext(ModalContext);
+  const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen, setCheckboxesModalIsOpen } =
+    useContext(ModalContext);
 
   const schema = z.object({
     email: z.string().email({ message: t('login.error.invalidEmail') }),
@@ -66,52 +61,43 @@ export const useLogin = () => {
     }
   };
 
-  const handleClose = () => {
+  const resetErrors = useCallback(() => dispatch(authApi.util.resetApiState()), [dispatch]);
+
+  const handleClose = useCallback(() => {
     reset();
     clearErrors();
     setError('');
     setLoginModalIsOpen(false);
+    setIsMfaRequired(false);
     resetErrors();
-  };
+  }, [clearErrors, reset, resetErrors, setLoginModalIsOpen]);
 
   const handleOpenSignupModal = () => {
     handleClose();
     setSignupModalIsOpen(true);
   };
 
-  const loadUserData = async () => {
-    setIsLoading(true);
-
-    try {
-      await getCreditCards();
-      await getBalance();
-    } catch (e: any) {
-      setIsLoading(false);
-
-      throw new Error(e);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
     if (isLoginFTXSuccess) {
+      loginStatus();
       login(userInfo);
     }
-  }, [isLoginFTXSuccess]);
+  }, [isLoginFTXSuccess, loginStatus, login, userInfo]);
 
   useEffect(() => {
-    if (isLoginStatusSuccess) {
+    if (isLoginStatusSuccess && isLoginSuccess && isLoginFTXSuccess) {
       const { mfaRequired } = loginStatusData;
-      setIsMfaRequired(Boolean(mfaRequired));
-    }
-  }, [isLoginStatusSuccess]);
 
-  useEffect(() => {
-    if (isLoginSuccess) {
-      loadUserData();
+      if (mfaRequired) {
+        setIsMfaRequired(Boolean(mfaRequired));
+        reset();
+      } else {
+        setCheckboxesModalIsOpen(true);
+        setLoginModalIsOpen(false);
+      }
+      setIsLoading(false);
     }
-  }, [isLoginSuccess]);
+  }, [isLoginStatusSuccess, isLoginSuccess, isLoginFTXSuccess, loginStatusData]);
 
   useEffect(() => {
     if (isError) {
@@ -120,21 +106,7 @@ export const useLogin = () => {
 
       setIsLoading(false);
     }
-  }, [isError]);
-
-  useEffect(() => {
-    if (isGetCreditCardsSuccess) {
-      setIsWalletReady(defaultCreditCard.status === 'approved');
-    }
-  }, [isGetCreditCardsSuccess]);
-
-  useEffect(() => {
-    if (isWalletReady) {
-      handleClose();
-    }
-  }, [isWalletReady]);
-
-  const resetErrors = () => dispatch(authApi.util.resetApiState());
+  }, [isError, signinError]);
 
   return {
     loginModalIsOpen,
@@ -146,7 +118,6 @@ export const useLogin = () => {
     onSubmit,
     errors,
     error,
-    isGetCreditCardsSuccess,
     isMfaRequired,
     setIsMfaRequired,
   };

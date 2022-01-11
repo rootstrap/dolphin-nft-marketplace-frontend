@@ -8,6 +8,7 @@ import { BackgroundLayout } from './BackgroundLayout';
 import { CC } from 'presentation/components/CC/CC';
 import { KYC } from 'presentation/components/KYC/KYC';
 import { useLoginStatusMutation } from 'infrastructure/services/user/UserService';
+import { Checkboxes } from 'presentation/components/Checkboxes/Checkboxes';
 
 interface TopBarLayoutProps {
   pageComponent: ReactElement;
@@ -30,6 +31,7 @@ export const TopBarLayout = ({ pageComponent, isTopBarVisible = true }: TopBarLa
       {pageComponent}
       <Login />
       <Signup />
+      <Checkboxes />
       <CreditCardModal />
       <CC />
       <KYC />

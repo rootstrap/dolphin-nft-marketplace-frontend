@@ -60,7 +60,7 @@ const userSlice = createSlice({
     );
     builder.addMatcher(loginFulfiled, (state, { payload: { token, user } }) => {
       state.token = token;
-      state.user = { ...user };
+      state.user = { ...state.user, ...user };
     });
     builder.addMatcher(
       loginFTXFulfiled,
@@ -79,7 +79,13 @@ const userSlice = createSlice({
       state.isAuthenticated = payload.loggedIn;
       state.user.kyc1ed = payload.user?.kycLevel && Boolean(payload.user.kycLevel);
     });
-    builder.addMatcher(logoutFulfiled, state => (state = initialState));
+    builder.addMatcher(logoutFulfiled, state => {
+      state.isAuthenticated = false;
+      state.tokenFtx = '';
+      state.token = '';
+      state.user = { ...initialState.user };
+      localStorage.clear();
+    });
     builder.addMatcher(logoutRejected, (state, { payload: { status } }) => {
       ErrorReqHandler({ status });
     });
@@ -97,6 +103,7 @@ const userSlice = createSlice({
     });
     builder.addMatcher(loginMfaFulfilled, (state, { payload }) => {
       state.tokenFtx = payload.result.token;
+      state.user.kyc1ed = payload.result.target.kycLevel && Boolean(payload.result.target.kycLevel);
     });
   },
 });

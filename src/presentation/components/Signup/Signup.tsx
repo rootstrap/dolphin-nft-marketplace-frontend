@@ -3,7 +3,6 @@ import { InputText } from '../../../infrastructure/components/InputText/InputTex
 import { BaseModal } from 'infrastructure/components/Modal/Modal';
 import { useSignup } from './useSignup';
 import { Grid } from '@material-ui/core';
-import { Checkboxes } from '../Checkboxes/Checkboxes';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { ReactComponent as FTXLogo } from 'app/assets/ftxus_logo.svg';
 import { dolphinServiceLinks } from 'app/constants/contants';
@@ -24,12 +23,9 @@ export const Signup = () => {
     isTosAgree,
     errors,
     error,
-    isSuccess,
   } = useSignup();
 
-  const formToRender = isSuccess ? (
-    <Checkboxes handleClose={handleClose} />
-  ) : (
+  const formToRender = (
     <form className={styles.signupForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.signupForm__logo}>
         <FTXLogo />

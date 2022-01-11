@@ -1,5 +1,5 @@
 import { useSignupFTXMutation, useSignupMutation, authApi } from 'infrastructure/services/user/UserService';
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -20,9 +20,12 @@ interface FormValues {
 export const useSignup = () => {
   const t = useTranslation();
   const dispatch = useAppDispatch();
+  const { signupModalIsOpen, setSignupModalIsOpen, setLoginModalIsOpen, setCheckboxesModalIsOpen } =
+    useContext(ModalContext);
+
   const [signupFTX, { error: signupError, isLoading, isSuccess, isError }] = useSignupFTXMutation();
   const [signup] = useSignupMutation();
-  const { signupModalIsOpen, setSignupModalIsOpen, setLoginModalIsOpen } = useContext(ModalContext);
+
   const [error, setError] = useState('');
   const [userInfo, setUserInfo] = useState<FormValues>();
   const [isTosAgree, setIsTosAgree] = useState<boolean>(false);
@@ -55,13 +58,15 @@ export const useSignup = () => {
     await signupFTX({ ...data, recaptcha: token });
   };
 
-  const handleClose = () => {
+  const resetErrors = useCallback(() => dispatch(authApi.util.resetApiState()), [dispatch]);
+
+  const handleClose = useCallback(() => {
     clearErrors();
     reset();
     setError('');
     setSignupModalIsOpen(false);
     resetErrors();
-  };
+  }, [clearErrors, setError, setSignupModalIsOpen, reset, resetErrors]);
 
   const handleOpenSigninModal = () => {
     handleClose();
@@ -71,17 +76,17 @@ export const useSignup = () => {
   useEffect(() => {
     if (isSuccess) {
       signup(userInfo);
+      handleClose();
+      setCheckboxesModalIsOpen(true);
     }
-  }, [isSuccess]);
+  }, [isSuccess, signup, setCheckboxesModalIsOpen, handleClose, userInfo]);
 
   useEffect(() => {
     if (isError) {
       const error = Object(signupError);
       setError(error.data.error);
     }
-  }, [isError]);
-
-  const resetErrors = () => dispatch(authApi.util.resetApiState());
+  }, [isError, signupError]);
 
   return {
     signupModalIsOpen,

@@ -7,8 +7,7 @@ import styles from './Checkboxes.module.scss';
 
 export const Checkboxes = ({ error }: CheckboxesProps) => {
   const t = useTranslation();
-  const { kyc1ed, isWalletReady, handleOnClick, isLoading, checkboxesModalIsOpen, handleClose } =
-    useCheckboxes();
+  const { kyc1ed, handleOnClick, isLoading, checkboxesModalIsOpen, handleClose } = useCheckboxes();
 
   return (
     <BaseModal open={checkboxesModalIsOpen} handleClose={handleClose}>
@@ -48,7 +47,7 @@ export const Checkboxes = ({ error }: CheckboxesProps) => {
             </div>
 
             <div className={styles.checkboxes__container}>
-              <Checkbox checked={isWalletReady} />
+              <Checkbox checked={false} />
               <Typography variant="h6" className={styles.checkboxes__containerText}>
                 {t('walletSetup.thirdCheck')}
               </Typography>

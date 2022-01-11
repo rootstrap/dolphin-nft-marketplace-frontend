@@ -6,7 +6,6 @@ import { useGetCreditCardsMutation } from 'infrastructure/services/creditCard/Cr
 
 export const useCheckboxes = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [isWalletReady, setIsWalletReady] = useState(false);
 
   const { kyc1ed } = useAppSelector(state => state.user.user);
   const { defaultCreditCard } = useAppSelector(state => state.creditCard);
@@ -38,16 +37,19 @@ export const useCheckboxes = () => {
   }, [getCreditCards, getBalance]);
 
   useEffect(() => {
-    loadUserData();
-  }, [loadUserData]);
+    if (checkboxesModalIsOpen) {
+      loadUserData();
+    }
+  }, [loadUserData, checkboxesModalIsOpen]);
 
   useEffect(() => {
-    setIsWalletReady(defaultCreditCard.status === 'approved');
+    if (defaultCreditCard.status === 'approved') {
+      handleClose();
+    }
   }, [defaultCreditCard]);
 
   return {
     kyc1ed,
-    isWalletReady,
     handleOnClick,
     isLoading,
     handleClose,

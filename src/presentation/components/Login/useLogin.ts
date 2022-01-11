@@ -28,7 +28,7 @@ export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isMfaRequired, setIsMfaRequired] = useState(false);
 
-  const [login] = useLoginMutation();
+  const [login, { isSuccess: isLoginSuccess }] = useLoginMutation();
   const [loginFTX, { isSuccess: isLoginFTXSuccess, error: signinError, isError }] = useLoginFTXMutation();
   const [loginStatus, { isSuccess: isLoginStatusSuccess, data: loginStatusData }] = useLoginStatusMutation();
   const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen, setCheckboxesModalIsOpen } =
@@ -79,24 +79,25 @@ export const useLogin = () => {
 
   useEffect(() => {
     if (isLoginFTXSuccess) {
+      loginStatus();
       login(userInfo);
     }
-  }, [isLoginFTXSuccess, login, userInfo]);
+  }, [isLoginFTXSuccess, loginStatus, login, userInfo]);
 
   useEffect(() => {
-    if (isLoginStatusSuccess) {
+    if (isLoginStatusSuccess && isLoginSuccess && isLoginFTXSuccess) {
       const { mfaRequired } = loginStatusData;
 
       if (mfaRequired) {
         setIsMfaRequired(Boolean(mfaRequired));
+        reset();
       } else {
         setCheckboxesModalIsOpen(true);
-        handleClose();
+        setLoginModalIsOpen(false);
       }
-
       setIsLoading(false);
     }
-  }, [isLoginStatusSuccess, handleClose, loginStatusData, setCheckboxesModalIsOpen]);
+  }, [isLoginStatusSuccess, isLoginSuccess, isLoginFTXSuccess, loginStatusData]);
 
   useEffect(() => {
     if (isError) {

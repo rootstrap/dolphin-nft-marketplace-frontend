@@ -1,5 +1,4 @@
 import { Menu, MenuItem } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 import { dropDownListCategories } from 'app/constants/contants';
 import styles from './Categories.module.scss';
 

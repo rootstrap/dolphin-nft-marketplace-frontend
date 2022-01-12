@@ -60,6 +60,17 @@ export const routes: Route = {
       private: false,
     },
     {
+      path: routesPaths.secondaryMarket,
+      Component: lazy(
+        () =>
+          import(
+            /* webpackChunkName: "SecondaryMarketPage" */ 'presentation/pages/SecondaryMarket/SecondaryMarketPage'
+          )
+      ),
+      exact: true,
+      private: true,
+    },
+    {
       path: routesPaths.profile,
       Component: lazy(
         () => import(/* webpackChunkName: "ProfilePage" */ 'presentation/pages/Profile/ProfilePage')

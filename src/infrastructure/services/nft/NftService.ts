@@ -67,6 +67,20 @@ const nftApi = api.injectEndpoints({
         },
       }),
     }),
+    sellNft: builder.mutation({
+      query: (selNftBody: SellNFT) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/offer`,
+        method: 'POST',
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+        body: {
+          nftId: selNftBody.nftId,
+          price: selNftBody.price,
+          quoteCurrency: selNftBody.quoteCurrency,
+        },
+      }),
+    }),
   }),
   overrideExisting: true,
 });
@@ -81,6 +95,7 @@ export const {
   useBuyNftByPackMutation,
   useGetNftsByUserMutation,
   useGetNftPackInfoMutation,
+  useSellNftMutation,
   endpoints: {
     getNftsSecondary: { matchFulfilled: getNftsSecondaryFulfiled },
     getNftsPrimary: { matchFulfilled: getNftsPrimaryFulfiled },
@@ -92,4 +107,10 @@ export const {
 interface BuyNFT {
   nftId: string;
   price: number;
+}
+
+interface SellNFT {
+  nftId: string;
+  price: number;
+  quoteCurrency: string;
 }

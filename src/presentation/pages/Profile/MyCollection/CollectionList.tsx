@@ -19,7 +19,7 @@ export const CollectionList = ({ nfts }: CollectionListProps) => {
           {nfts.map(({ nft }) => {
             const { id, ftx_id, name, totalQuantity, offerPrice, imageUrl } = nft;
             return (
-              <Grid item xs={12} md={6} lg={4} className={styles.list__collection}>
+              <Grid item xs={12} md={6} lg={4} className={styles.list__collection} key={id}>
                 <Item
                   id={id}
                   ftxId={ftx_id}

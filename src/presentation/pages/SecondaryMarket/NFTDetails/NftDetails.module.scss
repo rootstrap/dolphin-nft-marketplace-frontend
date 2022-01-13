@@ -1,0 +1,35 @@
+@import '../../../../app/styles/base/settings';
+
+.secondaryMarket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__nft {
+    &Img {
+      width: 20rem;
+      height: 20rem;
+      padding: 1rem 2rem;
+    }
+  }
+
+  &__text {
+    text-align: center;
+    width: 25rem;
+    padding: 0 3rem;
+    &Warning {
+      color: $orange;
+    }
+    &Error {
+      color: $error;
+    }
+  }
+
+  &__buttons {
+    margin-bottom: 2rem;
+
+    &Input {
+      margin-bottom: 0.5rem;
+    }
+  }
+}

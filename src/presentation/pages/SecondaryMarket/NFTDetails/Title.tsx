@@ -1,22 +1,24 @@
 import { Typography } from '@material-ui/core';
 import { useContext } from 'react';
 import { NFTDetailsContext } from './NFTDetails';
+import useTranslation from 'app/hooks/useTranslation';
 import styles from './NftDetails.module.scss';
 
 export const Title = () => {
-  const { title, subtitle, sellError, nft } = useContext(NFTDetailsContext);
+  const { sellError, nft } = useContext(NFTDetailsContext);
+  const t = useTranslation();
 
   return (
     <div className={styles.secondaryMarket__text}>
       <Typography gutterBottom variant="h5">
-        {title}
+        {t('nft.sellNft.title')}
       </Typography>
       <Typography gutterBottom variant="subtitle1">
         {nft?.collection}: {nft?.name}
       </Typography>
 
       <Typography gutterBottom variant="subtitle2">
-        {subtitle}
+        {t('nft.sellNft.subtitle')}
       </Typography>
 
       {sellError && (

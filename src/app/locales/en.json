@@ -158,6 +158,14 @@
       "confirmButton": "Confirm",
       "buyModalTitle": "We are almost done",
       "successMsg": "Great. The NFT is yours"
+    },
+    "sellNft": {
+      "title": "This NFT is yours",
+      "subtitle": "It is in your personal gallery",
+      "saleButton": "Put it for sale",
+      "collectionButton": "My Collection",
+      "sellButton": "Sell",
+      "cancelButton": "Cancel"
     }
   },
   "peers": {

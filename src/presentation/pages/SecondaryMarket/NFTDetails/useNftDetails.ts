@@ -1,16 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useGetNftByIdMutation, useSellNftMutation } from 'infrastructure/services/nft/NftService';
 import { NFT } from 'app/interfaces/NFT/NFT';
-import { IError } from '../../../../app/interfaces/common/Error';
+import { IError } from 'app/interfaces/common/Error';
 
 export const useNftDetails = (nftId: string) => {
   const [nftPrice, setNftPrice] = useState('');
   const [nft, setNft] = useState<NFT>();
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [sellError, setSellError] = useState('');
-
-  const title = 'This NFT is yours';
-  const subtitle = 'It is in your personal gallery!';
 
   const [getNftById, { isLoading }] = useGetNftByIdMutation();
   const [sellNft, { isLoading: isSellNftLoading, isSuccess, isError, error }] = useSellNftMutation();
@@ -59,8 +56,6 @@ export const useNftDetails = (nftId: string) => {
     nftPrice,
     setNftPrice,
     handleSellNft,
-    title,
-    subtitle,
     sellError,
   };
 };

@@ -2,13 +2,15 @@ import { useContext } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { NFTDetailsContext } from './NFTDetails';
-import styles from './NftDetails.module.scss';
 import { Link } from 'react-router-dom';
 import routesPaths from 'app/constants/routesPath';
+import styles from './NftDetails.module.scss';
+import useTranslation from 'app/hooks/useTranslation';
 
 export const Buttons = () => {
   const { isInputVisible, setIsInputVisible, isSellNftLoading, nftPrice, setNftPrice, handleSellNft } =
     useContext(NFTDetailsContext);
+  const t = useTranslation();
 
   return (
     <div>
@@ -29,10 +31,10 @@ export const Buttons = () => {
                 type="number"
               />
               <Button variant="contained" fullWidth onClick={handleSellNft}>
-                Sell
+                {t('nft.sellNft.sellButton')}
               </Button>
               <Button fullWidth onClick={() => setIsInputVisible(false)}>
-                Cancel
+                {t('nft.sellNft.cancelButton')}
               </Button>
             </>
           )}
@@ -41,13 +43,13 @@ export const Buttons = () => {
         <div className={styles.secondaryMarket__buttons}>
           <div>
             <Button variant="contained" fullWidth onClick={() => setIsInputVisible(true)}>
-              Put it for sale
+              {t('nft.sellNft.saleButton')}
             </Button>
           </div>
 
           <div>
             <Link to={routesPaths.profile}>
-              <Button fullWidth>My Collection</Button>
+              <Button fullWidth>{t('nft.sellNft.collectionButton')}</Button>
             </Link>
           </div>
         </div>

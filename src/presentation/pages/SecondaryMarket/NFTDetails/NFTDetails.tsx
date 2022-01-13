@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 import { NFT } from 'app/interfaces/NFT/NFT';
 import { useNftDetails } from './useNftDetails';
-import styles from './NftDetails.module.scss';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
+import styles from './NftDetails.module.scss';
 
 export const NFTDetailsContext = createContext({} as NftDetailsContextProps);
 const { Provider } = NFTDetailsContext;
@@ -17,8 +17,6 @@ export const NFTDetails = ({ children, nftId }: NFTDetailsProps) => {
     nftPrice,
     setNftPrice,
     handleSellNft,
-    title,
-    subtitle,
     sellError,
   } = useNftDetails(nftId);
 
@@ -33,8 +31,6 @@ export const NFTDetails = ({ children, nftId }: NFTDetailsProps) => {
         nftPrice,
         setNftPrice,
         handleSellNft,
-        title,
-        subtitle,
         sellError,
       }}
     >
@@ -59,7 +55,5 @@ interface NftDetailsContextProps {
   nftPrice: string;
   setNftPrice: React.Dispatch<React.SetStateAction<string>>;
   handleSellNft: () => void;
-  title: string;
-  subtitle: string;
   sellError: string;
 }

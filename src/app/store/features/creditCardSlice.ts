@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { CreditCardData } from 'app/interfaces/creditCard/creditCard';
 import {
-  CreditCardData,
   deleteCreditCardFulfiled,
   getCreditCardsFulfiled,
 } from 'infrastructure/services/creditCard/CreditCardService';

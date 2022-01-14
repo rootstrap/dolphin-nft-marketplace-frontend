@@ -1,5 +1,10 @@
-import { CIRCLE_FAILURE_CODES } from 'app/constants/contants';
 import { endpoints } from 'app/constants/endpoints';
+import { sortBy } from 'app/helpers/sortBy';
+import {
+  CreditCardData,
+  ICreditCardsResponse,
+  ICreditCardResponse,
+} from 'app/interfaces/creditCard/creditCard';
 import { api } from '../Api';
 
 export const creditCardApi = api.injectEndpoints({
@@ -31,12 +36,20 @@ export const creditCardApi = api.injectEndpoints({
       }),
     }),
     getCreditCards: builder.mutation<CreditCardData[], void>({
-      query: () => `${endpoints.CREDIT_CARD}`,
-      transformResponse: (response: CreditCardData[]) => response,
+      query: () => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/cards`,
+        method: 'GET',
+        headers: { ftxAuthorization: 'yes' },
+      }),
+      transformResponse: (response: ICreditCardsResponse) => response.result.concat().sort(sortBy('status')),
     }),
     getCreditCardById: builder.mutation<CreditCardData, string>({
-      query: (id: string) => `${endpoints.CREDIT_CARD}/${id}`,
-      transformResponse: (response: CreditCardData) => response,
+      query: (id: string) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/cards/${id}`,
+        method: 'GET',
+        headers: { ftxAuthorization: 'yes' },
+      }),
+      transformResponse: (response: ICreditCardResponse) => response.result,
     }),
     getCreditCardFees: builder.mutation<FeeResult, void>({
       query: () => `${process.env.REACT_APP_FTX_API_URL}/cards/fees`,
@@ -66,27 +79,6 @@ interface CreditCardBody {
   postalCode: string;
   publicKey: string;
   keyId: string;
-}
-
-type DepositVerificationStatus =
-  | 'notStarted'
-  | 'pending'
-  | 'submissionFailed'
-  | 'awaitingVerification'
-  | 'successful'
-  | 'failed';
-
-type Status = 'approved' | 'pending' | 'rejected' | 'needsDepositVerification';
-export interface CreditCardData {
-  id: string;
-  name: string;
-  time: string;
-  billingInfo: Record<string, string>;
-  status: Status;
-  errorCode: string;
-  depositVerificationStatus: DepositVerificationStatus;
-  depositVerificationErrorCode: keyof typeof CIRCLE_FAILURE_CODES;
-  data: Record<string, string> | null;
 }
 
 interface FeeResult {

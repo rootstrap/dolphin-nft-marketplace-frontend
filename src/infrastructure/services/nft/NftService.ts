@@ -27,14 +27,14 @@ const nftApi = api.injectEndpoints({
       query: nftId => `${endpoints.NFT}?ftxId=${nftId}`,
       transformResponse: (data: NFT) => data,
     }),
-    getNftsByUser: builder.mutation<FillsResult[], void>({
+    getNftsByUser: builder.mutation<NFT[], void>({
       query: () => ({
-        url: `${process.env.REACT_APP_FTX_API_URL}/nft/fills`,
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/balances`,
         headers: {
           ftxAuthorization: 'yes',
         },
       }),
-      transformResponse: (data: IFillsResponse) => data.result,
+      transformResponse: (response: IGetNftByUserResponse) => response.result,
     }),
     buyNft: builder.mutation({
       query: (buyNftBody: BuyNFT) => ({
@@ -113,4 +113,9 @@ interface SellNFT {
   nftId: string;
   price: number;
   quoteCurrency: string;
+}
+
+export interface IGetNftByUserResponse {
+  success: boolean;
+  result: NFT[];
 }

@@ -48,10 +48,12 @@
       position: relative;
 
       &:hover {
-        border: 1px solid $primary;
+        border: 2px solid $primary;
+        border-radius: 0.1rem;
       }
 
       &Hidden {
+        color: white;
         width: 100%;
 
         &Title {
@@ -77,6 +79,14 @@
         right: 0;
         background-color: $orange;
         padding: 0.3rem;
+      }
+
+      &Sale {
+        background-color: $orange;
+        color: $black;
+        padding: 0.5rem;
+        position: absolute;
+        right: 0;
       }
     }
 

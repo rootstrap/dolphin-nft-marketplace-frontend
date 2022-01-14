@@ -1,8 +1,8 @@
 import { Grid, Typography } from '@material-ui/core';
-import useTranslation from 'app/hooks/useTranslation';
-import { FillsResult } from 'app/interfaces/NFT/NFT';
+import { NFT } from 'app/interfaces/NFT/NFT';
 import { Item } from 'presentation/pages/Profile/MyCollection/Item';
 import { EmptyCollection } from './EmptyCollection';
+import useTranslation from 'app/hooks/useTranslation';
 import styles from './MyCollection.module.scss';
 
 export const CollectionList = ({ nfts }: CollectionListProps) => {
@@ -16,17 +16,15 @@ export const CollectionList = ({ nfts }: CollectionListProps) => {
       </div>
       {nfts.length ? (
         <Grid container className={styles.list__collection}>
-          {nfts.map(({ nft }) => {
-            const { id, ftx_id, name, totalQuantity, offerPrice, imageUrl } = nft;
+          {nfts.map(nft => {
+            const { id, name, offerPrice, imageUrl } = nft;
             return (
               <Grid item xs={12} md={6} lg={4} className={styles.list__collection} key={id}>
                 <Item
                   id={id}
-                  ftxId={ftx_id}
                   name={name}
-                  totalQuantity={totalQuantity}
-                  price={offerPrice}
                   image={imageUrl}
+                  offerPrice={offerPrice}
                   verticalId={'verticals/sports'}
                 />
               </Grid>
@@ -41,5 +39,5 @@ export const CollectionList = ({ nfts }: CollectionListProps) => {
 };
 
 interface CollectionListProps {
-  nfts: FillsResult[];
+  nfts: NFT[];
 }

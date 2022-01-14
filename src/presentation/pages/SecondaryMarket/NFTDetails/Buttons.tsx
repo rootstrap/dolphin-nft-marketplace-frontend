@@ -16,14 +16,14 @@ export const Buttons = () => {
     setNftPrice,
     nft,
     handleSellNft,
-    cancelSellNft,
+    cancelOfferNft,
   } = useContext(NFTDetailsContext);
   const t = useTranslation();
 
   return (
     <div>
       {nft?.offerPrice && (
-        <Typography className={styles.secondaryMarket__cancelSaleButton} onClick={cancelSellNft}>
+        <Typography className={styles.secondaryMarket__cancelSaleButton} onClick={cancelOfferNft}>
           {t('nft.sellNft.cancelSellButton')}
         </Typography>
       )}

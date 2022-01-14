@@ -22,7 +22,7 @@ export const useNftDetails = (nftId: string) => {
     });
   };
 
-  const cancelSellNft = () => {
+  const cancelOfferNft = () => {
     sellNft({ nftId: nft?.id, price: null, quoteCurrency: nft?.quoteCurrency });
   };
 
@@ -60,7 +60,7 @@ export const useNftDetails = (nftId: string) => {
     nftPrice,
     setNftPrice,
     handleSellNft,
-    cancelSellNft,
+    cancelOfferNft,
     sellError,
   };
 };

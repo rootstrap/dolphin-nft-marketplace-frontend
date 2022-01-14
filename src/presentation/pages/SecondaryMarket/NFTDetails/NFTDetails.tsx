@@ -17,7 +17,7 @@ export const NFTDetails = ({ children, nftId }: NFTDetailsProps) => {
     nftPrice,
     setNftPrice,
     handleSellNft,
-    cancelSellNft,
+    cancelOfferNft,
     sellError,
   } = useNftDetails(nftId);
 
@@ -32,7 +32,7 @@ export const NFTDetails = ({ children, nftId }: NFTDetailsProps) => {
         nftPrice,
         setNftPrice,
         handleSellNft,
-        cancelSellNft,
+        cancelOfferNft,
         sellError,
       }}
     >
@@ -57,6 +57,6 @@ interface NftDetailsContextProps {
   nftPrice: string;
   setNftPrice: React.Dispatch<React.SetStateAction<string>>;
   handleSellNft: () => void;
-  cancelSellNft: () => void;
+  cancelOfferNft: () => void;
   sellError: string;
 }

@@ -57,8 +57,9 @@ export const creditCardApi = api.injectEndpoints({
     }),
     deleteCreditCard: builder.mutation({
       query: (creditCardId: string) => ({
-        url: `${endpoints.CREDIT_CARD}/${creditCardId}`,
+        url: `${process.env.REACT_APP_FTX_API_URL}/cards/${creditCardId}`,
         method: 'DELETE',
+        headers: { ftxAuthorization: 'yes' },
       }),
     }),
   }),

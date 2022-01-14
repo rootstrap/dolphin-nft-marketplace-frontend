@@ -44,8 +44,8 @@ const creditCardSlice = createSlice({
       state.defaultCreditCard =
         payload.length === 0 ? { ...initialState.defaultCreditCard } : { ...payload[0] };
     });
-    builder.addMatcher(deleteCreditCardFulfiled, (state, { payload }) => {
-      state.creditCards = state.creditCards.filter(creditCard => creditCard.id != payload.cardId);
+    builder.addMatcher(deleteCreditCardFulfiled, (state, { meta }) => {
+      state.creditCards = state.creditCards.filter(creditCard => creditCard.id !== meta.arg.originalArgs);
     });
   },
 });

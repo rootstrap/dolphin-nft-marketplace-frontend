@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { CreditCardData } from 'app/interfaces/creditCard/creditCard';
 import {
-  CreditCardData,
   deleteCreditCardFulfiled,
   getCreditCardsFulfiled,
 } from 'infrastructure/services/creditCard/CreditCardService';
@@ -44,8 +44,8 @@ const creditCardSlice = createSlice({
       state.defaultCreditCard =
         payload.length === 0 ? { ...initialState.defaultCreditCard } : { ...payload[0] };
     });
-    builder.addMatcher(deleteCreditCardFulfiled, (state, { payload }) => {
-      state.creditCards = state.creditCards.filter(creditCard => creditCard.id != payload.cardId);
+    builder.addMatcher(deleteCreditCardFulfiled, (state, { meta }) => {
+      state.creditCards = state.creditCards.filter(creditCard => creditCard.id !== meta.arg.originalArgs);
     });
   },
 });

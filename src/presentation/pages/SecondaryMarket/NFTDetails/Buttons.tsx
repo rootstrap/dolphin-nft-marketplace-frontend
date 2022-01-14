@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField, Typography } from '@material-ui/core';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { NFTDetailsContext } from './NFTDetails';
 import { Link } from 'react-router-dom';
@@ -8,12 +8,25 @@ import styles from './NftDetails.module.scss';
 import useTranslation from 'app/hooks/useTranslation';
 
 export const Buttons = () => {
-  const { isInputVisible, setIsInputVisible, isSellNftLoading, nftPrice, setNftPrice, handleSellNft } =
-    useContext(NFTDetailsContext);
+  const {
+    isInputVisible,
+    setIsInputVisible,
+    isSellNftLoading,
+    nftPrice,
+    setNftPrice,
+    nft,
+    handleSellNft,
+    cancelOfferNft,
+  } = useContext(NFTDetailsContext);
   const t = useTranslation();
 
   return (
     <div>
+      {nft?.offerPrice && (
+        <Typography className={styles.secondaryMarket__cancelSaleButton} onClick={cancelOfferNft}>
+          {t('nft.sellNft.cancelSellButton')}
+        </Typography>
+      )}
       {isInputVisible ? (
         <div className={styles.secondaryMarket__buttons}>
           {isSellNftLoading ? (

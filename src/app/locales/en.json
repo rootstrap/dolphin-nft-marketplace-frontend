@@ -165,6 +165,7 @@
       "saleButton": "Put it for sale",
       "collectionButton": "My Collection",
       "sellButton": "Sell",
+      "cancelSellButton": "Cancel sale",
       "cancelButton": "Cancel",
       "indicator": "For Sale"
     }

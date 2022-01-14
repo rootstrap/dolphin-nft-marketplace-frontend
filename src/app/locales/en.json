@@ -165,7 +165,8 @@
       "saleButton": "Put it for sale",
       "collectionButton": "My Collection",
       "sellButton": "Sell",
-      "cancelButton": "Cancel"
+      "cancelButton": "Cancel",
+      "indicator": "For Sale"
     }
   },
   "peers": {

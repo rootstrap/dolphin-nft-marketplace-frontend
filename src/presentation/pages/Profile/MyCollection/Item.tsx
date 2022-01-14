@@ -3,12 +3,18 @@ import { Link } from 'react-router-dom';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './MyCollection.module.scss';
 
-export const Item = ({ id, name, image }: ItemProps) => {
+export const Item = ({ id, name, image, offerPrice }: ItemProps) => {
   const t = useTranslation();
 
   return (
     <Link to={`secondary/${id}`}>
       <div className={styles.list__itemContent}>
+        {offerPrice && (
+          <div className={styles.list__itemContentSale}>
+            {' '}
+            <Typography variant="body1">{t('nft.sellNft.indicator')}</Typography>
+          </div>
+        )}
         <img src={image} alt="Promotion" className={styles.list__itemContentImg} />
 
         <div className={styles.list__itemContentHidden}>
@@ -23,10 +29,8 @@ export const Item = ({ id, name, image }: ItemProps) => {
 
 interface ItemProps {
   id: string;
-  ftxId: string;
-  name: string;
-  totalQuantity: number;
-  price: number;
   image: string;
+  name: string;
+  offerPrice: number;
   verticalId?: string;
 }

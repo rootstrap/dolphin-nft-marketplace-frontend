@@ -22,6 +22,10 @@ export const useNftDetails = (nftId: string) => {
     });
   };
 
+  const cancelSellNft = () => {
+    sellNft({ nftId: nft?.id, price: null, quoteCurrency: nft?.quoteCurrency });
+  };
+
   const loadData = useCallback(async () => {
     const nftById: any = await getNftById(nftId);
 
@@ -56,6 +60,7 @@ export const useNftDetails = (nftId: string) => {
     nftPrice,
     setNftPrice,
     handleSellNft,
+    cancelSellNft,
     sellError,
   };
 };

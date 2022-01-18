@@ -38,6 +38,14 @@ export const routes: Route = {
       private: false,
     },
     {
+      path: routesPaths.remarkables,
+      Component: lazy(
+        () => import(/* webpackChunkName: "Remarkables" */ 'presentation/pages/Remarkables/RemarkablesPage')
+      ),
+      exact: true,
+      private: false,
+    },
+    {
       path: routesPaths.verticals,
       Component: lazy(
         () => import(/* webpackChunkName: "VerticalPage" */ 'presentation/pages/Verticals/VerticalPage')

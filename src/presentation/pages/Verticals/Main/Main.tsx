@@ -1,11 +1,4 @@
-import { Button, Grid, Typography, Link } from '@material-ui/core';
-// import { Link } from 'react-router-dom';
-import AthletesFirst from 'app/assets/Athletes-1.png';
-import AthletesSecond from 'app/assets/Athletes-2.png';
-import AthletesThird from 'app/assets/Athletes-3.png';
-import AthletesFourth from 'app/assets/Athletes-4.png';
-import AthletesFifth from 'app/assets/Athletes-5.png';
-import AthletesSixth from 'app/assets/Athletes-6.png';
+import { Button, Typography, Link } from '@material-ui/core';
 import FantasyLeague from 'app/assets/VerticalPromotionFantasyLeague.png';
 import { HallOfFame } from '../HallOfFame/HallOfFame';
 import { Promotion } from '../Promotion/Promotion';
@@ -13,6 +6,7 @@ import useTranslation from 'app/hooks/useTranslation';
 import { useParams } from 'react-router-dom';
 import { useMain } from './useMain';
 import styles from './Main.module.scss';
+import { BackgroundImageLayout } from 'infrastructure/components/BackgroundImageLayout/BackgroundImageLayout';
 
 export const Main = () => {
   const { verticalId } = useParams<{ verticalId?: string }>();
@@ -21,39 +15,21 @@ export const Main = () => {
 
   return (
     <>
-      <div className={styles.mainContent__title}>
-        <Typography component="div" variant="h5" className={styles.mainContent__titleFeatured}>
-          {t('verticals.preTitle')}
-        </Typography>
-        <Typography component="div" variant="h2" className={styles.mainContent__titleIssuer}>
-          {t('verticals.title')}
-        </Typography>
-        <div>
-          <Link href="#hallOfFame" underline="none">
-            <Button className={styles.mainContent__titleButton}> {t('verticals.actionButton')}</Button>
-          </Link>
+      <BackgroundImageLayout>
+        <div className={styles.mainContent__title}>
+          <Typography component="div" variant="h5" className={styles.mainContent__titleFeatured}>
+            {t('verticals.preTitle')}
+          </Typography>
+          <Typography component="div" variant="h2" className={styles.mainContent__titleIssuer}>
+            {t('verticals.title')}
+          </Typography>
+          <div>
+            <Link href="#hallOfFame" underline="none">
+              <Button className={styles.mainContent__titleButton}> {t('verticals.actionButton')}</Button>
+            </Link>
+          </div>
         </div>
-      </div>
-      <Grid container className={styles.mainContent}>
-        <Grid item md={2}>
-          <img alt="" src={AthletesFirst} className={styles.mainContent__img} />
-        </Grid>
-        <Grid item md={2}>
-          <img alt="" src={AthletesSecond} className={styles.mainContent__img} />
-        </Grid>
-        <Grid item md={2}>
-          <img alt="" src={AthletesThird} className={styles.mainContent__img} />
-        </Grid>
-        <Grid item md={2}>
-          <img alt="" src={AthletesFourth} className={styles.mainContent__img} />
-        </Grid>
-        <Grid item md={2}>
-          <img alt="" src={AthletesFifth} className={styles.mainContent__img} />
-        </Grid>
-        <Grid item md={2}>
-          <img alt="" src={AthletesSixth} className={styles.mainContent__img} />
-        </Grid>
-      </Grid>
+      </BackgroundImageLayout>
 
       <HallOfFame />
 

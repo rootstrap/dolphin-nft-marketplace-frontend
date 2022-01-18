@@ -10,26 +10,6 @@ export const carouselItems: CarouselItem[] = [
     tier: 'Gold',
     image: Remarkables,
   },
-
-  {
-    title: 'Summer Sports Champions',
-    date: 'Coming December 2026',
-    text: 'Lorem ipsun dolor',
-    collectiblesPerPack: 3,
-    costPerPack: 3,
-    tier: 'Silver',
-    image: Remarkables,
-  },
-
-  {
-    title: 'Spring Champions',
-    date: 'Coming March 2026',
-    text: 'Lorem ipsun dolor adasdasdasdasd',
-    collectiblesPerPack: 6,
-    costPerPack: 8,
-    tier: 'Bronze',
-    image: Remarkables,
-  },
 ];
 
 export interface CarouselItem {

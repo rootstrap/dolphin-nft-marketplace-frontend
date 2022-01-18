@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export type carouselArrow = 'back' | 'forward';
 
 export const useCarousel = (carouselItems: any[]) => {
   const [index, setIndex] = useState(0);
+  const [areButtonsVisible, setAreButtonsVisible] = useState(false);
 
   const handleOnClick = (arrow: carouselArrow) => {
     if (arrow === 'forward') {
@@ -15,8 +16,15 @@ export const useCarousel = (carouselItems: any[]) => {
     }
   };
 
+  useEffect(() => {
+    if (carouselItems.length > 1) {
+      setAreButtonsVisible(true);
+    }
+  }, [carouselItems]);
+
   return {
     index,
     handleOnClick,
+    areButtonsVisible,
   };
 };

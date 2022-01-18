@@ -6,11 +6,11 @@ import { useCarousel } from './useCarousel';
 import styles from './AthElitesCarousel.module.scss';
 
 export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
-  const { index, handleOnClick } = useCarousel(carouselItems);
+  const { index, handleOnClick, areButtonsVisible } = useCarousel(carouselItems);
 
   return (
     <>
-      <div className={styles.carousel}>
+      <div className={styles.carousel} id="athelites">
         <CarouselItemDescription
           title={carouselItems[index].title}
           date={carouselItems[index].date}
@@ -22,7 +22,7 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
         <CarouselItemImage tier={carouselItems[index].tier} image={carouselItems[index].image} />
       </div>
 
-      <CarouselButtons handleOnClick={handleOnClick} />
+      {areButtonsVisible && <CarouselButtons handleOnClick={handleOnClick} />}
     </>
   );
 };

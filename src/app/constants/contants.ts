@@ -18,12 +18,18 @@ export const colors = {
 export const dropDownListCategories = [
   {
     key: 1,
-    value: 'Sports',
+    value: 'Hall of Fame Village Media',
     disabled: false,
     route: '/verticals/sports',
   },
   {
     key: 2,
+    value: 'Remarkables',
+    disabled: false,
+    route: '/verticals/remarkables',
+  },
+  {
+    key: 3,
     value: 'Creature Chronicles',
     disabled: false,
     route: process.env.REACT_APP_CREATURES_URL,

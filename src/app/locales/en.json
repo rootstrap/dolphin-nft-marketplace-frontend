@@ -82,15 +82,6 @@
       "wallet": "Connect your Solana wallet"
     }
   },
-  "athElites": {
-    "carousel": {
-      "featured": "Featured Collection",
-      "link": "Check out all NFTs included in this collection",
-      "collectibles": "Collectibles per pack",
-      "cost": "Cost per pack",
-      "button": "Buy Now!"
-    }
-  },
   "profile": {
     "collectionTitle": "My Collection",
     "emptyList": "You don’t have any collectibles in your gallery yet. Start your collection.",
@@ -146,6 +137,35 @@
       "currency": "USD",
       "totalEdition": "Total Released: ",
       "view": "View"
+    }
+  },
+  "remarkables": {
+    "title": "THE REMARKABLES",
+    "teaser": "Digital collectibles that bring together the Remarkable worlds of comic books and groundbreaking athletes. From the imagination of Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites, build your SuperTeam, and unlock new rare digital items and real-life experiences that you can’t find anywhere else! IRLs may include a ride with an Olympian Luge Athlete, a curling lesson with the US Olympic curling team, and much more!",
+    "howItWorks": {
+      "title": "How It Works",
+      "firstItem": {
+        "teaser": "Buy",
+        "title": "Start Your Collection",
+        "description": "Each pack comes with 4 Remarkable Athletes that vary in design and rarity."
+      },
+      "secondItem": {
+        "teaser": "Get Epic",
+        "title": "Build Your SuperTeam",
+        "description": "There are 32 different design combinations for each athlete designed by award-winning artist Anthony Francisco."
+      },
+      "thirdItem": {
+        "teaser": "Collect and earn",
+        "title": "Unlock IRLs",
+        "description": "The more you collect, the more you can unlock real life experiences! Check out our live IRLs here."
+      }
+    },
+    "carousel": {
+      "featured": "Featured Collection",
+      "link": "Check out all NFTs included in this collection",
+      "collectibles": "Collectibles per pack",
+      "cost": "Cost per pack",
+      "button": "Buy Now!"
     }
   },
   "nft": {

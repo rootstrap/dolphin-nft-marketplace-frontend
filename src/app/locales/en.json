@@ -82,6 +82,15 @@
       "wallet": "Connect your Solana wallet"
     }
   },
+  "athElites": {
+    "carousel": {
+      "featured": "Featured Collection",
+      "link": "Check out all NFTs included in this collection",
+      "collectibles": "Collectibles per pack",
+      "cost": "Cost per pack",
+      "button": "Buy Now!"
+    }
+  },
   "profile": {
     "collectionTitle": "My Collection",
     "emptyList": "You don’t have any collectibles in your gallery yet. Start your collection.",

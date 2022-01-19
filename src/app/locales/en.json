@@ -141,13 +141,13 @@
   },
   "remarkables": {
     "title": "THE REMARKABLES",
-    "teaser": "Digital collectibles that bring together the Remarkable worlds of comic books and groundbreaking athletes. From the imagination of Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites, build your SuperTeam, and unlock new rare digital items and real-life experiences that you can’t find anywhere else! IRLs may include a ride with an Olympian Luge Athlete, hand-picked sports gear signed by the pros, and much more!",
+    "teaser": "Digital collectibles that bring together the Remarkable worlds of comic books and groundbreaking athletes. From the imagination of former Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites, build your SuperTeam, and unlock new rare digital items and real-life experiences that you can’t find anywhere else! IRLs may include lessons from the world’s top athletes, hand-picked professional sports gear signed by the pros themselves, and much more!",
     "howItWorks": {
       "title": "How It Works",
       "firstItem": {
         "teaser": "Buy",
         "title": "Start Your Collection",
-        "description": "Each pack comes with 4 Remarkable Athletes that vary in design and rarity."
+        "description": "Remarkable Athletes are sold in packs of three or more NFTs that vary in design and rarity."
       },
       "secondItem": {
         "teaser": "Get Epic",
@@ -157,7 +157,7 @@
       "thirdItem": {
         "teaser": "Collect and earn",
         "title": "Unlock IRLs",
-        "description": "The more you collect, the more you can unlock real life experiences! Check out our live IRLs here."
+        "description": "The more you collect, the more you can unlock real life experiences that you can’t find anywhere else! "
       }
     },
     "carousel": {

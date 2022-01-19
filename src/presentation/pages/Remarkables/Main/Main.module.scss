@@ -20,9 +20,9 @@
     }
 
     &Teaser {
-      font-size: 1.2rem;
+      font-size: 1.2rem !important;
+      padding: 0 20%;
       text-align: center;
-      width: 90%;
     }
 
     &Button {

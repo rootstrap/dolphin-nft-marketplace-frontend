@@ -30,4 +30,11 @@
       width: 13rem !important;
     }
   }
+
+  &__background {
+    &Img {
+      width: 100%;
+      height: auto;
+    }
+  }
 }

@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import { CarouselItem } from 'app/constants/athletes/remarkablesCarousel';
 import { CarouselItemDescription } from './CarouselItemDescription';
 import { CarouselItemImage } from './CarouselItemImage';
@@ -19,10 +20,18 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
           costPerPack={carouselItems[index].costPerPack}
         />
 
-        {/* TODO: Enable when requested <CarouselItemImage tier={carouselItems[index].tier} image={carouselItems[index].image} /> */}
+        <CarouselItemImage tier={carouselItems[index].tier} image={carouselItems[index].image} />
       </div>
 
-      {areButtonsVisible && <CarouselButtons handleOnClick={handleOnClick} />}
+      {areButtonsVisible ? (
+        <CarouselButtons handleOnClick={handleOnClick} />
+      ) : (
+        <div className={styles.carousel__buttons}>
+          <Button variant="contained" size="large" fullWidth>
+            Coming Soon
+          </Button>
+        </div>
+      )}
     </>
   );
 };

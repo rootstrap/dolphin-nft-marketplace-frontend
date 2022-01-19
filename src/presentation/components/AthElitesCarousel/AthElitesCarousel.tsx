@@ -19,7 +19,7 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
           costPerPack={carouselItems[index].costPerPack}
         />
 
-        <CarouselItemImage tier={carouselItems[index].tier} image={carouselItems[index].image} />
+        {/* TODO: Enable when requested <CarouselItemImage tier={carouselItems[index].tier} image={carouselItems[index].image} /> */}
       </div>
 
       {areButtonsVisible && <CarouselButtons handleOnClick={handleOnClick} />}

@@ -1,8 +1,8 @@
-import { Button, Grid, Typography } from '@material-ui/core';
-import { CreditCard, PersonOutlined } from '@material-ui/icons';
-import { Link, useLocation } from 'react-router-dom';
+import { Grid, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { Categories } from '../Categories/Categories';
 import { useTopBar } from './useTopBar';
+import { UserTopBarInfo } from './UserTopBarInfo';
 import logoImg from 'app/assets/dolphin_logo.png';
 import routesPaths from 'app/constants/routesPath';
 import useRedirection from 'app/hooks/useRedirection';
@@ -11,19 +11,8 @@ import styles from './TopBar.module.scss';
 
 export const TopBar = () => {
   const t = useTranslation();
-  const location = useLocation();
   const { isCreaturesUser } = useRedirection();
-
-  const {
-    handleCategories,
-    anchorEl,
-    handleClose,
-    isAuthenticated,
-    setCreditCardModalIsOpen,
-    setSignupModalIsOpen,
-    setLoginModalIsOpen,
-    handleLogout,
-  } = useTopBar();
+  const { handleCategories, anchorEl, handleClose } = useTopBar();
 
   return (
     <nav className={styles.topBar}>
@@ -59,46 +48,10 @@ export const TopBar = () => {
           </>
         )}
 
-        <Grid item xs={isCreaturesUser ? 4 : 2} md={isCreaturesUser ? 6 : 2} lg={isCreaturesUser ? 7 : 3} />
+        <Grid item xs={isCreaturesUser ? 4 : 1} md={isCreaturesUser ? 6 : 2} lg={isCreaturesUser ? 7 : 3} />
 
         <Grid item xs={12} sm={4} md={4} lg={3} className={styles.topBar__item}>
-          {isAuthenticated ? (
-            <div className={styles.topBar__itemButton}>
-              <>
-                <div className={styles.topBar__itemButtonProfile}>
-                  <Link to={routesPaths.profile}>
-                    <PersonOutlined />
-                  </Link>
-                </div>
-
-                <div className={styles.topBar__itemButtonCards}>
-                  <CreditCard onClick={() => setCreditCardModalIsOpen(true)} />
-                </div>
-              </>
-
-              <Link to={routesPaths.index} onClick={handleLogout}>
-                {t('global.logout')}
-              </Link>
-            </div>
-          ) : (
-            <div className={styles.topBar__itemButton}>
-              <Button onClick={() => setSignupModalIsOpen(true)}>{t('global.signup')} </Button>
-              {isCreaturesUser ? (
-                <>
-                  <Button variant="text" color="secondary" onClick={() => setLoginModalIsOpen(true)}>
-                    {t('global.login')}{' '}
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <span className={styles.topBar__itemLink}>{t('global.signinMsg')}</span>
-                  <Link to={location.pathname} onClick={() => setLoginModalIsOpen(true)}>
-                    &nbsp;{t('global.signinLink')}
-                  </Link>
-                </>
-              )}
-            </div>
-          )}
+          <UserTopBarInfo />
         </Grid>
       </Grid>
     </nav>

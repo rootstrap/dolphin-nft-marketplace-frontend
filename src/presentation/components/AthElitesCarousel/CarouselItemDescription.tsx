@@ -27,16 +27,14 @@ export const CarouselItemDescription = ({
         <Typography variant="body1">{text}</Typography>
       </div>
 
-      {/* 
-      
-      TODO: Enable when requested
+      {/*
       <div className={styles.carousel__descriptionCheckout}>
         <Typography variant="body1">
           <Link>{t('remarkables.carousel.link')}</Link>
         </Typography>
       </div>
- 
-      <div className={styles.carousel__descriptionPack}>
+
+       <div className={styles.carousel__descriptionPack}>
         <div className={styles.carousel__descriptionPackInfo}>
           <Typography variant="h6">{t('remarkables.carousel.collectibles')}</Typography>
           <p>{collectiblesPerPack}</p>
@@ -45,14 +43,13 @@ export const CarouselItemDescription = ({
           <Typography variant="h6">{t('remarkables.carousel.cost')}</Typography>
           <p>${costPerPack}</p>
         </div>
-      </div> 
+      </div>
 
       <div className={styles.carousel__descriptionButton}>
         <Button variant="contained" fullWidth>
           {t('remarkables.carousel.button')}
         </Button>
-      </div>
-      */}
+      </div> */}
     </div>
   );
 };

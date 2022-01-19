@@ -23,7 +23,7 @@ export const MainContent = () => {
       </Grid>
 
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Creatures} alt="" styles={styles} link="Creatures" />
+        <MainImg src={Creatures} alt="" styles={styles} link="Creatures" disabled />
       </Grid>
 
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item}>

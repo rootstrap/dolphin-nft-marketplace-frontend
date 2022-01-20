@@ -10,7 +10,7 @@ export const MainContent = () => {
     <Grid container justifyContent="center" className={styles.mainContent}>
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item} />
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Sports} title="Sports" link="sports" />
+        <MainImg src={Sports} title="Hall of Fame Village Media" link="sports" />
       </Grid>
 
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item}>

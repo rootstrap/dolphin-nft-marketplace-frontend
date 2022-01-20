@@ -1,24 +1,17 @@
 import { Link } from 'react-router-dom';
-import { ReactComponent as PlusBox } from 'app/assets/squareplus.svg';
-import { useResponsive } from 'app/hooks/useResponsive';
 import styles from './MainContent.module.scss';
 
-const MainImgContent = ({ title, src, alt = '', disabled = false }: MainImgContentProps) => {
-  const { isMobileView, isTabletView } = useResponsive();
-
-  return (
-    <div className={styles.mainContent__itemImgContainer}>
-      <div className={styles.mainContent__imgContainer}>
-        <img src={src} alt={alt} className={styles.mainContent__imgContainerImg} loading="lazy" />
-      </div>
-
-      <div className={styles.mainContent__itemIcon}>
-        {!disabled && !isMobileView && !isTabletView && <PlusBox />}
-        <span className={disabled ? styles.disabledLink : ''}>{title}</span>
-      </div>
+const MainImgContent = ({ title, src, alt = '', disabled = false }: MainImgContentProps) => (
+  <div className={styles.mainContent__itemImgContainer}>
+    <div className={styles.mainContent__imgContainer}>
+      <img src={src} alt={alt} className={styles.mainContent__imgContainerImg} loading="lazy" />
     </div>
-  );
-};
+
+    <div className={styles.mainContent__itemIcon}>
+      <span className={disabled ? styles.disabledLink : ''}>{title}</span>
+    </div>
+  </div>
+);
 
 export const MainImg = ({ title, link, src, disabled = false, isHyperlink = false }: MainImgProps) => {
   return (

@@ -13,17 +13,12 @@
 
     &Icon {
       display: flex;
-      align-items: center;
+      justify-content: center;
+      text-align: center;
       margin: 0;
 
       span {
-        margin-left: 1rem;
         font-size: $font-size-med;
-
-        @media screen and (min-width: $sm-min-width) and (max-width: $sm-max-width) {
-          margin-left: 0.5rem;
-          font-size: $font-size-small;
-        }
       }
     }
   }

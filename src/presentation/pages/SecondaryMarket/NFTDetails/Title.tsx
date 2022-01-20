@@ -10,16 +10,35 @@ export const Title = () => {
 
   return (
     <div className={styles.secondaryMarket__text}>
-      <Typography gutterBottom variant="h5">
-        {t('nft.sellNft.title')}
+      <Typography className={styles.secondaryMarket__textCollection} gutterBottom component="h2">
+        {nft?.issuer} {t('nft.sellNft.collection')}
       </Typography>
-      <Typography gutterBottom variant="subtitle1">
-        {nft?.collection}: {nft?.name}
+      <Typography className={styles.secondaryMarket__textTitle} gutterBottom component="h1">
+        {nft?.series}
+      </Typography>
+      <Typography
+        className={styles.secondaryMarket__textTitle}
+        gutterBottom
+        component="h3"
+        variant="subtitle1"
+      >
+        {t('nft.sellNft.issuer')}
+        {nft?.issuer}
+      </Typography>
+      <Typography className={styles.secondaryMarket__textDescription} gutterBottom component="p">
+        {nft?.description}
       </Typography>
 
-      <Typography gutterBottom variant="subtitle2">
-        {t('nft.sellNft.subtitle')}
-      </Typography>
+      <div className={styles.secondaryMarket__textInfo}>
+        <div className={styles.secondaryMarket__textInfoContainer}>
+          <Typography>Edition: </Typography>
+          <Typography className={styles.secondaryMarket__textInfoData}>{nft?.number}</Typography>
+        </div>
+        <div className={styles.secondaryMarket__textInfoContainer}>
+          <Typography>Total Editions:</Typography>
+          <Typography className={styles.secondaryMarket__textInfoData}>{nft?.totalQuantity}</Typography>
+        </div>
+      </div>
 
       {sellError && (
         <Typography gutterBottom variant="subtitle1" className={styles.secondaryMarket__textError}>
@@ -29,7 +48,8 @@ export const Title = () => {
 
       {nft?.offerPrice && (
         <Typography className={styles.secondaryMarket__textWarning} variant="h5">
-          This nft is for sale at ${nft?.offerPrice}
+          {t('nft.sellNft.price')}
+          {nft?.quoteCurrency} {nft?.offerPrice}
         </Typography>
       )}
     </div>

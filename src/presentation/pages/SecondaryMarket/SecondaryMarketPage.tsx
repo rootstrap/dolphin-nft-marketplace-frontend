@@ -13,8 +13,17 @@ const SecondaryMarketPage = () => {
       pageComponent={
         <NFTDetails nftId={nftId}>
           <Image />
-          <Title />
-          <Buttons />
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              padding: '0 2%',
+            }}
+          >
+            <Title />
+            <Buttons />
+          </div>
         </NFTDetails>
       }
     />

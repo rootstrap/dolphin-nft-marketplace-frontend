@@ -196,7 +196,10 @@
       "sellButton": "Sell",
       "cancelSellButton": "Cancel sale",
       "cancelButton": "Cancel",
-      "indicator": "For Sale"
+      "indicator": "For Sale",
+      "collection": "Collection ",
+      "issuer": "Issuer: ",
+      "price": "Price: "
     }
   },
   "peers": {

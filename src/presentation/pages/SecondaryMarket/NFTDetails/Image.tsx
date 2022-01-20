@@ -7,7 +7,15 @@ export const Image = () => {
 
   return (
     <div className={styles.secondaryMarket__nft}>
-      <img className={styles.secondaryMarket__nftImg} src={nft?.imageUrl} alt="" />
+      <iframe
+        style={{ border: 'none' }}
+        height="320"
+        width="320"
+        allow="autoplay; encrypted-media;"
+        allowFullScreen={true}
+        src={`${nft?.videoUrl}?autoplay=true&muted=true`}
+        title={nft?.name}
+      />
     </div>
   );
 };

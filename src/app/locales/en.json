@@ -199,7 +199,9 @@
       "indicator": "For Sale",
       "collection": "Collection ",
       "issuer": "Issuer: ",
-      "price": "Price: "
+      "price": "Price: ",
+      "edition": "Edition:",
+      "totalEditions": "Total editions:"
     }
   },
   "peers": {

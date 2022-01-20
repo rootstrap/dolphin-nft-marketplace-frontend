@@ -31,11 +31,11 @@ export const Title = () => {
 
       <div className={styles.secondaryMarket__textInfo}>
         <div className={styles.secondaryMarket__textInfoContainer}>
-          <Typography>Edition: </Typography>
+          <Typography> {t('nft.sellNft.edition')}</Typography>
           <Typography className={styles.secondaryMarket__textInfoData}>{nft?.number}</Typography>
         </div>
         <div className={styles.secondaryMarket__textInfoContainer}>
-          <Typography>Total Editions:</Typography>
+          <Typography> {t('nft.sellNft.totalEditions')}</Typography>
           <Typography className={styles.secondaryMarket__textInfoData}>{nft?.totalQuantity}</Typography>
         </div>
       </div>

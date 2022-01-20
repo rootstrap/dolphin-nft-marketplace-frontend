@@ -24,7 +24,12 @@ export const Main = () => {
       <Grid container spacing={0}>
         <Grid item className={styles.mainContent__item} md={2} lg={1}></Grid>
         <Grid item className={styles.mainContent__item} xs={12} md={8} lg={4}>
-          <iframe className={styles.mainContent__itemVideo} src={nft?.videoUrl} title={nft?.name} />
+          <iframe
+            className={styles.mainContent__itemVideo}
+            allow="autoplay; encrypted-media;"
+            src={`${nft?.videoUrl}?autoplay=true&muted=true`}
+            title={nft?.name}
+          />
         </Grid>
         <Grid item className={styles.mainContent__item} md={2} lg={1}></Grid>
 

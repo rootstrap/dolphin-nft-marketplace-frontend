@@ -10,15 +10,15 @@ export const MainContent = () => {
     <Grid container justifyContent="center" className={styles.mainContent}>
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item} />
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Sports} alt="" styles={styles} link="Sports" />
+        <MainImg src={Sports} title="Sports" link="sports" />
       </Grid>
 
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Creatures} alt="" styles={styles} link="Creatures" disabled />
+        <MainImg src={Remarkables} title="Remarkables" link="remarkables" />
       </Grid>
 
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Remarkables} alt="" styles={styles} link="Remarkables" />
+        <MainImg src={Creatures} title="Creatures" link={process.env.REACT_APP_CREATURES_URL} isHyperlink />
       </Grid>
     </Grid>
   );

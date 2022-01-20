@@ -14,11 +14,11 @@ export const MainContent = () => {
       </Grid>
 
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Creatures} title="Creatures" link={process.env.REACT_APP_CREATURES_URL} isHyperlink />
+        <MainImg src={Remarkables} title="Remarkables" link="remarkables" />
       </Grid>
 
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Remarkables} title="Remarkables" link="remarkables" />
+        <MainImg src={Creatures} title="Creatures" link={process.env.REACT_APP_CREATURES_URL} isHyperlink />
       </Grid>
     </Grid>
   );

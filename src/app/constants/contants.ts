@@ -1,3 +1,5 @@
+import routesPaths from './routesPath';
+
 export const SUPPORTED_LANGUAGES: string[] = ['en'];
 export const DEFAULT_LANGUAGE: string = 'en';
 
@@ -20,13 +22,13 @@ export const dropDownListCategories = [
     key: 1,
     value: 'Hall of Fame Village Media',
     disabled: false,
-    route: '/verticals/sports',
+    route: routesPaths.halloffame,
   },
   {
     key: 2,
     value: 'Remarkables',
     disabled: false,
-    route: '/verticals/remarkables',
+    route: routesPaths.remarkables,
   },
   {
     key: 3,

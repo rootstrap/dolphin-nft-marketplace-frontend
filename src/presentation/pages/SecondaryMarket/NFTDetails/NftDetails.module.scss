@@ -24,7 +24,7 @@
       width: fit-content;
 
       @media screen and (max-width: $md-width) {
-        display: none;;
+        display: none;
       }
     }
 
@@ -49,6 +49,10 @@
     display: flex;
     flex-direction: column;
     text-align: left;
+
+    @media screen and (max-width: $md-width) {
+      margin-top: 2rem;
+    }
 
     &Collection {
       color: $orange;
@@ -77,16 +81,26 @@
 
       &Container {
         text-align: center;
+
+        @media screen and (max-width: $md-width) {
+          p {
+            font-size: 1.2rem;
+          }
+        }
       }
 
       &Data {
-        color: $orange
+        color: $orange;
       }
     }
 
     &Warning {
       margin-top: auto;
       color: $orange;
+
+      @media screen and (max-width: $md-width) {
+        margin-top: 2rem;
+      }
     }
 
     &Error {
@@ -104,6 +118,10 @@
     font-size: 1.2rem;
     text-align: center;
     text-decoration: underline;
+
+    @media screen and (max-width: $md-width) {
+      text-align: left;
+    }
 
     &:hover {
       cursor: pointer;

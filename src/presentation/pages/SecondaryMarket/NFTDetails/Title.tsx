@@ -31,13 +31,19 @@ export const Title = () => {
 
       <div className={styles.secondaryMarket__textInfo}>
         <div className={styles.secondaryMarket__textInfoContainer}>
-          <Typography> {t('nft.sellNft.edition')}</Typography>
-          <Typography className={styles.secondaryMarket__textInfoData}>{nft?.number}</Typography>
+          <Typography>
+            {t('nft.sellNft.edition')}{' '}
+            <span className={styles.secondaryMarket__textInfoData}>{nft?.number}</span>
+          </Typography>
         </div>
-        <div className={styles.secondaryMarket__textInfoContainer}>
-          <Typography> {t('nft.sellNft.totalEditions')}</Typography>
-          <Typography className={styles.secondaryMarket__textInfoData}>{nft?.totalQuantity}</Typography>
-        </div>
+        {nft?.totalQuantity && (
+          <div className={styles.secondaryMarket__textInfoContainer}>
+            <Typography>
+              {t('nft.sellNft.totalEditions')}{' '}
+              <span className={styles.secondaryMarket__textInfoData}>{nft?.totalQuantity}</span>
+            </Typography>
+          </div>
+        )}
       </div>
 
       {sellError && (

@@ -38,6 +38,14 @@ export const routes: Route = {
       private: false,
     },
     {
+      path: routesPaths.profile,
+      Component: lazy(
+        () => import(/* webpackChunkName: "ProfilePage" */ 'presentation/pages/Profile/ProfilePage')
+      ),
+      private: true,
+      exact: true,
+    },
+    {
       path: routesPaths.remarkables,
       Component: lazy(
         () => import(/* webpackChunkName: "Remarkables" */ 'presentation/pages/Remarkables/RemarkablesPage')
@@ -54,6 +62,17 @@ export const routes: Route = {
       private: false,
     },
     {
+      path: routesPaths.secondaryMarket,
+      Component: lazy(
+        () =>
+          import(
+            /* webpackChunkName: "SecondaryMarketPage" */ 'presentation/pages/SecondaryMarket/SecondaryMarketPage'
+          )
+      ),
+      exact: true,
+      private: true,
+    },
+    {
       path: routesPaths.nftDetails,
       Component: lazy(() => import(/* webpackChunkName: "NFTPage" */ 'presentation/pages/NFT/NFTPage')),
       exact: true,
@@ -66,24 +85,6 @@ export const routes: Route = {
       ),
       exact: true,
       private: false,
-    },
-    {
-      path: routesPaths.secondaryMarket,
-      Component: lazy(
-        () =>
-          import(
-            /* webpackChunkName: "SecondaryMarketPage" */ 'presentation/pages/SecondaryMarket/SecondaryMarketPage'
-          )
-      ),
-      exact: true,
-      private: true,
-    },
-    {
-      path: routesPaths.profile,
-      Component: lazy(
-        () => import(/* webpackChunkName: "ProfilePage" */ 'presentation/pages/Profile/ProfilePage')
-      ),
-      private: true,
     },
   ],
 };

@@ -76,11 +76,11 @@
 
     &Info {
       display: flex;
-      justify-content: space-evenly;
       margin-top: 1rem;
+      justify-content: flex-start;
 
       &Container {
-        text-align: center;
+        margin-right: 0.5rem;
 
         @media screen and (max-width: $md-width) {
           p {
@@ -116,12 +116,8 @@
 
   &__cancelSaleButton {
     font-size: 1.2rem;
-    text-align: center;
+    text-align: left;
     text-decoration: underline;
-
-    @media screen and (max-width: $md-width) {
-      text-align: left;
-    }
 
     &:hover {
       cursor: pointer;

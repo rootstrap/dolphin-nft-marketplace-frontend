@@ -21,7 +21,7 @@ export const MainImg = ({ title, link, src, disabled = false, isHyperlink = fals
           <MainImgContent title={title} src={src} />
         </a>
       ) : (
-        <Link to={`verticals/${link}`} className={disabled ? styles.disabledLink : ''}>
+        <Link to={link} className={disabled ? styles.disabledLink : ''}>
           <MainImgContent title={title} src={src} />
         </Link>
       )}

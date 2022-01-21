@@ -2,32 +2,113 @@
 
 .secondaryMarket {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 2% 0 5%;
+  margin-bottom: 2rem;
+
+  @media screen and (max-width: $md-width) {
+    align-items: center;
+    flex-direction: column;
+  }
 
   &__nft {
+    display: flex;
+    flex-direction: column;
+
+    &EditionContainer {
+      height: fit-content;
+      position: relative;
+      transform-origin: left top;
+      transform: rotate(270deg) translate(-180%, -40px);
+      width: fit-content;
+
+      @media screen and (max-width: $md-width) {
+        display: none;
+      }
+    }
+
     &Img {
-      width: 20rem;
       height: 20rem;
       padding: 1rem 2rem;
+      width: 20rem;
+    }
+
+    &Edition {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    &TotalEditions {
+      color: $orange;
     }
   }
 
   &__text {
-    text-align: center;
-    width: 25rem;
-    padding: 0 3rem;
-    &Warning {
-      color: $orange;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    @media screen and (max-width: $md-width) {
+      margin-top: 2rem;
     }
+
+    &Collection {
+      color: $orange;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    &Title {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    &Issuer {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    &Description {
+      font-size: 0.9rem;
+    }
+
+    &Info {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 1rem;
+
+      &Container {
+        text-align: center;
+
+        @media screen and (max-width: $md-width) {
+          p {
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      &Data {
+        color: $orange;
+      }
+    }
+
+    &Warning {
+      margin-top: auto;
+      color: $orange;
+
+      @media screen and (max-width: $md-width) {
+        margin-top: 2rem;
+      }
+    }
+
     &Error {
       color: $error;
     }
   }
 
   &__buttons {
-    margin-bottom: 2rem;
-
     &Input {
       margin-bottom: 0.5rem;
     }
@@ -37,6 +118,10 @@
     font-size: 1.2rem;
     text-align: center;
     text-decoration: underline;
+
+    @media screen and (max-width: $md-width) {
+      text-align: left;
+    }
 
     &:hover {
       cursor: pointer;

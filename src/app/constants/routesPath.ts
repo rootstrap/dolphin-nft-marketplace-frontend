@@ -3,7 +3,7 @@ const routesPaths = {
   profile: '/profile',
   creatures: '/creatures',
   creaturesWhitelist: '/whitelist',
-  remarkables: '/remarkables',
+  winterSportsChampions: '/wintersportschampions',
   halloffame: '/halloffame',
   nftDetails: '/:nftId',
   nftById: '/nft/:ftxId',

@@ -14,7 +14,7 @@ export const MainContent = () => {
       </Grid>
 
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item}>
-        <MainImg src={Remarkables} title="Remarkables" link="remarkables" />
+        <MainImg src={Remarkables} title="Winter Sports Champions" link="wintersportschampions" />
       </Grid>
 
       <Grid item xs={3} md={2} lg={2} className={styles.mainContent__item}>

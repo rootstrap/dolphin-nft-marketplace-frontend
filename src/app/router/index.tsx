@@ -46,9 +46,9 @@ export const routes: Route = {
       private: false,
     },
     {
-      path: routesPaths.verticals,
+      path: routesPaths.halloffame,
       Component: lazy(
-        () => import(/* webpackChunkName: "VerticalPage" */ 'presentation/pages/Verticals/VerticalPage')
+        () => import(/* webpackChunkName: "VerticalPage" */ 'presentation/pages/HallOfFame/HallOfFamePage')
       ),
       exact: true,
       private: false,

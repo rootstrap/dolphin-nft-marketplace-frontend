@@ -3,22 +3,12 @@ import { Link } from 'react-router-dom';
 import New from 'app/assets/New.png';
 import useTranslation from 'app/hooks/useTranslation';
 
-export const Item = ({
-  id,
-  ftxId,
-  name,
-  series,
-  totalQuantity,
-  image,
-  price,
-  verticalId,
-  styles,
-}: ItemProps) => {
+export const Item = ({ id, series, totalQuantity, image, price, styles }: ItemProps) => {
   const t = useTranslation();
 
   return (
     <div className={styles.mainContent__itemContent}>
-      <Link to={`${verticalId}/${id}`}>
+      <Link to={`/${id}`}>
         <div className={styles.mainContent__imgContainer}>
           <img src={New} alt="New" className={styles.mainContent__imgContainerNew} />
           <img src={image} alt="Promotion" className={styles.mainContent__imgContainerImg} />
@@ -44,7 +34,7 @@ export const Item = ({
         </div>
         <div>
           <Button>
-            <Link to={`${verticalId}/${id}`}>{t('verticals.item.button')}</Link>
+            <Link to={`/${id}`}>{t('verticals.item.button')}</Link>
           </Button>
         </div>
       </div>
@@ -60,6 +50,5 @@ interface ItemProps {
   totalQuantity: number;
   price: number;
   image: string;
-  verticalId?: string;
   styles: any;
 }

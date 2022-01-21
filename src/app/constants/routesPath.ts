@@ -3,9 +3,9 @@ const routesPaths = {
   profile: '/profile',
   creatures: '/creatures',
   creaturesWhitelist: '/whitelist',
-  remarkables: '/verticals/remarkables',
-  verticals: '/verticals/:verticalId',
-  nftDetails: '/verticals/:verticalId/:nftId',
+  remarkables: '/remarkables',
+  halloffame: '/halloffame',
+  nftDetails: '/:nftId',
   nftById: '/nft/:ftxId',
   secondaryMarket: '/secondary/:nftId',
 

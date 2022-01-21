@@ -4,17 +4,16 @@ import { Item } from '../Main/Item';
 import { useParams } from 'react-router';
 import { Promotion } from '../Promotion/Promotion';
 import { useHallOfFame } from './useHallOfFame';
-import VerticalPromotion from 'app/assets/VerticalPromotion.png';
-import useTranslation from 'app/hooks/useTranslation';
 import { NFT } from 'app/interfaces/NFT/NFT';
 import { ItemBanner } from './ItemBanner/ItemBanner';
 import { FilterButton } from './FilterButton/FilterButton';
+import VerticalPromotion from 'app/assets/VerticalPromotion.png';
+import useTranslation from 'app/hooks/useTranslation';
 import MoreSoon from 'app/assets/Athlete-MoreSoon.png';
-import styles from './HallOfFame.module.scss';
 import mainContentStyles from '../Main/Main.module.scss';
+import styles from './HallOfFame.module.scss';
 
 export const HallOfFame = () => {
-  const { verticalId } = useParams<{ verticalId?: string }>();
   const { nfts, isLoading, setTier, setLegend, legend, tier, itemBanners, tiers } = useHallOfFame();
   const t = useTranslation();
 
@@ -61,7 +60,6 @@ export const HallOfFame = () => {
                     totalQuantity={nft.totalQuantity}
                     image={nft.imageUrl}
                     price={nft.offerPrice}
-                    verticalId={verticalId}
                     ftxId={nft.ftx_id}
                   />
                 </Grid>

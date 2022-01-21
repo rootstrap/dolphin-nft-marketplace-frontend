@@ -43,7 +43,6 @@ export const PromotionContent = () => {
                             image={item.imageUrl}
                             price={item.offerPrice}
                             ftxId={item.ftx_id}
-                            verticalId={'verticals/sports'}
                           />
                         </Grid>
                       ))}

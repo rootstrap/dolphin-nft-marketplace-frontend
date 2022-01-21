@@ -1,15 +1,13 @@
 import { Button, Typography, Link } from '@material-ui/core';
-import FantasyLeague from 'app/assets/VerticalPromotionFantasyLeague.png';
+import { BackgroundImageLayout } from 'infrastructure/components/BackgroundImageLayout/BackgroundImageLayout';
 import { HallOfFame } from '../HallOfFame/HallOfFame';
 import { Promotion } from '../Promotion/Promotion';
-import useTranslation from 'app/hooks/useTranslation';
-import { useParams } from 'react-router-dom';
 import { useMain } from './useMain';
+import FantasyLeague from 'app/assets/VerticalPromotionFantasyLeague.png';
 import styles from './Main.module.scss';
-import { BackgroundImageLayout } from 'infrastructure/components/BackgroundImageLayout/BackgroundImageLayout';
+import useTranslation from 'app/hooks/useTranslation';
 
 export const Main = () => {
-  const { verticalId } = useParams<{ verticalId?: string }>();
   const { nfts } = useMain();
   const t = useTranslation();
 
@@ -40,7 +38,7 @@ export const Main = () => {
           primaryText={t('verticals.fantasyLeague.primaryText')}
           secondaryText={t('verticals.fantasyLeague.secondaryText')}
           buttonText={t('verticals.fantasyLeague.actionButton')}
-          link={`${verticalId}/${nfts[nfts.length - 1]?.id}`}
+          link={`/${nfts[nfts.length - 1]?.id}`}
         />
       </div>
     </>

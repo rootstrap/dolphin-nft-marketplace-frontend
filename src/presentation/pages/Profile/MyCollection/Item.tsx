@@ -32,5 +32,4 @@ interface ItemProps {
   image: string;
   name: string;
   offerPrice: number;
-  verticalId?: string;
 }

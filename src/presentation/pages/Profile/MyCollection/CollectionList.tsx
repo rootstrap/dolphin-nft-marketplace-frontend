@@ -20,13 +20,7 @@ export const CollectionList = ({ nfts }: CollectionListProps) => {
             const { id, name, offerPrice, imageUrl } = nft;
             return (
               <Grid item xs={12} md={6} lg={4} className={styles.list__collection} key={id}>
-                <Item
-                  id={id}
-                  name={name}
-                  image={imageUrl}
-                  offerPrice={offerPrice}
-                  verticalId={'verticals/sports'}
-                />
+                <Item id={id} name={name} image={imageUrl} offerPrice={offerPrice} />
               </Grid>
             );
           })}

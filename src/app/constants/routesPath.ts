@@ -5,7 +5,7 @@ const routesPaths = {
   creaturesWhitelist: '/whitelist',
   remarkables: '/remarkables',
   halloffame: '/halloffame',
-  nftDetails: '/verticals/:verticalId/:nftId',
+  nftDetails: '/:nftId',
   nftById: '/nft/:ftxId',
   secondaryMarket: '/secondary/:nftId',
 

@@ -3,14 +3,14 @@ import { Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import useTranslation from 'app/hooks/useTranslation';
 
-export const Item = ({ id, name, totalQuantity, image, verticalId, styles }: ItemProps) => {
+export const Item = ({ id, name, totalQuantity, image, styles }: ItemProps) => {
   const t = useTranslation();
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const handleMouseEnter = () => setIsVisible(true);
   const handleMouseLeave = () => setIsVisible(false);
 
   return (
-    <Link to={`${verticalId}/${id}`}>
+    <Link to={`/${id}`}>
       <div
         className={styles.promotionContent__itemContent}
         onMouseEnter={handleMouseEnter}
@@ -47,6 +47,5 @@ interface ItemProps {
   totalQuantity: number;
   price: number;
   image: string;
-  verticalId?: string;
   styles: any;
 }

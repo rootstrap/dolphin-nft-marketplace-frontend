@@ -1,12 +1,9 @@
 import { Button, Grid, Link, Typography } from '@material-ui/core';
-import useTranslation from 'app/hooks/useTranslation';
-import styles from './Main.module.scss';
-import { HowItWorks } from '../HowItWorks/HowItWorks';
-import { AthElitesCarousel } from 'presentation/components/AthElitesCarousel/AthElitesCarousel';
-import { carouselItems } from 'app/constants/athletes/remarkablesCarousel';
 import Remarkable1 from 'app/assets/remarkable1.png';
 import Remarkable2 from 'app/assets/remarkable2.png';
 import Remarkable3 from 'app/assets/remarkable3.png';
+import useTranslation from 'app/hooks/useTranslation';
+import styles from './Main.module.scss';
 
 export const Main = () => {
   const t = useTranslation();
@@ -37,9 +34,6 @@ export const Main = () => {
           <img alt="" src={Remarkable3} className={styles.mainContent__backgroundImg} />
         </Grid>
       </Grid>
-
-      <HowItWorks />
-      <AthElitesCarousel carouselItems={carouselItems} />
     </>
   );
 };

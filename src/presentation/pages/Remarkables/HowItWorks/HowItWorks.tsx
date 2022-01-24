@@ -1,8 +1,8 @@
 import { Grid, Typography } from '@material-ui/core';
-import useTranslation from 'app/hooks/useTranslation';
 import { ReactComponent as CollectionIcon } from 'app/assets/remarkables_icon1.svg';
 import { ReactComponent as SuperTeamIcon } from 'app/assets/remarkables_icon2.svg';
 import { ReactComponent as IrlIcon } from 'app/assets/remarkables_icon3.svg';
+import useTranslation from 'app/hooks/useTranslation';
 import styles from './HowItWorks.module.scss';
 
 export const HowItWorks = () => {

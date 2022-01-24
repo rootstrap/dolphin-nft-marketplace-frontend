@@ -1,0 +1,33 @@
+.winterGrid {
+  &__title {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  &__container {
+    padding: 2rem;
+  }
+
+  &__item {
+    position: relative;
+    text-align: center;
+
+    &Img {
+      background-color: black;
+      padding: 5% 10%;
+
+      &Text {
+        background: linear-gradient(0, #000000 50%, rgba(0, 0, 0, 0) 100%);
+        position: absolute;
+        text-align: left;
+        top: 80%;
+        width: 90%;
+      }
+
+      img {
+        width: 20rem;
+        height: 20rem;
+      }
+    }
+  }
+}

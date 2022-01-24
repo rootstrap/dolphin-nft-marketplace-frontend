@@ -17,9 +17,11 @@
       padding: 5% 10%;
 
       &Text {
+        background: linear-gradient(0, #000000 50%, rgba(0, 0, 0, 0) 100%);
         position: absolute;
         text-align: left;
         top: 80%;
+        width: 90%;
       }
 
       img {

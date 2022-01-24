@@ -1,8 +1,8 @@
 import { TopBarLayout } from 'infrastructure/components/Layout/TopBarLayout';
 import { KnowHowContent } from './KnowHow/KnowHow';
-import { MainContent } from './Main/Main';
 import { Footer } from './Footer/Footer';
 import { PromotionContent } from './Promotion/Promotion';
+import { PromotionCarousel } from './Promotion/PromotionCarousel';
 
 const HomePage = () => (
   <>
@@ -11,7 +11,7 @@ const HomePage = () => (
         <>
           <PromotionContent />
           <KnowHowContent />
-          <MainContent />
+          <PromotionCarousel />
           <Footer />
         </>
       }

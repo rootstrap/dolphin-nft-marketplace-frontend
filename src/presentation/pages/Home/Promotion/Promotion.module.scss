@@ -1,14 +1,8 @@
 @import '../../../../app/styles/base/settings';
 
 .promotionContent {
-  padding: 0;
-
   h4 {
     text-align: center;
-  }
-
-  a {
-    color: white;
   }
 
   .Arrow {
@@ -16,12 +10,10 @@
   }
 
   &__item {
-    display: flex;
-    justify-content: center;
+    padding: 0 3rem;
 
     &Description {
       height: 5rem;
-      overflow-y: hidden;
     }
 
     &Content {
@@ -72,10 +64,18 @@
     }
 
     &Text {
-      margin: 0 auto;
+      font-size: $font-size-big;
       width: 22rem;
 
-      font-size: $font-size-big;
+      &Container {
+        align-self: center;
+
+        @media screen and (max-width: $lg-width) {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+        }
+      }
     }
 
     &Icon {

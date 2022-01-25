@@ -7,17 +7,20 @@ import {
 import { NFT } from 'app/interfaces/NFT/NFT';
 import { IError } from 'app/interfaces/common/Error';
 import { INftTradesResult } from 'app/interfaces/NFT/NFTCommons';
+import { useGetMarketMutation } from 'infrastructure/services/deposit/DepositService';
 
 export const useNftDetails = (nftId: string) => {
   const [nftPrice, setNftPrice] = useState('');
   const [nft, setNft] = useState<NFT>();
   const [nftTradeHistory, setNftTradeHistory] = useState<INftTradesResult[]>([]);
   const [isInputVisible, setIsInputVisible] = useState(false);
+  const [isPriceInUsd, setIsPriceInUsd] = useState(true);
   const [sellError, setSellError] = useState('');
 
   const [getNftById, { isLoading }] = useGetNftByIdMutation();
   const [getNftTrades, { isLoading: isTradeHistoryLoading }] = useGetNftTradeHistoryMutation();
   const [sellNft, { isLoading: isSellNftLoading, isSuccess, isError, error }] = useSellNftMutation();
+  const [getMarket, { data: priceInUsd }] = useGetMarketMutation();
 
   const handleSellNft = () => {
     setSellError('');
@@ -30,6 +33,7 @@ export const useNftDetails = (nftId: string) => {
   };
 
   const cancelOfferNft = () => {
+    setSellError('');
     sellNft({ nftId: nft?.id, price: null, quoteCurrency: nft?.quoteCurrency });
   };
 
@@ -60,6 +64,16 @@ export const useNftDetails = (nftId: string) => {
     }
   }, [isError]);
 
+  useEffect(() => {
+    setIsPriceInUsd(nft?.quoteCurrency === 'USD');
+  }, [nft]);
+
+  useEffect(() => {
+    if (!isPriceInUsd) {
+      getMarket(`${nft?.quoteCurrency}/USD`);
+    }
+  }, [nft]);
+
   return {
     nft,
     isLoading,
@@ -73,5 +87,7 @@ export const useNftDetails = (nftId: string) => {
     sellError,
     isTradeHistoryLoading,
     nftTradeHistory,
+    isPriceInUsd,
+    priceInUsd,
   };
 };

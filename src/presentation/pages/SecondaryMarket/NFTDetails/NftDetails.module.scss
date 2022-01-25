@@ -117,10 +117,15 @@
 
     &Warning {
       margin-top: auto;
-      color: $orange;
+      color: white;
+      font-size: 1.2rem;
 
       @media screen and (max-width: $md-width) {
         margin-top: 2rem;
+      }
+
+      small {
+        color: $orange;
       }
     }
 
@@ -132,6 +137,10 @@
   &__buttons {
     &Input {
       margin-bottom: 0.5rem;
+
+      input {
+        padding: 1rem;
+      }
     }
   }
 

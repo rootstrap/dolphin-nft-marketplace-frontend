@@ -36,7 +36,7 @@ export const Buttons = () => {
               <TextField
                 className={styles.secondaryMarket__buttonsInput}
                 inputProps={{ min: 0, step: 0.00001, style: { textAlign: 'center' } }}
-                placeholder="price"
+                placeholder={`Price in ${nft?.quoteCurrency}`}
                 fullWidth
                 value={nftPrice}
                 onChange={e => setNftPrice(e.target.value)}

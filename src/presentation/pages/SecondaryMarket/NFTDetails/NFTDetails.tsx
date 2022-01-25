@@ -22,6 +22,8 @@ export const NFTDetails = ({ children, nftId }: NFTDetailsProps) => {
     sellError,
     isTradeHistoryLoading,
     nftTradeHistory,
+    isPriceInUsd,
+    priceInUsd,
   } = useNftDetails(nftId);
 
   return (
@@ -39,6 +41,8 @@ export const NFTDetails = ({ children, nftId }: NFTDetailsProps) => {
         sellError,
         isTradeHistoryLoading,
         nftTradeHistory,
+        isPriceInUsd,
+        priceInUsd,
       }}
     >
       <div className={styles.secondaryMarket}>
@@ -66,4 +70,6 @@ interface NftDetailsContextProps {
   sellError: string;
   isTradeHistoryLoading: boolean;
   nftTradeHistory: INftTradesResult[];
+  isPriceInUsd: boolean;
+  priceInUsd: number | null;
 }

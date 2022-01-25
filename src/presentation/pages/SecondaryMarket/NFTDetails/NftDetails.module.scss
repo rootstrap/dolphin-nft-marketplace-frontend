@@ -1,5 +1,26 @@
 @import '../../../../app/styles/base/settings';
 
+.secondaryMarketWrapper {
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    display: flex;
+
+    @media screen and (max-width: $md-width) {
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 2%;
+  }
+}
+
 .secondaryMarket {
   display: flex;
   flex-direction: row;
@@ -121,6 +142,20 @@
 
     &:hover {
       cursor: pointer;
+    }
+  }
+
+  &__history {
+    margin: 1rem 0;
+
+    &Heading {
+      background-color: $black;
+      padding: 1rem;
+    }
+
+    &Content {
+      background-color: $background-promotion;
+      padding: 1rem;
     }
   }
 }

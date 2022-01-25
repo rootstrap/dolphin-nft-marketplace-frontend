@@ -1,6 +1,7 @@
 import { endpoints } from 'app/constants/endpoints';
 import { CreaturesPackInfo } from 'app/interfaces/NFT/CreaturesNFT';
-import { FillsResult, IFillsResponse, NFT } from 'app/interfaces/NFT/NFT';
+import { NFT } from 'app/interfaces/NFT/NFT';
+import { INftTrades, INftTradesResult } from 'app/interfaces/NFT/NFTCommons';
 import { api } from '../Api';
 
 const nftApi = api.injectEndpoints({
@@ -81,6 +82,15 @@ const nftApi = api.injectEndpoints({
         },
       }),
     }),
+    getNftTradeHistory: builder.mutation<INftTradesResult[], string>({
+      query: (nftId: string) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/nft/${nftId}/trades`,
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+        transformResponse: (data: INftTrades) => data.result,
+      }),
+    }),
   }),
   overrideExisting: true,
 });
@@ -96,6 +106,7 @@ export const {
   useGetNftsByUserMutation,
   useGetNftPackInfoMutation,
   useSellNftMutation,
+  useGetNftTradeHistoryMutation,
   endpoints: {
     getNftsSecondary: { matchFulfilled: getNftsSecondaryFulfiled },
     getNftsPrimary: { matchFulfilled: getNftsPrimaryFulfiled },

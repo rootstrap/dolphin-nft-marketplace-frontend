@@ -4,6 +4,8 @@ import { NFTDetails } from './NFTDetails/NFTDetails';
 import { Title } from './NFTDetails/Title';
 import { Image } from './NFTDetails/Image';
 import { Buttons } from './NFTDetails/Buttons';
+import { TradeHistory } from './NFTDetails/TradeHistory';
+import styles from './NFTDetails/NftDetails.module.scss';
 
 const SecondaryMarketPage = () => {
   const { nftId } = useParams<{ nftId: string }>();
@@ -12,17 +14,15 @@ const SecondaryMarketPage = () => {
     <TopBarLayout
       pageComponent={
         <NFTDetails nftId={nftId}>
-          <Image />
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              padding: '0 2%',
-            }}
-          >
-            <Title />
-            <Buttons />
+          <div className={styles.secondaryMarketWrapper}>
+            <div className={styles.secondaryMarketWrapper__main}>
+              <Image />
+              <div className={styles.secondaryMarketWrapper__description}>
+                <Title />
+                <Buttons />
+              </div>
+            </div>
+            <TradeHistory />
           </div>
         </NFTDetails>
       }

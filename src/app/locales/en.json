@@ -202,6 +202,12 @@
       "price": "Price: ",
       "edition": "Edition:",
       "totalEditions": "Total editions:"
+    },
+    "tradeHistory": {
+      "title": "Recent sales history",
+      "date": "Date",
+      "currency": "Currency",
+      "price": "Price"
     }
   },
   "peers": {

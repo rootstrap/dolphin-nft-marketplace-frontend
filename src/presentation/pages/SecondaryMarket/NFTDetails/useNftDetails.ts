@@ -1,15 +1,22 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useGetNftByIdMutation, useSellNftMutation } from 'infrastructure/services/nft/NftService';
+import {
+  useGetNftByIdMutation,
+  useGetNftTradeHistoryMutation,
+  useSellNftMutation,
+} from 'infrastructure/services/nft/NftService';
 import { NFT } from 'app/interfaces/NFT/NFT';
 import { IError } from 'app/interfaces/common/Error';
+import { INftTradesResult } from 'app/interfaces/NFT/NFTCommons';
 
 export const useNftDetails = (nftId: string) => {
   const [nftPrice, setNftPrice] = useState('');
   const [nft, setNft] = useState<NFT>();
+  const [nftTradeHistory, setNftTradeHistory] = useState<INftTradesResult[]>([]);
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [sellError, setSellError] = useState('');
 
   const [getNftById, { isLoading }] = useGetNftByIdMutation();
+  const [getNftTrades, { isLoading: isTradeHistoryLoading }] = useGetNftTradeHistoryMutation();
   const [sellNft, { isLoading: isSellNftLoading, isSuccess, isError, error }] = useSellNftMutation();
 
   const handleSellNft = () => {
@@ -28,9 +35,11 @@ export const useNftDetails = (nftId: string) => {
 
   const loadData = useCallback(async () => {
     const nftById: any = await getNftById(nftId);
+    const nftTrades: any = await getNftTrades(nftId);
 
     setNft(nftById.data.result);
-  }, [getNftById, nftId]);
+    setNftTradeHistory(nftTrades.data.result.slice(0, 5));
+  }, [getNftById, nftId, getNftTrades]);
 
   useEffect(() => {
     loadData();
@@ -62,5 +71,7 @@ export const useNftDetails = (nftId: string) => {
     handleSellNft,
     cancelOfferNft,
     sellError,
+    isTradeHistoryLoading,
+    nftTradeHistory,
   };
 };

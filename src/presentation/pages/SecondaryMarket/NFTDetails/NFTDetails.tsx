@@ -3,6 +3,7 @@ import { NFT } from 'app/interfaces/NFT/NFT';
 import { useNftDetails } from './useNftDetails';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import styles from './NftDetails.module.scss';
+import { INftTradesResult } from 'app/interfaces/NFT/NFTCommons';
 
 export const NFTDetailsContext = createContext({} as NftDetailsContextProps);
 const { Provider } = NFTDetailsContext;
@@ -19,6 +20,8 @@ export const NFTDetails = ({ children, nftId }: NFTDetailsProps) => {
     handleSellNft,
     cancelOfferNft,
     sellError,
+    isTradeHistoryLoading,
+    nftTradeHistory,
   } = useNftDetails(nftId);
 
   return (
@@ -34,6 +37,8 @@ export const NFTDetails = ({ children, nftId }: NFTDetailsProps) => {
         handleSellNft,
         cancelOfferNft,
         sellError,
+        isTradeHistoryLoading,
+        nftTradeHistory,
       }}
     >
       <div className={styles.secondaryMarket}>
@@ -59,4 +64,6 @@ interface NftDetailsContextProps {
   handleSellNft: () => void;
   cancelOfferNft: () => void;
   sellError: string;
+  isTradeHistoryLoading: boolean;
+  nftTradeHistory: INftTradesResult[];
 }

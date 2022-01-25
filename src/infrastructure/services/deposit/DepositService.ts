@@ -82,6 +82,16 @@ const depositApi = api.injectEndpoints({
         },
       }),
     }),
+    getMarket: builder.mutation<number, string>({
+      query: marketName => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/markets/${marketName}`,
+        method: 'GET',
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+      }),
+      transformResponse: (data: GetMarketResponse) => data.result.price,
+    }),
   }),
 });
 
@@ -103,6 +113,36 @@ interface ConvertBody {
   size: string;
 }
 
+interface GetMarketResponse {
+  success: boolean;
+  result: GetMarketResult;
+}
+
+interface GetMarketResult {
+  name: string;
+  enabled: boolean;
+  postOnly: boolean;
+  priceIncrement: number;
+  sizeIncrement: number;
+  minProvideSize: number;
+  last: number;
+  bid: number;
+  ask: number;
+  price: number;
+  type: string;
+  baseCurrency: string;
+  quoteCurrency: string;
+  underlying: null;
+  restricted: boolean;
+  highLeverageFeeExempt: boolean;
+  largeOrderThreshold: number;
+  change1h: number;
+  change24h: number;
+  changeBod: number;
+  quoteVolume24h: number;
+  volumeUsd24h: number;
+}
+
 export const {
   useCreateDepositMutation,
   useInitiateDepositMutation,
@@ -111,6 +151,7 @@ export const {
   useConvertBalanceMutation,
   useGetConvertBalanceMutation,
   useConfirmConvertBalanceMutation,
+  useGetMarketMutation,
   endpoints: {
     getBalance: { matchFulfilled: getBalanceFulfiled },
   },

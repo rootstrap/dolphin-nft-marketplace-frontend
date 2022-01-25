@@ -5,7 +5,7 @@ import useTranslation from 'app/hooks/useTranslation';
 import styles from './NftDetails.module.scss';
 
 export const Title = () => {
-  const { sellError, nft } = useContext(NFTDetailsContext);
+  const { sellError, nft, isPriceInUsd, priceInUsd } = useContext(NFTDetailsContext);
   const t = useTranslation();
 
   return (
@@ -32,8 +32,7 @@ export const Title = () => {
       <div className={styles.secondaryMarket__textInfo}>
         <div className={styles.secondaryMarket__textInfoContainer}>
           <Typography>
-            {t('nft.sellNft.edition')}{' '}
-            <span className={styles.secondaryMarket__textInfoData}>{nft?.number}</span>
+            # <span className={styles.secondaryMarket__textInfoData}>{nft?.number}</span>
           </Typography>
         </div>
         {nft?.totalQuantity && (
@@ -53,10 +52,14 @@ export const Title = () => {
       )}
 
       {nft?.offerPrice && (
-        <Typography className={styles.secondaryMarket__textWarning} variant="h5">
-          {t('nft.sellNft.price')}
-          {nft?.quoteCurrency} {nft?.offerPrice}
-        </Typography>
+        <div className={styles.secondaryMarket__textWarning}>
+          <p>
+            {t('nft.sellNft.price')} {nft?.quoteCurrency} {nft?.offerPrice}{' '}
+            {!isPriceInUsd && priceInUsd && (
+              <small>{`($${(priceInUsd * nft?.offerPrice).toFixed(2)})`}</small>
+            )}
+          </p>
+        </div>
       )}
     </div>
   );

@@ -47,7 +47,7 @@ export const authApi = api.injectEndpoints({
     }),
     logout: builder.mutation({
       query: (user: LogoutBody) => ({
-        url: endpoints.SIGN_OUT,
+        url: `${process.env.REACT_APP_FTX_API_URL}/logout`,
         method: 'POST',
         body: { email: user.email },
       }),

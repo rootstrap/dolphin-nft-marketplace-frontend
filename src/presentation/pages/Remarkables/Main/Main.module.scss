@@ -16,13 +16,20 @@
     }
 
     &Title {
-      font-size: 700;
+      @media screen and (max-width: $md-width) {
+        font-size: 2rem !important;
+      }
     }
 
     &Teaser {
       font-size: 1.2rem !important;
       padding: 0 20%;
       text-align: center;
+
+      @media screen and (max-width: $md-width) {
+        padding: 0 10%;
+        font-size: 1rem !important;
+      }
     }
 
     &Button {

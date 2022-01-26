@@ -3,6 +3,10 @@
 .topBar {
   margin-bottom: 4.5rem;
 
+  @media screen and (max-width: $md-width) {
+    margin-bottom: 2rem;
+  }
+
   &__logo {
     width: 160px;
   }

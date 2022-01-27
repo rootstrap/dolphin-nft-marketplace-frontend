@@ -4,7 +4,7 @@
   padding: 10rem;
 
   &__accordion {
-    background-color: $background-dark !important;
+    background-color: transparent;
   }
 
   &__tierButton {
@@ -21,11 +21,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    object-fit: cover;
-    width: 100%;
     min-width: 10%;
-    margin: 0 0 1rem;
+    margin-bottom: 1rem;
     filter: grayscale(100%);
 
     &:hover {
@@ -36,6 +33,8 @@
     &Img {
       background-color: $black;
       height: auto;
+      width: 100%;
+      object-fit: cover;
     }
 
     &Text {

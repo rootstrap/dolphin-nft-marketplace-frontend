@@ -23,7 +23,6 @@
   }
 
   &__fantasyLeague {
-    padding: 0 1rem;
     margin-bottom: 1rem;
   }
 
@@ -41,8 +40,8 @@
     }
     &Content {
       background-color: $background-promotion;
-      margin: 1rem auto;
-      width: 99%;
+      margin: 1rem 0;
+      width: 100%;
       text-align: left;
       padding: 1rem;
     }

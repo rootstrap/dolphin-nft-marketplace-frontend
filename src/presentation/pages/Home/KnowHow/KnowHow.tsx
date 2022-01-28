@@ -22,12 +22,16 @@ export const KnowHowContent = () => {
           </div>
         </Grid>
         <Grid className={styles.knowHowContent__item} item xs={12} md={4} lg={4}>
-          <img src={Second} alt="Second" />
-          <p className={styles.knowHowContent__itemText}>{t('home.knowHow.second')}</p>
+          <div className={styles.knowHowContent__item}>
+            <img src={Second} alt="Second" />
+            <p className={styles.knowHowContent__itemText}>{t('home.knowHow.second')}</p>
+          </div>
         </Grid>
         <Grid className={styles.knowHowContent__item} item xs={12} md={4} lg={4}>
-          <img src={Third} alt="Third" />
-          <p className={styles.knowHowContent__itemText}>{t('home.knowHow.third')}</p>
+          <div className={styles.knowHowContent__item}>
+            <img src={Third} alt="Third" />
+            <p className={styles.knowHowContent__itemText}>{t('home.knowHow.third')}</p>
+          </div>
         </Grid>
       </Grid>
 

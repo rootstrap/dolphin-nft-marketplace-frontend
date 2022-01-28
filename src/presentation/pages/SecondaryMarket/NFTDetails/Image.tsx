@@ -25,7 +25,7 @@ export const Image = () => {
           width="544"
           allow="autoplay; encrypted-media;"
           allowFullScreen={true}
-          src={`${nft?.videoUrl}?autoplay=true&muted=true`}
+          src={`${nft?.videoUrl}?autoplay=true&muted=true&loop=true`}
           title={nft?.name}
         />
       ) : (

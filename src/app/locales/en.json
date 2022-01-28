@@ -1,11 +1,11 @@
 {
   "global": {
-    "pageTitle": "Dolphin Marketplace",
+    "pageTitle": "Dolphin NFTs",
     "login": "Sign in",
     "logout": "Logout",
     "signup": "Sign up",
-    "signinMsg": "Or sign in ",
-    "signinLink": "Signin"
+    "signinMsg": "Sign in ",
+    "signinLink": "Sign in"
   },
   "navBar": {
     "collections": "Collections",
@@ -24,9 +24,9 @@
       "description": "Check the lattest NFTs for sale by collectors"
     },
     "knowHow": {
-      "first": "Tell us about yourself and set up your wallet.",
-      "second": "Add in your payment information.",
-      "third": "Find something you like and start collecting!",
+      "first": "Set Up Your Online Wallet",
+      "second": "Authenticate Your Profile",
+      "third": "Start Collecting",
       "button": "Sign up Now! →"
     },
     "nftList": {
@@ -38,7 +38,7 @@
     },
     "promotion": {
       "mainText": "NFTs for Fanatics, Filmaholics, Foodies & more. Find Your Fandom.",
-      "button": "Know How ↓"
+      "button": "Here's How ↓"
     }
   },
   "sports": {
@@ -152,7 +152,7 @@
       "secondItem": {
         "teaser": "Get Epic",
         "title": "Build Your SuperTeam",
-        "description": "There are 32 different design combinations for each athlete designed by award-winning artist Anthony Francisco."
+        "description": "There are 32 different design combinations for each athlete, designed by award-winning artist Anthony Francisco."
       },
       "thirdItem": {
         "teaser": "Collect and earn",

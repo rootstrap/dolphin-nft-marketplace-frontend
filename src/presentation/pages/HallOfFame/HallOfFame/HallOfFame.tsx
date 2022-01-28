@@ -1,7 +1,6 @@
 import { Accordion, AccordionDetails, AccordionSummary, Grid, Typography } from '@material-ui/core';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { Item } from '../Main/Item';
-import { useParams } from 'react-router';
 import { Promotion } from '../Promotion/Promotion';
 import { useHallOfFame } from './useHallOfFame';
 import { NFT } from 'app/interfaces/NFT/NFT';
@@ -9,7 +8,6 @@ import { ItemBanner } from './ItemBanner/ItemBanner';
 import { FilterButton } from './FilterButton/FilterButton';
 import VerticalPromotion from 'app/assets/VerticalPromotion.png';
 import useTranslation from 'app/hooks/useTranslation';
-import MoreSoon from 'app/assets/Athlete-MoreSoon.png';
 import mainContentStyles from '../Main/Main.module.scss';
 import styles from './HallOfFame.module.scss';
 
@@ -33,16 +31,17 @@ export const HallOfFame = () => {
           <CustomLoader />
         ) : (
           <Grid container>
-            <Grid container justifyContent="center">
+            <Grid container>
               {itemBanners.map(({ image, legend: itemLegend }) => (
-                <ItemBanner setLegend={setLegend} image={image} legend={itemLegend} selectedLegend={legend} />
+                <Grid item xs={6} sm={4} md={3} lg={2}>
+                  <ItemBanner
+                    setLegend={setLegend}
+                    image={image}
+                    legend={itemLegend}
+                    selectedLegend={legend}
+                  />
+                </Grid>
               ))}
-              <div className={styles.hallOfFame__itemImgContainer}>
-                <div className={styles.hallOfFame__imgContainer}>
-                  <img src={MoreSoon} alt="More Soon" className={styles.hallOfFame__imgContainerImg} />
-                  <Typography className={styles.hallOfFame__imgContainerText}>More Soon</Typography>
-                </div>
-              </div>
             </Grid>
             <Grid container justifyContent="flex-end">
               {tiers.map(item => (

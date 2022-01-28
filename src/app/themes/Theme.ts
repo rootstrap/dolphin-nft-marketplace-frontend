@@ -80,5 +80,15 @@ export const theme = createTheme({
         backgroundColor: colors.darkGrey,
       },
     },
+    MuiAccordionSummary: {
+      root: {
+        padding: 0,
+      },
+    },
+    MuiAccordionDetails: {
+      root: {
+        padding: 0,
+      },
+    },
   },
 });

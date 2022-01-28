@@ -1,6 +1,13 @@
 @import '../../../../app/styles/base/settings';
 
 .promotionContent {
+  display: flex;
+
+  @media screen and (max-width: $sm-width) {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
   h4 {
     text-align: center;
   }

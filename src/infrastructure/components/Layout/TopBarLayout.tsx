@@ -37,8 +37,8 @@ export const TopBarLayout = ({ pageComponent, isTopBarVisible = true }: TopBarLa
         <CreditCardModal />
         <CC />
         <KYC />
-        <BottomBar />
       </div>
+      <BottomBar />
     </>
   );
 };

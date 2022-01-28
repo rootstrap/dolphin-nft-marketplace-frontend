@@ -1,8 +1,8 @@
 import { Grid } from '@material-ui/core';
 import { PromotionText } from './PromotionText';
+import { MainContent } from '../Main/Main';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Promotion.module.scss';
-import { MainContent } from '../Main/Main';
 
 export const PromotionContent = () => {
   const t = useTranslation();

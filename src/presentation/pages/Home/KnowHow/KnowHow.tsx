@@ -1,13 +1,12 @@
 import { useContext } from 'react';
 import { Button, Grid } from '@material-ui/core';
 import { ModalContext } from 'app/context/ModalContext';
-import { Step } from './Step';
+import { useAppSelector } from 'app/hooks/reduxHooks';
 import First from 'app/assets/First.png';
 import Second from 'app/assets/Second.png';
 import Third from 'app/assets/Third.png';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './KnowHow.module.scss';
-import { useAppSelector } from 'app/hooks/reduxHooks';
 
 export const KnowHowContent = () => {
   const { setSignupModalIsOpen } = useContext(ModalContext);
@@ -16,14 +15,19 @@ export const KnowHowContent = () => {
   return (
     <>
       <Grid className={styles.knowHowContent} container id="knowHow">
-        <Grid className={styles.knowHowContent__item} item xs={6} md={4} lg={4}>
-          <Step styles={styles} textContent={t('home.knowHow.first')} src={First} alt="First" />
-        </Grid>
-        <Grid className={styles.knowHowContent__item} item xs={6} md={4} lg={4}>
-          <Step styles={styles} textContent={t('home.knowHow.second')} src={Second} alt="Second" />
+        <Grid item xs={12} md={4} lg={4}>
+          <div className={styles.knowHowContent__item}>
+            <img src={First} alt="First" />
+            <p className={styles.knowHowContent__itemText}>{t('home.knowHow.first')}</p>
+          </div>
         </Grid>
         <Grid className={styles.knowHowContent__item} item xs={12} md={4} lg={4}>
-          <Step styles={styles} textContent={t('home.knowHow.third')} src={Third} alt="Third" />
+          <img src={Second} alt="Second" />
+          <p className={styles.knowHowContent__itemText}>{t('home.knowHow.second')}</p>
+        </Grid>
+        <Grid className={styles.knowHowContent__item} item xs={12} md={4} lg={4}>
+          <img src={Third} alt="Third" />
+          <p className={styles.knowHowContent__itemText}>{t('home.knowHow.third')}</p>
         </Grid>
       </Grid>
 

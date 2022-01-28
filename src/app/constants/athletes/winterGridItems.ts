@@ -36,7 +36,7 @@ export const winterGridItems = [
     image: NancyKerrygan,
   },
   {
-    name: 'HILLARY KNIGHT',
+    name: 'HILARY KNIGHT',
     sport: 'Ice Hockey',
     image: HillaryKnight,
   },

@@ -1,0 +1,22 @@
+.mobileTopBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__menu {
+    display: flex;
+    &Item {
+      a {
+        color: white;
+      }
+    }
+  }
+
+  &__logo {
+    width: 5rem;
+  }
+
+  &__user {
+    zoom: 0.4;
+  }
+}

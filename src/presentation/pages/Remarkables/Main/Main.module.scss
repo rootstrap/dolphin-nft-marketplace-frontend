@@ -1,14 +1,27 @@
 @import '../../../../app/styles/base/settings';
 
 .mainContent {
+  &__background {
+    position: relative;
+    &Img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
   &__header {
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     position: absolute;
-    text-align: center;
     width: 100%;
+
+    @media screen and (max-width: 375px) {
+      display: none !important;
+    }
 
     &Featured {
       color: $orange;
@@ -17,7 +30,11 @@
 
     &Title {
       @media screen and (max-width: $md-width) {
-        font-size: 2rem !important;
+        font-size: 1.1rem !important;
+      }
+
+      @media screen and (max-width: $xs-width) {
+        font-size: 0.9rem !important;
       }
     }
 
@@ -28,20 +45,13 @@
 
       @media screen and (max-width: $md-width) {
         padding: 0 10%;
-        font-size: 1rem !important;
+        font-size: 0.9rem !important;
       }
     }
 
     &Button {
       margin-top: 2rem !important;
       width: 13rem !important;
-    }
-  }
-
-  &__background {
-    &Img {
-      width: 100%;
-      height: auto;
     }
   }
 }

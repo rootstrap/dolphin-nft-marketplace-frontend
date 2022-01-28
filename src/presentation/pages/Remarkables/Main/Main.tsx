@@ -12,19 +12,6 @@ export const Main = () => {
 
   return (
     <>
-      <div className={styles.mainContent__header}>
-        <Typography component="div" variant="h2" className={styles.mainContent__headerTitle}>
-          {t('remarkables.title')}
-        </Typography>
-        <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
-          {t('remarkables.teaser')}
-        </Typography>
-        <div>
-          <Link href="#athelites" underline="none">
-            <Button className={styles.mainContent__headerButton}> {t('verticals.actionButton')}</Button>
-          </Link>
-        </div>
-      </div>
       <Grid container className={styles.mainContent__background}>
         <Grid item xs={12} sm={6} md={4}>
           <img alt="" src={Remarkable1} className={styles.mainContent__backgroundImg} />
@@ -39,6 +26,20 @@ export const Main = () => {
             <img alt="" src={Remarkable3} className={styles.mainContent__backgroundImg} />
           </Grid>
         )}
+
+        <div className={styles.mainContent__header}>
+          <Typography component="div" variant="h2" className={styles.mainContent__headerTitle}>
+            {t('remarkables.title')}
+          </Typography>
+          <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
+            {t('remarkables.teaser')}
+          </Typography>
+          <div>
+            <Link href="#athelites" underline="none">
+              <Button className={styles.mainContent__headerButton}> {t('verticals.actionButton')}</Button>
+            </Link>
+          </div>
+        </div>
       </Grid>
 
       <img

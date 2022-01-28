@@ -50,7 +50,6 @@ export const UserTopBarInfo = () => {
             </>
           ) : (
             <div className={styles.topBar__itemButtonLink}>
-              <span>Or </span>
               <Link to={location.pathname} onClick={() => setLoginModalIsOpen(true)}>
                 {t('global.signinLink')}
               </Link>

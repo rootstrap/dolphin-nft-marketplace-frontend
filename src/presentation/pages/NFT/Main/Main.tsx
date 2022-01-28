@@ -27,7 +27,7 @@ export const Main = () => {
           <iframe
             className={styles.mainContent__itemVideo}
             allow="autoplay; encrypted-media;"
-            src={`${nft?.videoUrl}?autoplay=true&muted=true`}
+            src={`${nft?.videoUrl}?autoplay=true&muted=true&loop=true`}
             title={nft?.name}
           />
         </Grid>

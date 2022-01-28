@@ -14,7 +14,7 @@ export const PromotionCarousel = () => {
         <>
           <Arrow handleOnClick={() => handleOnClick('left')} direction="left" />
           {carouselContent.map((item: NFT) => (
-            <Grid item xs={10} md={5} lg={5} key={item.id}>
+            <Grid item xs={12} md={5} lg={5} key={item.id}>
               <Item
                 styles={styles}
                 id={item.id}

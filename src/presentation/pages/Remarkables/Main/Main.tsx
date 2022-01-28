@@ -40,6 +40,14 @@ export const Main = () => {
           </Grid>
         )}
       </Grid>
+
+      <img
+        src="https://ad.ipredictive.com/d/track/cvt/pixel?acct_id=54103&cache_buster=[timestamp]"
+        alt=""
+        style={{ display: 'none' }}
+        width="1"
+        height="1"
+      />
     </>
   );
 };

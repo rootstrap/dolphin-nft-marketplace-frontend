@@ -8,7 +8,7 @@ import { Country, Subregion } from 'app/interfaces/common/Country';
 import useTranslation from 'app/hooks/useTranslation';
 import { encryptData } from 'app/helpers/encryptData';
 import { ICreditCardError } from 'app/interfaces/creditCard/creditCard';
-import { keyId, publicKey } from 'app/constants/contants';
+import { keyId, VISAMASTERCARD_REGEX, publicKey } from 'app/constants/contants';
 
 interface FormValues {
   name: string;
@@ -36,7 +36,7 @@ export const useCreditCardForm = () => {
 
   const schema = z.object({
     name: z.string().min(3, { message: t('creditCard.error.requiredField') }),
-    ccNumber: z.string().min(16, { message: t('creditCard.error.creditCardNumber') }),
+    ccNumber: z.string().regex(VISAMASTERCARD_REGEX, { message: 'Credit Card should be VISA or MASTERCARD' }),
     cvv: z.string().min(3, { message: t('creditCard.error.cvvNumber') }),
     expiryMonth: z.string().min(1, { message: t('creditCard.error.expiryMonth') }),
     expiryYear: z.string().length(4, { message: t('creditCard.error.expiryYear') }),
@@ -55,7 +55,7 @@ export const useCreditCardForm = () => {
     reset,
     watch,
     formState: { errors },
-  } = useForm({ resolver: zodResolver(schema) });
+  } = useForm({ resolver: zodResolver(schema), mode: 'onTouched' });
 
   const onSubmit: SubmitHandler<FormValues> = async form => {
     const data = await encryptData(publicKey, keyId, {

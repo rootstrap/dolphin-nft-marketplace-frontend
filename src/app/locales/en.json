@@ -19,7 +19,6 @@
   "home": {
     "title": "Athletes collection",
     "collection": "collections",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "latestSection": {
       "description": "Check the lattest NFTs for sale by collectors"
     },
@@ -139,15 +138,15 @@
       "view": "View"
     }
   },
-  "remarkables": {
-    "title": "Winter Sports Champions",
-    "teaser": "Digital collectibles that bring together the Remarkable worlds of comic books and groundbreaking athletes. From the imagination of former Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites, build your SuperTeam, and unlock new rare digital items and real-life experiences that you can’t find anywhere else! IRLs may include lessons from the world’s top athletes, hand-picked professional sports gear signed by the pros themselves, and much more!",
+  "heroletes": {
+    "title": "Heroletes",
+    "teaser": "Digital collectibles that bring together the worlds of comic books and groundbreaking athletes. From the imagination of former Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites, build your SuperTeam, and unlock new rare digital items and real-life experiences that you can’t find anywhere else. IRLs may include lessons from the world’s top athletes, hand-picked professional sports gear signed by the pros themselves, and much more.",
     "howItWorks": {
       "title": "How It Works",
       "firstItem": {
         "teaser": "Buy",
         "title": "Start Your Collection",
-        "description": "Remarkable Athletes are sold in packs of three or more NFTs that vary in design and rarity."
+        "description": "Heroletes are sold in packs of three or more NFTs that vary in design and rarity."
       },
       "secondItem": {
         "teaser": "Get Epic",
@@ -157,7 +156,7 @@
       "thirdItem": {
         "teaser": "Collect and earn",
         "title": "Unlock IRLs",
-        "description": "The more you collect, the more you can unlock real life experiences that you can’t find anywhere else! "
+        "description": "The more you collect, the more you can unlock real life experiences that you can’t find anywhere else. "
       }
     },
     "carousel": {
@@ -300,7 +299,7 @@
     "city": "City",
     "postalCode": "Zip Code",
     "button": "Finish →",
-    "text": "We recommend funding your wallet ahead of purchasing as there may be processing time needed. Using a credit or debit card is the easiest way to get started!",
+    "text": "We recommend funding your wallet ahead of purchasing as there may be processing time needed. Using a credit or debit card is the easiest way to get started.",
     "text2": "You can also use a ",
     "bankAccount": "bank account ",
     "cryptoCurrency": " crypto currency ",

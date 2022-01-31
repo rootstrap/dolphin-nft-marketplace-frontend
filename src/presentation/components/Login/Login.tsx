@@ -65,6 +65,11 @@ export const Login = () => {
             error={errors.password}
           />
         </Grid>
+        <Grid item xs={12} style={{ fontSize: '0.7rem' }}>
+          This site is protected by reCAPTCHA and the Google
+          <a href="https://policies.google.com/privacy"> Privacy Policy</a> and
+          <a href="https://policies.google.com/terms"> Terms of Service</a> apply.
+        </Grid>
         <Grid item xs={12}>
           <div className={styles.loginForm__button}>
             <Button fullWidth type="submit">

@@ -26,9 +26,9 @@ export const dropDownListCategories = [
   },
   {
     key: 2,
-    value: 'Winter Sports Champions',
+    value: 'Heroletes',
     disabled: false,
-    route: routesPaths.winterSportsChampions,
+    route: routesPaths.heroletes,
   },
   {
     key: 3,

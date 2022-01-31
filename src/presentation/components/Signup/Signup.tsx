@@ -96,6 +96,11 @@ export const Signup = () => {
             size="small"
           />
         </Grid>
+        <Grid item xs={12} style={{ fontSize: '0.7rem' }}>
+          This site is protected by reCAPTCHA and the Google
+          <a href="https://policies.google.com/privacy"> Privacy Policy</a> and
+          <a href="https://policies.google.com/terms"> Terms of Service</a> apply.
+        </Grid>
         <Grid item xs={12} className={styles.signupForm__checkbox}>
           <Checkbox checked={isTosAgree} onChange={() => setIsTosAgree(!isTosAgree)} />
           <Typography>

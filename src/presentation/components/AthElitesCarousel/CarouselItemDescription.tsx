@@ -14,7 +14,7 @@ export const CarouselItemDescription = ({
   return (
     <div className={styles.carousel__description}>
       <div className={styles.carousel__descriptionFeatured}>
-        <Typography variant="h6">{t('remarkables.carousel.featured')}</Typography>
+        <Typography variant="h6">{t('heroletes.carousel.featured')}</Typography>
       </div>
       <div className={styles.carousel__descriptionTitle}>
         <Typography variant="h5">{title}</Typography>
@@ -30,24 +30,24 @@ export const CarouselItemDescription = ({
       {/*
       <div className={styles.carousel__descriptionCheckout}>
         <Typography variant="body1">
-          <Link>{t('remarkables.carousel.link')}</Link>
+          <Link>{t('heroletes.carousel.link')}</Link>
         </Typography>
       </div>
 
        <div className={styles.carousel__descriptionPack}>
         <div className={styles.carousel__descriptionPackInfo}>
-          <Typography variant="h6">{t('remarkables.carousel.collectibles')}</Typography>
+          <Typography variant="h6">{t('heroletes.carousel.collectibles')}</Typography>
           <p>{collectiblesPerPack}</p>
         </div>
         <div className={styles.carousel__descriptionPackInfo}>
-          <Typography variant="h6">{t('remarkables.carousel.cost')}</Typography>
+          <Typography variant="h6">{t('heroletes.carousel.cost')}</Typography>
           <p>${costPerPack}</p>
         </div>
       </div>
 
       <div className={styles.carousel__descriptionButton}>
         <Button variant="contained" fullWidth>
-          {t('remarkables.carousel.button')}
+          {t('heroletes.carousel.button')}
         </Button>
       </div> */}
     </div>

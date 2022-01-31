@@ -35,6 +35,16 @@ export const KnowHowContent = () => {
         </Grid>
       </Grid>
 
+      <div className={styles.video}>
+        <iframe
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          className={styles.video__content}
+          frameBorder={0}
+          src="https://player.vimeo.com/video/671987120?h=b47abf0dec&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0"
+          title="dolphinMarketplace"
+        ></iframe>
+      </div>
       <Grid container justifyContent="center">
         <Grid item lg={5}></Grid>
         <Grid item lg={2}>

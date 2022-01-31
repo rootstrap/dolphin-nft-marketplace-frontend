@@ -12,39 +12,39 @@ export const HowItWorks = () => {
     <>
       <Grid container justifyContent="center" className={styles.howItWorks}>
         <Typography variant="h2" className={styles.howItWorks__title}>
-          {t('remarkables.howItWorks.title')}
+          {t('heroletes.howItWorks.title')}
         </Typography>
         <Grid container justifyContent="space-around" spacing={1}>
           <Grid item md={2} lg={3}>
             <div className={styles.howItWorks__item}>
               <Typography className={styles.howItWorks__itemTitle} variant="h3">
-                {t('remarkables.howItWorks.firstItem.title')}
+                {t('heroletes.howItWorks.firstItem.title')}
               </Typography>
               <CollectionIcon className={styles.howItWorks__itemImage} />
               <Typography component={'p'} variant="subtitle1" className={styles.howItWorks__itemDescription}>
-                {t('remarkables.howItWorks.firstItem.description')}
+                {t('heroletes.howItWorks.firstItem.description')}
               </Typography>
             </div>
           </Grid>
           <Grid item md={2} lg={3}>
             <div className={styles.howItWorks__item}>
               <Typography className={styles.howItWorks__itemTitle} variant="h3">
-                {t('remarkables.howItWorks.secondItem.title')}
+                {t('heroletes.howItWorks.secondItem.title')}
               </Typography>
               <SuperTeamIcon className={styles.howItWorks__itemImage} />
               <Typography component={'p'} variant="subtitle1" className={styles.howItWorks__itemDescription}>
-                {t('remarkables.howItWorks.secondItem.description')}
+                {t('heroletes.howItWorks.secondItem.description')}
               </Typography>
             </div>
           </Grid>
           <Grid item md={2} lg={3}>
             <div className={styles.howItWorks__item}>
               <Typography className={styles.howItWorks__itemTitle} variant="h3">
-                {t('remarkables.howItWorks.thirdItem.title')}
+                {t('heroletes.howItWorks.thirdItem.title')}
               </Typography>
               <IrlIcon className={styles.howItWorks__itemImage} />
               <Typography component={'p'} variant="subtitle1" className={styles.howItWorks__itemDescription}>
-                {t('remarkables.howItWorks.thirdItem.description')}
+                {t('heroletes.howItWorks.thirdItem.description')}
               </Typography>
             </div>
           </Grid>

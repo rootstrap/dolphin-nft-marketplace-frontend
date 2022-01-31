@@ -319,7 +319,7 @@
     "error": {
       "invalidError": "Invalid Credit Card",
       "requiredField": "Field Required",
-      "creditCardNumber": "Invalid Credit Card Number",
+      "creditCardNumber": "Credit Card should be VISA or MASTERCARD",
       "cvvNumber": "Invalid CVV Number",
       "expiryMonth": "Month should be formatted as M or MM",
       "expiryYear": "Year should be formatted as YYYY",

@@ -36,7 +36,7 @@ export const useCreditCardForm = () => {
 
   const schema = z.object({
     name: z.string().min(3, { message: t('creditCard.error.requiredField') }),
-    ccNumber: z.string().regex(VISAMASTERCARD_REGEX, { message: 'Credit Card should be VISA or MASTERCARD' }),
+    ccNumber: z.string().regex(VISAMASTERCARD_REGEX, { message: t('creditCard.error.creditCardNumber') }),
     cvv: z.string().min(3, { message: t('creditCard.error.cvvNumber') }),
     expiryMonth: z.string().min(1, { message: t('creditCard.error.expiryMonth') }),
     expiryYear: z.string().length(4, { message: t('creditCard.error.expiryYear') }),

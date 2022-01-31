@@ -17,7 +17,12 @@ export const MainContent = () => {
       </Grid>
 
       <Grid item xs={4} className={styles.mainContent__item}>
-        <MainImg src={Creatures} title="Creatures" link={process.env.REACT_APP_CREATURES_URL} isHyperlink />
+        <MainImg
+          src={Creatures}
+          title="Creatures Chronicles"
+          link={process.env.REACT_APP_CREATURES_URL}
+          isHyperlink
+        />
       </Grid>
     </Grid>
   );

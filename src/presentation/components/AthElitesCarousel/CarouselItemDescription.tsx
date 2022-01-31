@@ -17,11 +17,11 @@ export const CarouselItemDescription = ({
         <Typography variant="h6">{t('heroletes.carousel.featured')}</Typography>
       </div>
       <div className={styles.carousel__descriptionTitle}>
-        <Typography variant="h5">{title}</Typography>
+        <Typography variant="h3">{title}</Typography>
       </div>
 
       <div className={styles.carousel__descriptionDate}>
-        <Typography variant="h5">{date}</Typography>
+        <Typography variant="h6">{date}</Typography>
       </div>
       <div className={styles.carousel__descriptionText}>
         <Typography variant="body1">{text}</Typography>

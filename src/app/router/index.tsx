@@ -46,7 +46,7 @@ export const routes: Route = {
       exact: true,
     },
     {
-      path: routesPaths.winterSportsChampions,
+      path: routesPaths.heroletes,
       Component: lazy(
         () => import(/* webpackChunkName: "Remarkables" */ 'presentation/pages/Remarkables/RemarkablesPage')
       ),

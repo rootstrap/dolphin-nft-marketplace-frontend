@@ -5,7 +5,7 @@
   display: flex;
   padding: 2rem 4rem;
 
-  @media screen and (min-width: $sm-min-width) and (max-width: $sm-max-width) {
+  @media screen and (max-width: $md-width) {
     flex-direction: column;
     text-align: center;
   }

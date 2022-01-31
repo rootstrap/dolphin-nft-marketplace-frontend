@@ -55,6 +55,7 @@ export const CreditCardForm = () => {
             name="ccNumber"
             type="number"
             error={errors.ccNumber}
+            isCreditCard
           />
         </Grid>
         <Grid item xs={4}>

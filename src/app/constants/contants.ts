@@ -63,6 +63,7 @@ export const helpLinks = {
 };
 
 export const PASSWORD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+export const VISAMASTERCARD_REGEX = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/;
 
 export const CIRCLE_FAILURE_CODES = {
   // Payment error codes

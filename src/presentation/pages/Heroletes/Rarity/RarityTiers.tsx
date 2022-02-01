@@ -11,17 +11,17 @@ export const RarityTiers = () => {
       </div>
 
       <Grid container>
-        <Grid item lg={2}></Grid>
+        <Grid item md={2} lg={2}></Grid>
         {React.Children.toArray(
           rarityTiers.map(({ name, percentage, img }) => (
-            <Grid item lg={2} className={styles.rarity__tiersFrame}>
+            <Grid item xs={12} sm={6} md={2} lg={2} className={styles.rarity__tiersFrame}>
               <img alt="" src={img} />
               <Typography>{name}</Typography>
               <Typography>{percentage}</Typography>
             </Grid>
           ))
         )}
-        <Grid item lg={2}></Grid>
+        <Grid item md={2} lg={2}></Grid>
       </Grid>
     </div>
   );

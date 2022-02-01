@@ -10,17 +10,17 @@ export const RaritySigned = () => {
       </div>
 
       <Grid container>
-        <Grid item lg={2}></Grid>
-        <Grid item lg={4}>
+        <Grid item md={2} lg={2}></Grid>
+        <Grid item xs={12} sm={6} md={4} lg={4}>
           <div className={styles.rarity__signedText}>
             <Typography variant="h4">10%</Typography>
             <Typography variant="h4">of all collectibles are signed by the athlete</Typography>
           </div>
         </Grid>
-        <Grid item lg={4}>
+        <Grid item xs={12} sm={6} md={4} lg={4}>
           <img src={SignedHerolete} alt="" />
         </Grid>
-        <Grid item lg={2}></Grid>
+        <Grid item md={2} lg={2}></Grid>
       </Grid>
     </div>
   );

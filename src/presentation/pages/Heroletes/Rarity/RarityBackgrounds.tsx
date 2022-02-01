@@ -11,10 +11,10 @@ export const RarityBackgrounds = () => {
       </div>
 
       <Grid container>
-        <Grid item lg={2}></Grid>
+        <Grid item md={2} lg={2}></Grid>
         {React.Children.toArray(
           rarityBrackgrounds.map(({ name, percentage, img }) => (
-            <Grid item lg={2}>
+            <Grid item xs={12} sm={6} md={2} lg={2}>
               <div className={styles.rarity__backgroundsFrame}>
                 <img alt="" src={img} />
                 <div className={styles.rarity__backgroundsFrameText}>
@@ -25,7 +25,7 @@ export const RarityBackgrounds = () => {
             </Grid>
           ))
         )}
-        <Grid item lg={2}></Grid>
+        <Grid item md={2} lg={2}></Grid>
       </Grid>
     </div>
   );

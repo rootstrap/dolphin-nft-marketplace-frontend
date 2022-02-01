@@ -48,7 +48,7 @@ export const routes: Route = {
     {
       path: routesPaths.heroletes,
       Component: lazy(
-        () => import(/* webpackChunkName: "Remarkables" */ 'presentation/pages/Remarkables/RemarkablesPage')
+        () => import(/* webpackChunkName: "Remarkables" */ 'presentation/pages/Heroletes/RemarkablesPage')
       ),
       exact: true,
       private: false,

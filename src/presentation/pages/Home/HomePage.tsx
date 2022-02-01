@@ -1,6 +1,6 @@
 import { TopBarLayout } from 'infrastructure/components/Layout/TopBarLayout';
 import { KnowHowContent } from './KnowHow/KnowHow';
-import { PromotionContent } from './Promotion/Promotion';
+import { PromotionContent } from './Promotion/PromotionContent';
 import { PromotionCarousel } from './Promotion/PromotionCarousel';
 
 const HomePage = () => (

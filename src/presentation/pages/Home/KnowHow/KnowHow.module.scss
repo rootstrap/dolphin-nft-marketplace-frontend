@@ -30,7 +30,7 @@
 .video {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin: 6rem auto;
   padding: 0 10%;
 
   @media screen and (max-width: $md-width) {
@@ -45,4 +45,9 @@
       height: 24rem;
     }
   }
+}
+
+.button {
+  width: 40%;
+  margin: 4rem auto 3rem;
 }

@@ -21,19 +21,27 @@ export const KnowHowContent = () => {
             <p className={styles.knowHowContent__itemText}>{t('home.knowHow.first')}</p>
           </div>
         </Grid>
-        <Grid className={styles.knowHowContent__item} item xs={12} md={4} lg={4}>
+        <Grid item xs={12} md={4} lg={4}>
           <div className={styles.knowHowContent__item}>
             <img src={Second} alt="Second" />
             <p className={styles.knowHowContent__itemText}>{t('home.knowHow.second')}</p>
           </div>
         </Grid>
-        <Grid className={styles.knowHowContent__item} item xs={12} md={4} lg={4}>
+        <Grid item xs={12} md={4} lg={4}>
           <div className={styles.knowHowContent__item}>
             <img src={Third} alt="Third" />
             <p className={styles.knowHowContent__itemText}>{t('home.knowHow.third')}</p>
           </div>
         </Grid>
       </Grid>
+
+      {!isAuthenticated && (
+        <div className={styles.button}>
+          <Button fullWidth onClick={() => setSignupModalIsOpen(true)}>
+            {t('home.knowHow.button')}
+          </Button>
+        </div>
+      )}
 
       <div className={styles.video}>
         <iframe
@@ -45,17 +53,6 @@ export const KnowHowContent = () => {
           title="dolphinMarketplace"
         ></iframe>
       </div>
-      <Grid container justifyContent="center">
-        <Grid item lg={5}></Grid>
-        <Grid item lg={2}>
-          {!isAuthenticated && (
-            <Button fullWidth onClick={() => setSignupModalIsOpen(true)}>
-              {t('home.knowHow.button')}
-            </Button>
-          )}
-        </Grid>
-        <Grid item lg={5}></Grid>
-      </Grid>
     </>
   );
 };

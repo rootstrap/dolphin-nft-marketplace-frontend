@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { winterGridItems } from 'app/constants/athletes/winterGridItems';
+import { winterGridItems } from 'app/constants/heroletes/winterGridItems';
 import styles from './WinterGrid.module.scss';
 
 export const WinterGrid = () => {

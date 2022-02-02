@@ -1,9 +1,9 @@
 import { useCarousel } from './useCarousel';
 import { Arrow } from '../Arrow/Arrow';
-import styles from './carousel.module.scss';
-import './carousel.css';
+import styles from './Carousel.module.scss';
+import './Carousel.css';
 
-export const Carousel = ({ children, show, infiniteLoop }: CarouselProp) => {
+export const Carousel = ({ children, show, infiniteLoop = false }: CarouselProp) => {
   const {
     currentIndex,
     handleClickNext,
@@ -14,10 +14,10 @@ export const Carousel = ({ children, show, infiniteLoop }: CarouselProp) => {
     renderNextItems,
     renderPrevItems,
     transitionEnabled,
-  } = useCarousel(children, show, infiniteLoop);
+  } = useCarousel({ children, show, infiniteLoop });
 
   return (
-    <div className={styles.carousel__container}>
+    <div className={styles.carousel}>
       <div className={styles.carousel__wrapper}>
         {(isRepeating || currentIndex > 0) && (
           <Arrow direction="left" style={{ margin: '5px' }} handleOnClick={handleClickPrev} />
@@ -46,6 +46,6 @@ export const Carousel = ({ children, show, infiniteLoop }: CarouselProp) => {
 
 interface CarouselProp {
   children: React.ReactElement[];
-  show: number;
-  infiniteLoop: boolean;
+  show: 1 | 2 | 3 | 4;
+  infiniteLoop?: boolean;
 }

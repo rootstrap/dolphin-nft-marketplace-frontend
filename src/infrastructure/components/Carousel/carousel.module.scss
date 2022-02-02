@@ -1,9 +1,7 @@
 .carousel {
-  &__container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 
   &__wrapper {
     align-items: center;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export const useCarousel = (children: React.ReactElement[], show: number, infiniteLoop: boolean) => {
+export const useCarousel = ({ children, show, infiniteLoop }: Carousel) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(children.length);
 
@@ -78,3 +78,9 @@ export const useCarousel = (children: React.ReactElement[], show: number, infini
     transitionEnabled,
   };
 };
+
+interface Carousel {
+  children: React.ReactElement[];
+  show: number;
+  infiniteLoop: boolean;
+}

@@ -13,11 +13,12 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
     <>
       <div className={styles.carousel} id="athelites">
         <CarouselItemDescription
-          title={carouselItems[index].title}
-          date={carouselItems[index].date}
-          text={carouselItems[index].text}
           collectiblesPerPack={carouselItems[index].collectiblesPerPack}
           costPerPack={carouselItems[index].costPerPack}
+          date={carouselItems[index].date}
+          price={carouselItems[index].price}
+          text={carouselItems[index].text}
+          title={carouselItems[index].title}
         />
 
         <CarouselItemImage tier={carouselItems[index].tier} image={carouselItems[index].image} />
@@ -28,7 +29,7 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
       ) : (
         <div className={styles.carousel__buttons}>
           <Button variant="contained" size="large" fullWidth>
-            Coming Soon
+            Buy Now
           </Button>
         </div>
       )}

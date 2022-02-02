@@ -4,6 +4,7 @@ import { useState } from 'react';
 import logoImg from 'app/assets/dolphin_logo.png';
 import styles from './MobileTopBar.module.scss';
 import { UserTopBarInfo } from './UserTopBarInfo';
+import { dropDownListCategories } from 'app/constants/contants';
 
 export const MobileTopBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -35,6 +36,7 @@ export const MobileTopBar = () => {
 
         <Menu
           id="long-menu"
+          disableScrollLock
           MenuListProps={{
             'aria-labelledby': 'long-button',
           }}
@@ -44,7 +46,7 @@ export const MobileTopBar = () => {
           PaperProps={{
             style: {
               maxHeight: 48 * 4.5,
-              width: '20ch',
+              width: '25ch',
             },
           }}
         >
@@ -53,6 +55,16 @@ export const MobileTopBar = () => {
               FAQs
             </a>
           </MenuItem>
+          {dropDownListCategories.map(category => (
+            <MenuItem
+              key={category.key}
+              value={category.value}
+              disabled={category.disabled}
+              className={styles.mobileTopBar__menuItem}
+            >
+              <a href={category.route}>{category.value}</a>
+            </MenuItem>
+          ))}
         </Menu>
       </div>
 

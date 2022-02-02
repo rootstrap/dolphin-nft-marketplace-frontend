@@ -1,6 +1,15 @@
 @import '../../../app/styles/base/settings';
 
 .inputText {
+  &__text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    svg {
+      width: 2rem;
+    }
+  }
+
   &__error {
     color: $error;
     font-size: $font-size-small;

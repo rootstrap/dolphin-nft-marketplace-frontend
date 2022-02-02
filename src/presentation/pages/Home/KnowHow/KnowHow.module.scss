@@ -1,7 +1,11 @@
 @import '../../../../app/styles/base/settings';
 
 .knowHowContent {
-  margin: 6rem 0 6rem 0;
+  margin: 6rem 0 3rem 0;
+
+  @media screen and (max-width: $md-width) {
+    margin-bottom: 1rem;
+  }
 
   &__item {
     position: relative;
@@ -21,4 +25,29 @@
       width: 50%;
     }
   }
+}
+
+.video {
+  display: flex;
+  justify-content: center;
+  margin: 6rem auto;
+  padding: 0 10%;
+
+  @media screen and (max-width: $md-width) {
+    margin-bottom: 1rem;
+  }
+
+  &__content {
+    height: 30rem;
+    width: 100%;
+
+    @media screen and (max-width: $md-width) {
+      height: 24rem;
+    }
+  }
+}
+
+.button {
+  width: 40%;
+  margin: 4rem auto 3rem;
 }

@@ -1,5 +1,5 @@
 import { Button } from '@material-ui/core';
-import { CarouselItem } from 'app/constants/athletes/remarkablesCarousel';
+import { CarouselItem } from 'app/constants/heroletes/remarkablesCarousel';
 import { CarouselItemDescription } from './CarouselItemDescription';
 import { CarouselItemImage } from './CarouselItemImage';
 import { CarouselButtons } from './CarouselButtons';

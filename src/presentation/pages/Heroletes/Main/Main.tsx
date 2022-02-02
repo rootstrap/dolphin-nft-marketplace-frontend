@@ -29,10 +29,10 @@ export const Main = () => {
 
         <div className={styles.mainContent__header}>
           <Typography component="div" variant="h2" className={styles.mainContent__headerTitle}>
-            {t('remarkables.title')}
+            {t('heroletes.title')}
           </Typography>
           <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
-            {t('remarkables.teaser')}
+            {t('heroletes.teaser')}
           </Typography>
           <div>
             <Link href="#athelites" underline="none">

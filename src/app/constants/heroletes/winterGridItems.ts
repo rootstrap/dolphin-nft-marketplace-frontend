@@ -11,52 +11,52 @@ import TinaMaze from 'app/assets/winterGrid/TinaMaze.jpg';
 
 export const winterGridItems = [
   {
-    name: 'KENDALL COYNE SCHOFIELD',
+    name: 'Kendall Coyne Schofield',
     sport: 'Ice Hockey',
     image: KendallCoyne,
   },
   {
-    name: 'RED GERARD',
+    name: 'Red Gerard',
     sport: 'Snowboard',
     image: RedGerard,
   },
   {
-    name: 'LINDSEY JACOBELLIS ',
+    name: 'Lindsey Jacobellis',
     sport: 'Snowboard',
     image: LindseyJacobellis,
   },
   {
-    name: 'GUS KENWORTHY',
+    name: 'Gus Kenworthy',
     sport: 'Freestyle Skiing',
     image: GusKenworthy,
   },
   {
-    name: 'NANCY KERRIGAN',
+    name: 'Nancy Kerrigan',
     sport: 'Figure Skating',
     image: NancyKerrygan,
   },
   {
-    name: 'HILARY KNIGHT',
+    name: 'Hilary Knight',
     sport: 'Ice Hockey',
     image: HillaryKnight,
   },
   {
-    name: 'JOEY MANTIA',
+    name: 'Joey Mantia',
     sport: 'Speed Skating',
     image: JoeMantia,
   },
   {
-    name: 'CHRIS MAZDZER',
+    name: 'Chris Mazdzer',
     sport: 'Luge',
     image: ChrisMazdzer,
   },
   {
-    name: 'TINA MAZE',
+    name: 'Tina Maze',
     sport: 'Alpine Skiing',
     image: TinaMaze,
   },
   {
-    name: 'JOHN SHUSTER',
+    name: 'John Shuster',
     sport: 'Curling',
     image: JohnShuster,
   },

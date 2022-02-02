@@ -1,13 +1,13 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { winterGridItems } from 'app/constants/athletes/winterGridItems';
+import { winterGridItems } from 'app/constants/heroletes/winterGridItems';
 import styles from './WinterGrid.module.scss';
 
 export const WinterGrid = () => {
   return (
     <>
       <div className={styles.winterGrid__title}>
-        <Typography variant="h3">Winter Sports Athletes</Typography>
+        <Typography variant="h4">Athletes in this collection</Typography>
       </div>
 
       <Grid container className={styles.winterGrid__container}>

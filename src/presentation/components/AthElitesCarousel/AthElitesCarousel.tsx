@@ -4,12 +4,10 @@ import { CarouselItemImage } from './CarouselItemImage';
 import { CarouselButtons } from './CarouselButtons';
 import { useCarousel } from './useCarousel';
 import { BuyNowButton } from '../BuyNowButton/BuyNowButton';
-import { useAppSelector } from 'app/hooks/reduxHooks';
 import styles from './AthElitesCarousel.module.scss';
 
 export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
   const { index, handleOnClick, areButtonsVisible } = useCarousel(carouselItems);
-  const { isAuthenticated } = useAppSelector(state => state.user);
 
   return (
     <>
@@ -28,7 +26,7 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
 
       {areButtonsVisible && <CarouselButtons handleOnClick={handleOnClick} />}
 
-      {isAuthenticated && (
+      {carouselItems[index].isPackForSale && (
         <div className={styles.carousel__buy}>
           <BuyNowButton
             buttonText="Buy Now"

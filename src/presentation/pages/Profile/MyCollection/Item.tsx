@@ -5,7 +5,7 @@ import useTranslation from 'app/hooks/useTranslation';
 import styles from './MyCollection.module.scss';
 import React from 'react';
 
-export const Item = ({ id, name, image, animation, video, offerPrice }: ItemProps) => {
+export const Item = ({ id, name, image, animation, video, offerPrice, issuer }: ItemProps) => {
   const t = useTranslation();
 
   const onMouseEnter = (e: React.SyntheticEvent) => {
@@ -17,7 +17,7 @@ export const Item = ({ id, name, image, animation, video, offerPrice }: ItemProp
   };
 
   return (
-    <Link to={`secondary/${id}`}>
+    <ItemWrapper id={id} issuer={issuer}>
       <div className={styles.list__itemContent}>
         {offerPrice && (
           <div className={styles.list__itemContentSale}>
@@ -56,7 +56,7 @@ export const Item = ({ id, name, image, animation, video, offerPrice }: ItemProp
           </Typography>
         </div>
       </div>
-    </Link>
+    </ItemWrapper>
   );
 };
 
@@ -64,7 +64,18 @@ interface ItemProps {
   animation: string;
   id: string;
   image: string;
+  issuer: string;
   name: string;
   offerPrice: number;
   video: string;
+}
+
+const ItemWrapper = ({ children, issuer, id }: ItemWrapperProps) => {
+  return issuer !== 'Heroletes' ? <Link to={`secondary/${id}`}>{children}</Link> : <div>{children}</div>;
+};
+
+interface ItemWrapperProps {
+  children: JSX.Element;
+  id: string;
+  issuer: string;
 }

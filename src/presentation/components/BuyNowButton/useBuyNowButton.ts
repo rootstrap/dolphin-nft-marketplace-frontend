@@ -9,8 +9,9 @@ import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositSe
 import { useBuyNftByPackMutation, useGetNftPackInfoMutation } from 'infrastructure/services/nft/NftService';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { creditCardStatus, currency } from 'app/constants/contants';
+import { nftPack, nftsPerPack } from 'app/constants/heroletes/remarkablesCarousel';
 
-export const useBuyNowButton = () => {
+export const useBuyNowButton = ({ packId, nftsToBuy }: UseBuyNowButtonArgs) => {
   const {
     user: { user },
     creditCard: { defaultCreditCard },
@@ -62,7 +63,7 @@ export const useBuyNowButton = () => {
       setIsLoadingData(true);
 
       const data: any = await getCreditCardFees();
-      const packInfo: any = await getPackInfo();
+      const packInfo: any = await getPackInfo(packId);
       const { fixed, variable } = data.data;
       const depositSize = packInfo.data.result.price - totalBalance;
       const fees = (depositSize * variable + fixed).toFixed(2);
@@ -77,6 +78,18 @@ export const useBuyNowButton = () => {
     }
   }, [getCreditCardFees, getPackInfo, totalBalance]);
 
+  const handleBuyNft = () => {
+    setIsLoadingData(true);
+
+    try {
+      nftsPerPack[nftsToBuy].forEach(async nft => await buyNft(nft));
+    } catch (error) {
+      throw error;
+    } finally {
+      setIsLoadingData(false);
+    }
+  };
+
   useEffect(() => {
     setTotalBalance(() => balances.find(balance => balance.coin === currency.usd)?.total || 0);
   }, [balances]);
@@ -86,7 +99,8 @@ export const useBuyNowButton = () => {
   }, [loadData]);
 
   useEffect(() => {
-    setEnoughBalance(hasEnoughBalance(totalBalance, creaturePrice));
+    console.log('price: ', creaturePrice);
+    setEnoughBalance(hasEnoughBalance(totalBalance, creaturePrice * nftsPerPack[nftsToBuy].length));
   }, [totalBalance, creaturePrice]);
 
   useEffect(() => {
@@ -104,7 +118,7 @@ export const useBuyNowButton = () => {
   const resetErrors = () => dispatch(creditCardApi.util.resetApiState());
 
   return {
-    buyNft,
+    handleBuyNft,
     depositSize,
     defaultCreditCard,
     handleOnClick,
@@ -119,3 +133,8 @@ export const useBuyNowButton = () => {
     isSuccess,
   };
 };
+
+interface UseBuyNowButtonArgs {
+  packId: string;
+  nftsToBuy: nftPack;
+}

@@ -88,4 +88,27 @@
       }
     }
   }
+
+  &__buy {
+    text-align: center;
+    background-color: black;
+    padding: 2rem;
+
+    &Button {
+      background-color: $light-grey !important;
+      border: none !important;
+
+      color: black;
+      padding: 0.5rem !important;
+
+      &:hover {
+        background-color: $dark-grey !important;
+        color: white;
+      }
+
+      p {
+        font-family: Transat !important;
+      }
+    }
+  }
 }

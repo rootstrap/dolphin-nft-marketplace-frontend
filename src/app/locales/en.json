@@ -164,7 +164,8 @@
       "link": "Check out all NFTs included in this collection",
       "collectibles": "Collectibles per pack",
       "cost": "Cost per pack",
-      "button": "Buy Now!"
+      "button": "Buy Now!",
+      "nftPerPack": "NFTs included in this pack:"
     }
   },
   "nft": {

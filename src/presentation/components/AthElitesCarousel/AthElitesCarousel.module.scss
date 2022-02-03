@@ -24,6 +24,10 @@
       margin-bottom: 1rem;
     }
 
+    &Price {
+      margin-bottom: 1rem;
+    }
+
     &Checkout {
       margin-top: 1rem;
     }
@@ -81,6 +85,29 @@
 
       &:hover {
         background-color: $dark-grey !important;
+      }
+    }
+  }
+
+  &__buy {
+    text-align: center;
+    background-color: black;
+    padding: 2rem;
+
+    &Button {
+      background-color: $light-grey !important;
+      border: none !important;
+
+      color: black;
+      padding: 0.5rem !important;
+
+      &:hover {
+        background-color: $dark-grey !important;
+        color: white;
+      }
+
+      p {
+        font-family: Transat !important;
       }
     }
   }

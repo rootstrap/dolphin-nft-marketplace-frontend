@@ -8,6 +8,7 @@ import { useContext } from 'react';
 import { ModalContext } from '../../../../app/context/ModalContext';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Main.module.scss';
+import { packIds } from '../../../../app/constants/heroletes/remarkablesCarousel';
 
 export const Main = () => {
   const t = useTranslation();
@@ -22,7 +23,7 @@ export const Main = () => {
         </div>
 
         {isAuthenticated ? (
-          <BuyNowButton />
+          <BuyNowButton packId={packIds.creatures} nftsToBuy="creatures" />
         ) : (
           <div className={styles.mainContent__buttons}>
             <div className={styles.mainContent__buttonsButton}>

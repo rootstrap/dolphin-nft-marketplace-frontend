@@ -1,14 +1,8 @@
-import { Button, Link, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './AthElitesCarousel.module.scss';
 
-export const CarouselItemDescription = ({
-  title,
-  date,
-  text,
-  collectiblesPerPack,
-  costPerPack,
-}: CarouselItemDescriptionProps) => {
+export const CarouselItemDescription = ({ title, text, price }: CarouselItemDescriptionProps) => {
   const t = useTranslation();
 
   return (
@@ -20,9 +14,10 @@ export const CarouselItemDescription = ({
         <Typography variant="h3">{title}</Typography>
       </div>
 
-      <div className={styles.carousel__descriptionDate}>
-        <Typography variant="h6">{date}</Typography>
+      <div className={styles.carousel__descriptionPrice}>
+        <Typography variant="h6">Price: {price}$ USD</Typography>
       </div>
+
       <div className={styles.carousel__descriptionText}>
         <Typography variant="body1">{text}</Typography>
       </div>
@@ -55,9 +50,10 @@ export const CarouselItemDescription = ({
 };
 
 interface CarouselItemDescriptionProps {
-  title: string;
-  date: string;
-  text: string;
   collectiblesPerPack: number;
   costPerPack: number;
+  date: string;
+  price: number;
+  text: string;
+  title: string;
 }

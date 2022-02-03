@@ -1,24 +1,23 @@
-import { Button, Typography } from '@material-ui/core';
-import { useBuyNowButton } from './useBuyNowButton';
+import { BuyNowBigButton, BuyNowWallet } from './';
+import { Typography } from '@material-ui/core';
 import { DepositModal } from '../DepositModal/DepositModal';
-import { creditCardStatus } from 'app/constants/contants';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { colors } from 'app/constants/contants';
-import { BaseModal } from 'infrastructure/components/Modal/Modal';
-import { SuccessVerification } from '../CC/Verification/SuccessVerification';
 import { useResponsive } from 'app/hooks/useResponsive';
-import { FailedVerification } from '../CC/Verification/FailedVerification';
+import { nftPack } from 'app/interfaces/NFT/NFT';
+import { NotificationModal } from '../NotificationModal/NotificationModal';
+import { useBuyNowButton } from './useBuyNowButton';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './BuyNowButton.module.scss';
 
-export const BuyNowButton = () => {
+export const BuyNowButton = ({ buttonText = '', className = '', nftsToBuy, packId }: BuyNowButtonProps) => {
   const t = useTranslation();
   const {
-    buyNft,
+    handleBuyNft,
     isSuccess,
     depositSize,
     defaultCreditCard,
-    handleOnClick,
+    handleFundModal,
     enoughBalance,
     fee,
     isOpen,
@@ -27,51 +26,24 @@ export const BuyNowButton = () => {
     depositModalIsOpen,
     handleClose,
     handleCloseDepositModal,
-  } = useBuyNowButton();
+  } = useBuyNowButton({ packId, nftsToBuy });
+
   const { isMobileView } = useResponsive();
+
+  if (isLoadingData || isLoadingBuyNFT) return <CustomLoader color={colors.orangeCreatures} />;
 
   return (
     <>
-      {!isLoadingData ? (
-        <>
-          {enoughBalance ? (
-            <div className={styles.buyNowButton}>
-              <Button onClick={buyNft} variant="outlined" disabled={isLoadingBuyNFT}>
-                {isLoadingBuyNFT ? (
-                  <CustomLoader color={colors.orangeCreatures} height={30} width={30} />
-                ) : (
-                  <Typography variant="h6" component="p">
-                    {t('creatures.buyCreatures.buyButton')}
-                  </Typography>
-                )}
-              </Button>
-            </div>
-          ) : (
-            <>
-              <>
-                <Typography component="div">
-                  {defaultCreditCard.status === creditCardStatus.approved
-                    ? t('creatures.buyCreatures.fundWallet')
-                    : t('creatures.buyCreatures.activateWallet')}
-                </Typography>
-              </>
-              <>
-                <Button onClick={handleOnClick} variant="outlined">
-                  {defaultCreditCard.status === creditCardStatus.approved
-                    ? t('creatures.buyCreatures.fundButton')
-                    : t('creatures.buyCreatures.activateButton')}
-                </Button>
-              </>
-            </>
-          )}
-          {!isMobileView && (
-            <div className={styles.buyNowButton__typography}>
-              <Typography variant="body1"> {t('creatures.buyCreatures.creditDebitCard')}</Typography>
-            </div>
-          )}
-        </>
+      {enoughBalance ? (
+        <BuyNowBigButton buttonText={buttonText} className={className} onClick={handleBuyNft} />
       ) : (
-        <CustomLoader color={colors.orangeCreatures} />
+        <BuyNowWallet defaultCreditCard={defaultCreditCard} handleFundModal={handleFundModal} />
+      )}
+
+      {!isMobileView && (
+        <div className={styles.buyNowButton__typography}>
+          <Typography variant="body1"> {t('creatures.buyCreatures.creditDebitCard')}</Typography>
+        </div>
       )}
 
       <DepositModal
@@ -81,15 +53,14 @@ export const BuyNowButton = () => {
         depositSize={depositSize}
       />
 
-      <BaseModal open={isOpen} handleClose={handleClose}>
-        <div style={{ textAlign: 'center' }}>
-          {isSuccess ? (
-            <SuccessVerification successMsg={t('creatures.buyCreatures.successMsg')} />
-          ) : (
-            <FailedVerification errorMsg={t('creatures.buyCreatures.errorMsg')} />
-          )}
-        </div>
-      </BaseModal>
+      <NotificationModal handleClose={handleClose} isOpen={isOpen} isVerificationSuccess={isSuccess} />
     </>
   );
 };
+
+interface BuyNowButtonProps {
+  buttonText?: string;
+  className?: string;
+  nftsToBuy?: nftPack;
+  packId: string;
+}

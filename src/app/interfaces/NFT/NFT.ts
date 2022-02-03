@@ -33,3 +33,5 @@ export interface IFillsResponse {
   success: boolean;
   result: FillsResult[];
 }
+
+export type nftPack = 'common' | 'bronze' | 'silver' | 'gold' | 'creatures';

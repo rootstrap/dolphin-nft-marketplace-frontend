@@ -86,15 +86,6 @@
     &Arrow {
       cursor: pointer;
     }
-
-    button {
-      width: 40%;
-      background-color: $light-grey !important;
-
-      &:hover {
-        background-color: $dark-grey !important;
-      }
-    }
   }
 
   &__buy {

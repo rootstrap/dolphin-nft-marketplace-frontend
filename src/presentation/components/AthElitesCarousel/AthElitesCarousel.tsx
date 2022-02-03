@@ -24,7 +24,9 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
         <CarouselItemImage tier={carouselItems[index].tier} image={carouselItems[index].image} />
       </div>
 
-      {areButtonsVisible && <CarouselButtons handleOnClick={handleOnClick} />}
+      {areButtonsVisible && (
+        <CarouselButtons handleOnClick={handleOnClick} index={index} lenght={carouselItems.length} />
+      )}
 
       {carouselItems[index].isPackForSale && (
         <div className={styles.carousel__buy}>

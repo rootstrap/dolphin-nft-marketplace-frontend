@@ -4,11 +4,9 @@ import { DepositModal } from '../DepositModal/DepositModal';
 import { creditCardStatus } from 'app/constants/contants';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { colors } from 'app/constants/contants';
-import { BaseModal } from 'infrastructure/components/Modal/Modal';
-import { SuccessVerification } from '../CC/Verification/SuccessVerification';
 import { useResponsive } from 'app/hooks/useResponsive';
-import { FailedVerification } from '../CC/Verification/FailedVerification';
 import { nftPack } from 'app/constants/heroletes/remarkablesCarousel';
+import { NotificationModal } from '../NotificationModal/NotificationModal';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './BuyNowButton.module.scss';
 
@@ -87,15 +85,7 @@ export const BuyNowButton = ({ buttonText = '', className = '', nftsToBuy, packI
         depositSize={depositSize}
       />
 
-      <BaseModal open={isOpen} handleClose={handleClose}>
-        <div style={{ textAlign: 'center' }}>
-          {isSuccess ? (
-            <SuccessVerification successMsg={t('creatures.buyCreatures.successMsg')} />
-          ) : (
-            <FailedVerification errorMsg={t('creatures.buyCreatures.errorMsg')} />
-          )}
-        </div>
-      </BaseModal>
+      <NotificationModal handleClose={handleClose} isOpen={isOpen} isVerificationSuccess={isSuccess} />
     </>
   );
 };

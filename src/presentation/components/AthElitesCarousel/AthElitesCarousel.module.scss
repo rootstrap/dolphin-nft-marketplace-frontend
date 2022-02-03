@@ -96,8 +96,7 @@
     &Button {
       background-color: $primary !important;
       border: none !important;
-
-      color: black;
+      color: black !important;
       padding: 0.5rem !important;
 
       &:hover {

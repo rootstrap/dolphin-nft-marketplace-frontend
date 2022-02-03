@@ -1,13 +1,12 @@
-import { BuyNowBigButton } from './';
-import { Button, Typography } from '@material-ui/core';
-import { useBuyNowButton } from './useBuyNowButton';
+import { BuyNowBigButton, BuyNowWallet } from './';
+import { Typography } from '@material-ui/core';
 import { DepositModal } from '../DepositModal/DepositModal';
-import { creditCardStatus } from 'app/constants/contants';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { colors } from 'app/constants/contants';
 import { useResponsive } from 'app/hooks/useResponsive';
 import { nftPack } from 'app/constants/heroletes/remarkablesCarousel';
 import { NotificationModal } from '../NotificationModal/NotificationModal';
+import { useBuyNowButton } from './useBuyNowButton';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './BuyNowButton.module.scss';
 
@@ -18,7 +17,7 @@ export const BuyNowButton = ({ buttonText = '', className = '', nftsToBuy, packI
     isSuccess,
     depositSize,
     defaultCreditCard,
-    handleOnClick,
+    handleFundModal,
     enoughBalance,
     fee,
     isOpen,
@@ -35,33 +34,17 @@ export const BuyNowButton = ({ buttonText = '', className = '', nftsToBuy, packI
 
   return (
     <>
-      <>
-        {!enoughBalance ? (
-          <BuyNowBigButton buttonText={buttonText} className={className} onClick={handleBuyNft} />
-        ) : (
-          <>
-            <>
-              <Typography component="div">
-                {defaultCreditCard.status === creditCardStatus.approved
-                  ? t('creatures.buyCreatures.fundWallet')
-                  : t('creatures.buyCreatures.activateWallet')}
-              </Typography>
-            </>
-            <>
-              <Button onClick={handleOnClick} variant="outlined">
-                {defaultCreditCard.status === creditCardStatus.approved
-                  ? t('creatures.buyCreatures.fundButton')
-                  : t('creatures.buyCreatures.activateButton')}
-              </Button>
-            </>
-          </>
-        )}
-        {!isMobileView && (
-          <div className={styles.buyNowButton__typography}>
-            <Typography variant="body1"> {t('creatures.buyCreatures.creditDebitCard')}</Typography>
-          </div>
-        )}
-      </>
+      {enoughBalance ? (
+        <BuyNowBigButton buttonText={buttonText} className={className} onClick={handleBuyNft} />
+      ) : (
+        <BuyNowWallet defaultCreditCard={defaultCreditCard} handleFundModal={handleFundModal} />
+      )}
+
+      {!isMobileView && (
+        <div className={styles.buyNowButton__typography}>
+          <Typography variant="body1"> {t('creatures.buyCreatures.creditDebitCard')}</Typography>
+        </div>
+      )}
 
       <DepositModal
         isOpen={depositModalIsOpen}

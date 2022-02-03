@@ -46,7 +46,7 @@ export const useBuyNowButton = ({ packId, nftsToBuy }: UseBuyNowButtonArgs) => {
 
   const handleFundWallet = () => setDepositModalIsOpen(true);
 
-  const handleOnClick = () =>
+  const handleFundModal = () =>
     defaultCreditCard.status === creditCardStatus.approved ? handleFundWallet() : handleActivateWallet();
 
   const handleClose = () => {
@@ -121,7 +121,7 @@ export const useBuyNowButton = ({ packId, nftsToBuy }: UseBuyNowButtonArgs) => {
     handleBuyNft,
     depositSize,
     defaultCreditCard,
-    handleOnClick,
+    handleFundModal,
     enoughBalance,
     fee,
     isLoadingData,

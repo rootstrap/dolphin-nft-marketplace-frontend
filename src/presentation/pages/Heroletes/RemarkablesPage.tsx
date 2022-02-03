@@ -13,8 +13,8 @@ const RemarkablesPage = () => (
         <Main />
         <HowItWorks />
         <AthElitesCarousel carouselItems={carouselItems} />
-        <Rarity />
         <WinterGrid />
+        <Rarity />
       </>
     }
   />

@@ -66,7 +66,7 @@ export const useBuyNowButton = ({ packId, nftsToBuy }: UseBuyNowButtonArgs) => {
       const data: any = await getCreditCardFees();
       const packInfo: any = await getPackInfo(packId);
       const { fixed, variable } = data.data;
-      const depositSize = packInfo.data.result.price - totalBalance;
+      const depositSize = packInfo.data.result.price * nftsPerPack[nftsToBuy].length - totalBalance;
       const fees = (depositSize * variable + fixed).toFixed(2);
 
       setCreaturePrice(packInfo.data.result.price);

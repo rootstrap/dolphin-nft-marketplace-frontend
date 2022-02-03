@@ -11,6 +11,7 @@ export interface NFT {
   ethContractAddress?: string;
   imageUrl: string;
   videoUrl: string;
+  animationUrl: string;
   number: number;
   totalQuantity: number;
   offerPrice: number;

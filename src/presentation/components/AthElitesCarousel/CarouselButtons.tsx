@@ -5,9 +5,17 @@ import styles from './AthElitesCarousel.module.scss';
 export const CarouselButtons = ({ handleOnClick }: CarouselButtonsProps) => {
   return (
     <div className={styles.carousel__buttons}>
-      <ArrowBackIos className={styles.carousel__buttonsArrow} onClick={() => handleOnClick('back')} />
-      ......
-      <ArrowForwardIos className={styles.carousel__buttonsArrow} onClick={() => handleOnClick('forward')} />
+      <ArrowBackIos
+        fontSize="large"
+        className={styles.carousel__buttonsArrow}
+        onClick={() => handleOnClick('back')}
+      />
+      ....
+      <ArrowForwardIos
+        fontSize="large"
+        className={styles.carousel__buttonsArrow}
+        onClick={() => handleOnClick('forward')}
+      />
     </div>
   );
 };

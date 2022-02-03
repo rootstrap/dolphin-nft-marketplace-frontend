@@ -32,9 +32,17 @@
       margin-top: 1rem;
     }
 
+    &Collectibles {
+      margin-top: 2rem;
+    }
+
+    &Text {
+      margin-top: 2rem;
+    }
+
     &Pack {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
       text-align: center;
       padding: 1rem;
 
@@ -58,8 +66,7 @@
     }
 
     &Image {
-      padding: 2rem;
-      width: 80%;
+      width: 60%;
       height: 100%;
       img {
         width: 100%;
@@ -72,6 +79,7 @@
     color: $primary;
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: black;
     padding-bottom: 2rem;
 
@@ -92,18 +100,17 @@
   &__buy {
     text-align: center;
     background-color: black;
-    padding: 2rem;
+    padding-bottom: 2rem;
 
     &Button {
-      background-color: $light-grey !important;
+      background-color: $primary !important;
       border: none !important;
 
       color: black;
       padding: 0.5rem !important;
 
       &:hover {
-        background-color: $dark-grey !important;
-        color: white;
+        background-color: darken($color: $primary, $amount: 10) !important;
       }
 
       p {

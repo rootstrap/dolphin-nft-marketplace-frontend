@@ -100,7 +100,6 @@ export const useBuyNowButton = ({ packId, nftsToBuy }: UseBuyNowButtonArgs) => {
   }, [loadData]);
 
   useEffect(() => {
-    console.log('price: ', creaturePrice);
     setEnoughBalance(hasEnoughBalance(totalBalance, creaturePrice * nftsPerPack[nftsToBuy].length));
   }, [totalBalance, creaturePrice]);
 

@@ -36,5 +36,3 @@ export const nftsPerPack = {
   silver: [packIds.common, packIds.common, packIds.common],
   gold: [packIds.common, packIds.common, packIds.common],
 };
-
-export type nftPack = 'common' | 'bronze' | 'silver' | 'gold' | 'creatures';

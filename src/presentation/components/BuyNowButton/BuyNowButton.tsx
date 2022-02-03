@@ -4,7 +4,7 @@ import { DepositModal } from '../DepositModal/DepositModal';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
 import { colors } from 'app/constants/contants';
 import { useResponsive } from 'app/hooks/useResponsive';
-import { nftPack } from 'app/constants/heroletes/remarkablesCarousel';
+import { nftPack } from 'app/interfaces/NFT/NFT';
 import { NotificationModal } from '../NotificationModal/NotificationModal';
 import { useBuyNowButton } from './useBuyNowButton';
 import useTranslation from 'app/hooks/useTranslation';

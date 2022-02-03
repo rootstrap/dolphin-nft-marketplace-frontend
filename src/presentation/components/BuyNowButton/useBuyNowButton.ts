@@ -9,7 +9,8 @@ import { useGetBalanceMutation } from 'infrastructure/services/deposit/DepositSe
 import { useBuyNftByPackMutation, useGetNftPackInfoMutation } from 'infrastructure/services/nft/NftService';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { creditCardStatus, currency } from 'app/constants/contants';
-import { nftPack, nftsPerPack } from 'app/constants/heroletes/remarkablesCarousel';
+import { nftsPerPack } from 'app/constants/heroletes/remarkablesCarousel';
+import { nftPack } from 'app/interfaces/NFT/NFT';
 
 export const useBuyNowButton = ({ packId, nftsToBuy }: UseBuyNowButtonArgs) => {
   const {

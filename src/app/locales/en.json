@@ -185,7 +185,7 @@
       "cancelButton": "Cancel",
       "confirmButton": "Confirm",
       "buyModalTitle": "We are almost done",
-      "successMsg": "Great. The NFT is yours"
+      "successMsg": "Great. Your purchase was successful."
     },
     "sellNft": {
       "title": "This NFT is yours",

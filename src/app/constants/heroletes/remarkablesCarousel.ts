@@ -23,3 +23,18 @@ export interface CarouselItem {
   tier: string;
   title: string;
 }
+
+export const packIds = {
+  common: '102',
+  creatures: '3',
+};
+
+export const nftsPerPack = {
+  creatures: [packIds.creatures],
+  common: [packIds.common, packIds.common, packIds.common],
+  bronze: [packIds.common, packIds.common, packIds.common],
+  silver: [packIds.common, packIds.common, packIds.common],
+  gold: [packIds.common, packIds.common, packIds.common],
+};
+
+export type nftPack = 'common' | 'bronze' | 'silver' | 'gold' | 'creatures';

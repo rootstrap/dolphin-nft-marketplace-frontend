@@ -47,6 +47,7 @@
 
   &__signed {
     margin: 4rem auto;
+
     &Title {
       color: $orange;
       margin: 1rem auto 2rem;
@@ -57,7 +58,9 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      text-align: center;
       height: 100%;
+      padding: 4rem;
     }
   }
 }

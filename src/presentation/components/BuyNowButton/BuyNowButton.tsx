@@ -16,7 +16,6 @@ export const BuyNowButton = ({ buttonText = '', className = '', nftsToBuy, packI
     handleBuyNft,
     isSuccess,
     depositSize,
-    defaultCreditCard,
     handleFundModal,
     enoughBalance,
     fee,
@@ -30,15 +29,16 @@ export const BuyNowButton = ({ buttonText = '', className = '', nftsToBuy, packI
 
   const { isMobileView } = useResponsive();
 
-  if (isLoadingData || isLoadingBuyNFT) return <CustomLoader color={colors.orangeCreatures} />;
+  if (isLoadingData || isLoadingBuyNFT)
+    return (
+      <BuyNowBigButton buttonText={buttonText} className={className} onClick={() => {}} disabled={true} />
+    );
+
+  const handleOnClick = enoughBalance ? handleBuyNft : handleFundModal;
 
   return (
     <>
-      {enoughBalance ? (
-        <BuyNowBigButton buttonText={buttonText} className={className} onClick={handleBuyNft} />
-      ) : (
-        <BuyNowWallet defaultCreditCard={defaultCreditCard} handleFundModal={handleFundModal} />
-      )}
+      <BuyNowBigButton buttonText={buttonText} className={className} onClick={handleOnClick} />
 
       {!isMobileView && (
         <div className={styles.buyNowButton__typography}>

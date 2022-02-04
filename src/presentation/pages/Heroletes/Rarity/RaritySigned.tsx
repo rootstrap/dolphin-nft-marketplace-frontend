@@ -13,8 +13,8 @@ export const RaritySigned = () => {
         <Grid item md={2} lg={2}></Grid>
         <Grid item xs={12} sm={6} md={4} lg={4}>
           <div className={styles.rarity__signedText}>
-            <Typography variant="h4">10%</Typography>
-            <Typography variant="h4">of all collectibles are signed by the athlete</Typography>
+            <Typography variant="h5">10%</Typography>
+            <Typography variant="h5">of all collectibles are signed by the athlete</Typography>
           </div>
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={4}>

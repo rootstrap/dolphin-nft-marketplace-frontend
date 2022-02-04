@@ -27,12 +27,14 @@ export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription 
         {nft?.description}
       </Typography>
       <div className={styles.mainContent__priceContainer}>
-        <div className={styles.mainContent__priceItem}>
-          <Typography component="div" variant="h6">
-            {t('nft.price')}
-          </Typography>
-          <Typography component="p">${nft?.offerPrice}</Typography>
-        </div>
+        {nft?.offerPrice && (
+          <div className={styles.mainContent__priceItem}>
+            <Typography component="div" variant="h6">
+              {t('nft.price')}
+            </Typography>
+            <Typography component="p">${nft?.offerPrice}</Typography>
+          </div>
+        )}
         <div className={styles.mainContent__priceItem}>
           <Typography component="div" variant="h6">
             {t('nft.editionNumber')}

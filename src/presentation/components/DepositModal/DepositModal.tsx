@@ -33,7 +33,7 @@ export const DepositModal = ({ isOpen, handleClose, depositSize, fee }: DepositM
 
             <div className={styles.depositModal__text}>
               <Typography variant="h5">Please Introduce your CVV</Typography>
-              <Typography variant="h6">Deposit: ${depositSize}</Typography>
+              <Typography variant="h6">Deposit: ${depositSize?.toFixed(2)}</Typography>
               <Typography variant="subtitle1">Fee: ${fee}</Typography>
             </div>
 

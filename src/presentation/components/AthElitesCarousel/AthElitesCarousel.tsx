@@ -1,9 +1,9 @@
-import { Button } from '@material-ui/core';
-import { CarouselItem } from 'app/constants/heroletes/remarkablesCarousel';
+import { CarouselItem, packIds } from 'app/constants/heroletes/remarkablesCarousel';
 import { CarouselItemDescription } from './CarouselItemDescription';
 import { CarouselItemImage } from './CarouselItemImage';
 import { CarouselButtons } from './CarouselButtons';
 import { useCarousel } from './useCarousel';
+import { BuyNowButton } from '../BuyNowButton/BuyNowButton';
 import styles from './AthElitesCarousel.module.scss';
 
 export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
@@ -13,23 +13,29 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
     <>
       <div className={styles.carousel} id="athelites">
         <CarouselItemDescription
-          title={carouselItems[index].title}
-          date={carouselItems[index].date}
-          text={carouselItems[index].text}
           collectiblesPerPack={carouselItems[index].collectiblesPerPack}
           costPerPack={carouselItems[index].costPerPack}
+          date={carouselItems[index].date}
+          price={carouselItems[index].price}
+          text={carouselItems[index].text}
+          title={carouselItems[index].title}
         />
 
         <CarouselItemImage tier={carouselItems[index].tier} image={carouselItems[index].image} />
       </div>
 
-      {areButtonsVisible ? (
-        <CarouselButtons handleOnClick={handleOnClick} />
-      ) : (
-        <div className={styles.carousel__buttons}>
-          <Button variant="contained" size="large" fullWidth>
-            Coming Soon
-          </Button>
+      {areButtonsVisible && (
+        <CarouselButtons handleOnClick={handleOnClick} index={index} lenght={carouselItems.length} />
+      )}
+
+      {carouselItems[index].isPackForSale && (
+        <div className={styles.carousel__buy}>
+          <BuyNowButton
+            buttonText="Buy Now"
+            className={styles.carousel__buyButton}
+            nftsToBuy="common"
+            packId={packIds.common}
+          />
         </div>
       )}
     </>

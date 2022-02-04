@@ -68,7 +68,7 @@
       "activateWallet": "You must activate your wallet in order to start your collection. You only need to do this once!",
       "fundButton": "Fund Wallet to buy a Creature",
       "activateButton": "Activate Wallet ",
-      "successMsg": "Great. The Creature is yours!",
+      "successMsg": "Great. The NFT is yours!",
       "errorMsg": "You can not buy at this time",
       "mintWithSol": "MINT WITH SOLANA",
       "solana": "Solana only"
@@ -164,7 +164,8 @@
       "link": "Check out all NFTs included in this collection",
       "collectibles": "Collectibles per pack",
       "cost": "Cost per pack",
-      "button": "Buy Now!"
+      "button": "Buy Now!",
+      "nftPerPack": "NFTs included in this pack:"
     }
   },
   "nft": {
@@ -185,7 +186,7 @@
       "cancelButton": "Cancel",
       "confirmButton": "Confirm",
       "buyModalTitle": "We are almost done",
-      "successMsg": "Great. The NFT is yours"
+      "successMsg": "Great. Your purchase was successful."
     },
     "sellNft": {
       "title": "This NFT is yours",

@@ -11,6 +11,7 @@ export interface NFT {
   ethContractAddress?: string;
   imageUrl: string;
   videoUrl: string;
+  animationUrl: string;
   number: number;
   totalQuantity: number;
   offerPrice: number;
@@ -33,3 +34,5 @@ export interface IFillsResponse {
   success: boolean;
   result: FillsResult[];
 }
+
+export type nftPack = 'common' | 'bronze' | 'silver' | 'gold' | 'creatures';

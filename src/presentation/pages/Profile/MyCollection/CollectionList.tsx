@@ -17,10 +17,18 @@ export const CollectionList = ({ nfts }: CollectionListProps) => {
       {nfts.length ? (
         <Grid container className={styles.list__collection}>
           {nfts.map(nft => {
-            const { id, name, offerPrice, imageUrl } = nft;
+            const { id, name, offerPrice, imageUrl, videoUrl, animationUrl, issuer } = nft;
             return (
               <Grid item xs={12} md={6} lg={4} className={styles.list__collection} key={id}>
-                <Item id={id} name={name} image={imageUrl} offerPrice={offerPrice} />
+                <Item
+                  id={id}
+                  name={name}
+                  image={imageUrl}
+                  animation={animationUrl}
+                  video={videoUrl}
+                  offerPrice={offerPrice}
+                  issuer={issuer}
+                />
               </Grid>
             );
           })}

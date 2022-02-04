@@ -34,18 +34,17 @@
     }
 
     &Content {
-      display: flex;
-      cursor: pointer;
-      flex-direction: column;
       align-items: center;
-      object-fit: cover;
       background-color: $background-promotion;
-      margin: 1rem auto;
-      width: 99%;
-      text-align: left;
-      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
       height: 22rem;
+      margin: 1rem auto;
+      object-fit: cover;
+      padding: 0 1rem;
       position: relative;
+      text-align: left;
+      width: 99%;
 
       &:hover {
         border: 2px solid $primary;
@@ -57,28 +56,28 @@
         width: 100%;
 
         &Title {
-          text-align: center;
-          width: 95%;
           height: 2rem;
+          overflow-x: hidden;
+          text-align: center;
           text-overflow: ellipsis;
           white-space: nowrap;
-          overflow-x: hidden;
+          width: 95%;
         }
       }
 
       &Img {
         background-color: $black;
         height: 80%;
-        width: auto;
-        max-height: 100%;
         margin: 0 0 0.5rem 0;
+        max-height: 100%;
+        width: auto;
       }
 
       &New {
-        position: absolute;
-        right: 0;
         background-color: $orange;
         padding: 0.3rem;
+        position: absolute;
+        right: 0;
       }
 
       &Sale {
@@ -98,9 +97,10 @@
     }
 
     &Icon {
-      display: flex;
       align-items: center;
+      display: flex;
       margin: 0;
+
       span {
         margin-left: 1rem;
         font-size: $font-size-med;

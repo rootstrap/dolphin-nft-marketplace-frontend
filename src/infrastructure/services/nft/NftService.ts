@@ -51,17 +51,17 @@ const nftApi = api.injectEndpoints({
       }),
     }),
     buyNftByPack: builder.mutation({
-      query: () => ({
-        url: `${process.env.REACT_APP_FTX_API_URL}/nft/packs/${process.env.REACT_APP_PACK_ID}/buy`,
+      query: (packId: string) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/packs/${packId}/buy`,
         method: 'POST',
         headers: {
           ftxAuthorization: 'yes',
         },
       }),
     }),
-    getNftPackInfo: builder.mutation<CreaturesPackInfo, void>({
-      query: () => ({
-        url: `${process.env.REACT_APP_FTX_API_URL}/nft/packs/${process.env.REACT_APP_PACK_ID}`,
+    getNftPackInfo: builder.mutation<CreaturesPackInfo, string>({
+      query: (packId: string) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/packs/${packId}`,
         transformResponse: (data: CreaturesPackInfo) => data,
         headers: {
           ftxAuthorization: 'yes',

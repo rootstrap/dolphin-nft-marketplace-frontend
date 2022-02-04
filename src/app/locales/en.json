@@ -68,7 +68,7 @@
       "activateWallet": "You must activate your wallet in order to start your collection. You only need to do this once!",
       "fundButton": "Fund Wallet to buy a Creature",
       "activateButton": "Activate Wallet ",
-      "successMsg": "Great. The NFT is yours!",
+      "successMsg": "Great. Purchase successful",
       "errorMsg": "You can not buy at this time",
       "mintWithSol": "MINT WITH SOLANA",
       "solana": "Solana only"
@@ -162,10 +162,15 @@
     "carousel": {
       "featured": "Featured Collection",
       "link": "Check out all NFTs included in this collection",
-      "collectibles": "Collectibles per pack",
-      "cost": "Cost per pack",
+      "collectibles": "Status",
+      "cost": "Price per pack",
       "button": "Buy Now!",
       "nftPerPack": "NFTs included in this pack:"
+    },
+    "rarity": {
+      "signedTitle": "Signed",
+      "signedPercentage": "10%",
+      "signedDescription": "of all collectibles are signed by the athlete"
     }
   },
   "nft": {

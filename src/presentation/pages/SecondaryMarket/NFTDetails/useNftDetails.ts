@@ -42,7 +42,7 @@ export const useNftDetails = (nftId: string) => {
     const nftTrades: any = await getNftTrades(nftId);
 
     setNft(nftById.data.result);
-    setNftTradeHistory(nftTrades.data.result.slice(0, 5));
+    setNftTradeHistory(nftTrades.data.result);
   }, [getNftById, nftId, getNftTrades]);
 
   useEffect(() => {

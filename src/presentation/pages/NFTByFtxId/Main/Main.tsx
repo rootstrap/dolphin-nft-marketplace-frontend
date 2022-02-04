@@ -1,6 +1,5 @@
 import { Grid } from '@material-ui/core';
 import { CustomLoader } from 'infrastructure/components/CustomLoader/CustomLoader';
-import { useParams } from 'react-router';
 import { Item } from './Item';
 import { useNFT } from './useNFT';
 import { useState } from 'react';
@@ -9,8 +8,7 @@ import { Peers } from 'presentation/components/Peers/Peers';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import styles from './Main.module.scss';
 
-export const Main = () => {
-  const { ftxId } = useParams<{ ftxId: string }>();
+export const Main = ({ ftxId }: MainProps) => {
   const [showItemDescription, setShowItemDescription] = useState<boolean>(true);
   const { nft, isLoading } = useNFT(ftxId);
   const { nfts } = useAppSelector(state => state.nft);
@@ -62,3 +60,7 @@ export const Main = () => {
     </div>
   );
 };
+
+interface MainProps {
+  ftxId: string;
+}

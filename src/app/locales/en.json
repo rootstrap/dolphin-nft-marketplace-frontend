@@ -162,8 +162,8 @@
     "carousel": {
       "featured": "Featured Collection",
       "link": "Check out all NFTs included in this collection",
-      "collectibles": "Collectibles per pack",
-      "cost": "Cost per pack",
+      "collectibles": "Status",
+      "cost": "Price per pack",
       "button": "Buy Now!",
       "nftPerPack": "NFTs included in this pack:"
     }

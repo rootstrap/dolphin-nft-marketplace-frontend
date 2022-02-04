@@ -7,7 +7,7 @@ export const carouselItems: CarouselItem[] = [
   {
     collectiblesPerPack: '3 common',
     costPerPack: 3,
-    date: 'Feb 4',
+    date: 'Available Now',
     image: Common,
     isPackForSale: true,
     price: 19,

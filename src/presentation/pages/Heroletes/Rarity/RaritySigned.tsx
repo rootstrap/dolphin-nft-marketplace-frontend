@@ -9,15 +9,15 @@ export const RaritySigned = () => {
   return (
     <div className={styles.rarity__signed}>
       <div className={styles.rarity__signedTitle}>
-        <Typography variant="h6">{t('heroletes.signedTitle')}</Typography>
+        <Typography variant="h6">{t('heroletes.rarity.signedTitle')}</Typography>
       </div>
 
       <Grid container>
         <Grid item md={2} lg={2}></Grid>
         <Grid item xs={12} sm={6} md={4} lg={4}>
           <div className={styles.rarity__signedText}>
-            <Typography variant="h5">{t('heroletes.signedPercentage')}</Typography>
-            <Typography variant="h5">{t('heroletes.signedDescription')}</Typography>
+            <Typography variant="h5">{t('heroletes.rarity.signedPercentage')}</Typography>
+            <Typography variant="h5">{t('heroletes.rarity.signedDescription')}</Typography>
           </div>
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={4}>

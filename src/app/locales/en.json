@@ -166,6 +166,11 @@
       "cost": "Price per pack",
       "button": "Buy Now!",
       "nftPerPack": "NFTs included in this pack:"
+    },
+    "rarity": {
+      "signedTitle": "Signed",
+      "signedPercentage": "10%",
+      "signedDescription": "of all collectibles are signed by the athlete"
     }
   },
   "nft": {

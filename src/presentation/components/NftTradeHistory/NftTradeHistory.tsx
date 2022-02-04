@@ -54,7 +54,12 @@ export const NftTradeHistory = ({ tradeHistoryRecords, isLoading }: NftTradeHist
           </Button>
         </div>
         {componentToRender(6)}
-        <BaseModal handleClose={() => setIsModalOpen(false)} bigModal open={isModalOpen}>
+        <BaseModal
+          handleClose={() => setIsModalOpen(false)}
+          bigModal
+          open={isModalOpen}
+          showCloseButton={false}
+        >
           <div className={styles.nftTradeHistory__title}>
             <Typography component="h3" variant="h5" gutterBottom style={{ marginLeft: '0.5rem' }}>
               {t('nft.tradeHistory.title')}

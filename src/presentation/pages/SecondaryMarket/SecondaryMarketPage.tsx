@@ -4,7 +4,7 @@ import { NFTDetails } from './NFTDetails/NFTDetails';
 import { Title } from './NFTDetails/Title';
 import { Image } from './NFTDetails/Image';
 import { Buttons } from './NFTDetails/Buttons';
-import { TradeHistory } from './NFTDetails/TradeHistory';
+import { SecondaryMarketTradeHistory } from './NFTDetails/SecondaryMarketTradeHistory';
 import styles from './NFTDetails/NftDetails.module.scss';
 
 const SecondaryMarketPage = () => {
@@ -22,7 +22,7 @@ const SecondaryMarketPage = () => {
                 <Buttons />
               </div>
             </div>
-            <TradeHistory />
+            <SecondaryMarketTradeHistory />
           </div>
         </NFTDetails>
       }

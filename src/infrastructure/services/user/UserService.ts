@@ -77,6 +77,16 @@ export const authApi = api.injectEndpoints({
         },
       }),
     }),
+    googleLogin: builder.mutation({
+      query: (googleBody: GoogleLoginBody) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/users/google_login`,
+        method: 'POST',
+        body: {
+          deviceId: googleBody.deviceId,
+          googleIdToken: googleBody.googleIdToken,
+        },
+      }),
+    }),
     getCountries: builder.mutation<Country[], string>({
       query: () => `${endpoints.COUNTRIES}`,
       transformResponse: (data: Country[]) => data,
@@ -128,6 +138,11 @@ interface signupFTXBody {
   recaptcha: string;
 }
 
+interface GoogleLoginBody {
+  deviceId: string;
+  googleIdToken: string;
+}
+
 export const {
   useLoginMutation,
   useLoginFTXMutation,
@@ -138,6 +153,7 @@ export const {
   useKycMutation,
   useGetCountriesMutation,
   useGetSubregionsMutation,
+  useGoogleLoginMutation,
   endpoints: {
     signup: { matchFulfilled: signupFulfiled },
     login: { matchFulfilled: loginFulfiled },
@@ -145,6 +161,7 @@ export const {
     loginStatus: { matchFulfilled: loginStatusFulfiled },
     signupFTX: { matchFulfilled: signupFTXFulfiled },
     loginFTX: { matchFulfilled: loginFTXFulfiled },
+    googleLogin: { matchFulfilled: googleLoginFulfiled },
     kyc: { matchFulfilled: kycFulfiled, matchRejected: kycRejected },
   },
 } = authApi;

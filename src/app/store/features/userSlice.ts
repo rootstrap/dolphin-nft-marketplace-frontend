@@ -15,6 +15,7 @@ import {
   signupFTXFulfiled,
   loginFTXFulfiled,
   loginStatusFulfiled,
+  googleLoginFulfiled,
 } from 'infrastructure/services/user/UserService';
 
 const initialState: UserState = {
@@ -38,7 +39,9 @@ const initialState: UserState = {
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    setToken: state => state,
+  },
   extraReducers: builder => {
     builder.addMatcher(signupFulfiled, (state, { payload: { token, user } }) => {
       state.isAuthenticated = true;
@@ -104,6 +107,10 @@ const userSlice = createSlice({
     builder.addMatcher(loginMfaFulfilled, (state, { payload }) => {
       state.tokenFtx = payload.result.token;
       state.user.kyc1ed = payload.result.target.kycLevel && Boolean(payload.result.target.kycLevel);
+    });
+    builder.addMatcher(googleLoginFulfiled, (state, { payload }) => {
+      console.log('payload ', payload);
+      state.tokenFtx = payload.token;
     });
   },
 });

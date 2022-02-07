@@ -8,6 +8,7 @@ import { ReactComponent as FTXLogo } from 'app/assets/ftxus_logo.svg';
 import { Mfa } from '../Mfa/Mfa';
 import useTranslation from '../../../app/hooks/useTranslation';
 import styles from './Login.module.scss';
+import { LoginGoogle } from './LoginGoogle';
 
 export const Login = () => {
   const t = useTranslation();
@@ -75,6 +76,7 @@ export const Login = () => {
             <Button fullWidth type="submit">
               {t('login.button')}
             </Button>
+            <LoginGoogle />
           </div>
 
           <div>

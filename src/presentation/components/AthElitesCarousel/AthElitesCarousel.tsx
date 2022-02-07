@@ -1,4 +1,5 @@
-import { CarouselItem, packIds } from 'app/constants/heroletes/remarkablesCarousel';
+import { CarouselItem } from 'app/constants/heroletes/remarkablesCarousel';
+import { packIds } from 'app/constants/contants';
 import { CarouselItemDescription } from './CarouselItemDescription';
 import { CarouselItemImage } from './CarouselItemImage';
 import { CarouselButtons } from './CarouselButtons';

@@ -1,14 +1,14 @@
+import { useContext } from 'react';
 import { Button, Typography } from '@material-ui/core';
 import { ReactComponent as SmallDiscord } from 'app/assets/SmallDiscord.svg';
 import { socialMediaLinks } from 'app/constants/contants';
-import CreaturesBackground from 'app/assets/CreaturesBackground.png';
 import { BuyNowButton } from 'presentation/components/BuyNowButton/BuyNowButton';
 import { useAppSelector } from 'app/hooks/reduxHooks';
-import { useContext } from 'react';
-import { ModalContext } from '../../../../app/context/ModalContext';
+import { ModalContext } from 'app/context/ModalContext';
+import { packIds } from 'app/constants/contants';
+import CreaturesBackground from 'app/assets/CreaturesBackground.png';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Main.module.scss';
-import { packIds } from '../../../../app/constants/heroletes/remarkablesCarousel';
 
 export const Main = () => {
   const t = useTranslation();
@@ -23,7 +23,11 @@ export const Main = () => {
         </div>
 
         {isAuthenticated ? (
-          <BuyNowButton packId={packIds.creatures} nftsToBuy="creatures" />
+          <BuyNowButton
+            packId={packIds.creatures}
+            nftsToBuy="creatures"
+            className={styles.mainContent__buttonsButton}
+          />
         ) : (
           <div className={styles.mainContent__buttons}>
             <div className={styles.mainContent__buttonsButton}>

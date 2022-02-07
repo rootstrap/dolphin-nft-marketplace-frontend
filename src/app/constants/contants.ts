@@ -121,3 +121,8 @@ export const currency = {
   sol: 'SOL',
   usd: 'USD',
 };
+
+export const packIds = {
+  common: '102',
+  creatures: '36',
+};

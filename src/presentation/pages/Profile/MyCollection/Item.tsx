@@ -1,23 +1,23 @@
 /* eslint-disable jsx-a11y/media-has-caption */
+import { SyntheticEvent } from 'react';
 import { Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './MyCollection.module.scss';
-import React from 'react';
 
 export const Item = ({ id, name, image, animation, video, offerPrice, issuer }: ItemProps) => {
   const t = useTranslation();
 
-  const onMouseEnter = (e: React.SyntheticEvent) => {
+  const onMouseEnter = (e: SyntheticEvent) => {
     (e.currentTarget as HTMLVideoElement).play();
   };
 
-  const onMouseLeave = (e: React.SyntheticEvent) => {
+  const onMouseLeave = (e: SyntheticEvent) => {
     (e.currentTarget as HTMLVideoElement).pause();
   };
 
   return (
-    <ItemWrapper id={id} issuer={issuer}>
+    <Link to={`secondary/${id}`}>
       <div className={styles.list__itemContent}>
         {offerPrice && (
           <div className={styles.list__itemContentSale}>
@@ -56,7 +56,7 @@ export const Item = ({ id, name, image, animation, video, offerPrice, issuer }: 
           </Typography>
         </div>
       </div>
-    </ItemWrapper>
+    </Link>
   );
 };
 
@@ -68,14 +68,4 @@ interface ItemProps {
   name: string;
   offerPrice: number;
   video: string;
-}
-
-const ItemWrapper = ({ children, issuer, id }: ItemWrapperProps) => {
-  return issuer !== 'Heroletes' ? <Link to={`secondary/${id}`}>{children}</Link> : <div>{children}</div>;
-};
-
-interface ItemWrapperProps {
-  children: JSX.Element;
-  id: string;
-  issuer: string;
 }

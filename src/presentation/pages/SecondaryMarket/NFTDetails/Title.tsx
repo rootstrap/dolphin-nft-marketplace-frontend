@@ -31,9 +31,11 @@ export const Title = () => {
 
       <div className={styles.secondaryMarket__textInfo}>
         <div className={styles.secondaryMarket__textInfoContainer}>
-          <Typography>
-            # <span className={styles.secondaryMarket__textInfoData}>{nft?.number}</span>
-          </Typography>
+          {nft?.number && (
+            <Typography>
+              # <span className={styles.secondaryMarket__textInfoData}>{nft?.number}</span>
+            </Typography>
+          )}
         </div>
         {nft?.totalQuantity && (
           <div className={styles.secondaryMarket__textInfoContainer}>

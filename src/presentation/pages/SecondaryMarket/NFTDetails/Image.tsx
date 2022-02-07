@@ -6,8 +6,6 @@ import styles from './NftDetails.module.scss';
 export const Image = () => {
   const { nft } = useContext(NFTDetailsContext);
 
-  console.log('herolete: ', nft);
-
   return (
     <div className={styles.secondaryMarket__nft}>
       <span className={styles.secondaryMarket__nftEditionContainer}>

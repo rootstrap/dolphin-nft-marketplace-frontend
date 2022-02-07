@@ -52,6 +52,10 @@
     &Button {
       display: flex;
       flex-direction: column;
+      p {
+        font-family: The Neue;
+        color: white !important;
+      }
     }
   }
 }

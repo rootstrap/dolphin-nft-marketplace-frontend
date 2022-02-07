@@ -2,6 +2,7 @@ import Common from 'app/assets/heroletesCarousel/Common.png';
 import Bronze from 'app/assets/heroletesCarousel/Bronze.png';
 import Silver from 'app/assets/heroletesCarousel/Silver.png';
 import Gold from 'app/assets/heroletesCarousel/Gold.png';
+import { packIds } from '../contants';
 
 export const carouselItems: CarouselItem[] = [
   {
@@ -61,11 +62,6 @@ export interface CarouselItem {
   tier: string;
   title: string;
 }
-
-export const packIds = {
-  common: '102',
-  creatures: '3',
-};
 
 export const nftsPerPack = {
   creatures: [packIds.creatures],

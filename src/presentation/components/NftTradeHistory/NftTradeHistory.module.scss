@@ -1,0 +1,21 @@
+@import '../../../app/styles/base/settings';
+
+.nftTradeHistory {
+  margin: 1rem 0;
+
+  &__title {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__heading {
+    background-color: $black;
+    padding: 1rem;
+  }
+
+  &__content {
+    background-color: $background-promotion;
+    padding: 1rem;
+  }
+}

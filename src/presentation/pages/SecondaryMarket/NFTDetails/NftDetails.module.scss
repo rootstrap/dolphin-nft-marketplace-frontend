@@ -153,18 +153,4 @@
       cursor: pointer;
     }
   }
-
-  &__history {
-    margin: 1rem 0;
-
-    &Heading {
-      background-color: $black;
-      padding: 1rem;
-    }
-
-    &Content {
-      background-color: $background-promotion;
-      padding: 1rem;
-    }
-  }
 }

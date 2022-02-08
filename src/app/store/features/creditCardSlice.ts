@@ -1,9 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { CreditCardData } from 'app/interfaces/creditCard/creditCard';
-import {
-  deleteCreditCardFulfiled,
-  getCreditCardsFulfiled,
-} from 'infrastructure/services/creditCard/CreditCardService';
+import { deleteCreditCardFulfiled, getCreditCardsFulfiled } from 'app/services/creditCard/CreditCardService';
 
 const initialState: CreditCardState = {
   creditCards: [],

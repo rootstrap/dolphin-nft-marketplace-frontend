@@ -3,8 +3,8 @@ import { ErrorReqHandler } from 'app/helpers/ErrorReqHandler';
 import {
   createCreditCardFulfiled,
   createCreditCardRejected,
-} from 'infrastructure/services/creditCard/CreditCardService';
-import { loginMfaFulfilled } from 'infrastructure/services/mfa/MfaService';
+} from 'app/services/creditCard/CreditCardService';
+import { loginMfaFulfilled } from 'app/services/mfa/MfaService';
 import {
   kycFulfiled,
   kycRejected,
@@ -15,8 +15,7 @@ import {
   signupFTXFulfiled,
   loginFTXFulfiled,
   loginStatusFulfiled,
-} from 'infrastructure/services/user/UserService';
-
+} from 'app/services/user/UserService';
 const initialState: UserState = {
   user: {
     fullName: '',

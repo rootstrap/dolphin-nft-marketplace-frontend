@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { api } from 'infrastructure/services/Api';
+import { api } from 'app/services/Api';
 import userReducer from './features/userSlice';
 import nftReducer from './features/nftSlice';
 import creditCardReducer from './features/creditCardSlice';

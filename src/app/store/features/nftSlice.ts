@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { NFT } from 'app/interfaces/NFT/NFT';
-import { getNftDetailsFulfiled } from 'infrastructure/services/nft/NftService';
+import { getNftDetailsFulfiled } from 'app/services/nft/NftService';
 
 const initialState: NFTState = {
   nfts: [],

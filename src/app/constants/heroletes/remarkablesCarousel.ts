@@ -2,7 +2,7 @@ import Common from 'app/assets/heroletesCarousel/Common.png';
 import Bronze from 'app/assets/heroletesCarousel/Bronze.png';
 import Silver from 'app/assets/heroletesCarousel/Silver.png';
 import Gold from 'app/assets/heroletesCarousel/Gold.png';
-import { packIds } from '../contants';
+import { packIds } from '../constants';
 
 export const carouselItems: CarouselItem[] = [
   {

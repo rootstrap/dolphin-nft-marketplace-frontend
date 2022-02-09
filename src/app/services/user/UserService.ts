@@ -77,6 +77,16 @@ export const authApi = api.injectEndpoints({
         },
       }),
     }),
+    setAgreeSweepstakes: builder.mutation({
+      query: (userAgreeBody: UserAgreeBody) => ({
+        url: endpoints.ELIGIBLE,
+        method: 'POST',
+        body: {
+          email: userAgreeBody.email,
+          isEligible: userAgreeBody.isEligible,
+        },
+      }),
+    }),
     getCountries: builder.mutation<Country[], string>({
       query: () => `${endpoints.COUNTRIES}`,
       transformResponse: (data: Country[]) => data,
@@ -128,6 +138,11 @@ interface signupFTXBody {
   recaptcha: string;
 }
 
+interface UserAgreeBody {
+  email: string;
+  isEligible: boolean;
+}
+
 export const {
   useLoginMutation,
   useLoginFTXMutation,
@@ -135,6 +150,7 @@ export const {
   useLogoutMutation,
   useSignupMutation,
   useSignupFTXMutation,
+  useSetAgreeSweepstakesMutation,
   useKycMutation,
   useGetCountriesMutation,
   useGetSubregionsMutation,
@@ -146,5 +162,6 @@ export const {
     signupFTX: { matchFulfilled: signupFTXFulfiled },
     loginFTX: { matchFulfilled: loginFTXFulfiled },
     kyc: { matchFulfilled: kycFulfiled, matchRejected: kycRejected },
+    setAgreeSweepstakes: { matchFulfilled: setAgreeSweepstakesFulfiled },
   },
 } = authApi;

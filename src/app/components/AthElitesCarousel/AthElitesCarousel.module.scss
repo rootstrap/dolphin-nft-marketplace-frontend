@@ -38,6 +38,7 @@
 
     &Text {
       margin-top: 2rem;
+      text-align: justify;
     }
 
     &Pack {
@@ -108,5 +109,12 @@
         font-family: Transat !important;
       }
     }
+  }
+
+  &__article {
+    background-color: black;
+    padding: 1rem 20%;
+    text-align: justify;
+    width: 100%;
   }
 }

@@ -4,6 +4,9 @@ import Silver from 'app/assets/heroletesCarousel/Silver.png';
 import Gold from 'app/assets/heroletesCarousel/Gold.png';
 import { packIds } from '../constants';
 
+const text =
+  'This action-packed collection features a combination of decorated legends and current winter athlete stars, including medalists Red Gerard, Hilary Knight and Kendall Coyne Schofield, as well as figure skating legend Nancy Kerrigan. Grand prize IRLs for this collection include experiences that you can’t get anywhere else. Enter the Heroletes Sweepstakes for a chance to win grand prize IRLs, which may include lessons from the world’s top athletes, hand-picked professional sports gear signed by the pros themselves, and much more.';
+
 export const carouselItems: CarouselItem[] = [
   {
     collectiblesPerPack: '3 common',
@@ -12,7 +15,7 @@ export const carouselItems: CarouselItem[] = [
     image: Common,
     isPackForSale: true,
     price: 19,
-    text: 'This action-packed collection features a combination of decorated legends and current winter athlete stars, including many current competitors in the February games like gold medalists Red Gerard, Hilary Knight and Kendall Coyne Schofield, as well as figure skating legend Nancy Kerrigan. IRLs for this collection include experiences that you can’t get anywhere else. IRLs may include lessons from the world’s top athletes, hand-picked professional sports gear signed by the pros themselves, and much more.',
+    text,
     tier: 'Common',
     title: 'Winter Sports Champions',
   },
@@ -23,7 +26,7 @@ export const carouselItems: CarouselItem[] = [
     image: Bronze,
     isPackForSale: false,
     price: 49,
-    text: 'This action-packed collection features a combination of decorated legends and current winter athlete stars, including many current competitors in the February games like gold medalists Red Gerard, Hilary Knight and Kendall Coyne Schofield, as well as figure skating legend Nancy Kerrigan. IRLs for this collection include experiences that you can’t get anywhere else. IRLs may include lessons from the world’s top athletes, hand-picked professional sports gear signed by the pros themselves, and much more.',
+    text,
     tier: 'Bronze',
     title: 'Winter Sports Champions',
   },
@@ -34,7 +37,7 @@ export const carouselItems: CarouselItem[] = [
     image: Silver,
     isPackForSale: false,
     price: 99,
-    text: 'This action-packed collection features a combination of decorated legends and current winter athlete stars, including many current competitors in the February games like gold medalists Red Gerard, Hilary Knight and Kendall Coyne Schofield, as well as figure skating legend Nancy Kerrigan. IRLs for this collection include experiences that you can’t get anywhere else. IRLs may include lessons from the world’s top athletes, hand-picked professional sports gear signed by the pros themselves, and much more.',
+    text,
     tier: 'Silver',
     title: 'Winter Sports Champions',
   },
@@ -45,7 +48,7 @@ export const carouselItems: CarouselItem[] = [
     image: Gold,
     isPackForSale: false,
     price: 249,
-    text: 'This action-packed collection features a combination of decorated legends and current winter athlete stars, including many current competitors in the February games like gold medalists Red Gerard, Hilary Knight and Kendall Coyne Schofield, as well as figure skating legend Nancy Kerrigan. IRLs for this collection include experiences that you can’t get anywhere else. IRLs may include lessons from the world’s top athletes, hand-picked professional sports gear signed by the pros themselves, and much more.',
+    text,
     tier: 'Gold',
     title: 'Winter Sports Champions',
   },

@@ -34,6 +34,9 @@ export const Main = () => {
           <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
             {t('heroletes.teaser')}
           </Typography>
+          <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
+            {t('heroletes.secondTeaser')}
+          </Typography>
           <div>
             <Link href="#athelites" underline="none">
               <Button className={styles.mainContent__headerButton}> {t('verticals.actionButton')}</Button>

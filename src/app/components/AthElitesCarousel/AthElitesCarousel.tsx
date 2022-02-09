@@ -1,14 +1,26 @@
 import { CarouselItem } from 'app/constants/heroletes/remarkablesCarousel';
-import { packIds } from 'app/constants/constants';
+import { dolphinServiceLinks, packIds } from 'app/constants/constants';
 import { CarouselItemDescription } from './CarouselItemDescription';
 import { CarouselItemImage } from './CarouselItemImage';
 import { CarouselButtons } from './CarouselButtons';
 import { useCarousel } from './useCarousel';
 import { BuyNowButton } from '../BuyNowButton/BuyNowButton';
+import { Checkbox, Typography } from '@material-ui/core';
+import useTranslation from 'app/hooks/useTranslation';
 import styles from './AthElitesCarousel.module.scss';
 
 export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
-  const { index, handleOnClick, areButtonsVisible } = useCarousel(carouselItems);
+  const {
+    areButtonsVisible,
+    handleAgreeSweepstakes,
+    handleOnCheck,
+    handleOnClick,
+    index,
+    isAgree,
+    isEligible,
+  } = useCarousel(carouselItems);
+
+  const t = useTranslation();
 
   return (
     <>
@@ -31,7 +43,24 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
 
       {carouselItems[index].isPackForSale && (
         <div className={styles.carousel__buy}>
+          <div className={styles.carousel__buyCheckbox}>
+            <Checkbox checked={isAgree} onChange={handleOnCheck} />
+            <Typography variant="caption">
+              To purchase I agree to the <a href={dolphinServiceLinks.privacyPolicy}>Privacy Policy</a> and{' '}
+              <a href={dolphinServiceLinks.termOfService}>Terms of Service</a>
+            </Typography>
+          </div>
+
+          <div className={styles.carousel__buyCheckbox}>
+            <Checkbox checked={isEligible} onChange={handleAgreeSweepstakes} />
+            <Typography variant="caption">
+              I wish to enter the Heroletes Sweepstakes and agree to the{' '}
+              <a href={dolphinServiceLinks.sweepstakesRules}>Official Rules</a>
+            </Typography>
+          </div>
+
           <BuyNowButton
+            isUserAgree={isAgree}
             buttonText="Buy Now"
             className={styles.carousel__buyButton}
             nftsToBuy="common"
@@ -39,6 +68,13 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
           />
         </div>
       )}
+      <div className={styles.carousel__article}>
+        <Typography variant="body2">
+          {t('heroletes.carousel.firstArticle')}
+          <a href={dolphinServiceLinks.winterSportsRules}> Sweepstakes-Official-Rules</a>.{' '}
+          {t('heroletes.carousel.secondArticle')}
+        </Typography>
+      </div>
     </>
   );
 };

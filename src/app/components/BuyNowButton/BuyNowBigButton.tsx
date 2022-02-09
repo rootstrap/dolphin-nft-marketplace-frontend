@@ -9,6 +9,7 @@ export const BuyNowBigButton = ({
   buttonText = '',
   className = '',
   disabled = false,
+  isUserAgree = true,
   onClick,
 }: BuyNowBigButtonProps) => {
   const t = useTranslation();
@@ -18,12 +19,12 @@ export const BuyNowBigButton = ({
   const handleOnClick = () => (isAuthenticated ? onClick() : setLoginModalIsOpen(true));
 
   return (
-    <div className={styles.buyNowButton}>
+    <div className={isUserAgree ? styles.buyNowButton : styles.buyNowButton__disabled}>
       <Button
         className={className}
         onClick={handleOnClick}
         variant="outlined"
-        disabled={disabled}
+        disabled={disabled || !isUserAgree}
         startIcon={disabled && <CircularProgress />}
       >
         <Typography variant="h6" component="p">
@@ -38,5 +39,6 @@ interface BuyNowBigButtonProps {
   buttonText?: string;
   className?: string;
   disabled?: boolean;
+  isUserAgree?: boolean;
   onClick: () => void;
 }

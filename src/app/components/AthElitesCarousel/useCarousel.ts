@@ -1,10 +1,18 @@
+import { useAppSelector } from 'app/hooks/reduxHooks';
+import { useSetAgreeSweepstakesMutation } from 'app/services/user/UserService';
 import { useState, useEffect } from 'react';
 
 export type carouselArrow = 'back' | 'forward';
 
 export const useCarousel = (carouselItems: any[]) => {
   const [index, setIndex] = useState(0);
+  const [isAgree, setIsAgree] = useState(false);
+  const [isEligible, setIsEligible] = useState(false);
   const [areButtonsVisible, setAreButtonsVisible] = useState(false);
+
+  const { email, irlEligible } = useAppSelector(state => state.user.user);
+
+  const [setAgreeSweepstakes] = useSetAgreeSweepstakesMutation();
 
   const handleOnClick = (arrow: carouselArrow) => {
     if (arrow === 'forward') {
@@ -16,15 +24,35 @@ export const useCarousel = (carouselItems: any[]) => {
     }
   };
 
+  const handleOnCheck = () => setIsAgree(!isAgree);
+
+  const handleAgreeSweepstakes = () => {
+    setIsEligible(!isEligible);
+
+    setAgreeSweepstakes({
+      email,
+      isEligible: !isEligible,
+    });
+  };
+
   useEffect(() => {
     if (carouselItems.length > 1) {
       setAreButtonsVisible(true);
     }
   }, [carouselItems]);
 
+  useEffect(() => {
+    console.log('effect: ', irlEligible);
+    setIsEligible(irlEligible);
+  }, [irlEligible]);
+
   return {
-    index,
-    handleOnClick,
     areButtonsVisible,
+    handleAgreeSweepstakes,
+    handleOnCheck,
+    handleOnClick,
+    index,
+    isAgree,
+    isEligible,
   };
 };

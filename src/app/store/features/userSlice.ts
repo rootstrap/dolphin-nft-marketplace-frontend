@@ -15,7 +15,9 @@ import {
   signupFTXFulfiled,
   loginFTXFulfiled,
   loginStatusFulfiled,
+  setAgreeSweepstakesFulfiled,
 } from 'app/services/user/UserService';
+
 const initialState: UserState = {
   user: {
     fullName: '',
@@ -26,6 +28,7 @@ const initialState: UserState = {
     email: '',
     kyc1ed: false,
     kyc2ed: false,
+    irlEligible: true,
     creditCardId: 0,
     id: 0,
   },
@@ -94,6 +97,9 @@ const userSlice = createSlice({
     builder.addMatcher(kycRejected, (state, { payload: { status } }) => {
       ErrorReqHandler({ status });
     });
+    builder.addMatcher(setAgreeSweepstakesFulfiled, (state, { payload: { irlEligible } }) => {
+      state.user.irlEligible = irlEligible;
+    });
     builder.addMatcher(createCreditCardFulfiled, (state, { payload }) => {
       state.user.creditCardId = payload.result.id;
     });
@@ -115,6 +121,7 @@ interface User {
   lastName: string;
   email: string;
   kyc1ed: boolean;
+  irlEligible: boolean;
   kyc2ed: boolean;
   creditCardId: number;
   id: number;

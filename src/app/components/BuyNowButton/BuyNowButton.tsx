@@ -8,7 +8,13 @@ import { useBuyNowButton } from './useBuyNowButton';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './BuyNowButton.module.scss';
 
-export const BuyNowButton = ({ buttonText = '', className = '', nftsToBuy, packId }: BuyNowButtonProps) => {
+export const BuyNowButton = ({
+  buttonText = '',
+  className = '',
+  isUserAgree = true,
+  nftsToBuy,
+  packId,
+}: BuyNowButtonProps) => {
   const t = useTranslation();
   const {
     handleBuyNft,
@@ -36,7 +42,12 @@ export const BuyNowButton = ({ buttonText = '', className = '', nftsToBuy, packI
 
   return (
     <>
-      <BuyNowBigButton buttonText={buttonText} className={className} onClick={handleOnClick} />
+      <BuyNowBigButton
+        buttonText={buttonText}
+        className={className}
+        onClick={handleOnClick}
+        isUserAgree={isUserAgree}
+      />
 
       {!isMobileView && (
         <div className={styles.buyNowButton__typography}>
@@ -59,6 +70,7 @@ export const BuyNowButton = ({ buttonText = '', className = '', nftsToBuy, packI
 interface BuyNowButtonProps {
   buttonText?: string;
   className?: string;
+  isUserAgree?: boolean;
   nftsToBuy?: nftPack;
   packId: string;
 }

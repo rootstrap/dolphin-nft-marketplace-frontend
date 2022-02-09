@@ -54,6 +54,10 @@ export const socialMediaLinks = {
 export const dolphinServiceLinks = {
   privacyPolicy: 'https://dolphinentertainment.zendesk.com/hc/en-us/articles/4410741692059-Privacy-Policy',
   termOfService: 'https://dolphinentertainment.zendesk.com/hc/en-us/articles/4410741678491-Terms-of-Service',
+  winterSportsRules:
+    'https://dolphinentertainment.zendesk.com/hc/en-us/articles/4416700698267-Winter-Sports-Champions',
+  sweepstakesRules:
+    'https://dolphinentertainment.zendesk.com/hc/en-us/articles/4416700698267-Winter-Sports-Champions-Sweepstakes-Official-Rules',
 };
 
 export const helpLinks = {

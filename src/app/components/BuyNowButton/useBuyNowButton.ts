@@ -6,10 +6,10 @@ import { useGetBalanceMutation } from 'app/services/deposit/DepositService';
 import { useBuyNftByPackMutation, useGetNftPackInfoMutation } from 'app/services/nft/NftService';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { creditCardStatus, currency } from 'app/constants/constants';
-import { nftsPerPack } from 'app/constants/heroletes/remarkablesCarousel';
+import { nftsPerPack, pricePerPack } from 'app/constants/heroletes/remarkablesCarousel';
 import { nftPack } from 'app/interfaces/NFT/NFT';
 
-export const useBuyNowButton = ({ packId, nftsToBuy }: UseBuyNowButtonArgs) => {
+export const useBuyNowButton = ({ nftsToBuy }: UseBuyNowButtonArgs) => {
   const {
     user: { user },
     creditCard: { defaultCreditCard },
@@ -18,7 +18,6 @@ export const useBuyNowButton = ({ packId, nftsToBuy }: UseBuyNowButtonArgs) => {
   const dispatch = useAppDispatch();
 
   const [totalBalance, setTotalBalance] = useState(0);
-  const [creaturePrice, setCreaturePrice] = useState<number>(0);
   const [depositSize, setDepositSize] = useState<number>(0);
   const [enoughBalance, setEnoughBalance] = useState(false);
   const [fee, setFee] = useState<number>(0);
@@ -28,7 +27,6 @@ export const useBuyNowButton = ({ packId, nftsToBuy }: UseBuyNowButtonArgs) => {
   const { setKycModalIsOpen, setCcModalIsOpen } = useContext(ModalContext);
 
   const [buyNft, { isSuccess, isError, isLoading: isLoadingBuyNFT }] = useBuyNftByPackMutation();
-  const [getPackInfo] = useGetNftPackInfoMutation();
   const [getCreditCardFees] = useGetCreditCardFeesMutation();
   const [getBalance] = useGetBalanceMutation();
   const [isLoadingData, setIsLoadingData] = useState(false);
@@ -61,12 +59,10 @@ export const useBuyNowButton = ({ packId, nftsToBuy }: UseBuyNowButtonArgs) => {
       setIsLoadingData(true);
 
       const data: any = await getCreditCardFees();
-      const packInfo: any = await getPackInfo(packId);
       const { fixed, variable } = data.data;
-      const depositSize = packInfo.data.result.price * nftsPerPack[nftsToBuy].length - totalBalance;
+      const depositSize = pricePerPack[nftsToBuy] - totalBalance;
       const fees = (depositSize * variable + fixed).toFixed(2);
 
-      setCreaturePrice(packInfo.data.result.price);
       setDepositSize(depositSize);
       setFee(fees);
     } catch (error) {
@@ -74,7 +70,11 @@ export const useBuyNowButton = ({ packId, nftsToBuy }: UseBuyNowButtonArgs) => {
     } finally {
       setIsLoadingData(false);
     }
-  }, [getCreditCardFees, getPackInfo, totalBalance]);
+  }, [getCreditCardFees, totalBalance, nftsToBuy]);
+
+  const handleBalance = useCallback(() => {
+    setEnoughBalance(hasEnoughBalance(totalBalance, pricePerPack[nftsToBuy]));
+  }, [totalBalance, nftsToBuy]);
 
   const handleBuyNft = () => {
     setIsLoadingData(true);
@@ -97,8 +97,8 @@ export const useBuyNowButton = ({ packId, nftsToBuy }: UseBuyNowButtonArgs) => {
   }, [loadData]);
 
   useEffect(() => {
-    setEnoughBalance(hasEnoughBalance(totalBalance, creaturePrice * nftsPerPack[nftsToBuy].length));
-  }, [totalBalance, creaturePrice]);
+    handleBalance();
+  }, [totalBalance, nftsToBuy]);
 
   useEffect(() => {
     if (isSuccess) {

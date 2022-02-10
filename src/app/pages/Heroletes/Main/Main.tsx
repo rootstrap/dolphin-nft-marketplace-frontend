@@ -1,4 +1,5 @@
 import { Button, Grid, Link, Typography } from '@material-ui/core';
+import { dolphinServiceLinks } from 'app/constants/constants';
 import Remarkable1 from 'app/assets/remarkable1.png';
 import Remarkable2 from 'app/assets/remarkable2.png';
 import Remarkable3 from 'app/assets/remarkable3.png';
@@ -36,6 +37,8 @@ export const Main = () => {
           </Typography>
           <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
             {t('heroletes.secondTeaser')}
+            <Link href={dolphinServiceLinks.sweepstakesRules}>Official Rules</Link>
+            {t('heroletes.thirdTeaser')}
           </Typography>
           <div>
             <Link href="#athelites" underline="none">

@@ -43,6 +43,14 @@
     padding: 4rem;
     text-align: center;
 
+    &Title {
+      color: $orange;
+    }
+
+    &Number {
+      color: $orange;
+    }
+
     &Container {
       padding: 2rem;
     }

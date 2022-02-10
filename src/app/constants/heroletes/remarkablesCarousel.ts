@@ -23,7 +23,7 @@ export const carouselItems: CarouselItem[] = [
   {
     collectiblesPerPack: '3 common, 2 bronze',
     costPerPack: 3,
-    date: 'Feb 11',
+    date: 'TBA',
     image: Bronze,
     isPackForSale: false,
     price: 49,
@@ -34,7 +34,7 @@ export const carouselItems: CarouselItem[] = [
   {
     collectiblesPerPack: '3 common, 2 bronze, 1 silver',
     costPerPack: 3,
-    date: 'Feb 11',
+    date: 'TBA',
     image: Silver,
     isPackForSale: false,
     price: 99,
@@ -45,7 +45,7 @@ export const carouselItems: CarouselItem[] = [
   {
     collectiblesPerPack: '3 common, 2 bronze, 1 silver, 1 gold',
     costPerPack: 3,
-    date: 'Feb 18',
+    date: 'TBA',
     image: Gold,
     isPackForSale: false,
     price: 249,

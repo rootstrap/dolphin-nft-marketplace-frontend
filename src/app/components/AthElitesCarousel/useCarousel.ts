@@ -42,7 +42,6 @@ export const useCarousel = (carouselItems: any[]) => {
   }, [carouselItems]);
 
   useEffect(() => {
-    console.log('effect: ', irlEligible);
     setIsEligible(irlEligible);
   }, [irlEligible]);
 

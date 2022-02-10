@@ -1,5 +1,5 @@
 import { createTheme } from '@material-ui/core';
-import { colors } from '../constants/contants';
+import { colors } from '../constants/constants';
 
 export const creaturesTheme = createTheme({
   palette: {

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Balance } from 'app/interfaces/common/Balance';
-import { getBalanceFulfiled } from 'infrastructure/services/deposit/DepositService';
+import { getBalanceFulfiled } from 'app/services/deposit/DepositService';
 
 const initialState: DepositState = {
   currentBalance: 0,

@@ -1,4 +1,4 @@
-import { CIRCLE_FAILURE_CODES } from 'app/constants/contants';
+import { CIRCLE_FAILURE_CODES } from 'app/constants/constants';
 
 export type Status = 'approved' | 'pending' | 'rejected' | 'needsDepositVerification';
 export type DepositVerificationStatus =

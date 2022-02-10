@@ -1,0 +1,67 @@
+@import '/src/app/styles/base/settings';
+
+.dropdown {
+  margin-top: 3rem;
+  background-color: black;
+  padding-bottom: 2rem;
+
+  &__header {
+    align-items: center;
+    color: $primary;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    &Arrow {
+      cursor: pointer;
+    }
+
+    button {
+      border: none;
+      padding: 1rem;
+      &:hover {
+        border: none;
+      }
+    }
+  }
+
+  &__article {
+    margin: 2rem 30%;
+    text-align: center;
+
+    &Title {
+      color: $orange;
+    }
+
+    &Description {
+      margin: 1rem;
+    }
+  }
+
+  &__items {
+    margin-top: 2rem;
+    padding: 4rem;
+    text-align: center;
+
+    &Title {
+      color: $orange;
+    }
+
+    &Number {
+      color: $orange;
+    }
+
+    &Container {
+      padding: 2rem;
+    }
+
+    &Details {
+      color: $orange;
+    }
+  }
+
+  &__legal {
+    margin: 2rem;
+    text-align: center;
+  }
+}

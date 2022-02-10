@@ -5,7 +5,7 @@ import { store } from './app/store/store';
 import { StylesProvider, ThemeProvider } from '@material-ui/core';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
-import { DEFAULT_LANGUAGE } from './app/constants/contants';
+import { DEFAULT_LANGUAGE } from './app/constants/constants';
 import { theme } from './app/themes/Theme';
 import { ModalProvider } from './app/context/ModalContext';
 import { persistStore } from 'redux-persist';

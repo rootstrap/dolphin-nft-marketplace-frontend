@@ -1,0 +1,26 @@
+@import '../../../app/styles/base/settings';
+
+.buyNowButton {
+  &__disabled {
+    button {
+      background-color: $light-grey !important;
+      color: $dark-grey !important;
+      margin: 1rem;
+      padding: 1rem;
+      width: 20rem;
+    }
+  }
+
+  button {
+    background-color: black;
+    border: 2px solid $orange-creatures;
+    cursor: pointer;
+    margin: 1rem;
+    padding: 1rem;
+    width: 20rem;
+  }
+
+  p {
+    font-family: The Neue;
+  }
+}

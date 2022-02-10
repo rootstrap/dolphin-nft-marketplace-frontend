@@ -3,8 +3,8 @@ import { ErrorReqHandler } from 'app/helpers/ErrorReqHandler';
 import {
   createCreditCardFulfiled,
   createCreditCardRejected,
-} from 'infrastructure/services/creditCard/CreditCardService';
-import { loginMfaFulfilled } from 'infrastructure/services/mfa/MfaService';
+} from 'app/services/creditCard/CreditCardService';
+import { loginMfaFulfilled } from 'app/services/mfa/MfaService';
 import {
   kycFulfiled,
   kycRejected,
@@ -15,7 +15,8 @@ import {
   signupFTXFulfiled,
   loginFTXFulfiled,
   loginStatusFulfiled,
-} from 'infrastructure/services/user/UserService';
+  setAgreeSweepstakesFulfiled,
+} from 'app/services/user/UserService';
 
 const initialState: UserState = {
   user: {
@@ -27,6 +28,7 @@ const initialState: UserState = {
     email: '',
     kyc1ed: false,
     kyc2ed: false,
+    irlEligible: true,
     creditCardId: 0,
     id: 0,
   },
@@ -95,6 +97,9 @@ const userSlice = createSlice({
     builder.addMatcher(kycRejected, (state, { payload: { status } }) => {
       ErrorReqHandler({ status });
     });
+    builder.addMatcher(setAgreeSweepstakesFulfiled, (state, { payload: { irlEligible } }) => {
+      state.user.irlEligible = irlEligible;
+    });
     builder.addMatcher(createCreditCardFulfiled, (state, { payload }) => {
       state.user.creditCardId = payload.result.id;
     });
@@ -116,6 +121,7 @@ interface User {
   lastName: string;
   email: string;
   kyc1ed: boolean;
+  irlEligible: boolean;
   kyc2ed: boolean;
   creditCardId: number;
   id: number;

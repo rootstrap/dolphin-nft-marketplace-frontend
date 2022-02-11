@@ -3,15 +3,18 @@ import { hasEnoughBalance } from 'app/helpers/HasEnoughBalance';
 import { useAppDispatch, useAppSelector } from 'app/hooks/reduxHooks';
 import { useGetCreditCardFeesMutation, creditCardApi } from 'app/services/creditCard/CreditCardService';
 import { useGetBalanceMutation } from 'app/services/deposit/DepositService';
-import { useBuyNftByPackMutation, useGetNftPackInfoMutation } from 'app/services/nft/NftService';
+import { useBuyNftByPackMutation } from 'app/services/nft/NftService';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { creditCardStatus, currency } from 'app/constants/constants';
 import { nftsPerPack, pricePerPack } from 'app/constants/heroletes/remarkablesCarousel';
 import { nftPack } from 'app/interfaces/NFT/NFT';
+import { useSetAgreeSweepstakesMutation } from 'app/services/user/UserService';
 
-export const useBuyNowButton = ({ nftsToBuy }: UseBuyNowButtonArgs) => {
+export const useBuyNowButton = ({ nftsToBuy, isUserEligible }: UseBuyNowButtonArgs) => {
   const {
-    user: { user },
+    user: {
+      user: { email, kyc1ed },
+    },
     creditCard: { defaultCreditCard },
     deposit: { balances },
   } = useAppSelector(state => state);
@@ -29,10 +32,11 @@ export const useBuyNowButton = ({ nftsToBuy }: UseBuyNowButtonArgs) => {
   const [buyNft, { isSuccess, isError, isLoading: isLoadingBuyNFT }] = useBuyNftByPackMutation();
   const [getCreditCardFees] = useGetCreditCardFeesMutation();
   const [getBalance] = useGetBalanceMutation();
+  const [setAgreeSweepstakes] = useSetAgreeSweepstakesMutation();
   const [isLoadingData, setIsLoadingData] = useState(false);
 
   const handleActivateWallet = () => {
-    user.kyc1ed ? setCcModalIsOpen(true) : setKycModalIsOpen(true);
+    kyc1ed ? setCcModalIsOpen(true) : setKycModalIsOpen(true);
   };
 
   const handleCloseDepositModal = () => {
@@ -81,6 +85,11 @@ export const useBuyNowButton = ({ nftsToBuy }: UseBuyNowButtonArgs) => {
 
     try {
       nftsPerPack[nftsToBuy].forEach(async nft => await buyNft(nft));
+
+      setAgreeSweepstakes({
+        email,
+        isEligible: isUserEligible,
+      });
     } catch (error) {
       throw error;
     } finally {
@@ -98,7 +107,7 @@ export const useBuyNowButton = ({ nftsToBuy }: UseBuyNowButtonArgs) => {
 
   useEffect(() => {
     handleBalance();
-  }, [totalBalance, nftsToBuy]);
+  }, [totalBalance, nftsToBuy, handleBalance]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -134,4 +143,5 @@ export const useBuyNowButton = ({ nftsToBuy }: UseBuyNowButtonArgs) => {
 interface UseBuyNowButtonArgs {
   packId: string;
   nftsToBuy: nftPack;
+  isUserEligible?: boolean;
 }

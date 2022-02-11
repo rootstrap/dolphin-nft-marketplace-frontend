@@ -52,6 +52,7 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
           />
           <BuyNowButton
             isUserAgree={isAgree}
+            isUserEligible={isEligible}
             buttonText="Buy Now"
             className={styles.carousel__buyButton}
             nftsToBuy={carouselItems[index].tier}

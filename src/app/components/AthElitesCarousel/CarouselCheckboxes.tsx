@@ -24,7 +24,7 @@ export const CarouselCheckboxes = ({
       <div className={styles.carousel__buyCheckbox}>
         <Checkbox checked={isEligible} onChange={handleAgreeSweepstakes} disabled={!isAuthenticated} />
         <Typography variant="caption">
-          I wish to enter the Heroletes Sweepstakes and agree to the{' '}
+          With my purchase, I wish to enter the Heroletes Sweepstakes and agree to the{' '}
           <a href={dolphinServiceLinks.sweepstakesRules}>Official Rules</a>
         </Typography>
       </div>

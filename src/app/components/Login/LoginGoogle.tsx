@@ -13,7 +13,7 @@ export const LoginGoogle = () => {
     console.log('response google: ', res);
     googleLogin({
       deviceId: uuid(),
-      googleIdToken: res.googleId,
+      googleIdToken: res.accessToken,
     });
   };
 

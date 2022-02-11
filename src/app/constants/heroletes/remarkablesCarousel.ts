@@ -23,9 +23,9 @@ export const carouselItems: CarouselItem[] = [
   {
     collectiblesPerPack: '3 common, 2 bronze',
     costPerPack: 3,
-    date: 'TBA',
+    date: 'Available Now',
     image: Bronze,
-    isPackForSale: false,
+    isPackForSale: true,
     price: 49,
     text,
     tier: 'bronze',

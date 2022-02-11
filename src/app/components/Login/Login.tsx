@@ -7,6 +7,7 @@ import { CustomLoader } from 'app/components/CustomLoader/CustomLoader';
 import { ReactComponent as FTXLogo } from 'app/assets/ftxus_logo.svg';
 import { Mfa } from '../Mfa/Mfa';
 import useTranslation from '../../../app/hooks/useTranslation';
+import { LoginGoogle } from './LoginGoogle';
 import styles from './Login.module.scss';
 
 export const Login = () => {
@@ -75,6 +76,7 @@ export const Login = () => {
             <Button fullWidth type="submit">
               {t('login.button')}
             </Button>
+            <LoginGoogle />
           </div>
 
           <div>

@@ -65,12 +65,19 @@
         }
       }
 
+      &Video {
+        background-color: $black;
+        height: 80%;
+        margin: 0 0 0.5rem 0;
+        max-height: 100%;
+        width: 100%;
+      }
+
       &Img {
         background-color: $black;
         height: 80%;
         margin: 0 0 0.5rem 0;
         max-height: 100%;
-        width: auto;
       }
 
       &New {

@@ -26,28 +26,18 @@ export const Item = ({ id, name, image, animation, video, offerPrice, issuer }: 
           </div>
         )}
 
-        {animation && (
+        {animation ? (
           <video
-            className={styles.list__itemContentImg}
+            className={styles.list__itemContentVideo}
+            muted
             controls={false}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
           >
             <source src={animation} type="video/mp4" />
           </video>
-        )}
-
-        {!animation && image && <img src={image} alt="Promotion" className={styles.list__itemContentImg} />}
-
-        {!animation && !image && video && (
-          <iframe
-            className={styles.list__itemContentImg}
-            frameBorder={0}
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            src={video}
-            title="galleryVideo"
-          />
+        ) : (
+          <img className={styles.list__itemContentImg} src={image} alt="" />
         )}
 
         <div className={styles.list__itemContentHidden}>

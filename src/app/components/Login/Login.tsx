@@ -1,12 +1,12 @@
 import { Button, Typography, Link } from '@material-ui/core';
-import { BaseModal } from '../../../app/components/Modal/Modal';
-import { InputText } from '../../../app/components/InputText/InputText';
+import { BaseModal } from 'app/components/Modal/Modal';
+import { InputText } from 'app/components/InputText/InputText';
 import { useLogin } from './useLogin';
 import { Grid } from '@material-ui/core';
 import { CustomLoader } from 'app/components/CustomLoader/CustomLoader';
 import { ReactComponent as FTXLogo } from 'app/assets/ftxus_logo.svg';
 import { Mfa } from '../Mfa/Mfa';
-import useTranslation from '../../../app/hooks/useTranslation';
+import useTranslation from 'app/hooks/useTranslation';
 import styles from './Login.module.scss';
 
 export const Login = () => {

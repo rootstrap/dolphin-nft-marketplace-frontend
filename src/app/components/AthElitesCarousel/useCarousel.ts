@@ -1,5 +1,4 @@
 import { useAppSelector } from 'app/hooks/reduxHooks';
-import { useSetAgreeSweepstakesMutation } from 'app/services/user/UserService';
 import { useState, useEffect } from 'react';
 
 export type carouselArrow = 'back' | 'forward';
@@ -10,9 +9,7 @@ export const useCarousel = (carouselItems: any[]) => {
   const [isEligible, setIsEligible] = useState(false);
   const [areButtonsVisible, setAreButtonsVisible] = useState(false);
 
-  const { email, irlEligible } = useAppSelector(state => state.user.user);
-
-  const [setAgreeSweepstakes] = useSetAgreeSweepstakesMutation();
+  const { irlEligible } = useAppSelector(state => state.user.user);
 
   const handleOnClick = (arrow: carouselArrow) => {
     if (arrow === 'forward') {
@@ -28,11 +25,6 @@ export const useCarousel = (carouselItems: any[]) => {
 
   const handleAgreeSweepstakes = () => {
     setIsEligible(!isEligible);
-
-    setAgreeSweepstakes({
-      email,
-      isEligible: !isEligible,
-    });
   };
 
   useEffect(() => {

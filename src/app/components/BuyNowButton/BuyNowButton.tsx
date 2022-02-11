@@ -12,6 +12,7 @@ export const BuyNowButton = ({
   buttonText = '',
   className = '',
   isUserAgree = true,
+  isUserEligible,
   nftsToBuy,
   packId,
 }: BuyNowButtonProps) => {
@@ -29,7 +30,7 @@ export const BuyNowButton = ({
     depositModalIsOpen,
     handleClose,
     handleCloseDepositModal,
-  } = useBuyNowButton({ packId, nftsToBuy });
+  } = useBuyNowButton({ packId, nftsToBuy, isUserEligible });
 
   const { isMobileView } = useResponsive();
 
@@ -71,6 +72,7 @@ interface BuyNowButtonProps {
   buttonText?: string;
   className?: string;
   isUserAgree?: boolean;
+  isUserEligible?: boolean;
   nftsToBuy?: nftPack;
   packId: string;
 }

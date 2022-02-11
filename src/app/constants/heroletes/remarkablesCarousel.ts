@@ -70,7 +70,7 @@ export interface CarouselItem {
 export const nftsPerPack = {
   creatures: [packIds.creatures],
   common: [packIds.common, packIds.common, packIds.common],
-  bronze: [packIds.common, packIds.common, packIds.common],
+  bronze: [packIds.common, packIds.common, packIds.common, packIds.bronze, packIds.bronze],
   silver: [packIds.common, packIds.common, packIds.common],
   gold: [packIds.common, packIds.common, packIds.common],
 };

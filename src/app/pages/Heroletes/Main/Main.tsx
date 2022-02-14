@@ -37,7 +37,9 @@ export const Main = () => {
           </Typography>
           <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
             {t('heroletes.secondTeaser')}
-            <Link href={dolphinServiceLinks.sweepstakesRules}>Official Rules</Link>
+            <Link href={dolphinServiceLinks.sweepstakesRules} target="_blank">
+              Official Rules
+            </Link>
             {t('heroletes.thirdTeaser')}
           </Typography>
           <div>

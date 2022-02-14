@@ -2,7 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Design can be found in: [FIGMA Page](https://www.figma.com/file/N3Nz27X4GqywgbrCcf2mnC/Dolphin-NFT-Marketplace?node-id=0%3A1)
+Design can be found in: [FIGMA Page](https://www.figma.com/file/N3Nz27X4GqywgbrCcf2mnC/Dolphin-NFT-Marketplace?node-id=0%3A1).
+
+Dev Environment: [Link](https://dolphin-nft-dev-fe.rs-sandbox.net/)
 
 ## Available Scripts
 

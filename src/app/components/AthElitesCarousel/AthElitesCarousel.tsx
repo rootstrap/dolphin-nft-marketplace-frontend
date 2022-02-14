@@ -63,8 +63,11 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
       <div className={styles.carousel__article}>
         <Typography variant="body2">
           {t('heroletes.carousel.firstArticle')}
-          <a href={dolphinServiceLinks.winterSportsRules}> Sweepstakes-Official-Rules</a>.{' '}
-          {t('heroletes.carousel.secondArticle')}
+          <a href={dolphinServiceLinks.winterSportsRules} target="_blank">
+            {' '}
+            Sweepstakes-Official-Rules
+          </a>
+          . {t('heroletes.carousel.secondArticle')}
         </Typography>
       </div>
     </>

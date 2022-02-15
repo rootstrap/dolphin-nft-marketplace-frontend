@@ -28,7 +28,9 @@ export const CarouselItemDescription = ({
 
       <div className={styles.carousel__descriptionCollectibles}>
         <Typography variant="body1">{t('heroletes.carousel.nftPerPack')}</Typography>
-        <Typography variant="body1">{collectiblesPerPack}</Typography>
+        <Typography className={styles.carousel__descriptionCollectiblesInfo} variant="body1">
+          {collectiblesPerPack}
+        </Typography>
       </div>
 
       <div className={styles.carousel__descriptionPack}>

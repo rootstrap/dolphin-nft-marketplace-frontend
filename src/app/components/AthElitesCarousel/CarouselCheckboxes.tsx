@@ -12,7 +12,7 @@ export const CarouselCheckboxes = ({
   const { isAuthenticated } = useAppSelector(state => state.user);
 
   return (
-    <div>
+    <div className={styles.carousel__buy}>
       <div className={styles.carousel__buyCheckbox}>
         <Checkbox checked={isAgree} onChange={handleOnCheck} />
         <Typography variant="caption">

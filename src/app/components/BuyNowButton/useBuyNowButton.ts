@@ -141,7 +141,6 @@ export const useBuyNowButton = ({ nftsToBuy, isUserEligible }: UseBuyNowButtonAr
 };
 
 interface UseBuyNowButtonArgs {
-  packId: string;
   nftsToBuy: nftPack;
   isUserEligible?: boolean;
 }

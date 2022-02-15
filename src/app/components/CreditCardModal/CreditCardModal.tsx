@@ -53,7 +53,7 @@ export const CreditCardModal = () => {
             </Grid>
 
             <Grid item xs={12} md={12} lg={12}>
-              XXXX - XXXX - XXXX - {creditCard.data.mask}
+              XXXX - XXXX - XXXX - {creditCard.data?.mask}
             </Grid>
 
             <Grid item xs={2} md={2} lg={2}>

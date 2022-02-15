@@ -23,11 +23,7 @@ export const Main = () => {
         </div>
 
         {isAuthenticated ? (
-          <BuyNowButton
-            packId={packIds.creatures}
-            nftsToBuy="creatures"
-            className={styles.mainContent__buttonsButton}
-          />
+          <BuyNowButton nftsToBuy="creatures" className={styles.mainContent__buttonsButton} />
         ) : (
           <div className={styles.mainContent__buttons}>
             <div className={styles.mainContent__buttonsButton}>

@@ -8,6 +8,7 @@ export const useCarousel = (carouselItems: any[]) => {
   const [isAgree, setIsAgree] = useState(false);
   const [isEligible, setIsEligible] = useState(false);
   const [areButtonsVisible, setAreButtonsVisible] = useState(false);
+  const [isCheckboxesOpen, setIsCheckboxesOpen] = useState(false);
 
   const { irlEligible } = useAppSelector(state => state.user.user);
 
@@ -27,6 +28,9 @@ export const useCarousel = (carouselItems: any[]) => {
     setIsEligible(!isEligible);
   };
 
+  const handleOpenCheckboxes = () => setIsCheckboxesOpen(true);
+  const handleCloseCheckboxes = () => setIsCheckboxesOpen(false);
+
   useEffect(() => {
     if (carouselItems.length > 1) {
       setAreButtonsVisible(true);
@@ -44,6 +48,9 @@ export const useCarousel = (carouselItems: any[]) => {
     handleOnClick,
     index,
     isAgree,
+    isCheckboxesOpen,
     isEligible,
+    handleCloseCheckboxes,
+    handleOpenCheckboxes,
   };
 };

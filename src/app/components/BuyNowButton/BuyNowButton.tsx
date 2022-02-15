@@ -14,7 +14,6 @@ export const BuyNowButton = ({
   isUserAgree = true,
   isUserEligible,
   nftsToBuy,
-  packId,
 }: BuyNowButtonProps) => {
   const t = useTranslation();
   const {
@@ -30,7 +29,7 @@ export const BuyNowButton = ({
     depositModalIsOpen,
     handleClose,
     handleCloseDepositModal,
-  } = useBuyNowButton({ packId, nftsToBuy, isUserEligible });
+  } = useBuyNowButton({ nftsToBuy, isUserEligible });
 
   const { isMobileView } = useResponsive();
 
@@ -74,5 +73,4 @@ interface BuyNowButtonProps {
   isUserAgree?: boolean;
   isUserEligible?: boolean;
   nftsToBuy?: nftPack;
-  packId: string;
 }

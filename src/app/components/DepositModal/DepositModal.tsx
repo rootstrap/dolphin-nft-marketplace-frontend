@@ -26,7 +26,7 @@ export const DepositModal = ({ isOpen, handleClose, depositSize, fee }: DepositM
               preview
               cvc={cvv.cvc}
               name={name}
-              number={`************${data.mask}`}
+              number={`************${data?.mask}`}
               expiry={''}
               focused={cvv.focus}
             />

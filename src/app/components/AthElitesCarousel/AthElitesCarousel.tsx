@@ -1,16 +1,23 @@
 import { CarouselItem } from 'app/constants/heroletes/remarkablesCarousel';
-import { dolphinServiceLinks, packIds } from 'app/constants/constants';
 import { CarouselItemDescription } from './CarouselItemDescription';
 import { CarouselItemImage } from './CarouselItemImage';
 import { useCarousel } from './useCarousel';
-import { Typography } from '@material-ui/core';
 import { CarouselCheckboxes } from './CarouselCheckboxes';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './AthElitesCarousel.module.scss';
 
 export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
-  const { handleAgreeSweepstakes, handleOnCheck, handleOnClick, index, isAgree, isEligible } =
-    useCarousel(carouselItems);
+  const {
+    handleAgreeSweepstakes,
+    handleOnCheck,
+    handleOnClick,
+    index,
+    isAgree,
+    isCheckboxesOpen,
+    isEligible,
+    handleCloseCheckboxes,
+    handleOpenCheckboxes,
+  } = useCarousel(carouselItems);
 
   const t = useTranslation();
 
@@ -30,30 +37,22 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
           tier={carouselItems[index].tier}
           image={carouselItems[index].image}
           index={index}
-          isItemForSale={carouselItems[index].isPackForSale}
           handleOnClick={handleOnClick}
-          lenght={carouselItems.length}
+          length={carouselItems.length}
+          handleOpenCheckboxes={handleOpenCheckboxes}
+          isItemForSale={carouselItems[index].isPackForSale}
+        />
+
+        <CarouselCheckboxes
+          handleAgreeSweepstakes={handleAgreeSweepstakes}
+          handleClose={handleCloseCheckboxes}
+          handleOnCheck={handleOnCheck}
           isAgree={isAgree}
           isEligible={isEligible}
+          isOpen={isCheckboxesOpen}
+          isItemForSale={carouselItems[index].isPackForSale}
+          tier={carouselItems[index].tier}
         />
-      </div>
-
-      <CarouselCheckboxes
-        handleAgreeSweepstakes={handleAgreeSweepstakes}
-        handleOnCheck={handleOnCheck}
-        isAgree={isAgree}
-        isEligible={isEligible}
-      />
-
-      <div className={styles.carousel__article}>
-        <Typography variant="body2">
-          {t('heroletes.carousel.firstArticle')}
-          <a href={dolphinServiceLinks.winterSportsRules} target="_blank">
-            {' '}
-            Sweepstakes-Official-Rules
-          </a>
-          . {t('heroletes.carousel.secondArticle')}
-        </Typography>
       </div>
     </>
   );

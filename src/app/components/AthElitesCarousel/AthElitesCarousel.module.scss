@@ -112,8 +112,11 @@
 
   &__buy {
     text-align: center;
-    background-color: black;
     padding-bottom: 2rem;
+
+    &Icon {
+      margin-bottom: 1rem;
+    }
 
     &Button {
       background-color: $primary !important;
@@ -129,12 +132,21 @@
         font-family: Transat !important;
       }
     }
-  }
 
-  &__article {
-    background-color: black;
-    padding: 1rem 5%;
-    text-align: justify;
-    width: 100%;
+    &Checkbox {
+      margin-top: 1rem;
+
+      &Info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &Article {
+      padding: 1rem 5%;
+      text-align: justify;
+      width: 100%;
+    }
   }
 }

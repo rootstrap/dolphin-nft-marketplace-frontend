@@ -2,9 +2,9 @@ import { Button, Grid, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import routesPaths from 'app/constants/routesPath';
 import useTranslation from 'app/hooks/useTranslation';
-import styles from './MyCollection.module.scss';
+import styles from './MyGallery.module.scss';
 
-export const EmptyCollection = () => {
+export const EmptyGallery = () => {
   const t = useTranslation();
   return (
     <>

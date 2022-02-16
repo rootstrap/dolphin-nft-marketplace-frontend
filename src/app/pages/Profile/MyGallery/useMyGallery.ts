@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useGetNftsByUserMutation } from 'app/services/nft/NftService';
 import { NFT } from 'app/interfaces/NFT/NFT';
 
-export const useMyCollection = () => {
+export const useMyGallery = () => {
   const [getNftsByUser, { isLoading }] = useGetNftsByUserMutation();
   const [nfts, setNfts] = useState<NFT[]>([]);
 

@@ -86,6 +86,7 @@
     "emptyList": "You don’t have any collectibles in your gallery yet. Start your collection.",
     "tabs": {
       "gallery": "My gallery",
+      "collection": "My collections",
       "balances": "My balances"
     },
     "creditCards": {

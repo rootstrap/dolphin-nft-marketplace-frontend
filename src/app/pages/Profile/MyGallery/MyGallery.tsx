@@ -1,10 +1,10 @@
-import { useMyCollection } from './useMyCollection';
+import { useMyGallery } from './useMyGallery';
 import { CustomLoader } from 'app/components/CustomLoader/CustomLoader';
-import { CollectionList } from './CollectionList';
-import styles from './MyCollection.module.scss';
+import { GalleryList } from './GalleryList';
+import styles from './MyGallery.module.scss';
 
-export const MyCollectionNfts = () => {
-  const { nfts, isLoading } = useMyCollection();
+export const MyGallery = () => {
+  const { nfts, isLoading } = useMyGallery();
 
   return (
     <div className={styles.myCollection}>
@@ -13,7 +13,7 @@ export const MyCollectionNfts = () => {
           <CustomLoader />
         </div>
       ) : (
-        <CollectionList nfts={nfts} />
+        <GalleryList nfts={nfts} />
       )}
     </div>
   );

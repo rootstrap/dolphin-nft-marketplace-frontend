@@ -8,16 +8,18 @@ export const HeroletesList = () => {
   return (
     <Grid container>
       {heroletes.map(herolete => (
-        <HeroleteItem
-          animation={herolete.animationUrl}
-          collection={herolete.collection}
-          currency={herolete.quoteCurrency}
-          id={herolete.id}
-          name={herolete.attributes.Athlete}
-          price={herolete.offerPrice}
-          sport={herolete.attributes.Sport}
-          tier={herolete.attributes.Tier}
-        />
+        <Grid item xs={6} md={4} style={{ padding: '0.5rem' }}>
+          <HeroleteItem
+            animation={herolete.animationUrl}
+            collection={herolete.collection}
+            currency={herolete.quoteCurrency}
+            id={herolete.id}
+            name={herolete.attributes.Athlete}
+            price={herolete.offerPrice}
+            sport={herolete.attributes.Sport}
+            tier={herolete.attributes.Tier}
+          />
+        </Grid>
       ))}
     </Grid>
   );

@@ -25,7 +25,7 @@ export const HeroleteItem = ({
   };
 
   return (
-    <Grid item xs={6} md={4} className={styles.heroleteItem}>
+    <>
       <video
         className={styles.heroleteItem__video}
         muted
@@ -61,7 +61,7 @@ export const HeroleteItem = ({
           </Link>
         </div>
       </div>
-    </Grid>
+    </>
   );
 };
 

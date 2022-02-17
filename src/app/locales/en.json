@@ -191,6 +191,14 @@
       "signedTitle": "Signed",
       "signedPercentage": "10%",
       "signedDescription": "of all collectibles are signed by the athlete"
+    },
+    "marketplace": {
+      "title": "Heroletes",
+      "subtitle": "Marketplace",
+      "teaser": "Placeholder text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "item": {
+        "actionButton": "Get it now!"
+      }
     }
   },
   "nft": {

@@ -1,0 +1,35 @@
+@import '../../../styles/base/settings.scss';
+
+.heroleteItem {
+  padding: 0.5rem;
+
+  &__video {
+    background-color: $black;
+    width: 100%;
+  }
+
+  &__summary {
+    background-color: $background-promotion;
+    padding: 0.5rem 1rem;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    &Collection {
+      margin-right: 0.5rem;
+    }
+
+    &Tier {
+      flex-shrink: 0;
+    }
+  }
+
+  &__buyInfo {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+}

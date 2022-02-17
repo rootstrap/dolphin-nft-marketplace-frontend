@@ -50,6 +50,17 @@ export const routes: Route = {
       private: false,
     },
     {
+      path: routesPaths.heroletesMarketplace,
+      Component: lazy(
+        () =>
+          import(
+            /* webpackChunkName: "HeroletesMarketplacePage" */ 'app/pages/HeroletesMarketplace/HeroletesMarketplacePage'
+          )
+      ),
+      exact: true,
+      private: false,
+    },
+    {
       path: routesPaths.halloffame,
       Component: lazy(
         () => import(/* webpackChunkName: "VerticalPage" */ 'app/pages/HallOfFame/HallOfFamePage')

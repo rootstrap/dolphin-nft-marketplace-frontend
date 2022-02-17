@@ -9,8 +9,8 @@ import styles from './Main.module.scss';
 import { useResponsive } from 'app/hooks/useResponsive';
 
 export const Main = ({ ftxId }: MainProps) => {
+  const { nft, isLoading, isPriceInUsd, priceInUsd } = useNFT(ftxId);
   const [showItemDescription, setShowItemDescription] = useState<boolean>(true);
-  const { nft, isLoading } = useNFT(ftxId);
   const { nfts } = useAppSelector(state => state.nft);
   const [isPeersModalOpen, setIsPeersModalOpen] = useState<boolean>(false);
   const { isTabletView, isSmallDeviceView } = useResponsive();
@@ -20,31 +20,46 @@ export const Main = ({ ftxId }: MainProps) => {
   const handleClosePeersModal = () => setIsPeersModalOpen(false);
   const handleOpenPeersModal = () => setIsPeersModalOpen(true);
 
-  const componentToRender = showItemDescription ? (
-    <div className={styles.mainContent}>
-      <div>
-        <iframe
-          height={isSmallDeviceView || isTabletView ? '300' : '540'}
-          width={isSmallDeviceView || isTabletView ? '300' : '540'}
-          allow="autoplay; encrypted-media;"
-          src={`${nft?.videoUrl}?autoplay=true&muted=true&loop=true`}
-          title={nft?.name}
-        />
-      </div>
-      <Item
-        nft={nft}
-        styles={styles}
-        handleOpenPeersModal={handleOpenPeersModal}
-        handleShowDescription={handleShowDescription}
-      />
-    </div>
-  ) : (
-    <BuyNFT nft={nft} handleShowDescription={handleShowDescription} />
-  );
+  if (isLoading) return <CustomLoader />;
 
   return (
     <>
-      {isLoading ? <CustomLoader /> : componentToRender}
+      {showItemDescription ? (
+        <div className={styles.mainContent}>
+          <div>
+            {nft?.videoUrl ? (
+              <iframe
+                height={isSmallDeviceView || isTabletView ? '300' : '540'}
+                width={isSmallDeviceView || isTabletView ? '300' : '540'}
+                allow="autoplay; encrypted-media;"
+                src={`${nft?.videoUrl}?autoplay=true&muted=true&loop=true`}
+                title={nft?.name}
+              />
+            ) : nft?.animationUrl ? (
+              <video
+                height={isSmallDeviceView || isTabletView ? '300' : '540'}
+                width={isSmallDeviceView || isTabletView ? '300' : '540'}
+                muted
+                autoPlay
+              >
+                <source src={nft?.animationUrl} type="video/mp4" />
+              </video>
+            ) : (
+              <img src={nft?.imageUrl} alt="Herolete" />
+            )}
+          </div>
+          <Item
+            isUsd={isPriceInUsd}
+            priceInUsd={priceInUsd}
+            nft={nft}
+            styles={styles}
+            handleOpenPeersModal={handleOpenPeersModal}
+            handleShowDescription={handleShowDescription}
+          />
+        </div>
+      ) : (
+        <BuyNFT nft={nft} handleShowDescription={handleShowDescription} />
+      )}
       <Peers nfts={nfts} open={isPeersModalOpen} handleClose={handleClosePeersModal} />
     </>
   );

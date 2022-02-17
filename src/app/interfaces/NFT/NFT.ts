@@ -2,6 +2,8 @@ export interface NFT {
   id: string;
   name: string;
   ftx_id: string;
+  attributes: any;
+  attributesList: any;
   description: string;
   tier: string;
   issuer: string;

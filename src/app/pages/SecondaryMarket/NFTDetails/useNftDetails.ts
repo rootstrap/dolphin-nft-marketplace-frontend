@@ -8,6 +8,7 @@ import { NFT } from 'app/interfaces/NFT/NFT';
 import { IError } from 'app/interfaces/common/Error';
 import { INftTradesResult } from 'app/interfaces/NFT/NFTCommons';
 import { useGetMarketMutation } from 'app/services/deposit/DepositService';
+import { currency } from 'app/constants/constants';
 
 export const useNftDetails = (nftId: string) => {
   const [nftPrice, setNftPrice] = useState('');
@@ -65,12 +66,12 @@ export const useNftDetails = (nftId: string) => {
   }, [isError]);
 
   useEffect(() => {
-    setIsPriceInUsd(nft?.quoteCurrency === 'USD');
+    setIsPriceInUsd(nft?.quoteCurrency === currency.usd);
   }, [nft]);
 
   useEffect(() => {
     if (!isPriceInUsd) {
-      getMarket(`${nft?.quoteCurrency}/USD`);
+      getMarket(`${nft?.quoteCurrency}/${currency.usd}`);
     }
   }, [nft]);
 

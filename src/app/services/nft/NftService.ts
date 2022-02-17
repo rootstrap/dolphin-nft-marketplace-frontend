@@ -37,6 +37,15 @@ const nftApi = api.injectEndpoints({
       }),
       transformResponse: (response: IGetNftByUserResponse) => response.result,
     }),
+    getNftsHeroletesSecondary: builder.mutation<HeroletesNftsResult, NftsHeroletesSecondaryParams>({
+      query: (param: NftsHeroletesSecondaryParams) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/nfts_filtered?nft_filter_string=%7B"issuer":"Heroletes"%7D`,
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+      }),
+      transformResponse: (response: IHeroletesNftsResponse) => response.result,
+    }),
     buyNft: builder.mutation({
       query: (buyNftBody: BuyNFT) => ({
         url: `${process.env.REACT_APP_FTX_API_URL}/nft/buy`,
@@ -101,6 +110,7 @@ export const {
   useGetNftsPrimaryMutation,
   useGetNftsFeaturedMutation,
   useGetNftByIdMutation,
+  useGetNftsHeroletesSecondaryMutation,
   useBuyNftMutation,
   useBuyNftByPackMutation,
   useGetNftsByUserMutation,
@@ -126,7 +136,23 @@ interface SellNFT {
   quoteCurrency: string;
 }
 
-export interface IGetNftByUserResponse {
+export interface NftsHeroletesSecondaryParams {
+  startInclusive: number;
+  endExclusive: number;
+}
+
+interface IGetNftByUserResponse {
   success: boolean;
   result: NFT[];
+}
+
+interface IHeroletesNftsResponse {
+  success: boolean;
+  result: HeroletesNftsResult;
+}
+
+interface HeroletesNftsResult {
+  nfts: NFT[];
+  count: number;
+  total: number;
 }

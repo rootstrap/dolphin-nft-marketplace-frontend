@@ -1,0 +1,46 @@
+@import '../../../../app/styles/base/settings';
+
+.mainContent {
+  &__background {
+    position: relative;
+    &Img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 100%;
+
+    @media screen and (max-width: 375px) {
+      display: none !important;
+    }
+
+    &Featured {
+      color: $orange;
+      margin-bottom: 1rem;
+    }
+
+    &Subtitle {
+      color: $orange;
+    }
+
+    &Teaser {
+      font-size: 1.2rem !important;
+      padding: 0 20%;
+      text-align: center;
+
+      @media screen and (max-width: $md-width) {
+        padding: 0 10%;
+        font-size: 0.7rem !important;
+      }
+    }
+  }
+}

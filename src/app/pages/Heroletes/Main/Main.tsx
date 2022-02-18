@@ -1,13 +1,13 @@
 import { Button, Grid, Link, Typography } from '@material-ui/core';
 import { Link as RouteLink } from 'react-router-dom';
 import { dolphinServiceLinks } from 'app/constants/constants';
+import { useResponsive } from 'app/hooks/useResponsive';
 import Remarkable1 from 'app/assets/remarkable1.png';
 import Remarkable2 from 'app/assets/remarkable2.png';
 import Remarkable3 from 'app/assets/remarkable3.png';
-import { useResponsive } from 'app/hooks/useResponsive';
+import routesPaths from 'app/constants/routesPath';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Main.module.scss';
-import routesPaths from 'app/constants/routesPath';
 
 export const Main = () => {
   const t = useTranslation();

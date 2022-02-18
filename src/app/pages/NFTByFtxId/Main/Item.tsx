@@ -40,7 +40,10 @@ export const Item = ({
               <Typography component="div" variant="h6">
                 {t('nft.price')}
               </Typography>
-              <Typography component="span">${nft?.offerPrice}</Typography>{' '}
+              <Typography component="span">
+                {isUsd ? '$' : nft?.quoteCurrency}
+                {nft?.offerPrice}
+              </Typography>{' '}
               {!isUsd && priceInUsd && <small>{`($${(priceInUsd * nft?.offerPrice).toFixed(2)})`}</small>}
             </div>
           </div>
@@ -63,16 +66,17 @@ export const Item = ({
         )}
       </div>
 
-      <div className={styles.mainContent__buttonContainer}>
-        <Button variant="contained" fullWidth size="large" onClick={handleOnClick}>
-          {t('nft.buyButton')}
-        </Button>
-        {!nft?.issuer.includes('Heroletes') && (
+      {!nft?.issuer.includes('Heroletes') && (
+        <div className={styles.mainContent__buttonContainer}>
+          <Button variant="contained" fullWidth size="large" onClick={handleOnClick}>
+            {t('nft.buyButton')}
+          </Button>
+
           <Button fullWidth size="large" onClick={handleOpenPeersModal}>
             {t('nft.peersButton')}
           </Button>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

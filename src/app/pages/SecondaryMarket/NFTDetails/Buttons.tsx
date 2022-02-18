@@ -44,7 +44,7 @@ export const Buttons = () => {
                 type="number"
               />
               <Button variant="contained" fullWidth onClick={handleSellNft}>
-                {t('nft.sellNft.sellButton')}
+                {t('nft.sellNft.saleButton')}
               </Button>
               <Button fullWidth onClick={() => setIsInputVisible(false)}>
                 {t('nft.sellNft.cancelButton')}
@@ -56,7 +56,7 @@ export const Buttons = () => {
         <div className={styles.secondaryMarket__buttons}>
           <div>
             <Button variant="contained" fullWidth onClick={() => setIsInputVisible(true)}>
-              {t('nft.sellNft.saleButton')}
+              {nft?.offerPrice ? t('nft.sellNft.modifyPriceButton') : t('nft.sellNft.saleButton')}
             </Button>
           </div>
 

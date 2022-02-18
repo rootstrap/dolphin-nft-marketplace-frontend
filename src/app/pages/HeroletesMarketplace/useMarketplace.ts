@@ -30,6 +30,5 @@ export const useMarketplace = () => {
     setHeroletes,
     isLoading,
     setQueryParams,
-    getHeroletes,
   };
 };

@@ -25,8 +25,6 @@ export const useMarketplace = () => {
     getHeroletes();
   }, [getHeroletes]);
 
-  useEffect(() => {}, [queryParams]);
-
   return {
     heroletes,
     setHeroletes,

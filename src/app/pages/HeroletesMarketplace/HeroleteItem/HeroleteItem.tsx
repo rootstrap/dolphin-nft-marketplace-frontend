@@ -49,10 +49,10 @@ export const HeroleteItem = ({
         </div>
         <div className={styles.heroleteItem__buyInfo}>
           <div>
-            <Typography component="span" variant="h5">
+            <Typography component="span" variant="h6">
               {currency}{' '}
             </Typography>
-            <Typography component="span" variant="h5">
+            <Typography component="span" variant="h6">
               {price?.toFixed(2)}
             </Typography>
           </div>

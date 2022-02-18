@@ -1,0 +1,17 @@
+@import '../../../styles/base/_settings';
+
+.attributesFilter {
+  &__select {
+    margin: 1rem 0;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: $md-width) {
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  }
+}

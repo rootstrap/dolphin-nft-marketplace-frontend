@@ -11,7 +11,7 @@ export const useProfile = () => {
   useEffect(() => {
     getHeroletesAttributes().then((response: any) => setNftAttributes(response.data));
     getNftsByUser({ start: 0, end: NaN }).then((response: any) => setNfts(response.data));
-  }, []);
+  }, [getHeroletesAttributes, getNftsByUser]);
 
   return {
     nfts,

@@ -52,12 +52,33 @@ const nftApi = api.injectEndpoints({
       transformResponse: (response: IGetNftByUserResponse) => response.result.nfts,
     }),
     getNftsHeroletesSecondary: builder.mutation<HeroletesNftsResult, NftsHeroletesSecondaryParams>({
-      query: (param: NftsHeroletesSecondaryParams) => ({
-        url: `${process.env.REACT_APP_FTX_API_URL}/nft/nfts_filtered?nft_filter_string=%7B"issuer":"Heroletes"%7D`,
-        headers: {
-          ftxAuthorization: 'yes',
-        },
-      }),
+      query: (param: NftsHeroletesSecondaryParams) => {
+        let queryStringFilters: queryStringFiltersInterface = {
+          issuer: 'Heroletes',
+        };
+
+        if (param.filters) {
+          queryStringFilters = {
+            ...queryStringFilters,
+            traitsFilter: {
+              ...(param.filters.athlete && { Athlete: [param.filters.athlete] }),
+              ...(param.filters.sport && { Sport: [param.filters.sport] }),
+              ...(param.filters.tier && { Tier: [param.filters.tier] }),
+              ...(param.filters.background && { Background: [param.filters.background] }),
+              ...(param.filters.signed && { Signed: [param.filters.signed] }),
+            },
+          };
+        }
+
+        return {
+          url: `${process.env.REACT_APP_FTX_API_URL}/nft/nfts_filtered?nft_filter_string=${encodeURIComponent(
+            JSON.stringify(queryStringFilters)
+          )}`,
+          headers: {
+            ftxAuthorization: 'yes',
+          },
+        };
+      },
       transformResponse: (response: IHeroletesNftsResponse) => response.result,
     }),
     buyNft: builder.mutation({
@@ -157,6 +178,7 @@ interface SellNFT {
 export interface NftsHeroletesSecondaryParams {
   startInclusive: number;
   endExclusive: number;
+  filters: any;
 }
 
 interface IGetNftByUserResponse {
@@ -176,4 +198,17 @@ interface HeroletesNftsResult {
   nfts: NFT[];
   count: number;
   total: number;
+}
+
+interface queryStringFiltersInterface {
+  issuer: string;
+  traitsFilter?: TraitsFilterInterface;
+}
+
+interface TraitsFilterInterface {
+  Athlete?: String[];
+  Background?: String[];
+  Tier?: String[];
+  Signed?: String[];
+  Sport?: String[];
 }

@@ -5,13 +5,15 @@ import {
 } from 'app/services/nft/NftService';
 import { useCallback, useEffect, useState } from 'react';
 
-export const useHeroleteList = () => {
+export const useMarketplace = () => {
   const [queryParams, setQueryParams] = useState<NftsHeroletesSecondaryParams>({
     startInclusive: 0,
     endExclusive: 5,
+    filters: null,
   });
   const [heroletes, setHeroletes] = useState<NFT[]>([]);
-  const [getHeroletesNfts] = useGetNftsHeroletesSecondaryMutation();
+
+  const [getHeroletesNfts, { isLoading }] = useGetNftsHeroletesSecondaryMutation();
 
   const getHeroletes = useCallback(async () => {
     const data: any = await getHeroletesNfts(queryParams);
@@ -23,7 +25,13 @@ export const useHeroleteList = () => {
     getHeroletes();
   }, [getHeroletes]);
 
+  useEffect(() => {}, [queryParams]);
+
   return {
     heroletes,
+    setHeroletes,
+    isLoading,
+    setQueryParams,
+    getHeroletes,
   };
 };

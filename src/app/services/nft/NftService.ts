@@ -28,14 +28,28 @@ const nftApi = api.injectEndpoints({
       query: nftId => `${endpoints.NFT}?ftxId=${nftId}`,
       transformResponse: (data: NFT) => data,
     }),
-    getNftsByUser: builder.mutation<NFT[], void>({
-      query: () => ({
-        url: `${process.env.REACT_APP_FTX_API_URL}/nft/balances`,
+    getNftsByUser: builder.mutation<NFT[], any>({
+      query: ({ start, end }) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/balances_page`,
+        params: {
+          startInclusive: start,
+          endInclusive: end,
+          sortFunc: 'offer_asc',
+          nft_filter_string: JSON.stringify({
+            nftAuctionFilter: 'all',
+            minPriceFilter: null,
+            maxPriceFilter: null,
+            seriesFilter: [],
+            traitsFilter: {},
+            mintSourceFilter: 'all',
+            include_not_for_sale: true,
+          }),
+        },
         headers: {
           ftxAuthorization: 'yes',
         },
       }),
-      transformResponse: (response: IGetNftByUserResponse) => response.result,
+      transformResponse: (response: IGetNftByUserResponse) => response.result.nfts,
     }),
     getNftsHeroletesSecondary: builder.mutation<HeroletesNftsResult, NftsHeroletesSecondaryParams>({
       query: (param: NftsHeroletesSecondaryParams) => ({
@@ -100,6 +114,9 @@ const nftApi = api.injectEndpoints({
         transformResponse: (data: INftTrades) => data.result,
       }),
     }),
+    getHeroletesAttributes: builder.mutation<any[], void>({
+      query: () => `${endpoints.HEROLETES_ATTRIBUTES}`,
+    }),
   }),
   overrideExisting: true,
 });
@@ -117,6 +134,7 @@ export const {
   useGetNftPackInfoMutation,
   useSellNftMutation,
   useGetNftTradeHistoryMutation,
+  useGetHeroletesAttributesMutation,
   endpoints: {
     getNftsSecondary: { matchFulfilled: getNftsSecondaryFulfiled },
     getNftsPrimary: { matchFulfilled: getNftsPrimaryFulfiled },
@@ -143,7 +161,10 @@ export interface NftsHeroletesSecondaryParams {
 
 interface IGetNftByUserResponse {
   success: boolean;
-  result: NFT[];
+  result: {
+    count: number;
+    nfts: NFT[];
+  };
 }
 
 interface IHeroletesNftsResponse {

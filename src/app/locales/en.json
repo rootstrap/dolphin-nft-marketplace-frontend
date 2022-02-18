@@ -82,10 +82,11 @@
     }
   },
   "profile": {
-    "collectionTitle": "My Collection",
+    "collectionTitle": "My Gallery",
     "emptyList": "You don’t have any collectibles in your gallery yet. Start your collection.",
     "tabs": {
       "gallery": "My gallery",
+      "collection": "My collections",
       "balances": "My balances"
     },
     "creditCards": {
@@ -112,6 +113,12 @@
       "proceeds": "Proceeds: ",
       "convertButton": "Convert",
       "confirmButton": "Confirm"
+    },
+    "myCollections": {
+      "title": "My Collections",
+      "subtitle": "Heroletes Collection",
+      "infoText": "Digital collectibles that bring together the Remarkable worlds of comic books and groundbreaking athletes. From the imagination of former Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites, build your SuperTeam, and unlock new rare digital items and real-life experiences that you can’t find anywhere else!",
+      "redeemButton": "Redeem"
     }
   },
   "verticals": {

@@ -1,11 +1,11 @@
 import { Grid, Typography } from '@material-ui/core';
 import { NFT } from 'app/interfaces/NFT/NFT';
-import { Item } from 'app/pages/Profile/MyCollection/Item';
-import { EmptyCollection } from './EmptyCollection';
+import { Item } from 'app/pages/Profile/MyGallery/Item';
+import { EmptyGallery } from './EmptyGallery';
 import useTranslation from 'app/hooks/useTranslation';
-import styles from './MyCollection.module.scss';
+import styles from './MyGallery.module.scss';
 
-export const CollectionList = ({ nfts }: CollectionListProps) => {
+export const GalleryList = ({ nfts }: GalleryListProps) => {
   const t = useTranslation();
   return (
     <div className={styles.list}>
@@ -34,12 +34,12 @@ export const CollectionList = ({ nfts }: CollectionListProps) => {
           })}
         </Grid>
       ) : (
-        <EmptyCollection />
+        <EmptyGallery />
       )}
     </div>
   );
 };
 
-interface CollectionListProps {
+interface GalleryListProps {
   nfts: NFT[];
 }

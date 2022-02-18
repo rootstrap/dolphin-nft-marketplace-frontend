@@ -24,7 +24,7 @@ export const StartMap = () => {
           <Typography gutterBottom className={styles.startmap__text}>
             Season 1 of Creature Chronicles is announced, and focuses on the story of The Exiled Aliens who
             are communicating with the world through{' '}
-            <a href={socialMediaLinks.discord} target="_blank">
+            <a href={socialMediaLinks.discord} target="_blank" rel="noopener noreferrer">
               Discord.
             </a>
           </Typography>
@@ -65,7 +65,7 @@ export const StartMap = () => {
           </Typography>
           <Typography gutterBottom className={styles.startmap__text}>
             Two rare Exiled Aliens NFTs, held by the humans, will be teleported back to{' '}
-            <a href={socialMediaLinks.planetary} target="_blank">
+            <a href={socialMediaLinks.planetary} target="_blank" rel="noopener noreferrer">
               The Planetary Society
             </a>
             to help raise funds to support a rescue mission through the black hole to bring home the space

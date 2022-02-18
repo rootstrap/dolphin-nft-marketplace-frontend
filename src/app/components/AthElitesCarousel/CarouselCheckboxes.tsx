@@ -61,7 +61,7 @@ export const CarouselCheckboxes = ({
         <div className={styles.carousel__buyArticle}>
           <Typography variant="body2">
             {t('heroletes.carousel.firstArticle')}
-            <a href={dolphinServiceLinks.winterSportsRules} target="_blank">
+            <a href={dolphinServiceLinks.winterSportsRules} target="_blank" rel="noopener noreferrer">
               {' '}
               Sweepstakes-Official-Rules
             </a>

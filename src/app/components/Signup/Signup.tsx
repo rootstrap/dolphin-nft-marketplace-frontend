@@ -105,11 +105,11 @@ export const Signup = () => {
           <Checkbox checked={isTosAgree} onChange={() => setIsTosAgree(!isTosAgree)} />
           <Typography>
             {t('signup.TOS.agrees')}
-            <Link href={dolphinServiceLinks.termOfService} target="_blank">
+            <Link href={dolphinServiceLinks.termOfService} target="_blank" rel="noopener noreferrer">
               {t('signup.TOS.terms')}
             </Link>
             {t('signup.TOS.and')}
-            <Link href={dolphinServiceLinks.privacyPolicy} target="_blank">
+            <Link href={dolphinServiceLinks.privacyPolicy} target="_blank" rel="noopener noreferrer">
               {t('signup.TOS.privacyPolicy')}
             </Link>
           </Typography>

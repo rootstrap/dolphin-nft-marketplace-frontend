@@ -233,7 +233,8 @@
     "sellNft": {
       "title": "This NFT is yours",
       "subtitle": "It is in your personal gallery",
-      "saleButton": "Put it for sale",
+      "saleButton": "Sell this NFT",
+      "modifyPriceButton": "Revise Sale Price",
       "collectionButton": "My Collection",
       "sellButton": "Sell",
       "cancelSellButton": "Cancel sale",

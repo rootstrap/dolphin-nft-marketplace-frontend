@@ -8,12 +8,12 @@ export const BottomBar = () => {
   return (
     <Grid container className={styles.bottomBar}>
       <Grid item xs={6} sm={4} md={2} lg={2}>
-        <Link href={dolphinServiceLinks.termOfService} target="_blank">
+        <Link href={dolphinServiceLinks.termOfService} target="_blank" rel="noopener noreferrer">
           {t('bottomBar.terms')}
         </Link>
       </Grid>
       <Grid item xs={6} sm={4} md={2} lg={2}>
-        <Link href={dolphinServiceLinks.privacyPolicy} target="_blank">
+        <Link href={dolphinServiceLinks.privacyPolicy} target="_blank" rel="noopener noreferrer">
           {t('bottomBar.policy')}
         </Link>
       </Grid>

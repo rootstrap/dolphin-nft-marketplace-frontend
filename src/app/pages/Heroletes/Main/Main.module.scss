@@ -51,7 +51,17 @@
 
     &Button {
       margin-top: 2rem !important;
+      margin-left: 1rem;
       width: 13rem !important;
+      text-align: center;
+    }
+
+    &Buttons {
+      display: flex;
+
+      @media screen and (max-width: $md-width) {
+        flex-direction: column;
+      }
     }
   }
 }

@@ -1,4 +1,5 @@
 import { Button, Grid, Link, Typography } from '@material-ui/core';
+import { Link as RouteLink } from 'react-router-dom';
 import { dolphinServiceLinks } from 'app/constants/constants';
 import Remarkable1 from 'app/assets/remarkable1.png';
 import Remarkable2 from 'app/assets/remarkable2.png';
@@ -6,6 +7,7 @@ import Remarkable3 from 'app/assets/remarkable3.png';
 import { useResponsive } from 'app/hooks/useResponsive';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Main.module.scss';
+import routesPaths from 'app/constants/routesPath';
 
 export const Main = () => {
   const t = useTranslation();
@@ -42,10 +44,16 @@ export const Main = () => {
             </Link>
             {t('heroletes.thirdTeaser')}
           </Typography>
-          <div>
+          <div className={styles.mainContent__headerButtons}>
             <Link href="#athelites" underline="none">
               <Button className={styles.mainContent__headerButton}> {t('verticals.actionButton')}</Button>
             </Link>
+            <RouteLink to={routesPaths.heroletesMarketplace}>
+              <Button className={styles.mainContent__headerButton}>
+                {' '}
+                {t('heroletes.marketplace.subtitle')}
+              </Button>
+            </RouteLink>
           </div>
         </div>
       </Grid>

@@ -1,0 +1,27 @@
+export const attributes = {
+  athletes: [
+    'Chris Mazdzer',
+    'Tina Maze',
+    'John Shuster',
+    'Red Gerard',
+    'Gus Kenworthy',
+    'Kendall Coyne Schofield',
+    'Lindsey Jacobellis',
+    'Nancy Kerrigan',
+    'Hilary Knight',
+    'Joey Mantia',
+  ],
+  backgrounds: ['Wind', 'Frost', 'Lights', 'Crystals'],
+  signed: ['Yes', 'No'],
+  sports: [
+    'Curling',
+    'Luge',
+    'Speed Skating',
+    'Ice Hockey',
+    'Figure Skating',
+    'Alpine Skiing',
+    'Freestyle Skiing',
+    'Snowboard',
+  ],
+  tiers: ['Common', 'Bronze', 'Silver', 'Gold'],
+};

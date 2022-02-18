@@ -16,6 +16,10 @@
     justify-content: space-between;
     margin-bottom: 1rem;
 
+    @media screen and (max-width: $sm-width) {
+      flex-direction: column;
+    }
+
     &Collection {
       margin-right: 0.5rem;
     }
@@ -29,5 +33,10 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+
+
+    @media screen and (max-width: $sm-width) {
+      flex-direction: column;
+    }
   }
 }

@@ -37,9 +37,9 @@
       padding: 0 20%;
       text-align: center;
 
-      @media screen and (max-width: $md-width) {
-        padding: 0 10%;
-        font-size: 0.7rem !important;
+      @media screen and (max-width: $lg-width) {
+        padding: 0 5%;
+        font-size: 0.9rem !important;
       }
     }
   }

@@ -18,22 +18,22 @@ export const Social = () => {
 
       <div className={styles.social__link}>
         <div className={styles.social__linkItem}>
-          <a href={socialMediaLinks.facebook} target="_blank">
+          <a href={socialMediaLinks.facebook} target="_blank" rel="noopener noreferrer">
             <Facebook />
           </a>
         </div>
         <div className={styles.social__linkItem}>
-          <a href={socialMediaLinks.twitter} target="_blank">
+          <a href={socialMediaLinks.twitter} target="_blank" rel="noopener noreferrer">
             <Twitter />
           </a>
         </div>
         <div className={styles.social__linkItem}>
-          <a href={socialMediaLinks.instagram} target="_blank">
+          <a href={socialMediaLinks.instagram} target="_blank" rel="noopener noreferrer">
             <Instagram />
           </a>
         </div>
         <div className={styles.social__linkItem}>
-          <a href={socialMediaLinks.discord} target="_blank">
+          <a href={socialMediaLinks.discord} target="_blank" rel="noopener noreferrer">
             <Discord />
           </a>
         </div>

@@ -75,7 +75,7 @@ export const LegalDropDown = () => {
 
           <div className={styles.dropdown__legal}>
             {t('heroletes.legal')}
-            <a href={dolphinServiceLinks.sweepstakesRules} target="_blank">
+            <a href={dolphinServiceLinks.sweepstakesRules} target="_blank" rel="noopener noreferrer">
               {t('heroletes.sweepstakes.rules')}
             </a>
             {t('heroletes.sweepstakes.description')}

@@ -206,9 +206,9 @@ interface queryStringFiltersInterface {
 }
 
 interface TraitsFilterInterface {
-  Athlete?: String[];
-  Background?: String[];
-  Tier?: String[];
-  Signed?: String[];
-  Sport?: String[];
+  Athlete?: string[];
+  Background?: string[];
+  Tier?: string[];
+  Signed?: string[];
+  Sport?: string[];
 }

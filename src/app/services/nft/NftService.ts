@@ -1,6 +1,6 @@
 import { endpoints } from 'app/constants/endpoints';
 import { CreaturesPackInfo } from 'app/interfaces/NFT/CreaturesNFT';
-import { NFT } from 'app/interfaces/NFT/NFT';
+import { NFT, Attributes } from 'app/interfaces/NFT/NFT';
 import { INftTrades, INftTradesResult } from 'app/interfaces/NFT/NFTCommons';
 import { api } from '../Api';
 
@@ -114,7 +114,7 @@ const nftApi = api.injectEndpoints({
         transformResponse: (data: INftTrades) => data.result,
       }),
     }),
-    getHeroletesAttributes: builder.mutation<any[], void>({
+    getHeroletesAttributes: builder.mutation<Attributes[], void>({
       query: () => `${endpoints.HEROLETES_ATTRIBUTES}`,
     }),
   }),

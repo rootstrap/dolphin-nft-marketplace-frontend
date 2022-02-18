@@ -39,7 +39,7 @@ export const DesktopTopBar = () => {
             </Grid>
 
             <Grid item xs={4} sm={2} md={2} lg={2} className={styles.topBar__item}>
-              <a href={process.env.REACT_APP_ZENDESK_URL} target="_blank">
+              <a href={process.env.REACT_APP_ZENDESK_URL} target="_blank" rel="noopener noreferrer">
                 <div className={styles.topBar__itemTextCollection}>
                   <Typography variant="h6">{t('navBar.faq')}</Typography>
                 </div>

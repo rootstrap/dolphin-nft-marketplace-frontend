@@ -100,7 +100,7 @@ export const Main = () => {
         </Typography>
 
         <div className={styles.discord__button}>
-          <a href={socialMediaLinks.discord} target="_blank">
+          <a href={socialMediaLinks.discord} target="_blank" rel="noopener noreferrer">
             <Button size="large" variant="outlined" color="inherit">
               <div className={styles.discord__buttonContent}>
                 Join now

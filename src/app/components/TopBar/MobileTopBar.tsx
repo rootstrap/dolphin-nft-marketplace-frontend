@@ -51,7 +51,7 @@ export const MobileTopBar = () => {
           }}
         >
           <MenuItem key="FAQs" onClick={handleClose} className={styles.mobileTopBar__menuItem}>
-            <a href={process.env.REACT_APP_ZENDESK_URL} target="_blank">
+            <a href={process.env.REACT_APP_ZENDESK_URL} target="_blank" rel="noopener noreferrer">
               FAQs
             </a>
           </MenuItem>

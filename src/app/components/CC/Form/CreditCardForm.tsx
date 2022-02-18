@@ -163,7 +163,7 @@ export const CreditCardForm = () => {
           </div>
           <Typography variant="body1">
             {t('creditCard.faqText')}
-            <Link href={process.env.REACT_APP_ZENDESK_URL} target="_blank">
+            <Link href={process.env.REACT_APP_ZENDESK_URL} target="_blank" rel="noopener noreferrer">
               {t('creditCard.faq')}
             </Link>
           </Typography>

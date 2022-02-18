@@ -3,7 +3,6 @@ import { CarouselItemDescription } from './CarouselItemDescription';
 import { CarouselItemImage } from './CarouselItemImage';
 import { useCarousel } from './useCarousel';
 import { CarouselCheckboxes } from './CarouselCheckboxes';
-import useTranslation from 'app/hooks/useTranslation';
 import styles from './AthElitesCarousel.module.scss';
 
 export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
@@ -18,8 +17,6 @@ export const AthElitesCarousel = ({ carouselItems }: CarouselProps) => {
     handleCloseCheckboxes,
     handleOpenCheckboxes,
   } = useCarousel(carouselItems);
-
-  const t = useTranslation();
 
   return (
     <>

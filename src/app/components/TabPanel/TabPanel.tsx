@@ -1,3 +1,4 @@
+import React from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { useTabPanel } from './useTabPanel';
@@ -9,15 +10,15 @@ export const TabPanel = ({ tabs }: TabPanelInterface) => {
   return (
     <div>
       <Tabs value={selectedTab} onChange={handleChange} centered className={styles.tabPanel__tabs}>
-        {tabs.map((tab: TabInterface) => (
-          <Tab label={tab.tabName} />
-        ))}
+        {React.Children.toArray(tabs.map((tab: TabInterface) => <Tab label={tab.tabName} />))}
       </Tabs>
-      {tabs.map((tab: TabInterface, index: number) => (
-        <div role="tabpanel" hidden={selectedTab !== index}>
-          {tab.content}
-        </div>
-      ))}
+      {React.Children.toArray(
+        tabs.map((tab: TabInterface, index: number) => (
+          <div role="tabpanel" hidden={selectedTab !== index}>
+            {tab.content}
+          </div>
+        ))
+      )}
     </div>
   );
 };

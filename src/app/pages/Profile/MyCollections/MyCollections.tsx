@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button, Typography } from '@material-ui/core';
 import { LockOutlined } from '@material-ui/icons';
 import { winterGridItems } from 'app/constants/heroletes/winterGridItems';
@@ -31,9 +32,9 @@ export const MyCollections = () => {
         </div>
       </div>
 
-      {winterGridItems.map((item, index) => (
-        <MyCollectionItem {...item} index={index} />
-      ))}
+      {React.Children.toArray(
+        winterGridItems.map((item, index) => <MyCollectionItem {...item} index={index} />)
+      )}
     </div>
   );
 };

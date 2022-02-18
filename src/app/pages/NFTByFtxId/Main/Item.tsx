@@ -5,7 +5,14 @@ import { useAppSelector } from 'app/hooks/reduxHooks';
 import { useContext } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
 
-export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription }: ItemProps) => {
+export const Item = ({
+  styles,
+  nft,
+  handleOpenPeersModal,
+  handleShowDescription,
+  isUsd,
+  priceInUsd,
+}: ItemProps) => {
   const t = useTranslation();
   const { setLoginModalIsOpen } = useContext(ModalContext);
   const { isAuthenticated } = useAppSelector(state => state.user);
@@ -29,45 +36,52 @@ export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription 
       <div className={styles.mainContent__priceContainer}>
         {nft?.offerPrice && (
           <div className={styles.mainContent__priceItem}>
-            <Typography component="div" variant="h6">
-              {t('nft.price')}
-            </Typography>
-            <Typography component="p">${nft?.offerPrice}</Typography>
+            <div>
+              <Typography component="div" variant="h6">
+                {t('nft.price')}
+              </Typography>
+              <Typography component="span">${nft?.offerPrice}</Typography>{' '}
+              {!isUsd && priceInUsd && <small>{`($${(priceInUsd * nft?.offerPrice).toFixed(2)})`}</small>}
+            </div>
           </div>
         )}
-        <div className={styles.mainContent__priceItem}>
-          <Typography component="div" variant="h6">
-            {t('nft.editionNumber')}
-          </Typography>
-          <Typography component="p">#{nft?.number}</Typography>
-        </div>
-        <div className={styles.mainContent__priceItem}>
-          {nft?.totalQuantity && (
-            <>
-              <Typography component="div" variant="h6">
-                {t('nft.totalReleased')}
-              </Typography>
-              <Typography component="p">{nft?.totalQuantity}</Typography>
-            </>
-          )}
-        </div>
+        {nft?.number && (
+          <div className={styles.mainContent__priceItem}>
+            <Typography component="div" variant="h6">
+              {t('nft.editionNumber')}
+            </Typography>
+            <Typography component="p">#{nft?.number}</Typography>
+          </div>
+        )}
+        {nft?.totalQuantity && (
+          <div className={styles.mainContent__priceItem}>
+            <Typography component="div" variant="h6">
+              {t('nft.totalReleased')}
+            </Typography>
+            <Typography component="p">{nft?.totalQuantity}</Typography>
+          </div>
+        )}
       </div>
 
       <div className={styles.mainContent__buttonContainer}>
         <Button variant="contained" fullWidth size="large" onClick={handleOnClick}>
           {t('nft.buyButton')}
         </Button>
-        <Button fullWidth size="large" onClick={handleOpenPeersModal}>
-          {t('nft.peersButton')}
-        </Button>
+        {!nft?.issuer.includes('Heroletes') && (
+          <Button fullWidth size="large" onClick={handleOpenPeersModal}>
+            {t('nft.peersButton')}
+          </Button>
+        )}
       </div>
     </div>
   );
 };
 
 interface ItemProps {
-  styles: any;
-  nft?: NFT;
   handleOpenPeersModal: () => void;
   handleShowDescription: () => void;
+  isUsd: boolean;
+  nft?: NFT;
+  priceInUsd: number;
+  styles: any;
 }

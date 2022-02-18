@@ -11,4 +11,5 @@ export const endpoints = {
   BALANCE: '/balance',
   WHITELIST: '/whitelist',
   NFT: '/nft',
+  HEROLETES_ATTRIBUTES: '/nft/herolete-attributes',
 };

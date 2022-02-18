@@ -3,7 +3,7 @@ import { SyntheticEvent } from 'react';
 import { Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import useTranslation from 'app/hooks/useTranslation';
-import styles from './MyCollection.module.scss';
+import styles from './MyGallery.module.scss';
 
 export const Item = ({ id, name, image, animation, video, offerPrice, issuer }: ItemProps) => {
   const t = useTranslation();

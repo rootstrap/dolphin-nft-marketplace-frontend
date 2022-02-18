@@ -1,7 +1,10 @@
 export interface NFT {
   id: string;
   name: string;
+  attributes: Attributes;
   ftx_id: string;
+  attributes: any;
+  attributesList: any;
   description: string;
   tier: string;
   issuer: string;
@@ -33,6 +36,16 @@ export interface FillsResult {
 export interface IFillsResponse {
   success: boolean;
   result: FillsResult[];
+}
+
+export interface Attributes {
+  Athlete: string;
+  Background: string;
+  Collection: string;
+  Signed: string;
+  Sport: string;
+  Tier: string;
+  imageUrl: string;
 }
 
 export type nftPack = 'common' | 'bronze' | 'silver' | 'gold' | 'creatures';

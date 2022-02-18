@@ -1,27 +1,49 @@
+import { createContext } from 'react';
 import { TopBarLayout } from 'app/components/Layout/TopBarLayout';
-import { Main } from './Main/Main';
-import { MyCollectionNfts } from './MyCollection/MyCollectionNfts';
-import { UserBalance } from './UserBalance/UserBalance';
 import { TabPanel } from 'app/components/TabPanel/TabPanel';
+import { Main } from './Main/Main';
+import { MyGallery } from './MyGallery/MyGallery';
+import { MyCollections } from './MyCollections/MyCollections';
+import { UserBalance } from './UserBalance/UserBalance';
+import { useProfile } from './useProfile';
+import { NFT, Attributes } from '../../interfaces/NFT/NFT';
 import useTranslation from 'app/hooks/useTranslation';
+
+export const ProfileContext = createContext({} as ProfileContextProps);
+const { Provider } = ProfileContext;
 
 const ProfilePage = () => {
   const t = useTranslation();
+  const { nfts, nftAttributes, isLoading } = useProfile();
+
+  const tabs = [
+    { content: <MyGallery />, tabName: t('profile.tabs.gallery') },
+    { content: <MyCollections />, tabName: t('profile.tabs.collection') },
+    { content: <UserBalance />, tabName: t('profile.tabs.balances') },
+  ];
+
   return (
     <TopBarLayout
       pageComponent={
-        <>
+        <Provider
+          value={{
+            nfts,
+            nftAttributes,
+            isLoading,
+          }}
+        >
           <Main />
-          <TabPanel
-            tabs={[
-              { content: <MyCollectionNfts />, tabName: t('profile.tabs.gallery') },
-              { content: <UserBalance />, tabName: t('profile.tabs.balances') },
-            ]}
-          />
-        </>
+          <TabPanel tabs={tabs} />
+        </Provider>
       }
     />
   );
 };
+
+interface ProfileContextProps {
+  nfts: NFT[];
+  nftAttributes: Attributes[];
+  isLoading: boolean;
+}
 
 export default ProfilePage;

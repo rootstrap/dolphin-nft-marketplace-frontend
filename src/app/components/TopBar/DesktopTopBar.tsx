@@ -26,7 +26,7 @@ export const DesktopTopBar = () => {
         {!isCreaturesUser && (
           <>
             <Grid item xs={4} sm={2} md={2} lg={2} className={styles.topBar__item}>
-              <div className={styles.topBar__itemTextCollection}>
+              <div className={styles.topBar__itemTextCollection} data-cy="categories">
                 <Typography
                   variant="h6"
                   onClick={handleCategories}

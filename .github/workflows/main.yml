@@ -4,8 +4,6 @@ on: [push]
 
 jobs:
   cypress-run:
-    env:
-      CI: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -15,5 +13,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          build: yarn build
+          build: CI='' yarn build
           start: yarn start

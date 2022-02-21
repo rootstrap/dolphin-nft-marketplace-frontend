@@ -15,7 +15,7 @@ export const Mfa = ({ setIsMfaRequired }: MfaProps) => {
     if (isSuccess) {
       setIsMfaRequired(false);
     }
-  }, [isSuccess]);
+  }, [setIsMfaRequired, isSuccess]);
 
   return (
     <form className={styles.mfa} onSubmit={handleSubmit(onSubmit)}>

@@ -1,5 +1,5 @@
 import { Grid } from '@material-ui/core';
-import useRedirection from 'app/hooks/useRedirection';
+import { useRedirection } from 'app/hooks/useRedirection';
 import styles from './BackgroundLayout.module.scss';
 
 export const BackgroundLayout = () => {

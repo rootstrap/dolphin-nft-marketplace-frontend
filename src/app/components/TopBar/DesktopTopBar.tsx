@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Categories } from '../Categories/Categories';
 import { useTopBar } from './useTopBar';
 import { UserTopBarInfo } from './UserTopBarInfo';
-import useRedirection from 'app/hooks/useRedirection';
+import { useRedirection } from 'app/hooks/useRedirection';
 import logoImg from 'app/assets/dolphin_logo.png';
 import routesPaths from 'app/constants/routesPath';
 import useTranslation from 'app/hooks/useTranslation';

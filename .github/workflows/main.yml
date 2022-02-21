@@ -4,6 +4,8 @@ on: [push]
 
 jobs:
   cypress-run:
+    env:
+      CI: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

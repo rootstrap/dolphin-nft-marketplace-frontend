@@ -23,7 +23,7 @@ export const dropDownListCategories = [
     value: 'Hall of Fame Village Media',
     disabled: false,
     route: routesPaths.halloffame,
-    testRoute: 'hallofFame',
+    testRoute: 'halloffame',
   },
   {
     key: 2,

@@ -132,5 +132,7 @@ export const currency = {
 export const packIds = {
   common: '102',
   bronze: '133',
+  silver: '166',
+  gold: '167',
   creatures: '36',
 };

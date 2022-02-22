@@ -23,18 +23,21 @@ export const dropDownListCategories = [
     value: 'Hall of Fame Village Media',
     disabled: false,
     route: routesPaths.halloffame,
+    testRoute: 'halloffame',
   },
   {
     key: 2,
     value: 'Heroletes',
     disabled: false,
     route: routesPaths.heroletes,
+    testRoute: 'heroletes',
   },
   {
     key: 3,
     value: 'Creature Chronicles',
     disabled: false,
     route: process.env.REACT_APP_CREATURES_URL,
+    testRoute: 'Creatures',
   },
 ];
 
@@ -129,5 +132,7 @@ export const currency = {
 export const packIds = {
   common: '102',
   bronze: '133',
+  silver: '166',
+  gold: '167',
   creatures: '36',
 };

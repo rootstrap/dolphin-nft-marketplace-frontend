@@ -55,7 +55,7 @@ export const useNftDetails = (nftId: string) => {
       loadData();
       setIsInputVisible(false);
     }
-  }, [isSuccess]);
+  }, [loadData, isSuccess]);
 
   useEffect(() => {
     if (isError) {
@@ -63,7 +63,7 @@ export const useNftDetails = (nftId: string) => {
       setIsInputVisible(false);
       setSellError(errorMsg.data.error);
     }
-  }, [isError]);
+  }, [error, isError]);
 
   useEffect(() => {
     setIsPriceInUsd(nft?.quoteCurrency === currency.usd);
@@ -73,7 +73,7 @@ export const useNftDetails = (nftId: string) => {
     if (!isPriceInUsd) {
       getMarket(`${nft?.quoteCurrency}/${currency.usd}`);
     }
-  }, [nft]);
+  }, [isPriceInUsd, getMarket, nft]);
 
   return {
     nft,

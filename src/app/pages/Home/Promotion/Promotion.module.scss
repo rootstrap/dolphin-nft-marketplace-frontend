@@ -72,16 +72,10 @@
 
     &Text {
       font-size: $font-size-big;
-      width: 22rem;
 
-      &Container {
-        align-self: center;
-
-        @media screen and (max-width: $lg-width) {
-          align-items: center;
-          display: flex;
-          flex-direction: column;
-        }
+      @media screen and (max-width: $lg-width) {
+        margin-top: 2rem;
+        text-align: center;
       }
     }
 
@@ -97,6 +91,42 @@
 
     &Button {
       margin: 2rem auto;
+      @media screen and (max-width: $lg-width) {
+        text-align: center;
+      }
+    }
+
+    &VerticalImg {
+      width: 100%;
+      height: min-content;
+
+      img {
+        object-fit: cover;
+        filter: grayscale(100%);
+        opacity: 0.4;
+        width: 100%;
+        height: auto;
+        margin: 0;
+        &:hover {
+          filter: none;
+          opacity: 1;
+        }
+      }
+    }
+
+    &Icon {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin: 0;
+
+      span {
+        font-size: $font-size-med;
+
+        @media screen and (max-width: $sm-width) {
+          font-size: $font-size-small;
+        }
+      }
     }
   }
 

@@ -71,15 +71,15 @@ export const useCreditCardForm = () => {
     });
   };
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     reset();
     clearErrors();
-  };
+  }, [reset, clearErrors]);
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     const data: any = await getCountries('');
     setCountries(data.data);
-  };
+  }, [getCountries, setCountries]);
 
   const getStates = useCallback(
     async (country: string) => {
@@ -91,7 +91,7 @@ export const useCreditCardForm = () => {
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [loadData]);
 
   useEffect(() => {
     getStates(watch('country'));
@@ -101,7 +101,7 @@ export const useCreditCardForm = () => {
     if (isSuccess) {
       handleClose();
     }
-  }, [isSuccess]);
+  }, [isSuccess, handleClose]);
 
   useEffect(() => {
     if (isError) {

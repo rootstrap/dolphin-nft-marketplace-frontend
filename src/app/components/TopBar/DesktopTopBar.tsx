@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Categories } from '../Categories/Categories';
 import { useTopBar } from './useTopBar';
 import { UserTopBarInfo } from './UserTopBarInfo';
-import useRedirection from 'app/hooks/useRedirection';
+import { useRedirection } from 'app/hooks/useRedirection';
 import logoImg from 'app/assets/dolphin_logo.png';
 import routesPaths from 'app/constants/routesPath';
 import useTranslation from 'app/hooks/useTranslation';
@@ -26,7 +26,7 @@ export const DesktopTopBar = () => {
         {!isCreaturesUser && (
           <>
             <Grid item xs={4} sm={2} md={2} lg={2} className={styles.topBar__item}>
-              <div className={styles.topBar__itemTextCollection}>
+              <div className={styles.topBar__itemTextCollection} data-cy="categories">
                 <Typography
                   variant="h6"
                   onClick={handleCategories}

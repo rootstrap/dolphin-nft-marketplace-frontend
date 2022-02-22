@@ -5,7 +5,6 @@ import { socialMediaLinks } from 'app/constants/constants';
 import { BuyNowButton } from 'app/components/BuyNowButton/BuyNowButton';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import { ModalContext } from 'app/context/ModalContext';
-import { packIds } from 'app/constants/constants';
 import CreaturesBackground from 'app/assets/CreaturesBackground.png';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Main.module.scss';

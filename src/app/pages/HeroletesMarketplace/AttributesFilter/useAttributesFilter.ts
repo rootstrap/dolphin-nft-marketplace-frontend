@@ -12,6 +12,14 @@ interface FormValues {
   signed: string;
 }
 
+const defaultValues = {
+  athlete: '',
+  sport: '',
+  tier: '',
+  background: '',
+  signed: '',
+};
+
 export const useAttributesFilter = () => {
   const { setQueryParams } = useContext(NFTDetailsContext);
 
@@ -23,7 +31,10 @@ export const useAttributesFilter = () => {
     signed: z.string(),
   });
 
-  const { register, handleSubmit, reset } = useForm({ resolver: zodResolver(schema), mode: 'onTouched' });
+  const { register, handleSubmit, reset, control } = useForm({
+    defaultValues,
+    resolver: zodResolver(schema),
+  });
 
   const onSubmit: SubmitHandler<FormValues> = async form => {
     setQueryParams(currentValue => ({ ...currentValue, filters: form }));
@@ -39,5 +50,6 @@ export const useAttributesFilter = () => {
     register,
     handleSubmit,
     clearForm,
+    control,
   };
 };

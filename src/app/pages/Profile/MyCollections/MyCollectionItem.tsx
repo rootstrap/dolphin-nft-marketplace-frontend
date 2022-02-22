@@ -41,12 +41,12 @@ export const MyCollectionItem = ({ name, index }: MyCollectionItemProps) => {
           {nftAttributesFilteredByName.map(item => {
             const isNftInArray = !!nftsWithAttributes.find(
               ({ Athlete, Background, Collection, Signed, Sport, Tier }) =>
-                Athlete == item.Athlete &&
-                Background == item.Background &&
-                Collection == item.Collection &&
-                Signed == item.Signed &&
-                Sport == item.Sport &&
-                Tier == item.Tier
+                Athlete === item.Athlete &&
+                Background === item.Background &&
+                Collection === item.Collection &&
+                Signed === item.Signed &&
+                Sport === item.Sport &&
+                Tier === item.Tier
             );
 
             return (

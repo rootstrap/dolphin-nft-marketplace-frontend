@@ -1,0 +1,15 @@
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZWpvYm9nYXJzMTk5NEBnbWFpbC5jb20iLCJpYXQiOjE2NDU1NTA0NDMsImV4cCI6MTY0NjE1NTI0M30.aWmrgMV35UBuOIgMX4f2RL-y4Xvw6akZgoK1_h3d8AI",
+  "user": {
+    "firstName": "UserFirstName",
+    "lastName": "UserLastName",
+    "email": "UserEmail@email.com",
+    "signupOrigin": "https://dolphinnfts.com/",
+    "irlEligible": false,
+    "id": 390,
+    "createdAt": "2022-02-22T17:20:43.972Z",
+    "updatedAt": "2022-02-22T17:20:43.972Z",
+    "kyc1ed": false,
+    "kyc2ed": false
+  }
+}

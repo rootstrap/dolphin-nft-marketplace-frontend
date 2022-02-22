@@ -10224,7 +10224,7 @@ prompts@2.4.0, prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.0:
+prop-types@^15.6.0, prop-types@^15.6.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -10551,6 +10551,13 @@ react-loader-spinner@^4.0.0:
   integrity sha512-RU2vpEej6G4ECei0h3q6bgLU10of9Lw5O+4AwF/mtkrX5oY20Sh/AxoPJ7etbrs/7Q3u4jN5qwCwGLRKCHpk6g==
   dependencies:
     prop-types "^15.7.2"
+
+react-paginate@^8.1.2:
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-8.1.2.tgz#08d90945d0d021f1da78f2848c0f60e6c25e2391"
+  integrity sha512-buBkBiN9J8gvZYwYNixlTGRmWOC5C6+tH2XHTN8B5qGkRPOSYFkAqxhWUnxSVAeLKxpVZGPya/gOL2eJQNZGvg==
+  dependencies:
+    prop-types "^15.6.1"
 
 react-redux@^7.2.5:
   version "7.2.5"

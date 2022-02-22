@@ -71,7 +71,9 @@ const nftApi = api.injectEndpoints({
         }
 
         return {
-          url: `${process.env.REACT_APP_FTX_API_URL}/nft/nfts_filtered?nft_filter_string=${encodeURIComponent(
+          url: `${process.env.REACT_APP_FTX_API_URL}/nft/nfts_filtered?startInclusive=${
+            param.startInclusive
+          }&endExclusive=${param.endExclusive}&nft_filter_string=${encodeURIComponent(
             JSON.stringify(queryStringFilters)
           )}`,
           headers: {

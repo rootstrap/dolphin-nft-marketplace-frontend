@@ -17,7 +17,7 @@ context('Navigation Suite', () => {
     });
     cy.fixture('hallOfFameNFTs.json').then(response => getHallOfFameNFTs(response));
     getHomeInfo.getSubRegions();
-    cy.visit('http://localhost:3000/');
+    cy.visit('');
     cy.get('[data-cy=categories]').click();
   });
 

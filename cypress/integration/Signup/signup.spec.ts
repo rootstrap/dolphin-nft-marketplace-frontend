@@ -22,7 +22,7 @@ context('Signup Suite', () => {
     getCreditCards();
   });
 
-  beforeEach(() => cy.visit('http://localhost:3000/'));
+  beforeEach(() => cy.visit(''));
 
   it('Should signup successfully', () => {
     fillSingupForm();

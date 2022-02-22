@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import * as getHomeInfo from '../../mocks/common';
+import { getHallOfFameNFTs } from '../../mocks/hallOfFame';
 
 const testRoutes = {
   hallOfFame: 'halloffame',
@@ -14,6 +15,7 @@ context('Navigation', () => {
     cy.fixture('countries.json').then(response => {
       getHomeInfo.getCountries(response);
     });
+    cy.fixture('hallOfFameNFTs.json').then(response => getHallOfFameNFTs(response));
     getHomeInfo.getSubRegions();
     cy.visit('http://localhost:3000/');
     cy.get('[data-cy=categories]').click();

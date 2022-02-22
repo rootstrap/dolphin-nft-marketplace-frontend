@@ -17,7 +17,7 @@ export const Categories = ({ anchorEl = null, handleClose }: CategoriesProps) =>
     >
       <div className={styles.categories}>
         {dropDownListCategories.map(category => (
-          <a href={category.route}>
+          <a href={category.route} data-cy={category.testRoute}>
             <MenuItem key={category.key} value={category.value} disabled={category.disabled}>
               {category.value}
             </MenuItem>

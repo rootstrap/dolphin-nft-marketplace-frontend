@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import { SyntheticEvent } from 'react';
 import { ReactComponent as RibbonIcon } from 'app/assets/ribbon.svg';
 import useTranslation from 'app/hooks/useTranslation';

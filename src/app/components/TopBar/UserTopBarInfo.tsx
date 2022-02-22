@@ -2,7 +2,7 @@ import { CreditCard, PersonOutlined } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
 import { useTopBar } from './useTopBar';
 import { Button } from '@material-ui/core';
-import useRedirection from 'app/hooks/useRedirection';
+import { useRedirection } from 'app/hooks/useRedirection';
 import routesPaths from 'app/constants/routesPath';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './TopBar.module.scss';

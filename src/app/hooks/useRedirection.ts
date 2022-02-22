@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default () => {
+export const useRedirection = () => {
   const [isCreaturesUser, setIsCreaturesUser] = useState(false);
 
   useEffect(() => {

@@ -13,13 +13,13 @@ export const useWalletKit = () => {
     if (wallet) {
       verifyWallet(wallet.publicKey.toString());
     }
-  }, [wallet]);
+  }, [verifyWallet, wallet]);
 
   useEffect(() => {
     if (isSuccess) {
       setIsValidAddress(data.authorized);
     }
-  }, [isSuccess]);
+  }, [data.authorized, isSuccess]);
 
   return {
     wallet,

@@ -23,18 +23,21 @@ export const dropDownListCategories = [
     value: 'Hall of Fame Village Media',
     disabled: false,
     route: routesPaths.halloffame,
+    testRoute: 'halloffame',
   },
   {
     key: 2,
     value: 'Heroletes',
     disabled: false,
     route: routesPaths.heroletes,
+    testRoute: 'heroletes',
   },
   {
     key: 3,
     value: 'Creature Chronicles',
     disabled: false,
     route: process.env.REACT_APP_CREATURES_URL,
+    testRoute: 'Creatures',
   },
 ];
 

@@ -34,9 +34,9 @@ export const carouselItems: CarouselItem[] = [
   {
     collectiblesPerPack: '3 common, 2 bronze, 1 silver',
     costPerPack: 3,
-    date: 'TBA',
+    date: 'Available Now',
     image: Silver,
-    isPackForSale: false,
+    isPackForSale: true,
     price: 99,
     text,
     tier: 'silver',
@@ -45,9 +45,9 @@ export const carouselItems: CarouselItem[] = [
   {
     collectiblesPerPack: '3 common, 2 bronze, 1 silver, 1 gold',
     costPerPack: 3,
-    date: 'TBA',
+    date: 'Available Now',
     image: Gold,
-    isPackForSale: false,
+    isPackForSale: true,
     price: 249,
     text,
     tier: 'gold',
@@ -71,8 +71,16 @@ export const nftsPerPack = {
   creatures: [packIds.creatures],
   common: [packIds.common, packIds.common, packIds.common],
   bronze: [packIds.common, packIds.common, packIds.common, packIds.bronze, packIds.bronze],
-  silver: [packIds.common, packIds.common, packIds.common],
-  gold: [packIds.common, packIds.common, packIds.common],
+  silver: [packIds.common, packIds.common, packIds.common, packIds.bronze, packIds.bronze, packIds.silver],
+  gold: [
+    packIds.common,
+    packIds.common,
+    packIds.common,
+    packIds.bronze,
+    packIds.bronze,
+    packIds.silver,
+    packIds.gold,
+  ],
 };
 
 export const pricePerPack = {

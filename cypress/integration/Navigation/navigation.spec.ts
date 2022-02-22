@@ -7,7 +7,7 @@ const testRoutes = {
   heroletes: 'heroletes',
 };
 
-context('Navigation', () => {
+context('Navigation Suite', () => {
   beforeEach(() => {
     cy.fixture('featuredNFTs.json').then(response => {
       getHomeInfo.getFeaturesNFTs(response);
@@ -21,12 +21,12 @@ context('Navigation', () => {
     cy.get('[data-cy=categories]').click();
   });
 
-  it('should navigate go to hall of fame village', () => {
+  it('should navigate to hall of fame village', () => {
     cy.get(`[data-cy=${testRoutes.hallOfFame}]`).click();
     cy.url().should('contain', testRoutes.hallOfFame);
   });
 
-  it('should navigate go to heroletes', () => {
+  it('should navigate to heroletes', () => {
     cy.get(`[data-cy=${testRoutes.heroletes}]`).click();
     cy.url().should('contain', testRoutes.heroletes);
   });

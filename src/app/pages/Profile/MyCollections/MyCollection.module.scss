@@ -60,28 +60,25 @@
     &Grid {
       position: relative;
 
-      &Signed {
-        background-color: $orange;
-        color: black;
-        padding: 0.5rem;
-        position: absolute;
-        z-index: 1000;
-        top: 1;
-        right: 0;
-      }
-
-      &Attributes {
-        background: linear-gradient(0, #000000 70%, rgba(0, 0, 0, 0) 90%);
+      &Text {
+        background: linear-gradient(
+          0,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) 30%,
+          rgba(255, 255, 255, 0) 100%
+        );
         bottom: 0;
         color: white;
+        padding-left: 1rem;
         position: absolute;
-        text-align: center;
+        text-align: left;
         width: 100%;
         z-index: 1000;
       }
 
       img {
         width: 100%;
+        height: 13rem;
         filter: grayscale(100%);
       }
     }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Typography } from '@material-ui/core';
+import { CircularProgress, Typography } from '@material-ui/core';
 import styles from './MyCollection.module.scss';
 
 export const MyCollectionCard = ({
@@ -11,9 +11,16 @@ export const MyCollectionCard = ({
   imageUrl,
 }: MyCollectionCardProps) => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
+  const [isImageLoading, setIsImageLoading] = useState(true);
 
   const handleMouseEnter = () => setIsDescriptionVisible(true);
   const handleMouseLeave = () => setIsDescriptionVisible(false);
+
+  const handleLoaginImage = () => {
+    setTimeout(() => {
+      setIsImageLoading(false);
+    }, 5000);
+  };
 
   return (
     <div
@@ -25,7 +32,15 @@ export const MyCollectionCard = ({
         src={imageUrl}
         alt={`${Athlete} ${Tier} ${Background} ${Signed}`}
         style={isNftInArray ? { filter: 'none' } : {}}
+        onLoad={handleLoaginImage}
       />
+
+      {isImageLoading && (
+        <div className={styles.myCollection__itemGridSpinner}>
+          <CircularProgress color="secondary" />
+        </div>
+      )}
+
       <div
         className={styles.myCollection__itemGridText}
         style={{ visibility: isDescriptionVisible ? 'initial' : 'hidden' }}

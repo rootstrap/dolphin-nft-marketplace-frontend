@@ -7,7 +7,7 @@ import { Attributes } from 'app/interfaces/NFT/NFT';
 import { MyCollectionCard } from './MyCollectionCard';
 import styles from './MyCollection.module.scss';
 
-export const MyCollectionItem = ({ name, index }: MyCollectionItemProps) => {
+export const MyCollectionItem = ({ name, image, index }: MyCollectionItemProps) => {
   const [isContentVisible, setIsContentVisible] = useState(false);
   const { nfts, nftAttributes, isLoading } = useContext(ProfileContext);
 
@@ -53,6 +53,7 @@ export const MyCollectionItem = ({ name, index }: MyCollectionItemProps) => {
             return (
               <Grid item xs={4} sm={3} md={2} lg={2}>
                 <MyCollectionCard
+                  placeholderImage={image}
                   Athlete={item.Athlete}
                   Tier={item.Tier}
                   Background={item.Background}

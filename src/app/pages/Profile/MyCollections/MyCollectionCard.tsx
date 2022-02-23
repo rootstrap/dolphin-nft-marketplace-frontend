@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CircularProgress, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import styles from './MyCollection.module.scss';
 
 export const MyCollectionCard = ({
@@ -9,6 +9,7 @@ export const MyCollectionCard = ({
   Signed,
   isNftInArray,
   imageUrl,
+  placeholderImage,
 }: MyCollectionCardProps) => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(true);
@@ -31,13 +32,13 @@ export const MyCollectionCard = ({
       <img
         src={imageUrl}
         alt={`${Athlete} ${Tier} ${Background} ${Signed}`}
-        style={isNftInArray ? { filter: 'none' } : {}}
+        style={isNftInArray ? { filter: 'none' } : null}
         onLoad={handleLoaginImage}
       />
 
       {isImageLoading && (
-        <div className={styles.myCollection__itemGridSpinner}>
-          <CircularProgress color="secondary" />
+        <div className={isImageLoading && styles.myCollection__itemGridBlur}>
+          <img src={placeholderImage} alt={`${Athlete} ${Tier} ${Background} ${Signed}`} />
         </div>
       )}
 
@@ -59,4 +60,5 @@ interface MyCollectionCardProps {
   Signed: string;
   isNftInArray: boolean;
   imageUrl: string;
+  placeholderImage: string;
 }

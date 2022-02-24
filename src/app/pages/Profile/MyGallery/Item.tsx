@@ -14,10 +14,9 @@ export const Item = ({ id, name, image, animation, video, offerPrice, issuer }: 
   const nftByAttributes = nftById?.attributes;
 
   const nftWithImagePoster = nftAttributes.find(
-    ({ Athlete, Background, Collection, Signed, Sport, Tier }) =>
+    ({ Athlete, Background, Signed, Sport, Tier }) =>
       Athlete === nftByAttributes?.Athlete &&
       Background === nftByAttributes?.Background &&
-      Collection === nftByAttributes?.Collection &&
       Signed === nftByAttributes?.Signed &&
       Sport === nftByAttributes?.Sport &&
       Tier === nftByAttributes?.Tier

@@ -1,12 +1,27 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useContext } from 'react';
 import { Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { ProfileContext } from '../ProfilePage';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './MyGallery.module.scss';
 
 export const Item = ({ id, name, image, animation, video, offerPrice, issuer }: ItemProps) => {
   const t = useTranslation();
+  const { nfts, nftAttributes } = useContext(ProfileContext);
+
+  const nftById = nfts.find(nft => nft.id === id);
+  const nftByAttributes = nftById?.attributes;
+
+  const nftWithImagePoster = nftAttributes.find(
+    ({ Athlete, Background, Collection, Signed, Sport, Tier }) =>
+      Athlete === nftByAttributes?.Athlete &&
+      Background === nftByAttributes?.Background &&
+      Collection === nftByAttributes?.Collection &&
+      Signed === nftByAttributes?.Signed &&
+      Sport === nftByAttributes?.Sport &&
+      Tier === nftByAttributes?.Tier
+  );
 
   const onMouseEnter = (e: SyntheticEvent) => {
     (e.currentTarget as HTMLVideoElement).play();
@@ -33,6 +48,7 @@ export const Item = ({ id, name, image, animation, video, offerPrice, issuer }: 
             controls={false}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
+            poster={nftWithImagePoster?.imageUrl}
           >
             <source src={animation} type="video/mp4" />
           </video>

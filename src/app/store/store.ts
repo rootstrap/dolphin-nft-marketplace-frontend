@@ -19,7 +19,7 @@ const middleware = (getDefaultMiddleware: any) =>
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
-  }).concat(logger, api.middleware);
+  }).concat(api.middleware);
 
 export const store = configureStore({
   reducer: persistedReducer,

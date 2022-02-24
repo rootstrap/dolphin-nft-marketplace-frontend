@@ -9,7 +9,7 @@ import styles from './Main.module.scss';
 import { useResponsive } from 'app/hooks/useResponsive';
 
 export const Main = ({ ftxId }: MainProps) => {
-  const { nft, isLoading, isPriceInUsd, priceInUsd } = useNFT(ftxId);
+  const { nft, isLoading, priceInUsd } = useNFT(ftxId);
   const [showItemDescription, setShowItemDescription] = useState<boolean>(true);
   const { nfts } = useAppSelector(state => state.nft);
   const [isPeersModalOpen, setIsPeersModalOpen] = useState<boolean>(false);
@@ -49,7 +49,6 @@ export const Main = ({ ftxId }: MainProps) => {
             )}
           </div>
           <Item
-            isUsd={isPriceInUsd}
             priceInUsd={priceInUsd}
             nft={nft}
             styles={styles}

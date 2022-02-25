@@ -2,7 +2,7 @@ import { Typography } from '@material-ui/core';
 import { ReactComponent as Error } from 'app/assets/Error.svg';
 
 export const FailedVerification = ({ errorMsg }: SuccessVerificationProps) => (
-  <div>
+  <div style={{ textAlign: 'center' }}>
     <Error />
     <Typography gutterBottom variant="subtitle2">
       {errorMsg}

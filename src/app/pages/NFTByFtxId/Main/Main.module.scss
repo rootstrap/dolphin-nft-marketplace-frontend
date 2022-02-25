@@ -1,4 +1,4 @@
-@import '../../../../app/styles/base/settings';
+@import '/src/app/styles/base/settings';
 
 .mainContent {
   display: flex;
@@ -20,17 +20,6 @@
     }
   }
 
-  &__priceContainer {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-
-    span {
-      color: $orange;
-      font-size: 1.6rem;
-    }
-  }
-
   &__item {
     &Description {
       display: flex;
@@ -49,31 +38,6 @@
 
       &Title {
         color: $orange;
-      }
-    }
-  }
-
-  &__heroleteItem {
-    display: flex;
-    justify-content: space-around;
-    margin: 0.5rem 0;
-    text-align: center;
-
-    &Info {
-      color: $orange;
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-
-    &Price {
-      display: flex;
-      justify-content: space-between;
-      margin-top: auto;
-
-      span {
-        color: $orange;
-        font-size: 1.5rem;
-        font-weight: 700;
       }
     }
   }

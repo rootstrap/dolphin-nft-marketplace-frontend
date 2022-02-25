@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Button, Grid, Link, Typography } from '@material-ui/core';
 import { Link as RouteLink } from 'react-router-dom';
 import { dolphinServiceLinks } from 'app/constants/constants';
@@ -13,7 +12,6 @@ import styles from './Main.module.scss';
 export const Main = () => {
   const t = useTranslation();
   const { isSmallDeviceView, isMobileView, isTabletView } = useResponsive();
-  const [showMore, setShowMore] = useState(false);
 
   return (
     <>
@@ -36,31 +34,16 @@ export const Main = () => {
           <Typography component="div" variant="h2" className={styles.mainContent__headerTitle}>
             {t('heroletes.title')}
           </Typography>
-          <Typography component="span" variant="subtitle1" className={styles.mainContent__headerTeaser}>
+          <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
             {t('heroletes.teaser')}
-            {!showMore && (
-              <Link onClick={() => setShowMore(currentValue => !currentValue)}>
-                {' '}
-                {t('heroletes.showMoreButton')}
-              </Link>
-            )}
           </Typography>
-          {showMore && (
-            <>
-              <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
-                {t('heroletes.secondTeaser')}
-                <Link href={dolphinServiceLinks.sweepstakesRules} target="_blank" rel="noopener noreferrer">
-                  Official Rules
-                </Link>
-                {t('heroletes.thirdTeaser')}
-              </Typography>
-              {showMore && (
-                <Link onClick={() => setShowMore(currentValue => !currentValue)}>
-                  {t('heroletes.showLessButton')}
-                </Link>
-              )}
-            </>
-          )}
+          <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
+            {t('heroletes.secondTeaser')}
+            <Link href={dolphinServiceLinks.sweepstakesRules} target="_blank" rel="noopener noreferrer">
+              Official Rules
+            </Link>
+            {t('heroletes.thirdTeaser')}
+          </Typography>
           <div className={styles.mainContent__headerButtons}>
             <Link href="#athelites" underline="none">
               <Button className={styles.mainContent__headerButton}> {t('verticals.actionButton')}</Button>

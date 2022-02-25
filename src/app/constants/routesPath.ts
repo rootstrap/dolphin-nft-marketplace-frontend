@@ -6,7 +6,6 @@ const routesPaths = {
   heroletes: '/heroletes',
   heroletesMarketplace: '/heroletes/marketplace',
   halloffame: '/halloffame',
-  nftDetails: '/:nftId',
   nftById: '/nft/:ftxId',
   secondaryMarket: '/secondary/:nftId',
 

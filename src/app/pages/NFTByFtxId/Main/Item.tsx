@@ -1,14 +1,17 @@
 import { Button, Typography } from '@material-ui/core';
 import { NFT } from 'app/interfaces/NFT/NFT';
-import useTranslation from 'app/hooks/useTranslation';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import { useContext } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
-import { HallOfFameItem } from './HallOfFameItem';
-import { HeroleteItem } from './HeroleteItem';
+import { HallOfFameItem } from '../HallOfFameItem/HallOfFameItem';
+import { HeroleteItem } from '../HeroleteItem/HeroleteItem';
+import useTranslation from 'app/hooks/useTranslation';
+import styles from './Main.module.scss';
+import { NFTByIdContext } from '../NFTByIdPage';
 
-export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription, priceInUsd }: ItemProps) => {
+export const Item = () => {
   const t = useTranslation();
+  const { handleShowDescription, nft, handleOpenPeersModal } = useContext(NFTByIdContext);
   const { setLoginModalIsOpen } = useContext(ModalContext);
   const { isAuthenticated } = useAppSelector(state => state.user);
 
@@ -28,28 +31,13 @@ export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription,
         {nft?.description}
       </Typography>
 
-      {nft?.issuer.includes('Heroletes') ? (
-        <HeroleteItem
-          background={nft?.attributes.Background}
-          offerPrice={nft?.offerPrice}
-          priceInUsd={priceInUsd}
-          quoteCurrency={nft?.quoteCurrency}
-          styles={styles}
-          tier={nft?.attributes.Tier}
-        />
-      ) : (
-        <HallOfFameItem
-          number={nft?.number}
-          offerPrice={nft?.offerPrice}
-          styles={styles}
-          totalQuantity={nft?.totalQuantity}
-        />
-      )}
+      {nft?.issuer.includes('Heroletes') ? <HeroleteItem /> : <HallOfFameItem />}
 
       {!nft?.issuer.includes('Heroletes') && (
         <div className={styles.mainContent__buttonContainer}>
           <Button
             variant="contained"
+            disabled={!nft?.offerPrice}
             fullWidth
             size="large"
             onClick={handleOnClick}
@@ -66,11 +54,3 @@ export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription,
     </div>
   );
 };
-
-interface ItemProps {
-  handleOpenPeersModal: () => void;
-  handleShowDescription: () => void;
-  nft?: NFT;
-  priceInUsd: number;
-  styles: any;
-}

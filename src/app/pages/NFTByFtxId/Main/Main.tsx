@@ -21,16 +21,17 @@ export const Main = () => {
   if (isLoading) return <CustomLoader />;
 
   return (
-    <>
+    <div className={styles.mainContent}>
       {showItemDescription ? (
-        <div className={styles.mainContent}>
+        <>
           <MainContent />
           <Item />
-        </div>
+        </>
       ) : (
         <BuyNFT nft={nft} handleShowDescription={handleShowDescription} />
       )}
+
       <Peers nfts={nfts} open={isPeersModalOpen} handleClose={handleClosePeersModal} />
-    </>
+    </div>
   );
 };

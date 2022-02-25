@@ -32,13 +32,7 @@ export const Item = () => {
       </Typography>
 
       {nft?.issuer.includes('Heroletes') ? (
-        <HeroleteItem
-          background={nft?.attributes.Background}
-          offerPrice={nft?.offerPrice}
-          priceInUsd={priceInUsd}
-          quoteCurrency={nft?.quoteCurrency}
-          tier={nft?.attributes.Tier}
-        />
+        <HeroleteItem />
       ) : (
         <HallOfFameItem
           number={nft?.number}

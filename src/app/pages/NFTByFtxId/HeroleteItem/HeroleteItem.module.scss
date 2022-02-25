@@ -1,0 +1,26 @@
+@import '/src/app/styles/base/settings';
+
+.heroleteItem {
+  display: flex;
+  justify-content: space-around;
+  margin: 0.5rem 0;
+  text-align: center;
+
+  &___info {
+    color: $orange;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  &__price {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+
+    span {
+      color: $orange;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  }
+}

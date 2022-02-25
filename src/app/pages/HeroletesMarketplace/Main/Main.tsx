@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Grid, Link, Typography } from '@material-ui/core';
 import { dolphinServiceLinks } from 'app/constants/constants';
 import Remarkable1 from 'app/assets/remarkable1.png';
@@ -11,7 +10,6 @@ import styles from './Main.module.scss';
 export const Main = () => {
   const t = useTranslation();
   const { isSmallDeviceView, isMobileView, isTabletView } = useResponsive();
-  const [showMore, setShowMore] = useState(false);
 
   return (
     <>
@@ -40,28 +38,13 @@ export const Main = () => {
           <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
             {t('heroletes.teaser')}
           </Typography>
-          {!showMore && (
-            <Link onClick={() => setShowMore(currentValue => !currentValue)}>
-              {' '}
-              {t('heroletes.showMoreButton')}
+          <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
+            {t('heroletes.secondTeaser')}
+            <Link href={dolphinServiceLinks.sweepstakesRules} target="_blank">
+              Official Rules
             </Link>
-          )}
-          {showMore && (
-            <>
-              <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
-                {t('heroletes.secondTeaser')}
-                <Link href={dolphinServiceLinks.sweepstakesRules} target="_blank">
-                  Official Rules
-                </Link>
-                {t('heroletes.thirdTeaser')}
-              </Typography>
-              {showMore && (
-                <Link onClick={() => setShowMore(currentValue => !currentValue)}>
-                  {t('heroletes.showLessButton')}
-                </Link>
-              )}
-            </>
-          )}
+            {t('heroletes.thirdTeaser')}
+          </Typography>
         </div>
       </Grid>
     </>

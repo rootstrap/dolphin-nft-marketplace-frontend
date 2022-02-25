@@ -1,0 +1,14 @@
+@import '/src/app/styles/base/settings';
+
+.hallOfFameItem {
+  &__price {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+
+    span {
+      color: $orange;
+      font-size: 1.6rem;
+    }
+  }
+}

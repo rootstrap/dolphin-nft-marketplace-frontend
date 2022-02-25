@@ -80,12 +80,6 @@ export const routes: Route = {
       private: true,
     },
     {
-      path: routesPaths.nftDetails,
-      Component: lazy(() => import(/* webpackChunkName: "NFTPage" */ 'app/pages/NFT/NFTPage')),
-      exact: true,
-      private: false,
-    },
-    {
       path: routesPaths.nftById,
       Component: lazy(() => import(/* webpackChunkName: "NFTByIdPage" */ 'app/pages/NFTByFtxId/NFTByIdPage')),
       exact: true,

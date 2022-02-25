@@ -4,6 +4,7 @@ import { useGetNftByIdMutation, useGetNftTradeHistoryMutation } from 'app/servic
 import { INftTradesResult } from 'app/interfaces/NFT/NFTCommons';
 import { currency } from 'app/constants/constants';
 import { useGetMarketMutation } from 'app/services/deposit/DepositService';
+import { useAppSelector } from 'app/hooks/reduxHooks';
 
 export const useNFT = (ftxId: string) => {
   const [nft, setNft] = useState<NFT>();
@@ -12,6 +13,15 @@ export const useNFT = (ftxId: string) => {
   const [getNftById, { isLoading }] = useGetNftByIdMutation();
   const [getNftTrades, { isLoading: isTradeHistoryLoading }] = useGetNftTradeHistoryMutation();
   const [getMarket, { data: priceInUsd }] = useGetMarketMutation();
+
+  const [showItemDescription, setShowItemDescription] = useState<boolean>(true);
+  const { nfts } = useAppSelector(state => state.nft);
+  const [isPeersModalOpen, setIsPeersModalOpen] = useState<boolean>(false);
+
+  const handleShowDescription = () => setShowItemDescription(!showItemDescription);
+
+  const handleClosePeersModal = () => setIsPeersModalOpen(false);
+  const handleOpenPeersModal = () => setIsPeersModalOpen(true);
 
   const loadData = useCallback(async () => {
     const nftById: any = await getNftById(ftxId);
@@ -33,10 +43,16 @@ export const useNFT = (ftxId: string) => {
   }, [nft, isPriceInUsd, getMarket]);
 
   return {
-    nft,
+    handleClosePeersModal,
+    handleOpenPeersModal,
+    handleShowDescription,
     isLoading,
+    isPeersModalOpen,
     isTradeHistoryLoading,
+    nft,
+    nfts,
     nftTradeHistory,
     priceInUsd,
+    showItemDescription,
   };
 };

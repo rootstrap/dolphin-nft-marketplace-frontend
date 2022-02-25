@@ -24,7 +24,6 @@ export const HeroletesList = () => {
               <Grid item xs={6} lg={4} style={{ padding: '0.5rem' }}>
                 <HeroleteItem
                   animation={herolete.animationUrl}
-                  background={herolete.attributes.Background}
                   collection={herolete.collection}
                   currency={herolete.quoteCurrency}
                   id={herolete.id}

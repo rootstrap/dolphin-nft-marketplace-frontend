@@ -1,7 +1,9 @@
+import { useContext } from 'react';
 import { useResponsive } from 'app/hooks/useResponsive';
-import { NFT } from '../../../interfaces/NFT/NFT';
+import { NFTByIdContext } from '../NFTByIdPage';
 
-export const MainContent = ({ nft }: MainContentProps) => {
+export const MainContent = () => {
+  const { nft } = useContext(NFTByIdContext);
   const { isTabletView, isSmallDeviceView } = useResponsive();
 
   return (
@@ -29,7 +31,3 @@ export const MainContent = ({ nft }: MainContentProps) => {
     </div>
   );
 };
-
-interface MainContentProps {
-  nft: NFT;
-}

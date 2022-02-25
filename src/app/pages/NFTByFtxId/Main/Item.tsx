@@ -6,9 +6,12 @@ import { ModalContext } from 'app/context/ModalContext';
 import { HallOfFameItem } from '../HallOfFameItem/HallOfFameItem';
 import { HeroleteItem } from '../HeroleteItem/HeroleteItem';
 import useTranslation from 'app/hooks/useTranslation';
+import styles from './Main.module.scss';
+import { NFTByIdContext } from '../NFTByIdPage';
 
-export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription, priceInUsd }: ItemProps) => {
+export const Item = () => {
   const t = useTranslation();
+  const { handleShowDescription, nft, priceInUsd, handleOpenPeersModal } = useContext(NFTByIdContext);
   const { setLoginModalIsOpen } = useContext(ModalContext);
   const { isAuthenticated } = useAppSelector(state => state.user);
 
@@ -64,11 +67,3 @@ export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription,
     </div>
   );
 };
-
-interface ItemProps {
-  handleOpenPeersModal: () => void;
-  handleShowDescription: () => void;
-  nft?: NFT;
-  priceInUsd: number;
-  styles: any;
-}

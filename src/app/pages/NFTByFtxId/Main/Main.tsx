@@ -1,23 +1,22 @@
+import { useContext } from 'react';
 import { CustomLoader } from 'app/components/CustomLoader/CustomLoader';
 import { Item } from './Item';
-import { useNFT } from './useNFT';
 import { BuyNFT } from 'app/pages/NFT/BuyNFT/BuyNFT';
 import { Peers } from 'app/components/Peers/Peers';
 import { MainContent } from './MainContent';
+import { NFTByIdContext } from '../NFTByIdPage';
 import styles from './Main.module.scss';
 
-export const Main = ({ ftxId }: MainProps) => {
+export const Main = () => {
   const {
-    handleClosePeersModal,
-    handleOpenPeersModal,
-    handleShowDescription,
     isLoading,
-    isPeersModalOpen,
-    nft,
-    nfts,
-    priceInUsd,
     showItemDescription,
-  } = useNFT(ftxId);
+    nft,
+    handleShowDescription,
+    nfts,
+    isPeersModalOpen,
+    handleClosePeersModal,
+  } = useContext(NFTByIdContext);
 
   if (isLoading) return <CustomLoader />;
 
@@ -25,14 +24,8 @@ export const Main = ({ ftxId }: MainProps) => {
     <>
       {showItemDescription ? (
         <div className={styles.mainContent}>
-          <MainContent nft={nft} />
-          <Item
-            priceInUsd={priceInUsd}
-            nft={nft}
-            styles={styles}
-            handleOpenPeersModal={handleOpenPeersModal}
-            handleShowDescription={handleShowDescription}
-          />
+          <MainContent />
+          <Item />
         </div>
       ) : (
         <BuyNFT nft={nft} handleShowDescription={handleShowDescription} />
@@ -41,7 +34,3 @@ export const Main = ({ ftxId }: MainProps) => {
     </>
   );
 };
-
-interface MainProps {
-  ftxId: string;
-}

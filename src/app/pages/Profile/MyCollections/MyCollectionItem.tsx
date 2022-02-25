@@ -4,9 +4,10 @@ import { ArrowDropDownOutlined, ArrowDropUpOutlined } from '@material-ui/icons';
 import { ProfileContext } from '../ProfilePage';
 import { CustomLoader } from 'app/components/CustomLoader/CustomLoader';
 import { Attributes } from 'app/interfaces/NFT/NFT';
+import { MyCollectionCard } from './MyCollectionCard';
 import styles from './MyCollection.module.scss';
 
-export const MyCollectionItem = ({ name, index }: MyCollectionItemProps) => {
+export const MyCollectionItem = ({ name, image, index }: MyCollectionItemProps) => {
   const [isContentVisible, setIsContentVisible] = useState(false);
   const { nfts, nftAttributes, isLoading } = useContext(ProfileContext);
 
@@ -51,13 +52,15 @@ export const MyCollectionItem = ({ name, index }: MyCollectionItemProps) => {
 
             return (
               <Grid item xs={4} sm={3} md={2} lg={2}>
-                <div className={styles.myCollection__itemGrid}>
-                  <img
-                    src={item.imageUrl}
-                    alt={`${item.Athlete} ${item.Tier} ${item.Background} ${item.Signed}`}
-                    style={isNftInArray ? { filter: 'none' } : {}}
-                  />
-                </div>
+                <MyCollectionCard
+                  placeholderImage={image}
+                  Athlete={item.Athlete}
+                  Tier={item.Tier}
+                  Background={item.Background}
+                  Signed={item.Signed}
+                  isNftInArray={isNftInArray}
+                  imageUrl={item.imageUrl}
+                />
               </Grid>
             );
           })}

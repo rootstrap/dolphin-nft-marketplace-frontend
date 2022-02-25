@@ -1,0 +1,5 @@
+.selected a {
+  border: 1px solid #35aed7;
+  color: #35aed7 !important;
+  padding: 5px 10px;
+}

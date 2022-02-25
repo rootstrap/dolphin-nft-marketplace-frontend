@@ -37,7 +37,6 @@ export const useNFT = (ftxId: string) => {
     isLoading,
     isTradeHistoryLoading,
     nftTradeHistory,
-    isPriceInUsd,
     priceInUsd,
   };
 };

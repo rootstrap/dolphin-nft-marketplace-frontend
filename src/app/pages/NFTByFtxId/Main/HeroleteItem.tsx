@@ -2,6 +2,7 @@ import { ReactComponent as RibbonIcon } from 'app/assets/icons/ribbon.svg';
 import { ReactComponent as BackgroundIcon } from 'app/assets/icons/background.svg';
 import { Typography } from '@material-ui/core';
 import useTranslation from 'app/hooks/useTranslation';
+import { colors } from 'app/constants/constants';
 
 export const HeroleteItem = ({
   background,
@@ -17,7 +18,7 @@ export const HeroleteItem = ({
     <>
       <div className={styles.mainContent__heroleteItem}>
         <div>
-          <RibbonIcon fill="#fff" />
+          <RibbonIcon fill={colors.white} />
           <Typography component="div" variant="subtitle1">
             Tier
           </Typography>

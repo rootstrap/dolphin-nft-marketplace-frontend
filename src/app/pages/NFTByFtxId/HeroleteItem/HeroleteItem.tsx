@@ -2,8 +2,8 @@ import { ReactComponent as RibbonIcon } from 'app/assets/icons/ribbon.svg';
 import { ReactComponent as BackgroundIcon } from 'app/assets/icons/background.svg';
 import { Button, Typography } from '@material-ui/core';
 import { colors } from 'app/constants/constants';
-import styles from './HeroleteItem.module.scss';
 import useTranslation from 'app/hooks/useTranslation';
+import styles from './HeroleteItem.module.scss';
 
 export const HeroleteItem = ({
   background,

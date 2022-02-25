@@ -6,7 +6,7 @@ import { ProfileContext } from '../ProfilePage';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './MyGallery.module.scss';
 
-export const Item = ({ id, name, image, animation, video, offerPrice, issuer }: ItemProps) => {
+export const Item = ({ id, name, image, animation, video, offerPrice }: ItemProps) => {
   const t = useTranslation();
   const { nfts, nftAttributes } = useContext(ProfileContext);
 

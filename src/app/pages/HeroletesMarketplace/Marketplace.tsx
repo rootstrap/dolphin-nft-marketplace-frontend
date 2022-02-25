@@ -1,4 +1,4 @@
-import { NFT } from 'app/interfaces/NFT/NFT';
+import { Attributes, NFT } from 'app/interfaces/NFT/NFT';
 import { NftsHeroletesSecondaryParams } from 'app/services/nft/NftService';
 import { createContext } from 'react';
 import { useMarketplace } from './useMarketplace';
@@ -7,15 +7,17 @@ export const NFTDetailsContext = createContext({} as MarketplaceContextProps);
 const { Provider } = NFTDetailsContext;
 
 export const Marketplace = ({ children }: MarketplaceProps) => {
-  const { heroletes, setHeroletes, heroletesCount, isLoading, setQueryParams } = useMarketplace();
+  const { heroletes, heroletesCount, isLoading, nftAttributes, setHeroletes, setQueryParams } =
+    useMarketplace();
 
   return (
     <Provider
       value={{
         heroletes,
-        setHeroletes,
         heroletesCount,
         isLoading,
+        nftAttributes,
+        setHeroletes,
         setQueryParams,
       }}
     >
@@ -30,8 +32,9 @@ interface MarketplaceProps {
 
 interface MarketplaceContextProps {
   heroletes: NFT[];
-  setHeroletes: React.Dispatch<React.SetStateAction<NFT[]>>;
   heroletesCount: number;
   isLoading: boolean;
+  nftAttributes: Attributes[];
+  setHeroletes: React.Dispatch<React.SetStateAction<NFT[]>>;
   setQueryParams: React.Dispatch<React.SetStateAction<NftsHeroletesSecondaryParams>>;
 }

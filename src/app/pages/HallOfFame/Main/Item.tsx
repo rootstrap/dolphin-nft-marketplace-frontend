@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import New from 'app/assets/New.png';
 import useTranslation from 'app/hooks/useTranslation';
 
-export const Item = ({ id, series, totalQuantity, image, price, styles }: ItemProps) => {
+export const Item = ({ id, ftxId, series, totalQuantity, image, price, styles }: ItemProps) => {
   const t = useTranslation();
 
   return (
@@ -34,7 +34,7 @@ export const Item = ({ id, series, totalQuantity, image, price, styles }: ItemPr
         </div>
         <div>
           <Button>
-            <Link to={`/${id}`}>{t('verticals.item.button')}</Link>
+            <Link to={`/nft/${ftxId}`}>{t('verticals.item.button')}</Link>
           </Button>
         </div>
       </div>

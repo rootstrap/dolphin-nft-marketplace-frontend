@@ -11,7 +11,7 @@ import { NFTByIdContext } from '../NFTByIdPage';
 
 export const Item = () => {
   const t = useTranslation();
-  const { handleShowDescription, nft, priceInUsd, handleOpenPeersModal } = useContext(NFTByIdContext);
+  const { handleShowDescription, nft, handleOpenPeersModal } = useContext(NFTByIdContext);
   const { setLoginModalIsOpen } = useContext(ModalContext);
   const { isAuthenticated } = useAppSelector(state => state.user);
 
@@ -31,20 +31,13 @@ export const Item = () => {
         {nft?.description}
       </Typography>
 
-      {nft?.issuer.includes('Heroletes') ? (
-        <HeroleteItem />
-      ) : (
-        <HallOfFameItem
-          number={nft?.number}
-          offerPrice={nft?.offerPrice}
-          totalQuantity={nft?.totalQuantity}
-        />
-      )}
+      {nft?.issuer.includes('Heroletes') ? <HeroleteItem /> : <HallOfFameItem />}
 
       {!nft?.issuer.includes('Heroletes') && (
         <div className={styles.mainContent__buttonContainer}>
           <Button
             variant="contained"
+            disabled={!nft?.offerPrice}
             fullWidth
             size="large"
             onClick={handleOnClick}

@@ -138,7 +138,7 @@
       "actionButton": "Explore Collection"
     },
     "item": {
-      "price": "Price",
+      "price": "Floor Price",
       "button": "Get it now!",
       "currency": "USD",
       "totalEdition": "Total Released: ",

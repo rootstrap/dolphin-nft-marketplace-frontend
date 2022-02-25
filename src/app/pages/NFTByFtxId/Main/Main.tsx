@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { CustomLoader } from 'app/components/CustomLoader/CustomLoader';
 import { Item } from './Item';
-import { BuyNFT } from 'app/pages/NFT/BuyNFT/BuyNFT';
+import { BuyNFT } from 'app/pages/NFTByFtxId/BuyNFT/BuyNFT';
 import { Peers } from 'app/components/Peers/Peers';
 import { MainContent } from './MainContent';
 import { NFTByIdContext } from '../NFTByIdPage';

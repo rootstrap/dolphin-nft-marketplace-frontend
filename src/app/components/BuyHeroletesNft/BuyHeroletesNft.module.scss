@@ -1,0 +1,10 @@
+@import '/src/app/styles/base/settings';
+
+.buyHeroletes {
+  padding: 2rem;
+  text-align: center;
+
+  &__title {
+    margin-bottom: 2rem;
+  }
+}

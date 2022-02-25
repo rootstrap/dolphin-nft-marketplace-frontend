@@ -4,7 +4,7 @@ import { NFT, Attributes } from 'app/interfaces/NFT/NFT';
 import { INftTrades, INftTradesResult } from 'app/interfaces/NFT/NFTCommons';
 import { api } from '../Api';
 
-const nftApi = api.injectEndpoints({
+export const nftApi = api.injectEndpoints({
   endpoints: builder => ({
     getNftsSecondary: builder.mutation<NFT[], void>({
       query: () => `${endpoints.NFT}?secondary=true`,
@@ -93,6 +93,7 @@ const nftApi = api.injectEndpoints({
         body: {
           nftId: buyNftBody.nftId,
           price: buyNftBody.price,
+          quoteCurrency: buyNftBody.quoteCurrency ? buyNftBody.quoteCurrency : 'USD',
         },
       }),
     }),
@@ -169,6 +170,7 @@ export const {
 interface BuyNFT {
   nftId: string;
   price: number;
+  quoteCurrency?: string;
 }
 
 interface SellNFT {

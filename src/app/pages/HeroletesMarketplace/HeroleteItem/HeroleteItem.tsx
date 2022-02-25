@@ -1,6 +1,7 @@
 import { Button, Typography } from '@material-ui/core';
 import { SyntheticEvent, useContext } from 'react';
 import { ReactComponent as RibbonIcon } from 'app/assets/icons/ribbon.svg';
+import { ReactComponent as BackgroundIcon } from 'app/assets/icons/background.svg';
 import useTranslation from 'app/hooks/useTranslation';
 import { Link } from 'react-router-dom';
 import { colors } from 'app/constants/constants';
@@ -9,6 +10,7 @@ import styles from './HeroleteItem.module.scss';
 
 export const HeroleteItem = ({
   animation,
+  background,
   collection,
   currency,
   id,
@@ -62,9 +64,14 @@ export const HeroleteItem = ({
           <Typography component="span" variant="subtitle2" className={styles.heroleteItem__infoCollection}>
             Collection: {collection.split(' -').shift()}
           </Typography>
-          <Typography component="span" variant="subtitle2" className={styles.heroleteItem__infoTier}>
-            <RibbonIcon fill={colors.orange} /> {tier}
-          </Typography>
+          <div className={styles.heroleteItem__infoAttributes}>
+            <Typography component="div" variant="subtitle2">
+              <RibbonIcon fill={colors.orange} /> {tier}
+            </Typography>
+            <Typography component="div" variant="subtitle2">
+              <BackgroundIcon fill={colors.orange} /> {background}
+            </Typography>
+          </div>
         </div>
         <div className={styles.heroleteItem__buyInfo}>
           <div>
@@ -86,6 +93,7 @@ export const HeroleteItem = ({
 
 interface HeroleteItemProps {
   animation: string;
+  background: string;
   collection: string;
   currency: string;
   id: string;

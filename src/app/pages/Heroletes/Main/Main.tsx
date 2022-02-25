@@ -8,10 +8,12 @@ import Remarkable3 from 'app/assets/remarkable3.png';
 import routesPaths from 'app/constants/routesPath';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Main.module.scss';
+import { useState } from 'react';
 
 export const Main = () => {
   const t = useTranslation();
   const { isSmallDeviceView, isMobileView, isTabletView } = useResponsive();
+  const [showMore, setShowMore] = useState(false);
 
   return (
     <>
@@ -34,16 +36,31 @@ export const Main = () => {
           <Typography component="div" variant="h2" className={styles.mainContent__headerTitle}>
             {t('heroletes.title')}
           </Typography>
-          <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
+          <Typography component="span" variant="subtitle1" className={styles.mainContent__headerTeaser}>
             {t('heroletes.teaser')}
+            {!showMore && (
+              <Link onClick={() => setShowMore(currentValue => !currentValue)}>
+                {' '}
+                {t('heroletes.showMoreButton')}
+              </Link>
+            )}
           </Typography>
-          <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
-            {t('heroletes.secondTeaser')}
-            <Link href={dolphinServiceLinks.sweepstakesRules} target="_blank" rel="noopener noreferrer">
-              Official Rules
-            </Link>
-            {t('heroletes.thirdTeaser')}
-          </Typography>
+          {showMore && (
+            <>
+              <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
+                {t('heroletes.secondTeaser')}
+                <Link href={dolphinServiceLinks.sweepstakesRules} target="_blank" rel="noopener noreferrer">
+                  Official Rules
+                </Link>
+                {t('heroletes.thirdTeaser')}
+              </Typography>
+              {showMore && (
+                <Link onClick={() => setShowMore(currentValue => !currentValue)}>
+                  {t('heroletes.showLessButton')}
+                </Link>
+              )}
+            </>
+          )}
           <div className={styles.mainContent__headerButtons}>
             <Link href="#athelites" underline="none">
               <Button className={styles.mainContent__headerButton}> {t('verticals.actionButton')}</Button>

@@ -1,11 +1,11 @@
 import { Button, Typography } from '@material-ui/core';
 import { NFT } from 'app/interfaces/NFT/NFT';
-import useTranslation from 'app/hooks/useTranslation';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import { useContext } from 'react';
 import { ModalContext } from 'app/context/ModalContext';
-import { HallOfFameItem } from './HallOfFameItem';
-import { HeroleteItem } from './HeroleteItem';
+import { HallOfFameItem } from '../HallOfFameItem/HallOfFameItem';
+import { HeroleteItem } from '../HeroleteItem/HeroleteItem';
+import useTranslation from 'app/hooks/useTranslation';
 
 export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription, priceInUsd }: ItemProps) => {
   const t = useTranslation();
@@ -34,14 +34,12 @@ export const Item = ({ styles, nft, handleOpenPeersModal, handleShowDescription,
           offerPrice={nft?.offerPrice}
           priceInUsd={priceInUsd}
           quoteCurrency={nft?.quoteCurrency}
-          styles={styles}
           tier={nft?.attributes.Tier}
         />
       ) : (
         <HallOfFameItem
           number={nft?.number}
           offerPrice={nft?.offerPrice}
-          styles={styles}
           totalQuantity={nft?.totalQuantity}
         />
       )}

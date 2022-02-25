@@ -5,10 +5,10 @@ import { Button, Typography } from '@material-ui/core';
 import { colors } from 'app/constants/constants';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import { ModalContext } from '../../../context/ModalContext';
-import useTranslation from 'app/hooks/useTranslation';
-import styles from './HeroleteItem.module.scss';
 import { NFTByIdContext } from '../NFTByIdPage';
 import { BuyHeroletesNft } from 'app/components/BuyHeroletesNft/BuyHeroletesNft';
+import useTranslation from 'app/hooks/useTranslation';
+import styles from './HeroleteItem.module.scss';
 
 export const HeroleteItem = () => {
   const t = useTranslation();
@@ -33,7 +33,7 @@ export const HeroleteItem = () => {
           </Typography>
         </div>
         <div>
-          <BackgroundIcon />
+          <BackgroundIcon fill={colors.white} />
           <Typography component="div" variant="subtitle1">
             Background
           </Typography>

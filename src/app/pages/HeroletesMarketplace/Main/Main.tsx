@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Grid, Link, Typography } from '@material-ui/core';
 import { dolphinServiceLinks } from 'app/constants/constants';
 import Remarkable1 from 'app/assets/remarkable1.png';
@@ -6,7 +7,6 @@ import Remarkable3 from 'app/assets/remarkable3.png';
 import { useResponsive } from 'app/hooks/useResponsive';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Main.module.scss';
-import { useState } from 'react';
 
 export const Main = () => {
   const t = useTranslation();

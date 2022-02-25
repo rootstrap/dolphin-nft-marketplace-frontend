@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Button, Grid, Link, Typography } from '@material-ui/core';
 import { Link as RouteLink } from 'react-router-dom';
 import { dolphinServiceLinks } from 'app/constants/constants';
@@ -8,7 +9,6 @@ import Remarkable3 from 'app/assets/remarkable3.png';
 import routesPaths from 'app/constants/routesPath';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './Main.module.scss';
-import { useState } from 'react';
 
 export const Main = () => {
   const t = useTranslation();

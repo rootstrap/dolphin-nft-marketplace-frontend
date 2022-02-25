@@ -27,7 +27,7 @@ export const HeroleteItem = ({
           </Typography>
         </div>
         <div>
-          <BackgroundIcon />
+          <BackgroundIcon fill={colors.white} />
           <Typography component="div" variant="subtitle1">
             Background
           </Typography>

@@ -14,6 +14,10 @@
   &__buttonContainer {
     display: flex;
     flex-direction: column;
+
+    &Buy {
+      margin-top: 0;
+    }
   }
 
   &__priceContainer {
@@ -26,6 +30,7 @@
       font-size: 1.6rem;
     }
   }
+
   &__item {
     &Description {
       display: flex;
@@ -35,16 +40,40 @@
       text-align: left;
 
       @media screen and (max-width: $md-width) {
-       margin-top: 1rem;
+        margin-top: 1rem;
       }
 
       &Text {
-        padding-bottom: 2rem;
-        padding-top: 1rem;
+        padding: 1rem 0;
       }
 
       &Title {
         color: $orange;
+      }
+    }
+  }
+
+  &__heroleteItem {
+    display: flex;
+    justify-content: space-around;
+    margin: 0.5rem 0;
+    text-align: center;
+
+    &Info {
+      color: $orange;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    &Price {
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+
+      span {
+        color: $orange;
+        font-size: 1.5rem;
+        font-weight: 700;
       }
     }
   }

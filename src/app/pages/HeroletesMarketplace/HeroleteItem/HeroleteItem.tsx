@@ -1,9 +1,10 @@
 import { Button, Typography } from '@material-ui/core';
 import { SyntheticEvent } from 'react';
-import { ReactComponent as RibbonIcon } from 'app/assets/ribbon.svg';
+import { ReactComponent as RibbonIcon } from 'app/assets/icons/ribbon.svg';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './HeroleteItem.module.scss';
 import { Link } from 'react-router-dom';
+import { colors } from 'app/constants/constants';
 
 export const HeroleteItem = ({
   animation,
@@ -44,7 +45,7 @@ export const HeroleteItem = ({
             Collection: {collection.split(' -').shift()}
           </Typography>
           <Typography component="span" variant="subtitle2" className={styles.heroleteItem__infoTier}>
-            <RibbonIcon /> {tier}
+            <RibbonIcon fill={colors.orange} /> {tier}
           </Typography>
         </div>
         <div className={styles.heroleteItem__buyInfo}>

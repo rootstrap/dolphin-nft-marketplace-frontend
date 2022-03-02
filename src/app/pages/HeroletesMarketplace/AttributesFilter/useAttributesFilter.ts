@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { NFTDetailsContext } from '../Marketplace';
+import { MarketplaceContext } from '../Marketplace';
 
 interface FormValues {
   athlete: string;
@@ -21,7 +21,7 @@ const defaultValues = {
 };
 
 export const useAttributesFilter = () => {
-  const { setQueryParams } = useContext(NFTDetailsContext);
+  const { setQueryParams } = useContext(MarketplaceContext);
 
   const schema = z.object({
     athlete: z.string(),

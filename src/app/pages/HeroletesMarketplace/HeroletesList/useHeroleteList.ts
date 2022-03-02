@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { NFTDetailsContext } from '../Marketplace';
+import { MarketplaceContext } from '../Marketplace';
 
 export const useHeroleteList = () => {
-  const { setQueryParams, heroletesCount } = useContext(NFTDetailsContext);
+  const { setQueryParams, heroletesCount } = useContext(MarketplaceContext);
   const [pageCount, setPageCount] = useState<number>(0);
   const [pageOffset, setPageOffset] = useState<number>(0);
   const itemsPerPage = 6;

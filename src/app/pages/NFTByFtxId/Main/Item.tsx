@@ -1,5 +1,4 @@
 import { Button, Typography } from '@material-ui/core';
-import { NFT } from 'app/interfaces/NFT/NFT';
 import { useAppSelector } from 'app/hooks/reduxHooks';
 import { useContext } from 'react';
 import { ModalContext } from 'app/context/ModalContext';

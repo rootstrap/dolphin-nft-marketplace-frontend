@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Grid, Link, Typography } from '@material-ui/core';
 import { dolphinServiceLinks } from 'app/constants/constants';
 import Remarkable1 from 'app/assets/remarkable1.png';
@@ -10,6 +11,7 @@ import styles from './Main.module.scss';
 export const Main = () => {
   const t = useTranslation();
   const { isSmallDeviceView, isMobileView, isTabletView } = useResponsive();
+  const [showMore, setShowMore] = useState(false);
 
   return (
     <>
@@ -35,16 +37,31 @@ export const Main = () => {
           <Typography component="h2" variant="h5" gutterBottom className={styles.mainContent__headerSubtitle}>
             {t('heroletes.marketplace.subtitle')}
           </Typography>
-          <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
+          <Typography component="span" variant="subtitle1" className={styles.mainContent__headerTeaser}>
             {t('heroletes.teaser')}
+            {!showMore && (
+              <Link onClick={() => setShowMore(currentValue => !currentValue)}>
+                {' '}
+                {t('heroletes.showMoreButton')}
+              </Link>
+            )}
           </Typography>
-          <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
-            {t('heroletes.secondTeaser')}
-            <Link href={dolphinServiceLinks.sweepstakesRules} target="_blank">
-              Official Rules
-            </Link>
-            {t('heroletes.thirdTeaser')}
-          </Typography>
+          {showMore && (
+            <>
+              <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
+                {t('heroletes.secondTeaser')}
+                <Link href={dolphinServiceLinks.sweepstakesRules} target="_blank" rel="noopener noreferrer">
+                  Official Rules
+                </Link>
+                {t('heroletes.thirdTeaser')}
+              </Typography>
+              {showMore && (
+                <Link onClick={() => setShowMore(currentValue => !currentValue)}>
+                  {t('heroletes.showLessButton')}
+                </Link>
+              )}
+            </>
+          )}
         </div>
       </Grid>
     </>

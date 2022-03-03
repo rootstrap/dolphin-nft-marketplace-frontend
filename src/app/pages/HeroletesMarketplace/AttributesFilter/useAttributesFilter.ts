@@ -1,7 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { useLocation } from 'react-router-dom';
 import { MarketplaceContext } from '../Marketplace';
 
 interface FormValues {
@@ -21,6 +22,8 @@ const defaultValues = {
 };
 
 export const useAttributesFilter = () => {
+  const search = useLocation().search;
+  const athlete = new URLSearchParams(search).get('athlete');
   const { setQueryParams } = useContext(MarketplaceContext);
 
   const schema = z.object({
@@ -35,6 +38,12 @@ export const useAttributesFilter = () => {
     defaultValues,
     resolver: zodResolver(schema),
   });
+
+  useEffect(() => {
+    if (athlete) {
+      setQueryParams(currentValue => ({ ...currentValue, filters: { athlete } }));
+    }
+  }, [setQueryParams, athlete]);
 
   const onSubmit: SubmitHandler<FormValues> = async form => {
     setQueryParams(currentValue => ({ ...currentValue, filters: form }));

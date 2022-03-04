@@ -97,7 +97,15 @@ export const useLogin = () => {
       }
       setIsLoading(false);
     }
-  }, [isLoginStatusSuccess, isLoginSuccess, isLoginFTXSuccess, loginStatusData]);
+  }, [
+    isLoginStatusSuccess,
+    isLoginSuccess,
+    isLoginFTXSuccess,
+    loginStatusData,
+    reset,
+    setCheckboxesModalIsOpen,
+    setLoginModalIsOpen,
+  ]);
 
   useEffect(() => {
     if (isError) {

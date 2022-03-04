@@ -1,4 +1,5 @@
 import { Grid } from '@material-ui/core';
+import { IRLCollectibles } from 'app/components/IRLCollectibles/IRLCollectibles';
 import { TopBarLayout } from 'app/components/Layout/TopBarLayout';
 import { AttributesFilters } from './AttributesFilter/AttributesFilter';
 import { HeroletesList } from './HeroletesList/HeroletesList';
@@ -10,6 +11,7 @@ const HeroletesMarketplacePage = () => (
     pageComponent={
       <Marketplace>
         <Main />
+        <IRLCollectibles />
         <Grid container>
           <Grid item xs={12} md={4}>
             <AttributesFilters />

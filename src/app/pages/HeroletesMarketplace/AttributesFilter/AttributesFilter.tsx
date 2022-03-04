@@ -1,8 +1,8 @@
+import React from 'react';
 import { Button, MenuItem, Typography } from '@material-ui/core';
 import { InputSelect } from 'app/components/Select/InputSelect';
 import { attributes } from 'app/constants/heroletes/attributes';
 import { useAttributesFilter } from './useAttributesFilter';
-import React from 'react';
 import styles from './AttributesFilter.module.scss';
 
 export const AttributesFilters = () => {

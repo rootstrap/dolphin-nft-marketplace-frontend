@@ -3,7 +3,6 @@
 .dropdown {
   margin-top: 3rem;
   background-color: black;
-  padding-bottom: 2rem;
 
   &__header {
     align-items: center;
@@ -40,7 +39,7 @@
 
   &__items {
     margin-top: 2rem;
-    padding: 4rem;
+    padding: 0 4rem;
     text-align: center;
 
     &Title {

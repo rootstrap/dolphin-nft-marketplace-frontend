@@ -1,0 +1,33 @@
+@import 'src/app/styles/base/_settings.scss';
+
+.IRLCollectibles {
+  text-align: center;
+
+  &__subtitle {
+    font-weight: 700;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    text-align: center;
+
+    &Name {
+      color: $orange;
+    }
+
+    img {
+      padding: 0 3rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-weight: 700;
+    }
+  }
+
+  &__rules {
+    margin: 2rem;
+  }
+}

@@ -28,16 +28,9 @@ export const LegalDropDown = () => {
 
       <AccordionDetails>
         <div>
-          <div className={styles.dropdown__article}>
-            <Typography variant="body1">{t('heroletes.sweepstakes.article')}</Typography>
-          </div>
-
           <div className={styles.dropdown__items}>
             <Grid container>
               <Grid item md={6} lg={6} className={styles.dropdown__itemsContainer}>
-                <Typography className={styles.dropdown__itemsDetails} variant="h6">
-                  {t('heroletes.sweepstakes.item.title')}
-                </Typography>
                 <img src={IRLDetails} alt="" />
                 <Typography className={styles.dropdown__itemsDescription}>
                   {t('heroletes.sweepstakes.item.description')}

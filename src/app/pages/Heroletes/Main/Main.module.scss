@@ -42,6 +42,8 @@
       font-size: 1.2rem !important;
       padding: 0 5%;
       text-align: center;
+      vertical-align: bottom;
+      white-space: pre-line;
 
       @media screen and (max-width: $md-width) {
         padding: 0 10%;
@@ -52,7 +54,7 @@
     &Button {
       margin-top: 2rem !important;
       margin-left: 1rem;
-      width: 13rem !important;
+      width: 14rem !important;
       text-align: center;
     }
 

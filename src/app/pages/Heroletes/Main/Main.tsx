@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { Button, Grid, Link, Typography } from '@material-ui/core';
 import { Link as RouteLink } from 'react-router-dom';
-import { dolphinServiceLinks } from 'app/constants/constants';
 import { useResponsive } from 'app/hooks/useResponsive';
 import Remarkable1 from 'app/assets/remarkable1.png';
 import Remarkable2 from 'app/assets/remarkable2.png';
@@ -13,7 +11,6 @@ import styles from './Main.module.scss';
 export const Main = () => {
   const t = useTranslation();
   const { isSmallDeviceView, isMobileView, isTabletView } = useResponsive();
-  const [showMore, setShowMore] = useState(false);
 
   return (
     <>
@@ -38,37 +35,16 @@ export const Main = () => {
           </Typography>
           <Typography component="span" variant="subtitle1" className={styles.mainContent__headerTeaser}>
             {t('heroletes.teaser')}
-            {!showMore && (
-              <Link onClick={() => setShowMore(currentValue => !currentValue)}>
-                {' '}
-                {t('heroletes.showMoreButton')}
-              </Link>
-            )}
           </Typography>
-          {showMore && (
-            <>
-              <Typography component="div" variant="subtitle1" className={styles.mainContent__headerTeaser}>
-                {t('heroletes.secondTeaser')}
-                <Link href={dolphinServiceLinks.sweepstakesRules} target="_blank" rel="noopener noreferrer">
-                  Official Rules
-                </Link>
-                {t('heroletes.thirdTeaser')}
-              </Typography>
-              {showMore && (
-                <Link onClick={() => setShowMore(currentValue => !currentValue)}>
-                  {t('heroletes.showLessButton')}
-                </Link>
-              )}
-            </>
-          )}
           <div className={styles.mainContent__headerButtons}>
             <Link href="#athelites" underline="none">
-              <Button className={styles.mainContent__headerButton}> {t('verticals.actionButton')}</Button>
+              <Button className={styles.mainContent__headerButton}>
+                {t('heroletes.exploreActionButton')}
+              </Button>
             </Link>
             <RouteLink to={routesPaths.heroletesMarketplace}>
               <Button className={styles.mainContent__headerButton}>
-                {' '}
-                {t('heroletes.marketplace.subtitle')}
+                {t('heroletes.marketplaceActionButton')}
               </Button>
             </RouteLink>
           </div>

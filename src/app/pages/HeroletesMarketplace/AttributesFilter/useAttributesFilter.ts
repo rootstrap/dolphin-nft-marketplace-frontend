@@ -46,12 +46,12 @@ export const useAttributesFilter = () => {
   }, [setQueryParams, athlete]);
 
   const onSubmit: SubmitHandler<FormValues> = async form => {
-    setQueryParams(currentValue => ({ ...currentValue, filters: form }));
+    setQueryParams({ startInclusive: 0, endExclusive: 6, filters: form });
   };
 
   const clearForm = () => {
     reset();
-    setQueryParams(currentValue => ({ ...currentValue, filters: null }));
+    setQueryParams({ startInclusive: 0, endExclusive: 6, filters: null });
   };
 
   return {

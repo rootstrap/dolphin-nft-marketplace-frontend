@@ -1,16 +1,14 @@
 import { TopBarLayout } from 'app/components/Layout/TopBarLayout';
-import { KnowHowContent } from './KnowHow/KnowHow';
-import { PromotionContent } from './Promotion/PromotionContent';
-import { PromotionCarousel } from './Promotion/PromotionCarousel';
+import { HomeCarousel, KnowHowContent, PromotionContent } from './';
 
 const HomePage = () => (
   <>
     <TopBarLayout
       pageComponent={
         <>
-          <PromotionContent />
+          <HomeCarousel />
           <KnowHowContent />
-          <PromotionCarousel />
+          <PromotionContent />
         </>
       }
     />

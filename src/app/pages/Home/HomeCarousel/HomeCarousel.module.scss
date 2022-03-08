@@ -1,0 +1,48 @@
+@import '/src/app/styles/base/settings';
+
+.carousel {
+  background-color: black;
+  display: flex;
+  margin-top: -3rem;
+  width: 100%;
+  height: 27rem;
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    flex: 0.2;
+    height: 100%;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+  }
+
+  &__image {
+    flex: 0.8;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    margin-bottom: 2rem;
+  }
+
+  &__text {
+    margin-bottom: 2rem;
+  }
+
+  &__markers {
+    display: flex;
+    margin-top: 1rem;
+
+    &Item {
+      border: 1px solid $primary;
+      border-radius: 50%;
+      margin: 0 0.5rem;
+      padding: 0.2rem;
+    }
+  }
+}

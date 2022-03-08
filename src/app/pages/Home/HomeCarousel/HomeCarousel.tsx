@@ -1,6 +1,7 @@
 import React from 'react';
 import { colors } from 'app/constants/constants';
 import { Button, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { homeCarouselItems } from 'app/constants/common/homeCarouselItems';
 import { useHomeCarousel } from './useHomeCarousel';
 import styles from './HomeCarousel.module.scss';
@@ -22,7 +23,15 @@ export const HomeCarousel = () => {
 
         <div>
           <div className={styles.carousel__button}>
-            <Button>See more →</Button>
+            {homeCarouselItems[index].link === '/creatures' ? (
+              <a href={process.env.REACT_APP_CREATURES_URL}>
+                <Button>See more →</Button>
+              </a>
+            ) : (
+              <Link to={homeCarouselItems[index].link}>
+                <Button>See more →</Button>
+              </Link>
+            )}
           </div>
 
           <div className={styles.carousel__markers}>

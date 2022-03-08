@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { homeCarouselItems } from 'app/constants/common/homeCarouselItems';
 
-const delay = 5000;
+const delay = 3000;
 
 export const useHomeCarousel = () => {
   const [index, setIndex] = useState(0);

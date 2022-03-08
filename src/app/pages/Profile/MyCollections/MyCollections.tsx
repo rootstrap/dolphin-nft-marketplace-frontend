@@ -26,10 +26,6 @@ export const MyCollections = () => {
         <div className={styles.myCollection__infoText}>
           <Typography variant="body1">{t('profile.myCollections.infoText')}</Typography>
         </div>
-
-        <div className={styles.myCollection__infoButton}>
-          <Button endIcon={<LockOutlined />}>{t('profile.myCollections.redeemButton')}</Button>
-        </div>
       </div>
 
       {React.Children.toArray(

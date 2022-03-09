@@ -14,6 +14,7 @@ export const InputText = ({
   size = 'medium',
   inputProps,
   register,
+  disabled = false,
 }: InputTextProps) => (
   <div className={className}>
     <div className={styles.inputText__text}>
@@ -35,6 +36,7 @@ export const InputText = ({
       error={!!error}
       color="secondary"
       inputProps={inputProps}
+      disabled={disabled}
     />
 
     <small className={styles.inputText__error}>{error?.message}</small>
@@ -43,6 +45,7 @@ export const InputText = ({
 
 interface InputTextProps {
   className: string;
+  disabled?: boolean;
   label?: string;
   inputProps?: any;
   name?: string;

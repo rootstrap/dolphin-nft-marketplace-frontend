@@ -25,6 +25,7 @@
   &__toCoin {
     display: flex;
     justify-content: center;
+
     &Container {
       padding: 1rem;
       width: 50%;
@@ -34,14 +35,45 @@
   &__input {
     display: flex;
     justify-content: center;
+
     &Container {
       padding: 1rem;
       width: 100%;
     }
   }
 
+  &__exchangeInfo {
+    padding: 0 1rem;
+
+    &Outdated {
+      color: $darkest-grey;
+      padding: 0 1rem;
+    }
+
+    &Container {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.5rem 0;
+
+      > p {
+        font-size: 1.1rem;
+      }
+
+      &Total {
+        font-size: 1.5rem;
+      }
+    }
+
+    &Expired {
+      border-top: 1px solid $light-grey;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+    }
+  }
+
   &__buttons {
     margin: 1rem;
+    width: fit-content;
   }
 
   &__error {

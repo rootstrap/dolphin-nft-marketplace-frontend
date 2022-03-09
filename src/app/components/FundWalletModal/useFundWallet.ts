@@ -35,10 +35,8 @@ export const useFundWallet = (open: boolean) => {
   };
 
   useEffect(() => {
-    return () => {
-      dispatch(depositApi.util.resetApiState());
-      setError('');
-    };
+    dispatch(depositApi.util.resetApiState());
+    setError('');
   }, [open]);
 
   useEffect(() => {

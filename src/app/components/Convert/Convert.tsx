@@ -8,19 +8,21 @@ import useTranslation from 'app/hooks/useTranslation';
 
 export const Convert = () => {
   const {
-    showResume,
-    isConvertExpired,
     currencies,
-    handleSubmit,
-    onSubmit,
-    register,
+    error,
     errors,
+    expiryTime,
     getConvertData,
     handleConfirm,
+    handleSubmit,
+    isConfirmConvertBalanceSuccess,
+    isConvertBalanceSuccess,
+    isConvertExpired,
+    isFirstConversion,
     isLoading,
-    error,
+    onSubmit,
+    register,
   } = useConvert();
-
   const t = useTranslation();
 
   return (
@@ -34,17 +36,21 @@ export const Convert = () => {
               {t('profile.convertCoins.title')}
             </Typography>
           </div>
-
           {error && (
             <div className={styles.convert__error}>
               <Typography variant="h6">{error}</Typography>
             </div>
           )}
-
           <div className={styles.convert__coinContainer}>
             <div className={styles.convert__fromCoinContainer}>
               <label htmlFor="fromCoin">{t('profile.convertCoins.from')}</label>
-              <InputSelect className="" register={register} name="fromCoin" error={errors.fromCoin}>
+              <InputSelect
+                className=""
+                register={register}
+                name="fromCoin"
+                error={errors.fromCoin}
+                disabled={Boolean(expiryTime)}
+              >
                 {currencies.map(currency => (
                   <MenuItem value={currency} key={currency}>
                     {currency}
@@ -56,7 +62,13 @@ export const Convert = () => {
             <div className={styles.convert__toCoinContainer}>
               <label htmlFor="toCoin">{t('profile.convertCoins.to')}</label>
 
-              <InputSelect className="" register={register} name="toCoin" error={errors.toCoin}>
+              <InputSelect
+                className=""
+                register={register}
+                name="toCoin"
+                error={errors.toCoin}
+                disabled={Boolean(expiryTime)}
+              >
                 {currencies.map(currency => (
                   <MenuItem value={currency} key={currency}>
                     {currency}
@@ -65,7 +77,6 @@ export const Convert = () => {
               </InputSelect>
             </div>
           </div>
-
           <div className={styles.convert__input}>
             <div className={styles.convert__inputContainer}>
               <label htmlFor="size">{t('profile.convertCoins.amount')}</label>
@@ -76,37 +87,58 @@ export const Convert = () => {
                 type="number"
                 name="size"
                 error={errors.size}
+                disabled={Boolean(expiryTime)}
               />
             </div>
           </div>
-          {showResume && (
-            <div>
-              <Typography>
-                {t('profile.convertCoins.cost')} {getConvertData?.cost}
-              </Typography>
-              <Typography>
-                {t('profile.convertCoins.price')} {getConvertData?.price}
-              </Typography>
-              <Typography>
-                {t('profile.convertCoins.proceeds')} {getConvertData?.proceeds}
-              </Typography>
-            </div>
-          )}
-
-          {!showResume && isConvertExpired && (
-            <div className={styles.convert__buttons}>
-              <Button type="submit">{t('profile.convertCoins.convertButton')}</Button>
-            </div>
-          )}
-
-          {!isConvertExpired && showResume && (
+          {!isConfirmConvertBalanceSuccess && isConvertBalanceSuccess && (
             <>
-              <div className={styles.convert__buttons}>
-                <Button disabled={!showResume} onClick={handleConfirm}>
-                  {t('profile.convertCoins.confirmButton')}
-                </Button>
-              </div>
+              {!isFirstConversion && (
+                <div
+                  className={
+                    !isConvertExpired ? styles.convert__exchangeInfo : styles.convert__exchangeInfoOutdated
+                  }
+                >
+                  <div className={styles.convert__exchangeInfoContainer}>
+                    <Typography component="p">{t('profile.convertCoins.cost')}</Typography>
+                    <Typography component="p">
+                      {getConvertData?.cost} {getConvertData?.fromCoin}
+                    </Typography>
+                  </div>
+                  <div className={styles.convert__exchangeInfoContainer}>
+                    <Typography component="p">{t('profile.convertCoins.price')}</Typography>
+                    <Typography component="p">
+                      1 {getConvertData?.toCoin} = {getConvertData?.price} {getConvertData?.fromCoin}
+                    </Typography>
+                  </div>
+                  <div className={styles.convert__exchangeInfoContainer}>
+                    <Typography className={styles.convert__exchangeInfoContainerTotal} component="span">
+                      {t('profile.convertCoins.proceeds')}
+                    </Typography>
+                    <Typography className={styles.convert__exchangeInfoContainerTotal} component="span">
+                      {getConvertData?.proceeds} {getConvertData?.toCoin}
+                    </Typography>
+                  </div>
+                </div>
+              )}
+              {isConvertExpired && !isFirstConversion && (
+                <Typography className={styles.convert__exchangeInfoExpired}>
+                  {t('profile.convertCoins.quoteExpired')}
+                </Typography>
+              )}
             </>
+          )}
+          {isConvertExpired && (
+            <Button className={styles.convert__buttons} type="submit">
+              {isFirstConversion
+                ? t('profile.convertCoins.convertButton')
+                : t('profile.convertCoins.refresh')}
+            </Button>
+          )}
+          {!isConvertExpired && (
+            <Button onClick={handleConfirm} className={styles.convert__buttons}>
+              {t('profile.convertCoins.confirmButton')} {Boolean(expiryTime) && `(${expiryTime}s)`}
+            </Button>
           )}
         </>
       )}

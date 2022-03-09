@@ -11,7 +11,7 @@ export const UserBalance = () => {
   const t = useTranslation();
   const { balances } = useUserBalance();
   const { isMobileView } = useResponsive();
-  const [isFundtModalOpen, setIsFundModalOpen] = useState(false);
+  const [isFundModalOpen, setIsFundModalOpen] = useState(false);
 
   const handleOpenFundModal = () => setIsFundModalOpen(true);
   const handleCloseFundModal = () => setIsFundModalOpen(false);
@@ -88,7 +88,7 @@ export const UserBalance = () => {
         </Button>
       </div>
 
-      <FundWalletModal open={isFundtModalOpen} handleClose={handleCloseFundModal} />
+      <FundWalletModal open={isFundModalOpen} handleClose={handleCloseFundModal} />
 
       <Convert />
     </>

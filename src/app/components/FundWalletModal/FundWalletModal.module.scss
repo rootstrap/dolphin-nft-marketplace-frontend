@@ -1,0 +1,45 @@
+@import '/src/app/styles/base/_settings.scss';
+
+.fundWallet {
+  padding: 2rem;
+  text-align: center;
+
+  &__title,
+  &__description,
+  &__info {
+    margin-bottom: 1rem;
+  }
+
+  &__description {
+    color: $light-grey;
+  }
+
+  &__card {
+    background-color: $light-grey;
+    border-radius: 0.5rem;
+    color: black;
+    margin: 1rem;
+    padding: 2rem;
+    text-align: left;
+
+    &Cvv {
+      margin: 1.5rem 0;
+
+      input {
+        color: black;
+      }
+    }
+
+    &Input {
+      margin: 1rem 0;
+    }
+  }
+
+  &__button {
+    margin-top: 1rem;
+  }
+
+  &__error {
+    color: $error;
+  }
+}

@@ -11,6 +11,7 @@ export const InputSelect = ({
   register,
   children,
   control,
+  disabled = false,
 }: InputSelectProps) => {
   return (
     <div className={className}>
@@ -28,6 +29,7 @@ export const InputSelect = ({
               error={!!error}
               color="secondary"
               defaultValue=""
+              disabled={disabled}
             >
               {children}
             </Select>
@@ -41,6 +43,7 @@ export const InputSelect = ({
           error={!!error}
           color="secondary"
           defaultValue=""
+          disabled={disabled}
         >
           {children}
         </Select>
@@ -53,6 +56,7 @@ export const InputSelect = ({
 interface InputSelectProps {
   children: ReactFragment | JSX.Element[];
   className: string;
+  disabled?: boolean;
   label?: string;
   name?: string;
   error?: { message: string };

@@ -104,15 +104,17 @@
       "usdValueColumn": "USD Value"
     },
     "convertCoins": {
-      "title": "Convert your currencies",
-      "from": "From: ",
-      "to": "To: ",
       "amount": "Amount",
-      "cost": "Cost: ",
-      "price": "Price: ",
-      "proceeds": "Proceeds: ",
-      "convertButton": "Convert",
-      "confirmButton": "Confirm"
+      "confirmButton": "Convert",
+      "convertButton": "Preview conversion",
+      "cost": "Cost",
+      "from": "From",
+      "price": "Price",
+      "proceeds": "You will receive: ",
+      "quoteExpired": "Quote expired. Please request a new quote.",
+      "refresh": "Refresh",
+      "title": "Convert your currencies",
+      "to": "To "
     },
     "myCollections": {
       "title": "My Collections",

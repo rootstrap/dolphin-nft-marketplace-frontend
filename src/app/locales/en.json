@@ -106,7 +106,7 @@
     "convertCoins": {
       "amount": "Amount",
       "confirmButton": "Convert",
-      "convertButton": "Preview conversion",
+      "convertButton": "See conversion rate",
       "cost": "Cost",
       "from": "From",
       "price": "Price",

@@ -101,7 +101,16 @@
       "coinColumn": "Coin",
       "balanceColumn": "Balance",
       "availableBalanceColumn": "Available Balance",
+      "depositButton:": "Make a Deposit",
       "usdValueColumn": "USD Value"
+    },
+    "deposit": {
+      "title": "Deposit currency via credit card",
+      "description": "FTX US uses Circle to allow you to safely and securely deposit using your credit or debit card (issued by MasterCard/VISA only).",
+      "info": "You may deposit any currency, and it will be automatically converted to USD.",
+      "smallCvv": "This is used for card verification Amount",
+      "smallAmount": "You will be charged an additional $0.31 in fees. These fees come from our external processor.",
+      "button": "Deposit"
     },
     "convertCoins": {
       "amount": "Amount",

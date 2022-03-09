@@ -1,7 +1,9 @@
-import { Grid, Typography } from '@material-ui/core';
+import { useState } from 'react';
+import { Button, Grid, Typography } from '@material-ui/core';
 import { useUserBalance } from './useUserBalance';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { Convert } from 'app/components/Convert/Convert';
+import { FundWalletModal } from 'app/components/FundWalletModal/FundWalletModal';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './UserBalance.module.scss';
 
@@ -9,6 +11,10 @@ export const UserBalance = () => {
   const t = useTranslation();
   const { balances } = useUserBalance();
   const { isMobileView } = useResponsive();
+  const [isFundtModalOpen, setIsFundModalOpen] = useState(false);
+
+  const handleOpenFundModal = () => setIsFundModalOpen(true);
+  const handleCloseFundModal = () => setIsFundModalOpen(false);
 
   return (
     <>
@@ -75,6 +81,14 @@ export const UserBalance = () => {
           )}
         </Grid>
       </div>
+
+      <div className={styles.userBalance__deposit}>
+        <Button fullWidth onClick={handleOpenFundModal}>
+          Make a Deposit
+        </Button>
+      </div>
+
+      <FundWalletModal open={isFundtModalOpen} handleClose={handleCloseFundModal} />
 
       <Convert />
     </>

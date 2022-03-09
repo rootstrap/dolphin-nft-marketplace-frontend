@@ -6,7 +6,7 @@ import {
 } from 'app/interfaces/common/Balance';
 import { api } from '../Api';
 
-const depositApi = api.injectEndpoints({
+export const depositApi = api.injectEndpoints({
   endpoints: builder => ({
     createDeposit: builder.mutation({
       query: (deposit: CreateDepositBody) => ({

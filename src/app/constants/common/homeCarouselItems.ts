@@ -17,7 +17,7 @@ export const homeCarouselItems = [
     link: routesPaths.halloffame,
   },
   {
-    title: 'Creatures Chronicles',
+    title: 'Creature Chronicles',
     text: 'A multi-season graphic event, woven through the universe, built in the metaverse and ready for exploration by our community.',
     img: CreaturesBanner,
     link: routesPaths.creatures,

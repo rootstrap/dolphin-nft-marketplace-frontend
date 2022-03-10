@@ -1,9 +1,9 @@
 import { Grid, Typography } from '@material-ui/core';
-import ChrisMazdzer from 'app/assets/winterGrid/ChrisMazdzer.jpg';
-import GusKenworthy from 'app/assets/winterGrid/GusKenworthy.jpg';
-import JohnShuster from 'app/assets/winterGrid/JohnShuster.jpg';
-import KendallCoyne from 'app/assets/winterGrid/KendallCoyne.jpg';
-import TinaMaze from 'app/assets/winterGrid/TinaMaze.jpg';
+import ChrisMazdzer from 'app/assets/IRL/ChrisMazdzer.png';
+import GusKenworthy from 'app/assets/IRL/GusKenworthy.png';
+import JohnShuster from 'app/assets/IRL/JohnShuster.png';
+import KendallCoyne from 'app/assets/IRL/KendallCoyne.png';
+import TinaMaze from 'app/assets/IRL/TinaMaze.png';
 import { dolphinServiceLinks } from 'app/constants/constants';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './IRLCollectibles.module.scss';

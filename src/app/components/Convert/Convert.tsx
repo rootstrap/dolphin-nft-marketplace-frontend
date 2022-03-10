@@ -22,6 +22,7 @@ export const Convert = () => {
     isLoading,
     onSubmit,
     register,
+    setMaxAmount,
   } = useConvert();
   const t = useTranslation();
 
@@ -43,20 +44,25 @@ export const Convert = () => {
           )}
           <div className={styles.convert__coinContainer}>
             <div className={styles.convert__fromCoinContainer}>
-              <label htmlFor="fromCoin">{t('profile.convertCoins.from')}</label>
-              <InputSelect
-                className=""
-                register={register}
-                name="fromCoin"
-                error={errors.fromCoin}
-                disabled={Boolean(expiryTime)}
-              >
-                {currencies.map(currency => (
-                  <MenuItem value={currency} key={currency}>
-                    {currency}
-                  </MenuItem>
-                ))}
-              </InputSelect>
+              <div className={styles.convert__fromCoinSelect}>
+                <label htmlFor="fromCoin">{t('profile.convertCoins.from')}</label>
+                <InputSelect
+                  className={styles.convert__fromCoinSelect}
+                  register={register}
+                  name="fromCoin"
+                  error={errors.fromCoin}
+                  disabled={Boolean(expiryTime)}
+                >
+                  {currencies.map(currency => (
+                    <MenuItem value={currency} key={currency}>
+                      {currency}
+                    </MenuItem>
+                  ))}
+                </InputSelect>
+              </div>
+              <Button onClick={setMaxAmount} className={styles.convert__fromCoinContainerMax}>
+                MAX
+              </Button>
             </div>
 
             <div className={styles.convert__toCoinContainer}>
@@ -81,7 +87,7 @@ export const Convert = () => {
             <div className={styles.convert__inputContainer}>
               <label htmlFor="size">{t('profile.convertCoins.amount')}</label>
               <InputText
-                inputProps={{ min: 0, step: 0.00001, style: { textAlign: 'center' } }}
+                inputProps={{ min: 0, step: 0.00000001, style: { textAlign: 'center' } }}
                 className=""
                 register={register}
                 type="number"

@@ -1,11 +1,11 @@
+import React, { useState } from 'react';
 import { Button, Grid, Typography } from '@material-ui/core';
 import { INftTradesResult } from 'app/interfaces/NFT/NFTCommons';
 import { CustomLoader } from 'app/components/CustomLoader/CustomLoader';
 import { transformDate } from 'app/helpers/transformDate';
 import useTranslation from 'app/hooks/useTranslation';
-import styles from './NftTradeHistory.module.scss';
 import { BaseModal } from 'app/components/Modal/Modal';
-import { useState } from 'react';
+import styles from './NftTradeHistory.module.scss';
 
 export const NftTradeHistory = ({ tradeHistoryRecords, isLoading }: NftTradeHistoryProps) => {
   const t = useTranslation();
@@ -13,7 +13,7 @@ export const NftTradeHistory = ({ tradeHistoryRecords, isLoading }: NftTradeHist
 
   const componentToRender = (limit: number | undefined) => (
     <div>
-      <Grid container xs={12} className={styles.nftTradeHistory__heading}>
+      <Grid container className={styles.nftTradeHistory__heading}>
         <Grid xs={4} item container justifyContent="center">
           <Typography variant="subtitle1">{t('nft.tradeHistory.date')}</Typography>
         </Grid>
@@ -24,19 +24,21 @@ export const NftTradeHistory = ({ tradeHistoryRecords, isLoading }: NftTradeHist
           <Typography variant="subtitle1">{t('nft.tradeHistory.price')}</Typography>
         </Grid>
       </Grid>
-      {tradeHistoryRecords.slice(0, limit).map(row => (
-        <Grid container xs={12} className={styles.nftTradeHistory__content}>
-          <Grid item xs={4} container justifyContent="center">
-            {transformDate(new Date(row.time))}
+      {React.Children.toArray(
+        tradeHistoryRecords.slice(0, limit).map(row => (
+          <Grid container className={styles.nftTradeHistory__content}>
+            <Grid item xs={4} container justifyContent="center">
+              {transformDate(new Date(row.time))}
+            </Grid>
+            <Grid item xs={4} container justifyContent="center">
+              {row.quoteCurrency}
+            </Grid>
+            <Grid item xs={4} container justifyContent="center">
+              {row.price}
+            </Grid>
           </Grid>
-          <Grid item xs={4} container justifyContent="center">
-            {row.quoteCurrency}
-          </Grid>
-          <Grid item xs={4} container justifyContent="center">
-            {row.price}
-          </Grid>
-        </Grid>
-      ))}
+        ))
+      )}
     </div>
   );
 

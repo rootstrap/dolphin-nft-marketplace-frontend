@@ -29,7 +29,7 @@ export const useConvert = () => {
   const timeoutRef = useRef(null);
 
   const [getCoins, { data: getCoinsData, isSuccess: isGetCoinSuccess }] = useGetCoinsMutation();
-  const [getBalance] = useGetBalanceMutation();
+  const [getBalance, { data: balancesData }] = useGetBalanceMutation();
   const [
     convertBalance,
     { isSuccess: isConvertBalanceSuccess, isError: isConvertBalanceError, data, error: convertBalanceError },
@@ -51,9 +51,11 @@ export const useConvert = () => {
     });
 
   const {
-    register,
     handleSubmit,
+    getValues,
+    register,
     reset,
+    setValue,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
@@ -69,7 +71,8 @@ export const useConvert = () => {
 
   useEffect(() => {
     getCoins();
-  }, [getCoins]);
+    getBalance();
+  }, [getCoins, getBalance]);
 
   useEffect(() => {
     if (isConvertBalanceSuccess) {
@@ -133,6 +136,15 @@ export const useConvert = () => {
 
   const handleConfirm = () => confirmConvertBalance(data.result.quoteId);
 
+  const setMaxAmount = () => {
+    const currency = getValues('fromCoin');
+
+    if (currency) {
+      const coinBalance = balancesData.result.find(balance => balance.coin === currency);
+      setValue('size', (coinBalance?.total || 0).toString());
+    }
+  };
+
   return {
     currencies,
     error,
@@ -148,5 +160,6 @@ export const useConvert = () => {
     isLoading,
     onSubmit,
     register,
+    setMaxAmount,
   };
 };

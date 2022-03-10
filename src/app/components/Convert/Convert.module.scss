@@ -17,8 +17,29 @@
     justify-content: center;
 
     &Container {
+      display: flex;
       padding: 1rem;
       width: 50%;
+
+      &Max {
+        border: none;
+        font-weight: 300;
+        padding-top: 2rem;
+        width: auto;
+
+        @media screen and (max-width: $md-width) {
+          display: none;
+        }
+
+        &:hover {
+          border: none;
+          font-weight: 700;
+        }
+      }
+    }
+
+    &Select {
+      flex-grow: 2;
     }
   }
 

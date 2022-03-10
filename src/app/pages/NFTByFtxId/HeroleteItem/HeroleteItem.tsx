@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { ReactComponent as RibbonIcon } from 'app/assets/icons/ribbon.svg';
 import { ReactComponent as BackgroundIcon } from 'app/assets/icons/background.svg';
+import { ReactComponent as SignatureIcon } from 'app/assets/icons/signature.svg';
 import { Button, Typography } from '@material-ui/core';
 import { colors } from 'app/constants/constants';
 import { useAppSelector } from 'app/hooks/reduxHooks';
@@ -23,22 +24,31 @@ export const HeroleteItem = () => {
   return (
     <>
       <div className={styles.heroleteItem}>
-        <div>
+        <div className={styles.heroleteItem__container}>
           <RibbonIcon fill={colors.white} />
-          <Typography component="div" variant="subtitle1">
-            Tier
+          <Typography component="div" variant="subtitle1" className={styles.heroleteItem__category}>
+            Tier:
           </Typography>
           <Typography component="div" variant="subtitle1" className={styles.heroleteItem__info}>
             {nft?.attributes.Tier}
           </Typography>
         </div>
-        <div>
+        <div className={styles.heroleteItem__container}>
           <BackgroundIcon fill={colors.white} />
-          <Typography component="div" variant="subtitle1">
-            Background
+          <Typography component="div" variant="subtitle1" className={styles.heroleteItem__category}>
+            Background:
           </Typography>
           <Typography component="div" variant="subtitle1" className={styles.heroleteItem__info}>
             {nft?.attributes.Background}
+          </Typography>
+        </div>
+        <div className={styles.heroleteItem__container}>
+          <SignatureIcon fill={colors.white} />
+          <Typography component="div" variant="subtitle1" className={styles.heroleteItem__category}>
+            Signed:
+          </Typography>
+          <Typography component="div" variant="subtitle1" className={styles.heroleteItem__info}>
+            {nft?.attributes.Signed}
           </Typography>
         </div>
       </div>

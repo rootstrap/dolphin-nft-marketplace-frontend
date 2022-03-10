@@ -101,23 +101,34 @@
       "coinColumn": "Coin",
       "balanceColumn": "Balance",
       "availableBalanceColumn": "Available Balance",
+      "depositButton:": "Make a Deposit",
       "usdValueColumn": "USD Value"
     },
+    "deposit": {
+      "title": "Deposit currency via credit card",
+      "description": "FTX US uses Circle to allow you to safely and securely deposit using your credit or debit card (issued by MasterCard/VISA only).",
+      "info": "You may deposit any currency, and it will be automatically converted to USD.",
+      "smallCvv": "This is used for card verification Amount",
+      "smallAmount": "You will be charged an additional $0.31 in fees. These fees come from our external processor.",
+      "button": "Deposit"
+    },
     "convertCoins": {
-      "title": "Convert your currencies",
-      "from": "From: ",
-      "to": "To: ",
       "amount": "Amount",
-      "cost": "Cost: ",
-      "price": "Price: ",
-      "proceeds": "Proceeds: ",
-      "convertButton": "Convert",
-      "confirmButton": "Confirm"
+      "confirmButton": "Convert",
+      "convertButton": "See conversion rate",
+      "cost": "Cost",
+      "from": "From",
+      "price": "Price",
+      "proceeds": "You will receive: ",
+      "quoteExpired": "Quote expired. Please request a new quote.",
+      "refresh": "Refresh",
+      "title": "Convert your currencies",
+      "to": "To "
     },
     "myCollections": {
       "title": "My Collections",
       "subtitle": "Heroletes Collection",
-      "infoText": "Digital collectibles that bring together the Remarkable worlds of comic books and groundbreaking athletes. From the imagination of former Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites, build your SuperTeam, and unlock new rare digital items and real-life experiences that you can’t find anywhere else!",
+      "infoText": "Digital collectibles that bring together the worlds of comic books and groundbreaking athletes. From the imagination of former Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites and build your SuperTeam.",
       "redeemButton": "Redeem"
     }
   },

@@ -25,7 +25,7 @@ export const BuyHeroletesNft = ({ isOpen, handleClose }: BuyHeroletesNftProps) =
               <Typography>{error}</Typography>
               <Typography>
                 To fund your SOLANA wallet go to{' '}
-                <a href="https://ftx.us/" target="_blank">
+                <a href="https://ftx.us/" target="_blank" rel="noreferrer">
                   FTX
                 </a>
               </Typography>

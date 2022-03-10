@@ -14,6 +14,7 @@ export const theme = createTheme({
     },
     text: {
       primary: colors.white,
+      disabled: colors.darkGrey,
     },
   },
   typography: {

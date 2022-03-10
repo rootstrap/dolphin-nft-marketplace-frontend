@@ -24,7 +24,7 @@ export const Item = () => {
         {nft?.collection}
       </Typography>
       <Typography variant="h5" component="div">
-        {nft?.name}
+        {nft?.attributes.Athlete ? `${nft.attributes.Athlete} - ${nft.attributes.Sport}` : nft?.name}
       </Typography>
       <Typography className={styles.mainContent__itemDescriptionText} component="div">
         {nft?.description}

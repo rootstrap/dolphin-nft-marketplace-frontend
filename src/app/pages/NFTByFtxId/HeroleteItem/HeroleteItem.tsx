@@ -24,7 +24,7 @@ export const HeroleteItem = () => {
   return (
     <>
       <div className={styles.heroleteItem}>
-        <div>
+        <div className={styles.heroleteItem__container}>
           <RibbonIcon fill={colors.white} />
           <Typography component="div" variant="subtitle1" className={styles.heroleteItem__category}>
             Tier:
@@ -33,7 +33,7 @@ export const HeroleteItem = () => {
             {nft?.attributes.Tier}
           </Typography>
         </div>
-        <div>
+        <div className={styles.heroleteItem__container}>
           <BackgroundIcon fill={colors.white} />
           <Typography component="div" variant="subtitle1" className={styles.heroleteItem__category}>
             Background:
@@ -42,25 +42,7 @@ export const HeroleteItem = () => {
             {nft?.attributes.Background}
           </Typography>
         </div>
-        <div>
-          <RibbonIcon fill={colors.white} />
-          <Typography component="div" variant="subtitle1" className={styles.heroleteItem__category}>
-            Athlete:
-          </Typography>
-          <Typography component="div" variant="subtitle1" className={styles.heroleteItem__info}>
-            {nft?.attributes.Athlete}
-          </Typography>
-        </div>
-        <div>
-          <RibbonIcon fill={colors.white} />
-          <Typography component="div" variant="subtitle1" className={styles.heroleteItem__category}>
-            Sport:
-          </Typography>
-          <Typography component="div" variant="subtitle1" className={styles.heroleteItem__info}>
-            {nft?.attributes.Sport}
-          </Typography>
-        </div>
-        <div>
+        <div className={styles.heroleteItem__container}>
           <SignatureIcon fill={colors.white} />
           <Typography component="div" variant="subtitle1" className={styles.heroleteItem__category}>
             Signed:

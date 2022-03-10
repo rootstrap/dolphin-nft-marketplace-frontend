@@ -2,14 +2,26 @@
 
 .heroleteItem {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   margin: 0.5rem 0;
   text-align: center;
 
-  &___info {
+  > div {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__category {
+    font-size: 1.1rem;
+    margin: 0 0.3rem 0 0.5rem;
+  }
+
+  &__info {
     color: $orange;
+    font-size: 1.1rem;
     font-weight: 700;
-    font-size: 1.5rem;
+    margin-right: auto;
   }
 
   &__price {

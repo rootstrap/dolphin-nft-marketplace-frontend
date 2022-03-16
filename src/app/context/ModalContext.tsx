@@ -13,6 +13,8 @@ const initialState: ModalContextState = {
   setCreditCardModalIsOpen: () => {},
   checkboxesModalIsOpen: false,
   setCheckboxesModalIsOpen: () => {},
+  forgotPasswordModalIsOpen: false,
+  setForgotPasswordModalIsOpen: () => {},
 };
 
 export const ModalContext = createContext(initialState);
@@ -28,6 +30,7 @@ export const ModalProvider = ({ children }: ModalProviderProps) => {
   const [ccModalIsOpen, setCcModalIsOpen] = useState<boolean>(false);
   const [creditCardModalIsOpen, setCreditCardModalIsOpen] = useState<boolean>(false);
   const [checkboxesModalIsOpen, setCheckboxesModalIsOpen] = useState<boolean>(false);
+  const [forgotPasswordModalIsOpen, setForgotPasswordModalIsOpen] = useState<boolean>(false);
 
   return (
     <ModalContext.Provider
@@ -44,6 +47,8 @@ export const ModalProvider = ({ children }: ModalProviderProps) => {
         setCreditCardModalIsOpen,
         checkboxesModalIsOpen,
         setCheckboxesModalIsOpen,
+        forgotPasswordModalIsOpen,
+        setForgotPasswordModalIsOpen,
       }}
     >
       {children}
@@ -64,4 +69,6 @@ interface ModalContextState {
   setCreditCardModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   checkboxesModalIsOpen: boolean;
   setCheckboxesModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  forgotPasswordModalIsOpen: boolean;
+  setForgotPasswordModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

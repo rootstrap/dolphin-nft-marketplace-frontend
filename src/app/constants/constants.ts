@@ -136,3 +136,5 @@ export const packIds = {
   gold: '167',
   creatures: '36',
 };
+
+export const minimunBalance = 0.00001;

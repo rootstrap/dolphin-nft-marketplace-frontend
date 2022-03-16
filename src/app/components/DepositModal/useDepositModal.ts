@@ -26,7 +26,16 @@ export const useDepositModal = (depositSize: number) => {
       encryptedData: data.encryptedData,
       cardId: id,
       size: depositSize,
+      redirectionUrl: window.location.href,
     });
+  };
+
+  const handleRedirection = () => {
+    if (isSuccess && depositData.result?.redirectUrl3ds && depositData.result?.paymentId) {
+      const { redirectUrl3ds, paymentId } = depositData.result;
+
+      window.location.replace(`${redirectUrl3ds}?paymentId=${paymentId}`);
+    }
   };
 
   useEffect(() => {
@@ -34,6 +43,10 @@ export const useDepositModal = (depositSize: number) => {
       setError('An Error has ocurred');
     }
   }, [isError, isSuccess, depositData]);
+
+  useEffect(() => {
+    handleRedirection();
+  }, [isSuccess]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const { name, value } = e.target;

@@ -35,6 +35,14 @@ export const useFundWallet = (open: boolean) => {
     setDeposit({ ...deposit, [name]: value });
   };
 
+  const handleRedirection = () => {
+    if (isSuccess && depositData.result?.redirectUrl3ds && depositData.result?.paymentId) {
+      const { redirectUrl3ds, paymentId } = depositData.result;
+
+      window.location.replace(`${redirectUrl3ds}?paymentId=${paymentId}`);
+    }
+  };
+
   useEffect(() => {
     dispatch(depositApi.util.resetApiState());
     setError('');
@@ -47,11 +55,7 @@ export const useFundWallet = (open: boolean) => {
   }, [isError, isSuccess, depositData]);
 
   useEffect(() => {
-    if (isSuccess && depositData.result?.redirectUrl3ds && depositData.result?.paymentId) {
-      const { redirectUrl3ds, paymentId } = depositData.result;
-
-      window.location.replace(`${redirectUrl3ds}?paymentId=${paymentId}`);
-    }
+    handleRedirection();
   }, [isSuccess]);
 
   return {

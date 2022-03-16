@@ -2,6 +2,7 @@ import { BaseModal } from 'app/components/Modal/Modal';
 import { FailedVerification } from '../CC/Verification/FailedVerification';
 import { SuccessVerification } from '../CC/Verification/SuccessVerification';
 import useTranslation from 'app/hooks/useTranslation';
+import styles from './Notification.module.scss';
 
 export const NotificationModal = ({
   customMsg = '',
@@ -13,7 +14,7 @@ export const NotificationModal = ({
 
   return (
     <BaseModal open={isOpen} handleClose={handleClose}>
-      <div style={{ textAlign: 'center' }}>
+      <div className={styles.notification}>
         {isVerificationSuccess ? (
           <SuccessVerification successMsg={customMsg || t('creatures.buyCreatures.successMsg')} />
         ) : (

@@ -31,8 +31,13 @@ export const useLogin = () => {
   const [login, { isSuccess: isLoginSuccess }] = useLoginMutation();
   const [loginFTX, { isSuccess: isLoginFTXSuccess, error: signinError, isError }] = useLoginFTXMutation();
   const [loginStatus, { isSuccess: isLoginStatusSuccess, data: loginStatusData }] = useLoginStatusMutation();
-  const { loginModalIsOpen, setLoginModalIsOpen, setSignupModalIsOpen, setCheckboxesModalIsOpen } =
-    useContext(ModalContext);
+  const {
+    loginModalIsOpen,
+    setLoginModalIsOpen,
+    setSignupModalIsOpen,
+    setCheckboxesModalIsOpen,
+    setForgotPasswordModalIsOpen,
+  } = useContext(ModalContext);
 
   const schema = z.object({
     email: z.string().email({ message: t('login.error.invalidEmail') }),
@@ -75,6 +80,11 @@ export const useLogin = () => {
   const handleOpenSignupModal = () => {
     handleClose();
     setSignupModalIsOpen(true);
+  };
+
+  const handleOpenForgotPassword = () => {
+    setLoginModalIsOpen(false);
+    setForgotPasswordModalIsOpen(true);
   };
 
   useEffect(() => {
@@ -128,5 +138,7 @@ export const useLogin = () => {
     error,
     isMfaRequired,
     setIsMfaRequired,
+    setForgotPasswordModalIsOpen,
+    handleOpenForgotPassword,
   };
 };

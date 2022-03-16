@@ -9,6 +9,7 @@ import { CC } from 'app/components/CC/CC';
 import { KYC } from 'app/components/KYC/KYC';
 import { useLoginStatusMutation } from 'app/services/user/UserService';
 import { Checkboxes } from 'app/components/Checkboxes/Checkboxes';
+import { ForgotPasswordModal } from 'app/components/ForgotPasswordModal/ForgotPasswordModal';
 import styles from './TopBarLayout.module.scss';
 
 interface TopBarLayoutProps {
@@ -33,6 +34,7 @@ export const TopBarLayout = ({ pageComponent, isTopBarVisible = true }: TopBarLa
         {pageComponent}
         <Login />
         <Signup />
+        <ForgotPasswordModal />
         <Checkboxes />
         <CreditCardModal />
         <CC />

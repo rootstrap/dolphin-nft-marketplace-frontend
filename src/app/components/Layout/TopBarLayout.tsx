@@ -33,11 +33,7 @@ export const TopBarLayout = ({ pageComponent, isTopBarVisible = true }: TopBarLa
     window.location.replace(window.location.origin);
   };
 
-  useEffect(() => {
-    verifyStatus();
-  }, [verifyStatus]);
-
-  useEffect(() => {
+  const handleRedirection = () => {
     if (location.search === '?failure') {
       setIsVerificationSuccess(false);
       setIsNotificationModalOpen(true);
@@ -47,6 +43,14 @@ export const TopBarLayout = ({ pageComponent, isTopBarVisible = true }: TopBarLa
       setIsVerificationSuccess(true);
       setIsNotificationModalOpen(true);
     }
+  };
+
+  useEffect(() => {
+    verifyStatus();
+  }, [verifyStatus]);
+
+  useEffect(() => {
+    handleRedirection;
   }, [location]);
 
   return (

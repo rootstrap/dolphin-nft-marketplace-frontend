@@ -14,7 +14,7 @@ const { Provider } = ProfileContext;
 
 const ProfilePage = () => {
   const t = useTranslation();
-  const { nfts, nftAttributes, isLoading } = useProfile();
+  const { nfts, nftAttributes, isLoading, handlePageClick, pageCount, pageOffset } = useProfile();
 
   const tabs = [
     { content: <MyGallery />, tabName: t('profile.tabs.gallery') },
@@ -30,6 +30,9 @@ const ProfilePage = () => {
             nfts,
             nftAttributes,
             isLoading,
+            handlePageClick,
+            pageCount,
+            pageOffset,
           }}
         >
           <Main />
@@ -44,6 +47,9 @@ interface ProfileContextProps {
   nfts: NFT[];
   nftAttributes: Attributes[];
   isLoading: boolean;
+  handlePageClick: (event: any) => void;
+  pageCount: number;
+  pageOffset: number;
 }
 
 export default ProfilePage;

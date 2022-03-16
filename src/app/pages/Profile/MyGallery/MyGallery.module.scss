@@ -119,4 +119,21 @@
       margin: 2rem auto;
     }
   }
+
+  &__paginator {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+
+    li {
+      cursor: pointer;
+      font-size: 1.2rem;
+      list-style-type: none;
+      margin: 0 0.5rem;
+
+      a {
+        color: $light-grey;
+      }
+    }
+  }
 }

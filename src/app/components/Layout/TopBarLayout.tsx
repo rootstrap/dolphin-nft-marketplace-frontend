@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useEffect } from 'react';
+import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { BottomBar } from 'app/components/BottomBar/BottomBar';
 import { CreditCardModal } from 'app/components/CreditCardModal/CreditCardModal';
 import { Login } from 'app/components/Login/Login';
@@ -9,6 +9,8 @@ import { CC } from 'app/components/CC/CC';
 import { KYC } from 'app/components/KYC/KYC';
 import { useLoginStatusMutation } from 'app/services/user/UserService';
 import { Checkboxes } from 'app/components/Checkboxes/Checkboxes';
+import { useLocation } from 'react-router-dom';
+import { NotificationModal } from '../NotificationModal/NotificationModal';
 import styles from './TopBarLayout.module.scss';
 
 interface TopBarLayoutProps {
@@ -18,12 +20,34 @@ interface TopBarLayoutProps {
 
 export const TopBarLayout = ({ pageComponent, isTopBarVisible = true }: TopBarLayoutProps) => {
   const [loginStatus] = useLoginStatusMutation();
+  const location = useLocation();
+  const [isVerificationSuccess, setIsVerificationSuccess] = useState(false);
+  const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
+
+  const customMsg = isVerificationSuccess ? 'You deposit was successful' : 'An error has ocurred';
 
   const verifyStatus = useCallback(async () => await loginStatus(), [loginStatus]);
+
+  const handleCloseNotificationModal = () => {
+    setIsNotificationModalOpen(false);
+    window.location.replace(window.location.origin);
+  };
 
   useEffect(() => {
     verifyStatus();
   }, [verifyStatus]);
+
+  useEffect(() => {
+    if (location.search === '?failure') {
+      setIsVerificationSuccess(false);
+      setIsNotificationModalOpen(true);
+    }
+
+    if (location.search === '?success') {
+      setIsVerificationSuccess(true);
+      setIsNotificationModalOpen(true);
+    }
+  }, [location]);
 
   return (
     <>
@@ -37,6 +61,13 @@ export const TopBarLayout = ({ pageComponent, isTopBarVisible = true }: TopBarLa
         <CreditCardModal />
         <CC />
         <KYC />
+
+        <NotificationModal
+          isOpen={isNotificationModalOpen}
+          isVerificationSuccess={isVerificationSuccess}
+          handleClose={handleCloseNotificationModal}
+          customMsg={customMsg}
+        />
       </div>
       <BottomBar />
     </>

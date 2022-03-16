@@ -26,6 +26,7 @@ export const useFundWallet = (open: boolean) => {
       encryptedData: data.encryptedData,
       cardId: id,
       size: deposit.depositSize,
+      redirectionUrl: window.location.href,
     });
   };
 
@@ -44,6 +45,14 @@ export const useFundWallet = (open: boolean) => {
       setError('An Error has ocurred');
     }
   }, [isError, isSuccess, depositData]);
+
+  useEffect(() => {
+    if (isSuccess && depositData.result?.redirectUrl3ds && depositData.result?.paymentId) {
+      const { redirectUrl3ds, paymentId } = depositData.result;
+
+      window.location.replace(`${redirectUrl3ds}?paymentId=${paymentId}`);
+    }
+  }, [isSuccess]);
 
   return {
     data,

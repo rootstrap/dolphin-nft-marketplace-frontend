@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { ArrowDropDownOutlined, ArrowDropUpOutlined } from '@material-ui/icons';
 import { ProfileContext } from '../ProfilePage';
@@ -39,31 +39,33 @@ export const MyCollectionItem = ({ name, image, index }: MyCollectionItemProps) 
 
       {isContentVisible && (
         <Grid container className={styles.myCollection__itemGrid}>
-          {nftAttributesFilteredByName.map(item => {
-            const isNftInArray = !!nftsWithAttributes.find(
-              ({ Athlete, Background, Collection, Signed, Sport, Tier }) =>
-                Athlete === item.Athlete &&
-                Background === item.Background &&
-                Collection === item.Collection &&
-                Signed === item.Signed &&
-                Sport === item.Sport &&
-                Tier === item.Tier
-            );
+          {React.Children.toArray(
+            nftAttributesFilteredByName.map(item => {
+              const isNftInArray = !!nftsWithAttributes.find(
+                ({ Athlete, Background, Collection, Signed, Sport, Tier }) =>
+                  Athlete === item.Athlete &&
+                  Background === item.Background &&
+                  Collection === item.Collection &&
+                  Signed === item.Signed &&
+                  Sport === item.Sport &&
+                  Tier === item.Tier
+              );
 
-            return (
-              <Grid item xs={4} sm={3} md={2} lg={2}>
-                <MyCollectionCard
-                  placeholderImage={image}
-                  Athlete={item.Athlete}
-                  Tier={item.Tier}
-                  Background={item.Background}
-                  Signed={item.Signed}
-                  isNftInArray={isNftInArray}
-                  imageUrl={item.imageUrl}
-                />
-              </Grid>
-            );
-          })}
+              return (
+                <Grid item xs={4} sm={3} md={2} lg={2}>
+                  <MyCollectionCard
+                    placeholderImage={image}
+                    Athlete={item.Athlete}
+                    Tier={item.Tier}
+                    Background={item.Background}
+                    Signed={item.Signed}
+                    isNftInArray={isNftInArray}
+                    imageUrl={item.imageUrl}
+                  />
+                </Grid>
+              );
+            })
+          )}
         </Grid>
       )}
     </div>

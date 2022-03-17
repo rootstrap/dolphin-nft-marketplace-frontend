@@ -50,7 +50,7 @@ export const TopBarLayout = ({ pageComponent, isTopBarVisible = true }: TopBarLa
   }, [verifyStatus]);
 
   useEffect(() => {
-    handleRedirection;
+    handleRedirection();
   }, [location]);
 
   return (

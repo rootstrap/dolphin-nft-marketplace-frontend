@@ -101,7 +101,7 @@
       "coinColumn": "Coin",
       "balanceColumn": "Balance",
       "availableBalanceColumn": "Available Balance",
-      "depositButton:": "Make a Deposit",
+      "depositButton": "Make a Deposit",
       "usdValueColumn": "USD Value"
     },
     "deposit": {

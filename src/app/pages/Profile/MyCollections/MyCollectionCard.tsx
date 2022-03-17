@@ -9,19 +9,11 @@ export const MyCollectionCard = ({
   Signed,
   isNftInArray,
   imageUrl,
-  placeholderImage,
 }: MyCollectionCardProps) => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
-  const [isImageLoading, setIsImageLoading] = useState(true);
 
   const handleMouseEnter = () => setIsDescriptionVisible(true);
   const handleMouseLeave = () => setIsDescriptionVisible(false);
-
-  const handleLoaginImage = () => {
-    setTimeout(() => {
-      setIsImageLoading(false);
-    }, 5000);
-  };
 
   return (
     <div
@@ -33,14 +25,7 @@ export const MyCollectionCard = ({
         src={imageUrl}
         alt={`${Athlete} ${Tier} ${Background} ${Signed}`}
         style={isNftInArray ? { filter: 'none' } : null}
-        onLoad={handleLoaginImage}
       />
-
-      {isImageLoading && (
-        <div className={isImageLoading && styles.myCollection__itemGridBlur}>
-          <img src={placeholderImage} alt={`${Athlete} ${Tier} ${Background} ${Signed}`} />
-        </div>
-      )}
 
       <div
         className={styles.myCollection__itemGridText}
@@ -60,5 +45,4 @@ interface MyCollectionCardProps {
   Signed: string;
   isNftInArray: boolean;
   imageUrl: string;
-  placeholderImage: string;
 }

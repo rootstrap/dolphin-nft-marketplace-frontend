@@ -23,6 +23,7 @@ export const Login = () => {
     error,
     isMfaRequired,
     setIsMfaRequired,
+    handleOpenForgotPassword,
   } = useLogin();
 
   const formToRender = isMfaRequired ? (
@@ -65,6 +66,11 @@ export const Login = () => {
             error={errors.password}
           />
         </Grid>
+
+        <Grid item xs={12}>
+          <Link onClick={handleOpenForgotPassword}>{t('login.forgotPassword.forgotPassword')}</Link>
+        </Grid>
+
         <Grid item xs={12} style={{ fontSize: '0.7rem' }}>
           This site is protected by reCAPTCHA and the Google
           <a href="https://policies.google.com/privacy"> Privacy Policy</a> and
@@ -76,7 +82,6 @@ export const Login = () => {
               {t('login.button')}
             </Button>
           </div>
-
           <div>
             <Typography>{t('login.signupMsg')}</Typography>
 

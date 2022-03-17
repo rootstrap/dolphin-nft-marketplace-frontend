@@ -292,7 +292,8 @@
     "error": {
       "systemError": "Something went wrong!",
       "invalidEmail": "Invalid email format",
-      "requiredPassword": "Password is required"
+      "requiredPassword": "Password is required",
+      "emailRequired": "Email is required"
     },
     "mfa": {
       "title": "Two-factor authentication required",
@@ -301,6 +302,11 @@
       "button": "Submit",
       "faqText": "Need help? Check out the ",
       "faq": "FAQs"
+    },
+    "forgotPassword": {
+      "forgotPassword": "Forgot Password?",
+      "sendPasswordEmail": "Send reset Email",
+      "successfulSentEmail": "Email has been successfully sent"
     }
   },
   "signup": {

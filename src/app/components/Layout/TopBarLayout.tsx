@@ -9,6 +9,7 @@ import { CC } from 'app/components/CC/CC';
 import { KYC } from 'app/components/KYC/KYC';
 import { useLoginStatusMutation } from 'app/services/user/UserService';
 import { Checkboxes } from 'app/components/Checkboxes/Checkboxes';
+import { ForgotPasswordModal } from 'app/components/ForgotPasswordModal/ForgotPasswordModal';
 import { useLocation } from 'react-router-dom';
 import { NotificationModal } from '../NotificationModal/NotificationModal';
 import styles from './TopBarLayout.module.scss';
@@ -61,6 +62,7 @@ export const TopBarLayout = ({ pageComponent, isTopBarVisible = true }: TopBarLa
         {pageComponent}
         <Login />
         <Signup />
+        <ForgotPasswordModal />
         <Checkboxes />
         <CreditCardModal />
         <CC />

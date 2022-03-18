@@ -4,13 +4,14 @@ import {
   useGetNftsByUserMutation,
   useGetUserTradesMutation,
 } from 'app/services/nft/NftService';
-import { NFT, Attributes } from 'app/interfaces/NFT/NFT';
+import { NFT, Attributes, FillsResult } from 'app/interfaces/NFT/NFT';
 
 export const useProfile = () => {
   const [getNftsByUser, { isLoading }] = useGetNftsByUserMutation();
   const [getHeroletesAttributes] = useGetHeroletesAttributesMutation();
-  const [getUserTrades, { data }] = useGetUserTradesMutation();
+  const [getUserTrades] = useGetUserTradesMutation();
   const [nfts, setNfts] = useState<NFT[]>([]);
+  const [userTrades, setUserTrades] = useState<FillsResult[]>([]);
   const [nftAttributes, setNftAttributes] = useState<Attributes[]>([]);
   const [NftsCount, setNftsCount] = useState<number>(0);
   const [pageCount, setPageCount] = useState<number>(0);
@@ -23,7 +24,7 @@ export const useProfile = () => {
       setNfts(response.data.nfts);
       setNftsCount(response.data.count);
     });
-    getUserTrades('200');
+    getUserTrades('200').then((response: any) => setUserTrades(response.data.result));
   }, [getHeroletesAttributes, getNftsByUser, getUserTrades]);
 
   useEffect(() => {
@@ -49,5 +50,6 @@ export const useProfile = () => {
     handlePageClick,
     pageCount,
     pageOffset,
+    userTrades,
   };
 };

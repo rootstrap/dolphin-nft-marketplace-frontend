@@ -14,7 +14,7 @@ const { Provider } = ProfileContext;
 
 const ProfilePage = () => {
   const t = useTranslation();
-  const { nfts, nftAttributes, isLoading, handlePageClick, pageCount, pageOffset } = useProfile();
+  const { nfts, nftAttributes, isLoading, handlePageClick, pageCount, pageOffset, userTrades } = useProfile();
 
   const tabs = [
     { content: <MyGallery />, tabName: t('profile.tabs.gallery') },

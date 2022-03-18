@@ -33,6 +33,9 @@ export const depositApi = api.injectEndpoints({
           encryptedData: deposit.encryptedData,
           keyId: deposit.keyId,
           size: deposit.size,
+          verify3d: true,
+          verificationFailureUrl3ds: `${deposit.redirectionUrl}?failure`,
+          verificationSuccessUrl3ds: `${deposit.redirectionUrl}?success`,
         },
       }),
     }),
@@ -105,6 +108,7 @@ interface InitiateDepositBody {
   encryptedData: string;
   keyId: string;
   size: number;
+  redirectionUrl: string;
 }
 
 interface ConvertBody {

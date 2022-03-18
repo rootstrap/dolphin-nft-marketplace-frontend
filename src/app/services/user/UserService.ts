@@ -87,6 +87,19 @@ export const authApi = api.injectEndpoints({
         },
       }),
     }),
+    changePassword: builder.mutation({
+      query: (changePasswordBody: changePasswordBody) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/users/public_change_password`,
+        method: 'POST',
+        body: {
+          email: changePasswordBody.email,
+          deviceId: changePasswordBody.deviceId,
+          captcha: {
+            recaptcha_challenge: changePasswordBody.recaptcha,
+          },
+        },
+      }),
+    }),
     setAgreeSweepstakes: builder.mutation({
       query: (userAgreeBody: UserAgreeBody) => ({
         url: endpoints.ELIGIBLE,
@@ -127,6 +140,12 @@ interface GoogleLoginBody {
 
 interface LogoutBody {
   email: string;
+}
+
+interface changePasswordBody {
+  email: string;
+  deviceId: string;
+  recaptcha: string;
 }
 
 interface KycBody {
@@ -170,6 +189,7 @@ export const {
   useKycMutation,
   useGetCountriesMutation,
   useGetSubregionsMutation,
+  useChangePasswordMutation,
   endpoints: {
     signup: { matchFulfilled: signupFulfiled },
     login: { matchFulfilled: loginFulfiled },

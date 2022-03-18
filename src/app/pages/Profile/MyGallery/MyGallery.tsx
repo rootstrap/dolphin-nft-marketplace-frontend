@@ -5,7 +5,7 @@ import { GalleryList } from './GalleryList';
 import styles from './MyGallery.module.scss';
 
 export const MyGallery = () => {
-  const { nfts, isLoading } = useContext(ProfileContext);
+  const { isLoading } = useContext(ProfileContext);
 
   if (isLoading)
     return (
@@ -16,7 +16,7 @@ export const MyGallery = () => {
 
   return (
     <div className={styles.myCollection}>
-      <GalleryList nfts={nfts} />
+      <GalleryList />
     </div>
   );
 };

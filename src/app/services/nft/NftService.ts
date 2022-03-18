@@ -28,12 +28,12 @@ export const nftApi = api.injectEndpoints({
       query: nftId => `${endpoints.NFT}?ftxId=${nftId}`,
       transformResponse: (data: NFT) => data,
     }),
-    getNftsByUser: builder.mutation<NFT[], any>({
+    getNftsByUser: builder.mutation<IGetNftByUserData, any>({
       query: ({ start, end }) => ({
         url: `${process.env.REACT_APP_FTX_API_URL}/nft/balances_page`,
         params: {
           startInclusive: start,
-          endInclusive: end,
+          endExclusive: end,
           sortFunc: 'offer_asc',
           nft_filter_string: JSON.stringify({
             nftAuctionFilter: 'all',
@@ -49,7 +49,7 @@ export const nftApi = api.injectEndpoints({
           ftxAuthorization: 'yes',
         },
       }),
-      transformResponse: (response: IGetNftByUserResponse) => response.result.nfts,
+      transformResponse: (response: IGetNftByUserResponse) => response.result,
     }),
     getNftsHeroletesSecondary: builder.mutation<HeroletesNftsResult, NftsHeroletesSecondaryParams>({
       query: (param: NftsHeroletesSecondaryParams) => {
@@ -185,12 +185,14 @@ export interface NftsHeroletesSecondaryParams {
   filters: any;
 }
 
+interface IGetNftByUserData {
+  count: number;
+  nfts: NFT[];
+}
+
 interface IGetNftByUserResponse {
   success: boolean;
-  result: {
-    count: number;
-    nfts: NFT[];
-  };
+  result: IGetNftByUserData;
 }
 
 interface IHeroletesNftsResponse {

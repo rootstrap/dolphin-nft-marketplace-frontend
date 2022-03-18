@@ -101,7 +101,7 @@
       "coinColumn": "Coin",
       "balanceColumn": "Balance",
       "availableBalanceColumn": "Available Balance",
-      "depositButton:": "Make a Deposit",
+      "depositButton": "Make a Deposit",
       "usdValueColumn": "USD Value"
     },
     "deposit": {
@@ -184,11 +184,11 @@
     "IRLCollectibles": {
       "title": "IRL",
       "teaser": "Collect a full Set of 16 collectibles from any one athlete and be entered to win one of the five Grand Prizes, including:",
-      "chrisMazdzerTeaser": "An ice luge ride with three- time winter competitor and medalist history-making",
-      "johnShusterTeaser": "A curling lesson from eight-time U.S. national champion and four-time winter competitor",
-      "kendallCoyneTeaser": "Signed ice hockey skates from two-time winter competitor and two-time medalist",
-      "tinaMazeTeaser": "A pair of Stöckli® skis from four-time medalist, four-time world title holder, and the world record holder",
-      "gusKenworthyTeaser": "A pair of SMITH® goggles, chosen by none other than two-time winter medalist",
+      "chrisMazdzerTeaser": "An ice luge ride with three- time winter competitor and medalist history-making.",
+      "johnShusterTeaser": "A curling lesson from eight-time U.S. national champion and four-time winter competitor.",
+      "kendallCoyneTeaser": "Signed ice hockey skates from two-time winter competitor and two-time medalist.",
+      "tinaMazeTeaser": "A pair of Stöckli® skis from four-time medalist, four-time world title holder, and the world record holder.",
+      "gusKenworthyTeaser": "A pair of SMITH® goggles, chosen by none other than two-time winter medalist.",
       "firstLegal": "NO PURCHASE NECESSARY. See ",
       "secondLegal": " for full details and how to mail-in free entry. Ends 03/20/22."
     },
@@ -292,7 +292,8 @@
     "error": {
       "systemError": "Something went wrong!",
       "invalidEmail": "Invalid email format",
-      "requiredPassword": "Password is required"
+      "requiredPassword": "Password is required",
+      "emailRequired": "Email is required"
     },
     "mfa": {
       "title": "Two-factor authentication required",
@@ -301,6 +302,11 @@
       "button": "Submit",
       "faqText": "Need help? Check out the ",
       "faq": "FAQs"
+    },
+    "forgotPassword": {
+      "forgotPassword": "Forgot Password?",
+      "sendPasswordEmail": "Send reset Email",
+      "successfulSentEmail": "Email has been successfully sent"
     }
   },
   "signup": {

@@ -6,7 +6,8 @@ import { MyGallery } from './MyGallery/MyGallery';
 import { MyCollections } from './MyCollections/MyCollections';
 import { UserBalance } from './UserBalance/UserBalance';
 import { useProfile } from './useProfile';
-import { NFT, Attributes } from '../../interfaces/NFT/NFT';
+import { NFT, Attributes, FillsResult } from 'app/interfaces/NFT/NFT';
+import { MyTrades } from './MyTrades/MyTrades';
 import useTranslation from 'app/hooks/useTranslation';
 
 export const ProfileContext = createContext({} as ProfileContextProps);
@@ -14,12 +15,13 @@ const { Provider } = ProfileContext;
 
 const ProfilePage = () => {
   const t = useTranslation();
-  const { nfts, nftAttributes, isLoading, handlePageClick, pageCount, pageOffset } = useProfile();
+  const { nfts, nftAttributes, isLoading, handlePageClick, pageCount, pageOffset, userTrades } = useProfile();
 
   const tabs = [
     { content: <MyGallery />, tabName: t('profile.tabs.gallery') },
     { content: <MyCollections />, tabName: t('profile.tabs.collection') },
     { content: <UserBalance />, tabName: t('profile.tabs.balances') },
+    { content: <MyTrades />, tabName: 'My Trades' },
   ];
 
   return (
@@ -33,6 +35,7 @@ const ProfilePage = () => {
             handlePageClick,
             pageCount,
             pageOffset,
+            userTrades,
           }}
         >
           <Main />
@@ -50,6 +53,7 @@ interface ProfileContextProps {
   handlePageClick: (event: any) => void;
   pageCount: number;
   pageOffset: number;
+  userTrades: FillsResult[];
 }
 
 export default ProfilePage;

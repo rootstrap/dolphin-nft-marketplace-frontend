@@ -1,0 +1,20 @@
+@import '/src/app/styles/base/settings';
+
+.myTrades {
+  margin: 2rem 0;
+  padding: 1rem;
+
+  &__header {
+    background-color: $black;
+    padding: 1rem;
+  }
+
+  &__content {
+    background-color: $background-promotion;
+    padding: 1rem;
+
+    &Row {
+      border-bottom: 1px solid $darkest-grey;
+    }
+  }
+}

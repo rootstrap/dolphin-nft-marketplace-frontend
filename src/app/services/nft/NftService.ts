@@ -1,6 +1,6 @@
 import { endpoints } from 'app/constants/endpoints';
 import { CreaturesPackInfo } from 'app/interfaces/NFT/CreaturesNFT';
-import { NFT, Attributes } from 'app/interfaces/NFT/NFT';
+import { NFT, Attributes, FillsResult, IFillsResponse } from 'app/interfaces/NFT/NFT';
 import { INftTrades, INftTradesResult } from 'app/interfaces/NFT/NFTCommons';
 import { api } from '../Api';
 
@@ -141,6 +141,16 @@ export const nftApi = api.injectEndpoints({
     getHeroletesAttributes: builder.mutation<Attributes[], void>({
       query: () => `${endpoints.HEROLETES_ATTRIBUTES}`,
     }),
+    getUserTrades: builder.mutation<FillsResult, string>({
+      query: (limit: string) => ({
+        url: `${process.env.REACT_APP_FTX_API_URL}/nft/fills?limit=${limit}`,
+        method: 'GET',
+        headers: {
+          ftxAuthorization: 'yes',
+        },
+        transformResponse: (data: IFillsResponse) => data.result,
+      }),
+    }),
   }),
   overrideExisting: true,
 });
@@ -159,6 +169,7 @@ export const {
   useSellNftMutation,
   useGetNftTradeHistoryMutation,
   useGetHeroletesAttributesMutation,
+  useGetUserTradesMutation,
   endpoints: {
     getNftsSecondary: { matchFulfilled: getNftsSecondaryFulfiled },
     getNftsPrimary: { matchFulfilled: getNftsPrimaryFulfiled },

@@ -1,24 +1,35 @@
-import { useEffect, useState } from 'react';
-import { useGetHeroletesAttributesMutation, useGetNftsByUserMutation } from 'app/services/nft/NftService';
-import { NFT, Attributes } from 'app/interfaces/NFT/NFT';
+import { useEffect, useState, useCallback } from 'react';
+import {
+  useGetHeroletesAttributesMutation,
+  useGetNftsByUserMutation,
+  useGetUserTradesMutation,
+} from 'app/services/nft/NftService';
+import { NFT, Attributes, FillsResult } from 'app/interfaces/NFT/NFT';
 
 export const useProfile = () => {
   const [getNftsByUser, { isLoading }] = useGetNftsByUserMutation();
   const [getHeroletesAttributes] = useGetHeroletesAttributesMutation();
+  const [getUserTrades] = useGetUserTradesMutation();
   const [nfts, setNfts] = useState<NFT[]>([]);
+  const [userTrades, setUserTrades] = useState<FillsResult[]>([]);
   const [nftAttributes, setNftAttributes] = useState<Attributes[]>([]);
   const [NftsCount, setNftsCount] = useState<number>(0);
   const [pageCount, setPageCount] = useState<number>(0);
   const [pageOffset, setPageOffset] = useState<number>(0);
   const itemsPerPage = 6;
 
-  useEffect(() => {
+  const loadData = useCallback(() => {
     getHeroletesAttributes().then((response: any) => setNftAttributes(response.data));
     getNftsByUser({ start: 0, end: itemsPerPage }).then((response: any) => {
       setNfts(response.data.nfts);
       setNftsCount(response.data.count);
     });
-  }, [getHeroletesAttributes, getNftsByUser]);
+    getUserTrades('200').then((response: any) => setUserTrades(response.data.result));
+  }, [getHeroletesAttributes, getNftsByUser, getUserTrades]);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   useEffect(() => {
     setPageCount(Math.ceil(NftsCount / itemsPerPage));
@@ -39,5 +50,6 @@ export const useProfile = () => {
     handlePageClick,
     pageCount,
     pageOffset,
+    userTrades,
   };
 };

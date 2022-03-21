@@ -128,7 +128,7 @@
     "myCollections": {
       "title": "My Collections",
       "subtitle": "Heroletes Collection",
-      "infoText": "Digital collectibles that bring together the worlds of comic books and groundbreaking athletes. From the imagination of former Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites and build your SuperTeam.",
+      "infoText": "Digital collectibles that bring together the worlds of comic books and groundbreaking athletes. From the imagination of former Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites, build your SuperTeam, and unlock IRLs along the way",
       "redeemButton": "Redeem"
     }
   },
@@ -158,7 +158,7 @@
   },
   "heroletes": {
     "title": "Heroletes",
-    "teaser": "Digital collectibles that bring together the worlds of comic books and groundbreaking athletes. From the imagination of former Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites and build your SuperTeam.",
+    "teaser": "Digital collectibles that bring together the worlds of comic books and groundbreaking athletes. From the imagination of former Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites, build your SuperTeam, and unlock IRLs along the way",
     "showMoreButton": "Show more",
     "showLessButton": "Show less",
     "marketplaceActionButton": "Marketplace →",
@@ -177,20 +177,20 @@
       },
       "thirdItem": {
         "teaser": "Collect and earn",
-        "title": "Enter the Sweepstakes",
-        "description": "Enter the Heroletes Sweepstakes and you could win real life experiences or digital designs that you can’t find anywhere else."
+        "title": "Unlock IRLs - Coming Soon",
+        "description": "The more you collect, the more you can earn real life experiences and digital designs that you can’t find anywhere else."
       }
     },
     "IRLCollectibles": {
       "title": "IRL",
-      "teaser": "Collect a full Set of 16 collectibles from any one athlete and be entered to win one of the five Grand Prizes, including:",
-      "chrisMazdzerTeaser": "An ice luge ride with three- time winter competitor and medalist history-making.",
-      "johnShusterTeaser": "A curling lesson from eight-time U.S. national champion and four-time winter competitor.",
-      "kendallCoyneTeaser": "Signed ice hockey skates from two-time winter competitor and two-time medalist.",
+      "teaser": "From once-in-a-lifetime experiences to signed memorabilia, these limited-edition IRLs are handpicked by the athletes themselves and will be available to Heroletes collectors soon",
+      "chrisMazdzerTeaser": "An ice luge ride with four-time winter competitor and history-making winter medalist.",
+      "johnShusterTeaser": "A curling lesson from eight-time U.S. national champion and five-time winter competitor.",
+      "kendallCoyneTeaser": "Signed ice hockey skates from three-time winter competitor and three-time medalist.",
       "tinaMazeTeaser": "A pair of Stöckli® skis from four-time medalist, four-time world title holder, and the world record holder.",
-      "gusKenworthyTeaser": "A pair of SMITH® goggles, chosen by none other than two-time winter medalist.",
-      "firstLegal": "NO PURCHASE NECESSARY. See ",
-      "secondLegal": " for full details and how to mail-in free entry. Ends 03/20/22."
+      "gusKenworthyTeaser": "A pair of SMITH® goggles, chosen by none other than the three-time winter medalist.",
+      "firstLegal": "Follow us on ",
+      "secondLegal": " for announcements on new IRLs and how to unlock"
     },
     "carousel": {
       "featured": "Featured Collection",
@@ -227,7 +227,7 @@
     "marketplace": {
       "title": "Heroletes",
       "subtitle": "Marketplace",
-      "teaser": "Digital collectibles that bring together the worlds of comic books and groundbreaking athletes. From the imagination of former Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites and build your SuperTeam.",
+      "teaser": "Digital collectibles that bring together the worlds of comic books and groundbreaking athletes. From the imagination of former Marvel designer Anthony Francisco, your favorite athletes from a range of sports are reimagined as their very own superhero character. Collect your favorites, build your SuperTeam, and unlock IRLs along the way",
       "item": {
         "actionButton": "Get it now!"
       }

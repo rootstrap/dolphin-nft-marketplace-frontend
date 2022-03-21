@@ -4,7 +4,7 @@ import GusKenworthy from 'app/assets/IRL/GusKenworthy.png';
 import JohnShuster from 'app/assets/IRL/JohnShuster.png';
 import KendallCoyne from 'app/assets/IRL/KendallCoyne.png';
 import TinaMaze from 'app/assets/IRL/TinaMaze.png';
-import { dolphinServiceLinks } from 'app/constants/constants';
+import { socialMediaLinks } from 'app/constants/constants';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './IRLCollectibles.module.scss';
 
@@ -50,7 +50,9 @@ export const IRLCollectibles = () => {
       </Grid>
       <Typography variant="subtitle1" className={styles.IRLCollectibles__rules}>
         {t('heroletes.IRLCollectibles.firstLegal')}
-        <a href={dolphinServiceLinks.sweepstakesRules}>Official Rules</a>
+        <a href={socialMediaLinks.dolphinTwitter} target="_blank">
+          Twitter
+        </a>
         {t('heroletes.IRLCollectibles.secondLegal')}
       </Typography>
     </div>

@@ -50,6 +50,7 @@ export const socialMediaLinks = {
   facebook: 'https://www.facebook.com/creaturechroniclesnft',
   instagram: 'https://www.instagram.com/creaturechronicles_',
   twitter: 'https://twitter.com/creature_chron',
+  dolphinTwitter: 'https://twitter.com/dolphin_mtkpl',
   discord: 'https://discord.com/invite/CRD4t276Vj',
   planetary: 'https://www.planetary.org/',
 };

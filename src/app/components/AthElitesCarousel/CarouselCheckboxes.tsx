@@ -48,14 +48,6 @@ export const CarouselCheckboxes = ({
               <a href={dolphinServiceLinks.termOfService}>Terms of Service</a>
             </Typography>
           </div>
-
-          <div className={styles.carousel__buyCheckboxInfo}>
-            <Checkbox checked={isEligible} onChange={handleAgreeSweepstakes} disabled={!isAuthenticated} />
-            <Typography variant="body2">
-              {t('heroletes.carousel.secondCheck')}{' '}
-              <a href={dolphinServiceLinks.sweepstakesRules}>Official Rules</a>
-            </Typography>
-          </div>
         </div>
 
         <div className={styles.carousel__buyArticle}>

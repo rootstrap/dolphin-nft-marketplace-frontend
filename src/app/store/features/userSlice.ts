@@ -32,6 +32,8 @@ const initialState: UserState = {
     irlEligible: true,
     creditCardId: 0,
     id: 0,
+    mfa: '',
+    mfaRequired: '',
   },
   token: '',
   tokenFtx: '',
@@ -83,6 +85,8 @@ const userSlice = createSlice({
     builder.addMatcher(loginStatusFulfiled, (state, { payload }) => {
       state.isAuthenticated = payload.loggedIn;
       state.user.kyc1ed = payload.user?.kycLevel && Boolean(payload.user.kycLevel);
+      state.user.mfaRequired = payload.user?.mfaRequired;
+      state.user.mfa = payload.user?.mfa;
     });
     builder.addMatcher(logoutFulfiled, state => {
       state.isAuthenticated = false;
@@ -131,6 +135,8 @@ interface User {
   kyc2ed: boolean;
   creditCardId: number;
   id: number;
+  mfaRequired: string;
+  mfa: string;
 }
 
 interface UserState {

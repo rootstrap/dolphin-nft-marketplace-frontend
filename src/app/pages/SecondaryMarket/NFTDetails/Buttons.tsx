@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Button, TextField, Typography } from '@material-ui/core';
+import { Button, Link as MuiLink, TextField, Typography } from '@material-ui/core';
 import { CustomLoader } from 'app/components/CustomLoader/CustomLoader';
 import { NFTDetailsContext } from './NFTDetails';
 import { Link } from 'react-router-dom';
@@ -17,6 +17,7 @@ export const Buttons = () => {
     nft,
     handleSellNft,
     cancelOfferNft,
+    setIsWithdrawModalOpen,
   } = useContext(NFTDetailsContext);
   const t = useTranslation();
 
@@ -27,6 +28,7 @@ export const Buttons = () => {
           {t('nft.sellNft.cancelSellButton')}
         </Typography>
       )}
+      <MuiLink onClick={() => setIsWithdrawModalOpen(true)}> {t('nft.sellNft.withdrawNft')}</MuiLink>
       {isInputVisible ? (
         <div className={styles.secondaryMarket__buttons}>
           {isSellNftLoading ? (
@@ -59,7 +61,6 @@ export const Buttons = () => {
               {nft?.offerPrice ? t('nft.sellNft.modifyPriceButton') : t('nft.sellNft.saleButton')}
             </Button>
           </div>
-
           <div>
             <Link to={routesPaths.profile}>
               <Button fullWidth>{t('nft.sellNft.collectionButton')}</Button>

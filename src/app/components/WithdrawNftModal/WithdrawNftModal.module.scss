@@ -1,0 +1,22 @@
+.withdrawNftModal {
+  padding: 1rem;
+
+  &__address {
+    margin: 1rem 0;
+  }
+
+  &__code {
+    display: flex;
+    justify-content: space-between;
+
+    &Input {
+      margin: 1rem 0;
+      flex-grow: 0;
+    }
+
+    &Button {
+      align-self: flex-end;
+      margin-bottom: 1.5rem;
+    }
+  }
+}

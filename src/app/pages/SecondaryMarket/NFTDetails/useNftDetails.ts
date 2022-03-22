@@ -17,6 +17,7 @@ export const useNftDetails = (nftId: string) => {
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [isPriceInUsd, setIsPriceInUsd] = useState(true);
   const [sellError, setSellError] = useState('');
+  const [isWithdrawModalOpen, setIsWithdrawModalOpen] = useState(false);
 
   const [getNftById, { isLoading }] = useGetNftByIdMutation();
   const [getNftTrades, { isLoading: isTradeHistoryLoading }] = useGetNftTradeHistoryMutation();
@@ -76,19 +77,21 @@ export const useNftDetails = (nftId: string) => {
   }, [isPriceInUsd, getMarket, nft]);
 
   return {
-    nft,
-    isLoading,
-    isInputVisible,
-    setIsInputVisible,
-    isSellNftLoading,
-    nftPrice,
-    setNftPrice,
-    handleSellNft,
     cancelOfferNft,
-    sellError,
-    isTradeHistoryLoading,
-    nftTradeHistory,
+    handleSellNft,
+    isInputVisible,
+    isLoading,
     isPriceInUsd,
+    isSellNftLoading,
+    isTradeHistoryLoading,
+    isWithdrawModalOpen,
+    nft,
+    nftPrice,
+    nftTradeHistory,
     priceInUsd,
+    sellError,
+    setIsInputVisible,
+    setIsWithdrawModalOpen,
+    setNftPrice,
   };
 };

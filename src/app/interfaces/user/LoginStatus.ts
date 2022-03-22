@@ -46,6 +46,7 @@ export interface Account {
 }
 
 export interface User {
+  mfaRequired: string;
   hkClientType: null;
   agreedToTrumpExtension: null;
   ukClientTypeResponse: null;

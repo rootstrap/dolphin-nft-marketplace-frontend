@@ -47,7 +47,7 @@ export const MyCollectionItem = ({ name, image, index }: MyCollectionItemProps) 
               );
 
               return (
-                <Grid item xs={4} sm={3} md={2} lg={2}>
+                <Grid item xs={6} sm={4} md={3} lg={2}>
                   <MyCollectionCard
                     Athlete={item.Athlete}
                     Tier={item.Tier}

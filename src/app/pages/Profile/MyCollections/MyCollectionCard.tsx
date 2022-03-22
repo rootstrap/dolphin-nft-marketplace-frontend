@@ -31,8 +31,8 @@ export const MyCollectionCard = ({
         className={styles.myCollection__itemGridText}
         style={{ visibility: isDescriptionVisible ? 'initial' : 'hidden' }}
       >
-        <Typography variant="subtitle1">{Tier}</Typography>
-        <Typography variant="subtitle1">{Background}</Typography>
+        <Typography variant="subtitle1">Tier: {Tier}</Typography>
+        <Typography variant="subtitle1">Background: {Background}</Typography>
       </div>
     </div>
   );

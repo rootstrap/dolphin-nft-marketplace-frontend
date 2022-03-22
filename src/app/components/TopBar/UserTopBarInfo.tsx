@@ -6,11 +6,13 @@ import { useRedirection } from 'app/hooks/useRedirection';
 import routesPaths from 'app/constants/routesPath';
 import useTranslation from 'app/hooks/useTranslation';
 import styles from './TopBar.module.scss';
+import { useResponsive } from 'app/hooks/useResponsive';
 
 export const UserTopBarInfo = () => {
   const t = useTranslation();
   const location = useLocation();
   const { isCreaturesUser } = useRedirection();
+  const { isMobileView } = useResponsive();
   const {
     isAuthenticated,
     setCreditCardModalIsOpen,
@@ -40,7 +42,10 @@ export const UserTopBarInfo = () => {
           </Link>
         </div>
       ) : (
-        <div className={styles.topBar__itemButton}>
+        <div
+          className={styles.topBar__itemButton}
+          style={{ display: 'flex', flexDirection: isMobileView ? 'column' : 'row' }}
+        >
           <Button onClick={() => setSignupModalIsOpen(true)}>{t('global.signup')} </Button>
           {isCreaturesUser ? (
             <>

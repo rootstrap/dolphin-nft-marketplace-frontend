@@ -9,32 +9,29 @@ export const MyTradesHeader = () => {
     <Grid container className={styles.myTrades__header}>
       {isMobileView && !isTabletView ? (
         <>
-          <Grid item xs={6} sm={6} md={4} lg={4}>
+          <Grid item xs={7} sm={6} md={4} lg={4}>
             <Typography variant="h6">NFT</Typography>
           </Grid>
-          <Grid item xs={4} sm={4} md={2} lg={2}>
+          <Grid item xs={3} sm={4} md={2} lg={2}>
             <Typography variant="h6">Price</Typography>
           </Grid>
           <Grid item xs={2} sm={2} md={2} lg={2}>
-            <Typography variant="h6">Side</Typography>
+            <Typography variant="h6">Type</Typography>
           </Grid>
         </>
       ) : (
         <>
-          <Grid item sm={2} md={2} lg={2}>
+          <Grid item sm={2} md={2} lg={3}>
             <Typography variant="h6">Time</Typography>
           </Grid>
-          <Grid item sm={2} md={4} lg={4}>
+          <Grid item sm={2} md={4} lg={5}>
             <Typography variant="h6">NFT</Typography>
           </Grid>
           <Grid item sm={2} md={2} lg={2}>
             <Typography variant="h6">Price</Typography>
           </Grid>
           <Grid item sm={2} md={2} lg={2}>
-            <Typography variant="h6">Side</Typography>
-          </Grid>
-          <Grid item sm={2} md={2} lg={2}>
-            <Typography variant="h6">Currency</Typography>
+            <Typography variant="h6">Type</Typography>
           </Grid>
         </>
       )}

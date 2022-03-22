@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { ProfileContext } from '../ProfilePage';
 import { MyTradesHeader } from './MyTradesHeader';
-import styles from './MyTrades.module.scss';
 import { MyTradesRow } from './MyTradesRow';
+import styles from './MyTrades.module.scss';
 
 export const MyTrades = () => {
   const { userTrades } = useContext(ProfileContext);

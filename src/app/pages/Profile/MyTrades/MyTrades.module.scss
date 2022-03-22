@@ -13,8 +13,16 @@
     background-color: $background-promotion;
     padding: 1rem;
 
+    &:hover {
+      color: $primary;
+    }
+
     &Row {
       border-bottom: 1px solid $darkest-grey;
     }
+  }
+
+  a {
+    color: white;
   }
 }

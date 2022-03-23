@@ -55,6 +55,9 @@ export const MobileTopBar = () => {
               FAQs
             </a>
           </MenuItem>
+          <MenuItem key="FAQs" onClick={handleClose} className={styles.mobileTopBar__menuItem}>
+            <UserTopBarInfo />
+          </MenuItem>
           {dropDownListCategories.map(category => (
             <MenuItem
               key={category.key}
@@ -66,10 +69,6 @@ export const MobileTopBar = () => {
             </MenuItem>
           ))}
         </Menu>
-      </div>
-
-      <div className={styles.mobileTopBar__user}>
-        <UserTopBarInfo />
       </div>
     </div>
   );

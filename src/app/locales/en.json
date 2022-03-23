@@ -267,13 +267,23 @@
       "issuer": "Issuer: ",
       "price": "Price: ",
       "edition": "Edition:",
-      "totalEditions": "Total editions:"
+      "totalEditions": "Total editions:",
+      "withdrawNft": "Withdraw NFT to Solana Wallet"
     },
     "tradeHistory": {
       "title": "Recent sales history",
       "date": "Date",
       "currency": "Currency",
       "price": "Price"
+    },
+    "withdrawNft": {
+      "address": "SOL Address",
+      "code": "2FA Code",
+      "withdraw": "Withdraw",
+      "addressError": "A wallet address is required",
+      "codeError": "2FA code required",
+      "successWithdraw": "Withdraw successful",
+      "failedWithdraw": "Withdraw failed"
     }
   },
   "peers": {

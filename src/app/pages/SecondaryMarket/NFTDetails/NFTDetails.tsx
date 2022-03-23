@@ -4,6 +4,7 @@ import { useNftDetails } from './useNftDetails';
 import { CustomLoader } from 'app/components/CustomLoader/CustomLoader';
 import styles from './NftDetails.module.scss';
 import { INftTradesResult } from 'app/interfaces/NFT/NFTCommons';
+import { WithdrawNftModal } from 'app/components/WithdrawNftModal/WithdrawNftModal';
 
 export const NFTDetailsContext = createContext({} as NftDetailsContextProps);
 const { Provider } = NFTDetailsContext;
@@ -24,6 +25,8 @@ export const NFTDetails = ({ children, nftId }: NFTDetailsProps) => {
     nftTradeHistory,
     isPriceInUsd,
     priceInUsd,
+    isWithdrawModalOpen,
+    setIsWithdrawModalOpen,
   } = useNftDetails(nftId);
 
   return (
@@ -43,10 +46,23 @@ export const NFTDetails = ({ children, nftId }: NFTDetailsProps) => {
         nftTradeHistory,
         isPriceInUsd,
         priceInUsd,
+        setIsWithdrawModalOpen,
       }}
     >
       <div className={styles.secondaryMarket}>
-        {isLoading || isSellNftLoading ? <CustomLoader /> : children}
+        {isLoading || isSellNftLoading ? (
+          <CustomLoader />
+        ) : (
+          <>
+            {children}
+            <WithdrawNftModal
+              handleClose={() => setIsWithdrawModalOpen(false)}
+              id={nftId}
+              title={nft?.name}
+              withdrawModalIsOpen={isWithdrawModalOpen}
+            />
+          </>
+        )}
       </div>
     </Provider>
   );
@@ -72,4 +88,5 @@ interface NftDetailsContextProps {
   nftTradeHistory: INftTradesResult[];
   isPriceInUsd: boolean;
   priceInUsd: number | null;
+  setIsWithdrawModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

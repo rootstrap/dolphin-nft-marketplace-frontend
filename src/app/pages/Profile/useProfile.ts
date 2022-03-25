@@ -37,8 +37,8 @@ export const useProfile = () => {
   const schema = z.object({
     firstName: z.string().min(1),
     lastName: z.string().min(1),
-    twitterUrl: z.string().min(1),
-    discordUrl: z.string().min(1),
+    twitterUrl: z.string(),
+    discordUrl: z.string(),
     avatarImg: z.string().min(1),
   });
 

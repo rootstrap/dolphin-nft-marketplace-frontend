@@ -32,6 +32,10 @@ const initialState: UserState = {
     irlEligible: true,
     creditCardId: 0,
     id: 0,
+    twitterUrl: '',
+    discordUrl: '',
+    avatarImg: '',
+    createdAt: '',
   },
   token: '',
   tokenFtx: '',
@@ -131,6 +135,10 @@ interface User {
   kyc2ed: boolean;
   creditCardId: number;
   id: number;
+  twitterUrl: string;
+  discordUrl: string;
+  avatarImg: string;
+  createdAt: string;
 }
 
 interface UserState {

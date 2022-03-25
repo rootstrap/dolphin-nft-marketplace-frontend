@@ -1,0 +1,43 @@
+@import '/src/app/styles/base/settings';
+
+.edit {
+  padding: 1rem;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    display: flex;
+    margin-top: 0.5rem;
+    justify-content: center;
+
+    &Field {
+      padding: 0.5rem;
+    }
+  }
+
+  &__avatars {
+    padding: 1rem;
+    overflow-y: scroll;
+    height: 15rem;
+    margin-top: 1rem;
+
+    img {
+      cursor: pointer;
+      width: 100%;
+      padding: 0.2rem;
+    }
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-around;
+  }
+}

@@ -3,21 +3,43 @@
 .main {
   width: 100%;
   background-color: $background-promotion;
-  display: flex;
-  justify-content: center;
   text-align: center;
+  padding: 2rem;
+  position: relative;
 
-  &__container {
-    padding: 4rem;
-    &Text {
-      margin-top: 1rem;
-    }
+  &__img {
+    position: relative;
+    bottom: 3rem;
+  }
 
-    &Social {
+  &__text {
+    margin-top: 1rem;
+  }
+
+  &__social {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+
+    &Container {
       display: flex;
       justify-content: space-evenly;
-      margin-top: 1rem;
-      color: $primary;
+      width: 20%;
+    }
+  }
+
+  &__edit {
+    color: $primary;
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    &Container {
+      display: flex;
+      cursor: pointer;
+      justify-content: space-between;
+      vertical-align: center;
     }
   }
 }

@@ -37,6 +37,8 @@ const initialState: UserState = {
     discordUrl: '',
     avatarImg: '',
     createdAt: '',
+    mfa: '',
+    mfaRequired: '',
   },
   token: '',
   tokenFtx: '',
@@ -90,6 +92,8 @@ const userSlice = createSlice({
     builder.addMatcher(loginStatusFulfiled, (state, { payload }) => {
       state.isAuthenticated = payload.loggedIn;
       state.user.kyc1ed = payload.user?.kycLevel && Boolean(payload.user.kycLevel);
+      state.user.mfaRequired = payload.user?.mfaRequired;
+      state.user.mfa = payload.user?.mfa;
     });
     builder.addMatcher(logoutFulfiled, state => {
       state.isAuthenticated = false;
@@ -149,6 +153,8 @@ export interface User {
   discordUrl: string;
   avatarImg: string;
   createdAt: string;
+  mfaRequired: string;
+  mfa: string;
 }
 
 interface Avatars {

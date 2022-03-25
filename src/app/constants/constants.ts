@@ -68,6 +68,8 @@ export const helpLinks = {
   bankAccount:
     'https://help.ftx.us/hc/en-us/articles/360048573453-How-to-Deposit-via-Bank-Transfer-ACH-Using-Bank-Login-Details',
   cryptoWallet: 'https://help.ftx.us/hc/en-us/articles/4408515463703-How-to-Deposit-Crypto',
+  mfaHelp:
+    'https://help.ftx.com/hc/en-us/articles/360034160512-How-to-Change-Disable-Two-Factor-Authentications-2FA-',
 };
 
 export const PASSWORD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;

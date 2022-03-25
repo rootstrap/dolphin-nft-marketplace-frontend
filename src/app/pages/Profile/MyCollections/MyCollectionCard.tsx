@@ -4,11 +4,12 @@ import styles from './MyCollection.module.scss';
 
 export const MyCollectionCard = ({
   Athlete,
-  Tier,
   Background,
-  Signed,
-  isNftInArray,
   imageUrl,
+  isNftInArray,
+  Signed,
+  Sport,
+  Tier,
 }: MyCollectionCardProps) => {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
 
@@ -31,6 +32,8 @@ export const MyCollectionCard = ({
         className={styles.myCollection__itemGridText}
         style={{ visibility: isDescriptionVisible ? 'initial' : 'hidden' }}
       >
+        <Typography variant="subtitle1">Athlete: {Athlete}</Typography>
+        <Typography variant="subtitle1">Sport: {Sport}</Typography>
         <Typography variant="subtitle1">Tier: {Tier}</Typography>
         <Typography variant="subtitle1">Background: {Background}</Typography>
       </div>
@@ -40,9 +43,10 @@ export const MyCollectionCard = ({
 
 interface MyCollectionCardProps {
   Athlete: string;
-  Tier: string;
   Background: string;
-  Signed: string;
-  isNftInArray: boolean;
   imageUrl: string;
+  isNftInArray: boolean;
+  Signed: string;
+  Sport: string;
+  Tier: string;
 }

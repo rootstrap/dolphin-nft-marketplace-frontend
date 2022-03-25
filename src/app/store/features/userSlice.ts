@@ -17,6 +17,7 @@ import {
   loginStatusFulfiled,
   googleLoginFulfiled,
   setAgreeSweepstakesFulfiled,
+  editProfileFulfiled,
 } from 'app/services/user/UserService';
 
 const initialState: UserState = {
@@ -32,10 +33,17 @@ const initialState: UserState = {
     irlEligible: true,
     creditCardId: 0,
     id: 0,
+    twitterUrl: '',
+    discordUrl: '',
+    avatarImg: '',
+    createdAt: '',
+    mfa: '',
+    mfaRequired: '',
   },
   token: '',
   tokenFtx: '',
   isAuthenticated: false,
+  avatars: [{ alt: '', src: '' }],
 };
 
 const userSlice = createSlice({
@@ -63,8 +71,9 @@ const userSlice = createSlice({
         state.tokenFtx = token;
       }
     );
-    builder.addMatcher(loginFulfiled, (state, { payload: { token, user } }) => {
+    builder.addMatcher(loginFulfiled, (state, { payload: { token, user, avatars } }) => {
       state.token = token;
+      state.avatars = avatars;
       state.user = { ...state.user, ...user };
     });
     builder.addMatcher(
@@ -83,6 +92,8 @@ const userSlice = createSlice({
     builder.addMatcher(loginStatusFulfiled, (state, { payload }) => {
       state.isAuthenticated = payload.loggedIn;
       state.user.kyc1ed = payload.user?.kycLevel && Boolean(payload.user.kycLevel);
+      state.user.mfaRequired = payload.user?.mfaRequired;
+      state.user.mfa = payload.user?.mfa;
     });
     builder.addMatcher(logoutFulfiled, state => {
       state.isAuthenticated = false;
@@ -116,10 +127,17 @@ const userSlice = createSlice({
     builder.addMatcher(googleLoginFulfiled, (state, { payload }) => {
       state.tokenFtx = payload.token;
     });
+    builder.addMatcher(editProfileFulfiled, (state, { payload }) => {
+      state.user.avatarImg = payload.avatarImg;
+      state.user.firstName = payload.firstName;
+      state.user.lastName = payload.lastName;
+      state.user.twitterUrl = payload.twitterUrl;
+      state.user.discordUrl = payload.discordUrl;
+    });
   },
 });
 
-interface User {
+export interface User {
   fullName: string;
   country: string;
   province: string;
@@ -131,6 +149,17 @@ interface User {
   kyc2ed: boolean;
   creditCardId: number;
   id: number;
+  twitterUrl: string;
+  discordUrl: string;
+  avatarImg: string;
+  createdAt: string;
+  mfaRequired: string;
+  mfa: string;
+}
+
+interface Avatars {
+  alt: string;
+  src: string;
 }
 
 interface UserState {
@@ -138,6 +167,7 @@ interface UserState {
   token: string;
   tokenFtx: string;
   isAuthenticated: boolean;
+  avatars: Avatars[];
 }
 
 export default userSlice.reducer;

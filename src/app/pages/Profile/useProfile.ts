@@ -5,18 +5,65 @@ import {
   useGetUserTradesMutation,
 } from 'app/services/nft/NftService';
 import { NFT, Attributes, FillsResult } from 'app/interfaces/NFT/NFT';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { useAppSelector } from 'app/hooks/reduxHooks';
+import { useEditProfileMutation } from 'app/services/user/UserService';
+
+export interface FormValues {
+  firstName: string;
+  lastName: string;
+  twitterUrl: string;
+  discordUrl: string;
+  avatarImg: string;
+}
 
 export const useProfile = () => {
+  const { user } = useAppSelector(state => state.user);
   const [getNftsByUser, { isLoading }] = useGetNftsByUserMutation();
   const [getHeroletesAttributes] = useGetHeroletesAttributesMutation();
   const [getUserTrades] = useGetUserTradesMutation();
+  const [editProfile, { isLoading: isEditProfileLoading }] = useEditProfileMutation();
   const [nfts, setNfts] = useState<NFT[]>([]);
   const [userTrades, setUserTrades] = useState<FillsResult[]>([]);
   const [nftAttributes, setNftAttributes] = useState<Attributes[]>([]);
   const [NftsCount, setNftsCount] = useState<number>(0);
   const [pageCount, setPageCount] = useState<number>(0);
   const [pageOffset, setPageOffset] = useState<number>(0);
+  const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
   const itemsPerPage = 6;
+
+  const schema = z.object({
+    firstName: z.string().min(1),
+    lastName: z.string().min(1),
+    twitterUrl: z.string(),
+    discordUrl: z.string(),
+    avatarImg: z.string().min(1),
+  });
+
+  const {
+    clearErrors,
+    formState: { errors },
+    handleSubmit,
+    register,
+    reset,
+    setValue,
+  } = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      twitterUrl: user.twitterUrl,
+      discordUrl: user.discordUrl,
+      avatarImg: user.avatarImg,
+    },
+  });
+
+  const onSubmit: SubmitHandler<FormValues> = async data => {
+    editProfile(data);
+    handleCloseEditProfile();
+  };
 
   const loadData = useCallback(() => {
     getHeroletesAttributes().then((response: any) => setNftAttributes(response.data));
@@ -43,13 +90,31 @@ export const useProfile = () => {
     }).then((response: any) => setNfts(response.data.nfts));
   };
 
+  const handleOpenEditProfile = () => setIsEditProfileOpen(true);
+
+  const handleCloseEditProfile = () => {
+    clearErrors();
+    reset();
+    setIsEditProfileOpen(false);
+  };
+
   return {
-    nfts,
-    nftAttributes,
-    isLoading,
+    errors,
+    handleCloseEditProfile,
+    handleOpenEditProfile,
     handlePageClick,
+    handleSubmit,
+    isEditProfileLoading,
+    isEditProfileOpen,
+    isLoading,
+    nftAttributes,
+    nfts,
+    onSubmit,
     pageCount,
     pageOffset,
+    register,
+    setValue,
+    user,
     userTrades,
   };
 };

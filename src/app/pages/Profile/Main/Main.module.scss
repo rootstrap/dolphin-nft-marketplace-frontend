@@ -5,6 +5,7 @@
   background-color: $background-promotion;
   text-align: center;
   padding: 2rem;
+  position: relative;
 
   &__img {
     position: relative;
@@ -24,6 +25,21 @@
       display: flex;
       justify-content: space-evenly;
       width: 20%;
+    }
+  }
+
+  &__edit {
+    color: $primary;
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    &Container {
+      display: flex;
+      cursor: pointer;
+      justify-content: space-between;
+      vertical-align: center;
     }
   }
 }

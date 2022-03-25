@@ -12,4 +12,5 @@ export const endpoints = {
   WHITELIST: '/whitelist',
   NFT: '/nft',
   HEROLETES_ATTRIBUTES: '/nft/herolete-attributes',
+  EDIT_PROFILE: '/users',
 };

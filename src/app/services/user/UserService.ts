@@ -13,6 +13,19 @@ export const authApi = api.injectEndpoints({
         body: { email: user.email, password: user.password },
       }),
     }),
+    editProfile: builder.mutation({
+      query: (user: EditProfileBody) => ({
+        url: endpoints.EDIT_PROFILE,
+        method: 'PATCH',
+        body: {
+          firstName: user.firstName,
+          lastName: user.lastName,
+          twitterUrl: user.twitterUrl,
+          discordUrl: user.discordUrl,
+          avatarImg: user.avatarImg,
+        },
+      }),
+    }),
     loginFTX: builder.mutation({
       query: (user: LoginFTXBody) => ({
         url: `${process.env.REACT_APP_FTX_API_URL}/users/login`,
@@ -177,6 +190,14 @@ interface UserAgreeBody {
   isEligible: boolean;
 }
 
+interface EditProfileBody {
+  firstName: string;
+  lastName: string;
+  twitterUrl: string;
+  discordUrl: string;
+  avatarImg: string;
+}
+
 export const {
   useLoginMutation,
   useLoginFTXMutation,
@@ -190,6 +211,7 @@ export const {
   useGetCountriesMutation,
   useGetSubregionsMutation,
   useChangePasswordMutation,
+  useEditProfileMutation,
   endpoints: {
     signup: { matchFulfilled: signupFulfiled },
     login: { matchFulfilled: loginFulfiled },
@@ -200,5 +222,6 @@ export const {
     googleLogin: { matchFulfilled: googleLoginFulfiled },
     kyc: { matchFulfilled: kycFulfiled, matchRejected: kycRejected },
     setAgreeSweepstakes: { matchFulfilled: setAgreeSweepstakesFulfiled },
+    editProfile: { matchFulfilled: editProfileFulfiled },
   },
 } = authApi;

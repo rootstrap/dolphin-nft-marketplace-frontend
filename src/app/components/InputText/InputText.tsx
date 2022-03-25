@@ -5,7 +5,7 @@ import { ReactComponent as MasterCard } from 'app/assets/MasterCardIcon.svg';
 import styles from './InputText.module.scss';
 
 export const InputText = ({
-  className,
+  className = '',
   isCreditCard = false,
   label = '',
   name,
@@ -44,7 +44,7 @@ export const InputText = ({
 );
 
 interface InputTextProps {
-  className: string;
+  className?: string;
   disabled?: boolean;
   label?: string;
   inputProps?: any;
@@ -53,5 +53,5 @@ interface InputTextProps {
   isCreditCard?: boolean;
   type?: 'text' | 'password' | 'email' | 'date' | 'number';
   size?: 'medium' | 'small';
-  register: UseFormRegister<FieldValues>;
+  register: UseFormRegister<FieldValues> | UseFormRegister<any>;
 }

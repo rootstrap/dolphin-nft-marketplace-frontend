@@ -1,5 +1,6 @@
 .withdrawNftModal {
   padding: 1rem;
+  text-align: center;
 
   &__address {
     margin: 1rem 0;
@@ -7,16 +8,24 @@
 
   &__code {
     display: flex;
-    justify-content: space-between;
+    margin-bottom: 2rem;
 
     &Input {
-      margin: 1rem 0;
-      flex-grow: 0;
+      flex-grow: 1;
     }
 
     &Button {
       align-self: flex-end;
-      margin-bottom: 1.5rem;
+      flex-grow: 0;
+    }
+  }
+
+  &__msg {
+    margin-top: 0.5rem;
+    text-align: center;
+
+    button {
+      margin-bottom: 0.5rem;
     }
   }
 }

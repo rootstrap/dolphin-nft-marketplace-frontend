@@ -14,7 +14,7 @@ interface FormValues {
 
 export const useWithdrawNftModal = (id: string) => {
   const t = useTranslation();
-  const { mfaRequired } = useAppSelector(state => state.user.user);
+  const { mfa } = useAppSelector(state => state.user.user);
   const [withdrawNft, { isSuccess, isError, data }] = useWithdrawNftMutation();
   const [requestCode] = useRequestCodeMutation();
 
@@ -32,10 +32,10 @@ export const useWithdrawNftModal = (id: string) => {
   }, [requestCode]);
 
   useEffect(() => {
-    if (mfaRequired === 'sms') {
+    if (mfa === 'sms') {
       sendSms();
     }
-  }, [sendSms, mfaRequired]);
+  }, [sendSms, mfa]);
 
   const {
     register,
@@ -49,7 +49,7 @@ export const useWithdrawNftModal = (id: string) => {
     handleSubmit,
     isError,
     isSuccess,
-    mfaRequired,
+    mfa,
     onSubmit,
     register,
     sendSms,

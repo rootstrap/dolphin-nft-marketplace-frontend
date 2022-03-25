@@ -50,11 +50,12 @@ export const MyCollectionItem = ({ name, image, index }: MyCollectionItemProps) 
                 <Grid item xs={6} sm={4} md={3} lg={2}>
                   <MyCollectionCard
                     Athlete={item.Athlete}
-                    Tier={item.Tier}
                     Background={item.Background}
-                    Signed={item.Signed}
-                    isNftInArray={isNftInArray}
                     imageUrl={item.imageUrl}
+                    isNftInArray={isNftInArray}
+                    Signed={item.Signed}
+                    Sport={item.Sport}
+                    Tier={item.Tier}
                   />
                 </Grid>
               );

@@ -1,6 +1,22 @@
-# Getting Started with Create React App
+# Dolphin NFTs
 
-Design can be found in: [FIGMA Page](https://www.figma.com/file/N3Nz27X4GqywgbrCcf2mnC/Dolphin-NFT-Marketplace?node-id=0%3A1).
+- [Dolphin NFTs](#dolphin-nfts)
+  * [In a nutshell](#in-a-nutshell)
+  * [Usage](#usage)
+    + [Development](#development)
+      - [Env File](#env-file)
+      - [Environment variables](#environment-variables)
+      - [Creature Chronicles](#creature-chronicles)
+    + [Testing](#testing)
+  * [Available Scripts](#available-scripts)
+    + [`yarn start`](#-yarn-start-)
+    + [`yarn test`](#-yarn-test-)
+    + [`yarn build`](#-yarn-build-)
+    + [`yarn eject`](#-yarn-eject-)
+    + [`yarn cypress`](#-yarn-cypress-)
+    + [`yarn proxy`](#-yarn-proxy-)
+  * [More info](#more-info)
+    + [Folders:](#folders-)
 
 ## In a nutshell
 
@@ -11,12 +27,14 @@ Currently, there are three collections been selling on the marketplace:
 - Creature Chronicles.
 HoF and Heroletes works currently on dolphinnfts.com, but Creature Chronicles is accessed through creaturechronicles.com, although both are on this application.
 
+Design can be found in: [FIGMA Page](https://www.figma.com/file/N3Nz27X4GqywgbrCcf2mnC/Dolphin-NFT-Marketplace?node-id=0%3A1).
+
 ## Usage
 
 ### Development
 
 #### Env File
-You are going to need a `.env` file similar to this one:
+You are going to need a `.env` file like this one:
 
 ```bash
 REACT_APP_API_URL=http://localhost:8000/api/v1
